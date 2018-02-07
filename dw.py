@@ -71,8 +71,13 @@ class downloader (object):
             for link in soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")}):
 
                 _href = link.get('href')
+                """ Append http://%url_host% whenever necessary """
                 if url_host not in _href:
-                    _href = url + _href
+                    """  url does not end with \ and the path neither """
+                    if url[:-1] != "/" and _href[:1] != "/":
+                        _href = url + r"/" + _href
+                    else:
+                        _href = url + _href
 
                 links.append(_href)
 
