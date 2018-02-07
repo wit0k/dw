@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup # pip install bs4
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlunparse
 
 import requests
 import re
@@ -38,7 +38,24 @@ class downloader (object):
 
         index = 0
         for url in urls:
-            urls[index] = url.strip()
+            """ Replace well known obfuscation strings """
+            url = url.strip()
+            url = url.replace("hxxp", "http")
+            url = url.replace("[.]", ".")
+            url = url.replace("[.", ".")
+            url = url.replace(".]", ".")
+            urls[index] = url
+
+            if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", url):
+                continue
+            else:
+                """ Remove incorrect schema like: :// or : or :/ etc. """
+                if re.match(r"(^/+|^:/+|^:+)", url):
+                    """ Remove incorrect scheme, and leave it empty """
+                    url = re.sub(r"(^/+|^:/+|^:+)", "", url)
+                    urls[index] = url
+
+
             index += 1
 
         return urls
@@ -58,14 +75,17 @@ class downloader (object):
         links = []
 
         try:
-            response = requests.get(url)
+            url_obj = urlparse(url, 'http')
+            url_host = url_obj.hostname
+            url = urlunparse(url_obj)
+
+            response = requests.get(url, verify=False)
             if not response.status_code == 200:
                 logger.info("URL Fetch -> FAILED -> URL: %s" % url)
-                return None
+                return []
             else:
                 logger.info("URL Fetch -> SUCCESS -> URL: %s" % url)
 
-            url_host = urlparse(url).hostname
             soup = BeautifulSoup(response.text, "html.parser")
 
             for link in soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")}):
@@ -133,10 +153,12 @@ def main(argv):
 
     if args.get_links and urls:
         hrefs = []
-        for url in urls:
-            hrefs.extend(dw.get_links(url))
+        if urls:
+            for url in urls:
+                hrefs.extend(dw.get_links(url))
 
-        logger.info(hrefs)
+            logger.info(hrefs)
+            print(*hrefs, sep="\n")
 
 
 if __name__ == "__main__":
