@@ -71,7 +71,6 @@ class downloader (object):
 
     def compress_files(self, files_to_compress, zip_name_prefix=""):
 
-
         file_count = 0
         archive_name_index = 1
         archive_name_prefix = "samples"
@@ -321,27 +320,26 @@ def main(argv):
                 logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
                 hrefs.extend(_urls)
 
-            logger.info("All hrefs:")
+            logger.info("Retrieved HREFs:")
             logger.info(hrefs)
-            print("All hrefs:")
+            print("Retrieved HREFs:")
             print(*hrefs, sep="\n")
 
     """ Skip download step if required """
     if not dw.skip_download:
         if hrefs:
             """ Download pulled hrefs """
-            dw.download(hrefs)
+            downloaded_files = dw.download(hrefs)
         else:
             """ Download given URLs """
-            dw.download(urls)
+            downloaded_files = dw.download(urls)
 
-        if dw.zip_downloaded_files:
-            downloaded_files = dw.download(hrefs)
+        if downloaded_files and dw.zip_downloaded_files:
+            dw.compress_files(downloaded_files)
 
-            if downloaded_files and dw.zip_downloaded_files:
-                dw.compress_files(downloaded_files)
     else:
         logger.debug("Skipping download")
+
 
 if __name__ == "__main__":
     main(sys.argv)
