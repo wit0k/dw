@@ -35,6 +35,7 @@ logger.setLevel(logging.NOTSET)  # Would be set by a parameter
 logger_verobse_levels = ["INFO", "WARNING", "ERROR", "DEBUG"]
 
 DOWNLOADED_FILE_NAME_LEN = 60
+ARCHIVE_FOLDER = "archive/"
 
 class downloader (object):
 
@@ -57,6 +58,7 @@ class downloader (object):
     def _zip(self, file_path, _zip_file_name):
         """ Add file to zip file """
 
+        logger.debug("Add '%s' to: '%s'" % (file_path, _zip_file_name))
         """ Load or create zip object """
         if _zip_file_name in self.open_zip_files:
             _zip_file = self.open_zip_files[_zip_file_name]
@@ -67,36 +69,39 @@ class downloader (object):
         if os.path.isfile(file_path):
             _zip_file.write(file_path, os.path.basename(file_path))
 
-    def compress_files(self, files_to_compress, max_file_count_per_archive=3, zip_name_prefix=""):
+    def compress_files(self, files_to_compress, zip_name_prefix=""):
+
 
         file_count = 0
         archive_name_index = 1
         archive_name_prefix = "samples"
         archive_extension = ".zip"
+        archive_file = ""
 
         if files_to_compress:
             for file in files_to_compress:
                 file_count += 1
 
-                """ Build the zip filename accordingly to given parameters """
-                if zip_name_prefix:
-                    archive_name = zip_name_prefix + "-" + str(archive_name_index) + archive_extension
-                else:
-                    archive_name = archive_name_prefix + "-" + str(archive_name_index) + archive_extension
-
-                if file_count == max_file_count_per_archive:
-                    file_count = 0
-                    archive_name_index += 1
-
-                """ Add file to an archive """
-
-                if max_file_count_per_archive == 0:
+                """ Build the archive name """
+                # Case: Unlimited items in archive
+                if self.max_file_count_per_archive == 0:
                     if zip_name_prefix:
-                        self._zip(file, zip_name_prefix + archive_extension)
+                        archive_file = ARCHIVE_FOLDER + zip_name_prefix + archive_extension
                     else:
-                        self._zip(file, archive_name_prefix + archive_extension)
+                        archive_file = ARCHIVE_FOLDER + archive_name_prefix + archive_extension
                 else:
-                    self._zip(file, archive_name)
+                    # Case: Limit items count in archive
+                    if zip_name_prefix:
+                        archive_file = ARCHIVE_FOLDER + zip_name_prefix + "-" + str(archive_name_index) + archive_extension
+                    else:
+                        archive_file = ARCHIVE_FOLDER + archive_name_prefix + "-" + str(archive_name_index) + archive_extension
+
+                    if file_count == self.max_file_count_per_archive:
+                        file_count = 0
+                        archive_name_index += 1
+
+                """ Add file to the specific archive """
+                self._zip(file, archive_file)
 
         """ Finally close all involved archives """
         self.close_archives()
@@ -182,6 +187,7 @@ class downloader (object):
     def download(self, urls):
 
         download_index = 0
+        downloaded_files = []
 
         for url in urls:
             response = requests.get(url, stream=True, verify=False)
@@ -190,12 +196,10 @@ class downloader (object):
                 continue
             else:
                 logger.info("URL Download -> SUCCESS -> [HTTP%s] - URL: %s" % (response.status_code, url))
-                #local_filename = url.split('/')[-1]
-                local_filename = ""
+
                 """ Determine output file name """
-
+                local_filename = ""
                 url_obj = urlparse(url, 'http')
-
                 if 'Content-Disposition' in response.headers.keys():
                     local_filename = response.headers['Content-Disposition'].split('=')[-1].strip('"')
 
@@ -225,6 +229,9 @@ class downloader (object):
 
                 with open(out_file, 'wb') as file:
                     shutil.copyfileobj(response.raw, file)
+                    downloaded_files.append(out_file)
+
+        return downloaded_files
 
     def check_args(self):
 
@@ -233,9 +240,16 @@ class downloader (object):
             exit(-1)
 
         if not os.path.isdir(self.download_folder):
-            logger.error("Download folder: %s not found!" % self.download_folder)
-            exit(-1)
+            logger.warning("Download folder: %s not found!" % self.download_folder)
+            try:
+                logger.error("Create download folder: %s" % self.download_folder)
+                os.mkdir(self.download_folder)
+            except Exception:
+                exit(-1)
 
+        """ When zip enabled and archive folder does not exist """
+        if self.zip_downloaded_files and not os.path.isdir(ARCHIVE_FOLDER):
+            os.makedirs(ARCHIVE_FOLDER)
 
 def main(argv):
 
@@ -251,7 +265,7 @@ def main(argv):
                              help="File containing the URLs to be processed")
 
     script_args.add_argument("-d", "--download-folder", action='store', dest='download_folder', required=False,
-                             default=os.getcwd(), help="Specify custom download folder (Default: .getcwd()")
+                             default="downloads/", help="Specify custom download folder (Default: downloads/")
 
     script_args.add_argument("--skip-download", action='store_true', dest='skip_download', required=False,
                              default=False, help="Would process the URL only")
@@ -293,7 +307,6 @@ def main(argv):
     dw = downloader(args)
     urls = []
     hrefs = []
-
     downloaded_files = []
 
     if dw.url_input_file:
