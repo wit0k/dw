@@ -16,7 +16,7 @@ import argparse
 import sys
 import zipfile
 import shutil
-
+import json
 
 app_name = "dw (Downloader)"
 """ Set working directory so the script can be executed from any location/symlink """
@@ -191,7 +191,26 @@ class downloader (object):
         return links
 
     def _update_headers(self, headers, vendor_file):
-        pass
+
+        vendor_config = None
+
+        if os.path.isfile(vendor_file):
+            with open(vendor_file, 'r') as file:
+                vendor_config = json.load(file)
+
+                for header_name, value in headers.items():
+                    if value == "":
+                        try:
+                            headers[header_name] = vendor_config["headers"][header_name]
+                        except KeyError:
+                            pass
+
+        else:
+            logger.error("Unable to load vendor file: %s" % vendor_file)
+            exit(-1)
+
+        return headers
+
 
     def download(self, urls):
 
@@ -245,7 +264,7 @@ class downloader (object):
     POST_DATA = {
         "Symantec": {
             "url": "https://submit.symantec.com/websubmit/bcs.cgi",
-            "config_file": "symantec.vd",
+            "config_file": "config/symantec.vd",
             "headers": {
                 "Content-Type": "multipart/form-data",
                 "mode": "2",
@@ -279,6 +298,7 @@ class downloader (object):
 
                 """ Adjust headers """
                 headers["upfile"] = headers["upfile"] + file_name
+                self._update_headers(headers, self.POST_DATA["Symantec"]["config_file"])
 
                 with open(file, 'rb') as file_obj:
                     _file = {'file': (file_name, file_obj.read(), 'application/octet-stream', {'Expires': '0'})}
