@@ -6,6 +6,8 @@ __version__ = '0.0.2'
 from bs4 import BeautifulSoup # pip install bs4
 from urllib.parse import urlparse, urlunparse
 
+
+
 import requests
 import re
 import os
@@ -49,6 +51,7 @@ class downloader (object):
         self.zip_downloaded_files = args.zip_downloaded_files
         self.max_file_count_per_archive = args.max_file_count_per_archive
         self.download_folder = args.download_folder
+        self.submission_comments = args.submission_comments
 
         """ Check script arguments """
         self.check_args()
@@ -76,6 +79,7 @@ class downloader (object):
         archive_name_prefix = "samples"
         archive_extension = ".zip"
         archive_file = ""
+        archive_files = []
 
         if files_to_compress:
             for file in files_to_compress:
@@ -102,8 +106,11 @@ class downloader (object):
                 """ Add file to the specific archive """
                 self._zip(file, archive_file)
 
+        archive_files = list(self.open_zip_files.keys())
         """ Finally close all involved archives """
         self.close_archives()
+
+        return archive_files
 
     def close_archives(self):
         """ Close all open archive objects """
@@ -183,6 +190,9 @@ class downloader (object):
 
         return links
 
+    def _update_headers(self, headers, vendor_file):
+        pass
+
     def download(self, urls):
 
         download_index = 0
@@ -232,6 +242,53 @@ class downloader (object):
 
         return downloaded_files
 
+    POST_DATA = {
+        "Symantec": {
+            "url": "https://submit.symantec.com/websubmit/bcs.cgi",
+            "config_file": "symantec.vd",
+            "headers": {
+                "Content-Type": "multipart/form-data",
+                "mode": "2",
+                "fname": "",
+                "lname":"",
+                "cname": "",
+                "email": "",
+                "email2": "",
+                "pin": "",
+                "stype":"upfile",
+                "comments": "...",
+                "upfile": "@"
+            }
+        }
+    }
+
+    def submit(self, files, vendor_name="Symantec"):
+
+        # http://httpbin.org/post - Could be used for testing POST data
+        if files:
+            headers = {}
+            url = ""
+
+            """ Pull vendor specific POST data fields """
+            if vendor_name == "Symantec":
+                headers = self.POST_DATA["Symantec"]["headers"]
+                url = self.POST_DATA["Symantec"]["url"]
+
+            for file in files:
+                file_name = os.path.basename(file)
+
+                """ Adjust headers """
+                headers["upfile"] = headers["upfile"] + file_name
+
+                with open(file, 'rb') as file_obj:
+                    _file = {'file': (file_name, file_obj.read(), 'application/octet-stream', {'Expires': '0'})}
+                    response = requests.post(url, files=_file, data=headers)
+
+                    if not response.status_code == 200:
+                        logger.error("FAILED to submit: %s Error: [%s]" % (url, response.status_code))
+        else:
+            logger.warning("Nothing to submit!")
+
     def check_args(self):
 
         if not os.path.isfile(self.url_input_file):
@@ -249,6 +306,10 @@ class downloader (object):
         """ When zip enabled and archive folder does not exist """
         if self.zip_downloaded_files and not os.path.isdir(ARCHIVE_FOLDER):
             os.makedirs(ARCHIVE_FOLDER)
+
+        """ Enable compression if submit option is enabled """
+        if self.submit_to_vendors:
+            self.zip_downloaded_files = True
 
 def main(argv):
 
@@ -281,6 +342,9 @@ def main(argv):
     script_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
                              default=False, help="Submit files to AV vendors (Default: False)")
 
+    script_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
+                             default=False, help="Insert submission comments (Default: archive name)")
+
     args = argsparser.parse_args()
     argc = argv.__len__()
 
@@ -307,6 +371,12 @@ def main(argv):
     urls = []
     hrefs = []
     downloaded_files = []
+    archives = []
+
+    f = ['archive/eicar_com.zip']
+    dw.submit(f)
+
+    exit(-2)
 
     if dw.url_input_file:
         urls = dw.load_urls_from_input_file(dw.url_input_file)
@@ -335,7 +405,11 @@ def main(argv):
             downloaded_files = dw.download(urls)
 
         if downloaded_files and dw.zip_downloaded_files:
-            dw.compress_files(downloaded_files)
+            archives = dw.compress_files(downloaded_files)
+
+    """ Submit files to vendors """
+    if dw.submit_to_vendors:
+        dw.submit(archives)
 
     else:
         logger.debug("Skipping download")
