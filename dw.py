@@ -1,12 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-09"
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 
 from bs4 import BeautifulSoup # pip install bs4
 from urllib.parse import urlparse, urlunparse
-
-
 
 import requests
 import re
@@ -17,6 +15,7 @@ import sys
 import zipfile
 import shutil
 import json
+import hashlib
 
 app_name = "dw (Downloader)"
 """ Set working directory so the script can be executed from any location/symlink """
@@ -39,6 +38,11 @@ logger_verobse_levels = ["INFO", "WARNING", "ERROR", "DEBUG"]
 DOWNLOADED_FILE_NAME_LEN = 60
 ARCHIVE_FOLDER = "archive/"
 
+debug_proxies = {
+  'http': 'http://127.0.0.1:8080',
+  'https': 'http://127.0.0.1:8080'
+}
+
 class downloader (object):
 
     def __init__(self, args):
@@ -52,6 +56,7 @@ class downloader (object):
         self.max_file_count_per_archive = args.max_file_count_per_archive
         self.download_folder = args.download_folder
         self.submission_comments = args.submission_comments
+        self.requests_debug = args.requests_debug
 
         """ Check script arguments """
         self.check_args()
@@ -120,9 +125,13 @@ class downloader (object):
     def parse_urls(self, urls):
         """ Remove URL obfuscation ect. """
 
+        new_urls = []
         index = 0
         for url in urls:
             """ Replace well known obfuscation strings """
+            if url == "\n":
+                continue
+
             url = url.strip()
             url = url.replace("hxxp", "http")
             url = url.replace("[.]", ".")
@@ -131,6 +140,7 @@ class downloader (object):
             urls[index] = url
 
             if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", url):
+                new_urls.append(url)
                 continue
             else:
                 """ Remove incorrect schema like: :// or : or :/ etc. """
@@ -139,10 +149,10 @@ class downloader (object):
                     url = re.sub(r"(^/+|^:/+|^:+)", "", url)
                     urls[index] = url
 
-
+            new_urls.append(urls[index])
             index += 1
 
-        return urls
+        return new_urls
 
     def load_urls_from_input_file(self, input_file):
 
@@ -159,6 +169,8 @@ class downloader (object):
         links = []
 
         try:
+            logger.info("Getting hrefs from: %s" % url)
+            print("Getting hrefs from: %s" % url)
             url_obj = urlparse(url, 'http')
             url_host = url_obj.hostname
             url = urlunparse(url_obj)
@@ -177,17 +189,22 @@ class downloader (object):
                 _href = link.get('href')
                 """ Append http://%url_host% whenever necessary """
                 if url_host not in _href:
-                    """  url does not end with \ and the path neither """
-                    if url[:-1] != "/" and _href[:1] != "/":
-                        _href = url + r"/" + _href
+                    if _href.startswith("http://") or _href.startswith("https://"):
+                        pass
                     else:
-                        _href = url + _href
+                        """  url does not end with / and the path neither """
+                        if url[:-1] != "/" and _href[:1] != "/":
+                            _href = url + r"/" + _href
+                        else:
+                            _href = url + _href
 
                 links.append(_href)
 
         except requests.exceptions.InvalidSchema:
             logger.error("Invalid URL format: %s" % url)
+            return links
 
+        print(*links, sep="\n")
         return links
 
     def _update_headers(self, headers, vendor_file):
@@ -201,7 +218,7 @@ class downloader (object):
                 for header_name, value in headers.items():
                     if value == "":
                         try:
-                            headers[header_name] = vendor_config["headers"][header_name]
+                            headers[header_name] = (None, vendor_config["form_data"][header_name])
                         except KeyError:
                             pass
 
@@ -211,14 +228,19 @@ class downloader (object):
 
         return headers
 
-
     def download(self, urls):
 
         download_index = 0
         downloaded_files = []
+        sha256 = ""
 
         for url in urls:
-            response = requests.get(url, stream=True, verify=False)
+            """ Submit the request """
+            if self.requests_debug:
+                response = requests.get(url, stream=True, proxies=debug_proxies, verify=False)
+            else:
+                response = requests.get(url, stream=True, verify=False)
+
             if not response.status_code == 200:
                 logger.info("URL Download -> FAILED -> [HTTP%s] - URL: %s" % (response.status_code, url))
                 continue
@@ -258,6 +280,19 @@ class downloader (object):
                 with open(out_file, 'wb') as file:
                     shutil.copyfileobj(response.raw, file)
                     downloaded_files.append(out_file)
+                    file.close()
+
+                """ Log downloaded file and its hash """
+                hash_obj = hashlib.sha256()
+                with open(out_file, "rb") as file:
+                    for chunk in iter(lambda: file.read(4096), b""):
+                        hash_obj.update(chunk)
+
+                    sha256 = hash_obj.hexdigest()
+                    file.close()
+
+                logger.info("[sha256: %s] - %s" % (sha256, out_file))
+                print("[sha256: %s] - %s" % (sha256, out_file))
 
         return downloaded_files
 
@@ -265,47 +300,75 @@ class downloader (object):
         "Symantec": {
             "url": "https://submit.symantec.com/websubmit/bcs.cgi",
             "config_file": "config/symantec.vd",
-            "headers": {
-                "Content-Type": "multipart/form-data",
-                "mode": "2",
+            "success_message": "Your submission has been sent",
+            "form_data": {
+                "mode": (None, '2'),
                 "fname": "",
-                "lname":"",
+                "lname": "",
                 "cname": "",
                 "email": "",
                 "email2": "",
                 "pin": "",
-                "stype":"upfile",
-                "comments": "...",
-                "upfile": "@"
+                "stype": (None, 'upfile'),
+                "url": (None, ''),
+                "hash": (None, ''),
+                "comments": (None, 'Test submission 1'),
+                "upfile": ""
+            },
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)",
+                "Cache-Control": "max-age=0",
+                "Origin": "https://submit.symantec.com",
+                "Upgrade-Insecure-Requests": "1",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "Referer": "https://submit.symantec.com/websubmit/bcs.cgi"
             }
         }
     }
 
     def submit(self, files, vendor_name="Symantec"):
 
-        # http://httpbin.org/post - Could be used for testing POST data
         if files:
-            headers = {}
             url = ""
+            file_content = None
+            submission_success_message = ""
+            form_data = {}
+            headers = {}
 
             """ Pull vendor specific POST data fields """
             if vendor_name == "Symantec":
+                form_data = self.POST_DATA["Symantec"]["form_data"]
                 headers = self.POST_DATA["Symantec"]["headers"]
                 url = self.POST_DATA["Symantec"]["url"]
+                submission_success_message = self.POST_DATA["Symantec"]["success_message"]
 
             for file in files:
+
+                logger.info("Submitting: %s to: %s" % (file, url))
+
                 file_name = os.path.basename(file)
 
-                """ Adjust headers """
-                headers["upfile"] = headers["upfile"] + file_name
-                self._update_headers(headers, self.POST_DATA["Symantec"]["config_file"])
+                """ Merge form data from vendor file  """
+                self._update_headers(form_data, self.POST_DATA["Symantec"]["config_file"])
 
+                """ Load the file content """
                 with open(file, 'rb') as file_obj:
-                    _file = {'file': (file_name, file_obj.read(), 'application/octet-stream', {'Expires': '0'})}
-                    response = requests.post(url, files=_file, data=headers)
+                    file_content = file_obj.read()
+                    form_data["upfile"] = (file_name, file_content, 'application/x-zip-compressed')
+                    file_obj.close()
 
-                    if not response.status_code == 200:
-                        logger.error("FAILED to submit: %s Error: [%s]" % (url, response.status_code))
+                """ Submit the request """
+                if self.requests_debug:
+                    response = requests.post(url, files=form_data, proxies=debug_proxies, headers=headers, verify=False)
+                else:
+                    response = requests.post(url, files=form_data, headers=headers, verify=False)
+
+                if not response.status_code == 200:
+                    logger.error("[%s] - FAILED to submit: %s" % (response.status_code, url))
+                else:
+                    if vendor_name == "Symantec":
+                        if submission_success_message in response.text:
+                            logger.info("Submission OK -> %s" % file)
         else:
             logger.warning("Nothing to submit!")
 
@@ -365,6 +428,9 @@ def main(argv):
     script_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
                              default=False, help="Insert submission comments (Default: archive name)")
 
+    script_args.add_argument("--debug-requests", action='store_true', dest='requests_debug', required=False,
+                             default=False, help="Sends GET/POST requests via local proxy server 127.0.0.1:8080")
+
     args = argsparser.parse_args()
     argc = argv.__len__()
 
@@ -393,10 +459,6 @@ def main(argv):
     downloaded_files = []
     archives = []
 
-    f = ['archive/eicar_com.zip']
-    dw.submit(f)
-
-    exit(-2)
 
     if dw.url_input_file:
         urls = dw.load_urls_from_input_file(dw.url_input_file)
@@ -410,9 +472,9 @@ def main(argv):
                 logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
                 hrefs.extend(_urls)
 
-            logger.info("Retrieved HREFs:")
+            logger.info("All retrieved HREFs:")
             logger.info(hrefs)
-            print("Retrieved HREFs:")
+            print("All retrieved HREFs:")
             print(*hrefs, sep="\n")
 
     """ Skip download step if required """
