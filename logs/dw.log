@@ -1,53 +1,13 @@
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:45,820 - dw.py - main - Initialize dw (Downloader)
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:45,821 - dw.py - parse_urls - Parsing URL: hxxp://2k20.tk/
- to: http://2k20.tk/
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:45,821 - dw.py - parse_urls - Parsing URL: hxxp://120.132.17[.]180:66/
- to: http://120.132.17.180:66/
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:45,821 - dw.py - main - Loaded [2] URLs from: urls.txt
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:45,821 - dw.py - main - Get links from each URL
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:45,821 - dw.py - get_hrefs - Getting hrefs from: http://2k20.tk/
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:46,399 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://2k20.tk/
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:46,405 - dw.py - main - Found [9] hrefs on: http://2k20.tk/
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:46,405 - dw.py - get_hrefs - Getting hrefs from: http://120.132.17.180:66/
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:47,214 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://120.132.17.180:66/
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:47,216 - dw.py - main - Found [2] hrefs on: http://120.132.17.180:66/
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:47,216 - dw.py - main - All retrieved HREFs:
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:47,216 - dw.py - main - ['http://2k20.tk//0199.doc', 'http://2k20.tk//1.exe', 'http://2k20.tk//1.hta', 'http://2k20.tk//1.rar', 'http://2k20.tk//1.zip', 'http://2k20.tk//8570.docx', 'http://2k20.tk//8759.doc', 'http://2k20.tk//a.apk', 'http://2k20.tk//doc.doc', 'http://nginx.org/', 'http://nginx.com/']
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:47,339 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://2k20.tk//0199.doc
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:47,342 - dw.py - download - [sha256: fe48b06516bf8939fe6b72808520435a98ec29fcbff9a324842c14abb10ec489] - downloads//0199.doc
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:47,452 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://2k20.tk//1.exe
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,098 - dw.py - download - [sha256: 7b873da42a24ef30d6f523411f40c593a401ebfc9461cc3d93058c8ab8659225] - downloads//1.exe
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,208 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://2k20.tk//1.hta
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,210 - dw.py - download - [sha256: b8397dac9b00dabcc65e0bf0505c74a134d570674829e901cf10bd4a047db09f] - downloads//1.hta
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,316 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://2k20.tk//1.rar
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,318 - dw.py - download - [sha256: 9ac47bd4e34cc77a2abc3eb7d62dbb246312c748f4e39cd5351cc84022878424] - downloads//1.rar
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,429 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://2k20.tk//1.zip
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,432 - dw.py - download - [sha256: ee63ba38bda3bcb256d1db366d0ed3d77a0c548422c0f4c54b807e242d8478ba] - downloads//1.zip
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,539 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://2k20.tk//8570.docx
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,542 - dw.py - download - [sha256: 4670f3957dc2f0d55cfb11a0bc6f0ea7745a6dec0a3c66a1d05c16592da9bf7a] - downloads//8570.docx
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,647 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://2k20.tk//8759.doc
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,650 - dw.py - download - [sha256: f594087f30656c3f44a3fecaaad2dec04807db7d5bfcfec2f9ac6aa8d5b7e675] - downloads//8759.doc
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:48,764 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://2k20.tk//a.apk
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:49,889 - dw.py - download - [sha256: 3122180b358e9eec9ebf710bc6e885dd9aa88d9a2f4ab51bd6d77cb603752e11] - downloads//a.apk
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:50,007 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://2k20.tk//doc.doc
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:54,236 - dw.py - download - [sha256: 8796be9180ca4dd5eb77e36df5fd422fd2802c78fcc458705c008f080c7afeb7] - downloads//doc.doc
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:54,765 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://nginx.org/
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:54,767 - dw.py - download - [sha256: 504e05e1ed26dd490c948229001faab5266a6bd4ad57d5e7615d00a7e7466950] - downloads//nginx.org
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:56,839 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://nginx.com/
-INFO - THREAD-140735233843200 - 2018-02-13 12:06:56,842 - dw.py - download - [sha256: f6501b400c40a08b44d645467b12d7549372220acc11f30b9d3468b2b60d0e9e] - downloads//nginx.com
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,842 - dw.py - _zip - Add 'downloads//0199.doc' to: 'archive/samples-1.zip'
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,843 - dw.py - _zip - Add 'downloads//1.exe' to: 'archive/samples-1.zip'
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,845 - dw.py - _zip - Add 'downloads//1.hta' to: 'archive/samples-1.zip'
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,845 - dw.py - _zip - Add 'downloads//1.rar' to: 'archive/samples-1.zip'
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,846 - dw.py - compress_files - Copy: downloads//1.zip to: archive/1.zip
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,846 - dw.py - compress_files - Copy: downloads//8570.docx to: archive/8570.docx
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,846 - dw.py - _zip - Add 'downloads//8759.doc' to: 'archive/samples-1.zip'
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,847 - dw.py - compress_files - Copy: downloads//a.apk to: archive/a.apk
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,848 - dw.py - _zip - Add 'downloads//doc.doc' to: 'archive/samples-1.zip'
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,861 - dw.py - _zip - Add 'downloads//nginx.org' to: 'archive/samples-1.zip'
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,861 - dw.py - _zip - Add 'downloads//nginx.com' to: 'archive/samples-1.zip'
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,865 - dw.py - main - Archive: archive/1.zip -> Members: ['1.hta', '8570.docx']
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,865 - dw.py - main - Archive: archive/8570.docx -> Members: ['[Content_Types].xml', '_rels/.rels', 'word/_rels/document.xml.rels', 'word/document.xml', 'word/theme/theme1.xml', 'word/_rels/settings.xml.rels', 'word/settings.xml', 'word/webSettings.xml', 'word/stylesWithEffects.xml', 'docProps/app.xml', 'docProps/core.xml', 'word/fontTable.xml', 'word/styles.xml']
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,866 - dw.py - main - Archive: archive/a.apk -> Members: ['META-INF/MANIFEST.MF', 'META-INF/5814FDB8.SF', 'META-INF/5814FDB8.RSA', 'AndroidManifest.xml', 'classes.dex', 'res/mipmap-hdpi-v4/ic_launcher.png', 'res/mipmap-mdpi-v4/ic_launcher.png', 'res/mipmap-xhdpi-v4/ic_launcher.png', 'res/mipmap-xxhdpi-v4/ic_launcher.png', 'res/mipmap-xxxhdpi-v4/ic_launcher.png', 'resources.arsc']
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,866 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['0199.doc', '1.exe', '1.hta', '1.rar', '8759.doc', 'doc.doc', 'nginx.org', 'nginx.com']
-DEBUG - THREAD-140735233843200 - 2018-02-13 12:06:56,866 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735157784576 - 2018-02-13 22:15:59,619 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735157784576 - 2018-02-13 22:15:59,621 - dw.py - parse_urls - Parsing URL: hxxp://2k20[.]tk/ to: http://2k20.tk/
+DEBUG - THREAD-140735157784576 - 2018-02-13 22:15:59,621 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - parse_urls - Parsing URL: hxxp://2k20[.]tk/ to: http://2k20.tk/
+DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - main - Get links from each URL
+INFO - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - get_hrefs - Getting hrefs from: http://2k20.tk/
+INFO - THREAD-140735157784576 - 2018-02-13 22:16:53,040 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://2k20.tk/
+DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:53,048 - dw.py - main - Found [9] hrefs on: http://2k20.tk/
+INFO - THREAD-140735157784576 - 2018-02-13 22:16:53,048 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735157784576 - 2018-02-13 22:16:53,048 - dw.py - main - ['http://2k20.tk/0199.doc', 'http://2k20.tk/1.exe', 'http://2k20.tk/1.hta', 'http://2k20.tk/1.rar', 'http://2k20.tk/1.zip', 'http://2k20.tk/8570.docx', 'http://2k20.tk/8759.doc', 'http://2k20.tk/a.apk', 'http://2k20.tk/doc.doc']
+DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:53,048 - dw.py - main - Skipping Vendor submission

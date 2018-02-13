@@ -146,6 +146,7 @@ class downloader (object):
                 continue
 
             url = url.strip()
+            url = url.replace(" ", "")
             url = url.replace("hxxp", "http")
             url = url.replace("[.]", ".")
             url = url.replace("[:]", ":")
@@ -195,6 +196,7 @@ class downloader (object):
     def get_hrefs(self, url):
 
         links = []
+        url_host = ""
 
         try:
             logger.info("Getting hrefs from: %s" % url)
@@ -202,6 +204,7 @@ class downloader (object):
             url_obj = urlparse(url, 'http')
             url_host = url_obj.hostname
             url = urlunparse(url_obj)
+            _url = url_obj.scheme + "://" + url_obj.netloc
 
             if self.requests_debug:
                 response = requests.get(url, proxies=debug_proxies, verify=False)
@@ -224,13 +227,30 @@ class downloader (object):
                     if _href.startswith("http://") or _href.startswith("https://"):
                         pass
                     else:
-                        """  url does not end with / and the path neither """
-                        if url[:-1] != "/" and _href[:1] != "/":
-                            _href = url + r"/" + _href
-                        else:
-                            _href = url + _href
 
-                links.append(_href)
+                        #Fix (Shall update the code later)
+                        url = _url
+
+                        if url[-1:] != "/" and _href[:1] != "/":
+                            """  url does not end with / and the path does not start with / """
+                            _href = url + r"/" + _href
+                            links.append(_href)
+                            continue
+                        elif url[-1:] == "/" and _href[:1] == "/":
+                            """  url ends with / and the path start with / """
+                            _href = url + _href[1:]
+                            links.append(_href)
+                            continue
+                        elif url[-1:] != "/" and _href[:1] == "/":
+                            """  url does not end with / and path does start from /"""
+                            _href = url + _href
+                            links.append(_href)
+                        elif url[-1:] == "/" and _href[:1] != "/":
+                            """  url does not end with / and path does start from /"""
+                            _href = url + _href
+                            links.append(_href)
+                            continue
+
 
         except requests.exceptions.InvalidSchema:
             logger.error("Invalid URL format: %s" % url)
@@ -548,6 +568,21 @@ def main(argv):
             archives = dw.compress_files(downloaded_files)
 
     else:
+
+        """ Retrieve HREFs from URLs """
+        if dw.get_links and urls:
+            if urls:
+                logger.debug("Get links from each URL")
+                for url in urls:
+                    _urls = dw.get_hrefs(url)
+                    logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
+                    hrefs.extend(_urls)
+
+                logger.info("All retrieved HREFs:")
+                logger.info(hrefs)
+                print("All retrieved HREFs:")
+                print(*hrefs, sep="\n")
+
         # Local file processing only (No download)
         """ Compress files if instructed to """
         if downloaded_files and dw.zip_downloaded_files:
