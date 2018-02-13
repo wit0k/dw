@@ -551,16 +551,16 @@ def main(argv):
         if downloaded_files and dw.zip_downloaded_files:
             archives = dw.compress_files(downloaded_files)
 
-            """ Print files by archive """
-            if archives:
-                print("Archives content:ś")
-                for archive in archives:
-                    with zipfile.ZipFile(archive, 'r') as _archive:
-                        members = _archive.namelist()
-                        print("Archive: %s" % archive)
-                        for member in members:
-                            print(" - %s" % member)
-                        logger.debug("Archive: %s -> Members: %s" % (archive, members))
+    """ Print files by archive """
+    if archives:
+        print("Archives content:")
+        for archive in archives:
+            with zipfile.ZipFile(archive, 'r') as _archive:
+                members = _archive.namelist()
+                print("Archive: %s" % archive)
+                for member in members:
+                    print(" - %s" % member)
+                logger.debug("Archive: %s -> Members: %s" % (archive, members))
 
     """ Submit files to vendors """
     if dw.submit_to_vendors:
