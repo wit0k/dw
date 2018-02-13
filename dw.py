@@ -454,19 +454,19 @@ def main(argv):
     script_args.add_argument("-v", "--verbose-level", type=str, action='store', dest='verbose_level', required=False,
                              default="DEBUG", help="Set the verbose level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
     script_args.add_argument("-i", "--input", type=str, action='store', dest='input', required=False,
-                             help="File containing the URLs to be processed, or folder with files to be processed")
+                             help="Load and deobfuscate URLs from input file, or load files from given folder")
 
     script_args.add_argument("-d", "--download-folder", action='store', dest='download_folder', required=False,
-                             default="downloads/", help="Specify custom download folder (Default: downloads/")
+                             default="downloads/", help="Specify custom download folder location (Default: downloads/")
 
     script_args.add_argument("--skip-download", action='store_true', dest='skip_download', required=False,
-                             default=False, help="Would process the URL only")
+                             default=False, help="Skips the download operation")
 
     script_args.add_argument("-gl", "--get-links", action='store_true', dest='get_links', required=False,
-                             default=False, help="Would print out the links retrieved from a given URL")
+                             default=False, help="Retrieve all available links/hrefs from loaded URLs")
 
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
-                             default=False, help="Would compress all downloaded files, or files from input folder")
+                             default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")
 
     script_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
                              default=9, help="Sets the limit of files per archive (Default: 9, 0: Unlimited)")
