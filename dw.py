@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
-__date__    = "2018-02-09"
-__version__ = '0.0.3'
+__date__    = "2018-02-13"
+__version__ = '0.0.4'
 
 
 from bs4 import BeautifulSoup # pip install bs4
@@ -50,7 +50,8 @@ class downloader (object):
         self.verbose_level = args.verbose_level
         self.skip_download = args.skip_download
         self.submit_to_vendors = args.submit_to_vendors
-        self.url_input_file = args.url_input_file
+        self.input = args.input
+        self.input_type = None  # file | folder
         self.get_links = args.get_links
         self.zip_downloaded_files = args.zip_downloaded_files
         self.max_file_count_per_archive = args.max_file_count_per_archive
@@ -88,8 +89,19 @@ class downloader (object):
 
         if files_to_compress:
             for file in files_to_compress:
-                file_count += 1
 
+                """ Skip compression of already compressed files """
+                if zipfile.is_zipfile(file):
+                    archive_file = ARCHIVE_FOLDER + os.path.basename(file)
+                    if file == archive_file:
+                        archive_files.append(archive_file)
+                    else:
+                        logger.debug("Copy: %s to: %s" % (file, archive_file))
+                        shutil.copy2(file, archive_file)
+                        archive_files.append(archive_file)
+                    continue
+
+                file_count += 1
                 """ Build the archive name """
                 # Case: Unlimited items in archive
                 if self.max_file_count_per_archive == 0:
@@ -111,7 +123,7 @@ class downloader (object):
                 """ Add file to the specific archive """
                 self._zip(file, archive_file)
 
-        archive_files = list(self.open_zip_files.keys())
+        archive_files.extend(list(self.open_zip_files.keys()))
         """ Finally close all involved archives """
         self.close_archives()
 
@@ -140,6 +152,7 @@ class downloader (object):
             urls[index] = url
 
             if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", url):
+                logger.debug("Parsing URL: %s to: %s" % (url, urls[index]))
                 new_urls.append(url)
                 continue
             else:
@@ -149,6 +162,7 @@ class downloader (object):
                     url = re.sub(r"(^/+|^:/+|^:+)", "", url)
                     urls[index] = url
 
+            logger.debug("Parsing URL: %s to: %s" % (url, urls[index]))
             new_urls.append(urls[index])
             index += 1
 
@@ -164,6 +178,18 @@ class downloader (object):
         else:
             logger.error("Input file: %s -> Not found!" % input_file)
 
+    def load_files_from_input_folder(self, input_folder):
+
+        files = []
+        folder_listing = os.listdir(input_folder)
+        for file in folder_listing:
+            file_path = os.path.join(input_folder, file)
+            if os.path.isfile(file_path):
+                if not ".DS_Store" in file_path:
+                    files.append(file_path)
+
+        return files
+
     def get_hrefs(self, url):
 
         links = []
@@ -175,7 +201,11 @@ class downloader (object):
             url_host = url_obj.hostname
             url = urlunparse(url_obj)
 
-            response = requests.get(url, verify=False)
+            if self.requests_debug:
+                response = requests.get(url, proxies=debug_proxies, verify=False)
+            else:
+                response = requests.get(url, verify=False)
+
             if not response.status_code == 200:
                 logger.info("URL Fetch -> FAILED -> URL: %s" % url)
                 return []
@@ -296,6 +326,7 @@ class downloader (object):
 
         return downloaded_files
 
+    # http://docs.python-requests.org/en/master/user/quickstart/
     POST_DATA = {
         "Symantec": {
             "url": "https://submit.symantec.com/websubmit/bcs.cgi",
@@ -312,7 +343,7 @@ class downloader (object):
                 "stype": (None, 'upfile'),
                 "url": (None, ''),
                 "hash": (None, ''),
-                "comments": (None, 'Test submission 1'),
+                "comments": (None, ''),
                 "upfile": ""
             },
             "headers": {
@@ -343,12 +374,16 @@ class downloader (object):
                 submission_success_message = self.POST_DATA["Symantec"]["success_message"]
 
             for file in files:
-
                 logger.info("Submitting: %s to: %s" % (file, url))
-
                 file_name = os.path.basename(file)
 
-                """ Merge form data from vendor file  """
+                """ Adjust form_data according to script parameters """
+                if self.submission_comments:
+                    form_data["comments"] = self.submission_comments
+                else:
+                    form_data["comments"] = file_name
+
+                """ Adjust form_data with data from vendor file  """
                 self._update_headers(form_data, self.POST_DATA["Symantec"]["config_file"])
 
                 """ Load the file content """
@@ -374,9 +409,15 @@ class downloader (object):
 
     def check_args(self):
 
-        if not os.path.isfile(self.url_input_file):
-            logger.error("Input file: %s not found!" % self.url_input_file)
-            exit(-1)
+        if not os.path.isfile(self.input):
+            logger.warning("Input file: %s not found!" % self.input)
+            if os.path.isdir(self.input):
+                self.input_type = "folder"
+            else:
+                logger.error("Input file or folder: %s not found!" % self.input)
+                exit(-1)
+        else:
+            self.input_type = "file"
 
         if not os.path.isdir(self.download_folder):
             logger.warning("Download folder: %s not found!" % self.download_folder)
@@ -394,6 +435,12 @@ class downloader (object):
         if self.submit_to_vendors:
             self.zip_downloaded_files = True
 
+        """ Skip download in case user specified a folder """
+        if self.input_type == "folder":
+            self.skip_download = True
+
+
+
 def main(argv):
 
     argsparser = argparse.ArgumentParser(usage=argparse.SUPPRESS,
@@ -404,8 +451,8 @@ def main(argv):
     """ Script arguments """
     script_args.add_argument("-v", "--verbose-level", type=str, action='store', dest='verbose_level', required=False,
                              default="DEBUG", help="Set the verbose level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
-    script_args.add_argument("-i", "--input-file", type=str, action='store', dest='url_input_file', required=False,
-                             help="File containing the URLs to be processed")
+    script_args.add_argument("-i", "--input", type=str, action='store', dest='input', required=False,
+                             help="File containing the URLs to be processed, or folder with files to be processed")
 
     script_args.add_argument("-d", "--download-folder", action='store', dest='download_folder', required=False,
                              default="downloads/", help="Specify custom download folder (Default: downloads/")
@@ -417,7 +464,7 @@ def main(argv):
                              default=False, help="Would print out the links retrieved from a given URL")
 
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
-                             default=False, help="Would compress all downloaded files")
+                             default=False, help="Would compress all downloaded files, or files from input folder")
 
     script_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
                              default=9, help="Sets the limit of files per archive (Default: 9, 0: Unlimited)")
@@ -426,7 +473,7 @@ def main(argv):
                              default=False, help="Submit files to AV vendors (Default: False)")
 
     script_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
-                             default=False, help="Insert submission comments (Default: archive name)")
+                             help="Insert submission comments (Default: archive name)")
 
     script_args.add_argument("--debug-requests", action='store_true', dest='requests_debug', required=False,
                              default=False, help="Sends GET/POST requests via local proxy server 127.0.0.1:8080")
@@ -459,26 +506,34 @@ def main(argv):
     downloaded_files = []
     archives = []
 
-
-    if dw.url_input_file:
-        urls = dw.load_urls_from_input_file(dw.url_input_file)
-        logger.debug("Loaded [%d] URLs from: %s" % (len(urls), dw.url_input_file))
-
-    if dw.get_links and urls:
-        if urls:
-            logger.debug("Get links from each URL")
-            for url in urls:
-                _urls = dw.get_hrefs(url)
-                logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
-                hrefs.extend(_urls)
-
-            logger.info("All retrieved HREFs:")
-            logger.info(hrefs)
-            print("All retrieved HREFs:")
-            print(*hrefs, sep="\n")
+    """ Proceed accordingly to input type """
+    if dw.input:
+        if dw.input_type == "file":
+            urls = dw.load_urls_from_input_file(dw.input)
+            logger.debug("Loaded [%d] URLs from: %s" % (len(urls), dw.input))
+        elif dw.input_type == "folder":
+            downloaded_files = dw.load_files_from_input_folder(dw.input)
+            logger.debug("Loaded [%d] files from: %s" % (len(downloaded_files), dw.input))
+        else:
+            logger.error("Unsupported input type" % dw.input)
+            exit(-1)
 
     """ Skip download step if required """
     if not dw.skip_download:
+        """ Retrieve HREFs from URLs """
+        if dw.get_links and urls:
+            if urls:
+                logger.debug("Get links from each URL")
+                for url in urls:
+                    _urls = dw.get_hrefs(url)
+                    logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
+                    hrefs.extend(_urls)
+
+                logger.info("All retrieved HREFs:")
+                logger.info(hrefs)
+                print("All retrieved HREFs:")
+                print(*hrefs, sep="\n")
+
         if hrefs:
             """ Download pulled hrefs """
             downloaded_files = dw.download(hrefs)
@@ -486,15 +541,32 @@ def main(argv):
             """ Download given URLs """
             downloaded_files = dw.download(urls)
 
+        """ Compress files if instructed to """
         if downloaded_files and dw.zip_downloaded_files:
             archives = dw.compress_files(downloaded_files)
+
+    else:
+        # Local file processing only (No download)
+        """ Compress files if instructed to """
+        if downloaded_files and dw.zip_downloaded_files:
+            archives = dw.compress_files(downloaded_files)
+
+            """ Print files by archive """
+            if archives:
+                print("Archives content:ś")
+                for archive in archives:
+                    with zipfile.ZipFile(archive, 'r') as _archive:
+                        members = _archive.namelist()
+                        print("Archive: %s" % archive)
+                        for member in members:
+                            print(" - %s" % member)
+                        logger.debug("Archive: %s -> Members: %s" % (archive, members))
 
     """ Submit files to vendors """
     if dw.submit_to_vendors:
         dw.submit(archives)
-
     else:
-        logger.debug("Skipping download")
+        logger.debug("Skipping Vendor submission")
 
 
 if __name__ == "__main__":
