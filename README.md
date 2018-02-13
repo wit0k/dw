@@ -30,7 +30,7 @@
   Add 'downloads//1.exe' to: 'archive/samples-1.zip'
   Add 'downloads//1.hta' to: 'archive/samples-1.zip'
   Add 'downloads//1.rar' to: 'archive/samples-1.zip'</pre>
-* Vendor submission
+* Vendor submission (Requires specific config/%vendonr_name%.vd file)
   <pre>śsubmit - Submitting: archive/samples-2.zip to: https://...
   submit - Submission OK -> archive/samples-2.zip</pre>
 
