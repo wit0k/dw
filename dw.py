@@ -451,7 +451,7 @@ def main(argv):
     """ Argument groups """
     script_args = argsparser.add_argument_group('Script arguments', "\n")
     """ Script arguments """
-    script_args.add_argument("-v", "--verbose-level", type=str, action='store', dest='verbose_level', required=False,
+    script_args.add_argument("-v", "--verbose", type=str, action='store', dest='verbose_level', required=False,
                              default="DEBUG", help="Set the verbose level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
     script_args.add_argument("-i", "--input", type=str, action='store', dest='input', required=False,
                              help="Load and deobfuscate URLs from input file, or load files from given folder")
