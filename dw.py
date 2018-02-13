@@ -140,6 +140,7 @@ class downloader (object):
         new_urls = []
         index = 0
         for url in urls:
+            _url = url
             """ Replace well known obfuscation strings """
             if url == "\n":
                 continue
@@ -147,12 +148,13 @@ class downloader (object):
             url = url.strip()
             url = url.replace("hxxp", "http")
             url = url.replace("[.]", ".")
+            url = url.replace("[:]", ":")
             url = url.replace("[.", ".")
             url = url.replace(".]", ".")
             urls[index] = url
 
             if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", url):
-                logger.debug("Parsing URL: %s to: %s" % (url, urls[index]))
+                logger.debug("Parsing URL: %s to: %s" % (_url, urls[index]))
                 new_urls.append(url)
                 continue
             else:
@@ -162,7 +164,7 @@ class downloader (object):
                     url = re.sub(r"(^/+|^:/+|^:+)", "", url)
                     urls[index] = url
 
-            logger.debug("Parsing URL: %s to: %s" % (url, urls[index]))
+            logger.debug("Parsing URL: %s to: %s" % (_url, urls[index]))
             new_urls.append(urls[index])
             index += 1
 
