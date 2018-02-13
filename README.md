@@ -14,7 +14,7 @@ The “dw” if instructed to do so, could crawl the site for all available href
 The tool is quite granular: 
 * You could decide to only crawl for href elements from given URL(s) or to directly download URLs indicated in the input file.
 * You could only compress downloaded files 
-* You could only submit files from given folder to Antivirus vendorą
+* You could only submit files from given folder to Antivirus vendor
 
 
 **Features**:
