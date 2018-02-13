@@ -1,12 +1,29 @@
 # dw (Downloader) [BETA]
 
+**Description**:
+
+The tool has been created to speed up manual malware hunting tasks. A simple example is already covered in “Use cases” but let’s describe it verbally.
+Imagine following situation, you found an open directory on the Internet, which is full of malicious samples (Example below)
+
+![Open directoryąć](http://regenerus.com/download/2k20.jpg)
+
+Normally to download these files you would have to manually save them (or retrieve the page source code and pull the href elements with regex or so, and then download them with curl or wget). When the amount of files is bigger than few it becomes unmanageable and simple waste of time. 
+
+The “dw” if instructed to do so, could crawl the site for all available href elements and reconstruct their full URLs properly. The list of retrieved URLs could be automatically downloaded; or you could stop at this stage and decide to modify the list etc. The downloaded files could be compressed (zipped) and eventually automatically submitted to Antivirus vendor.
+
+The tool is quite granular: 
+* You could decide to only crawl for href elements from given URL(s) or to directly download URLs indicated in the input file.
+* You could only compress downloaded files 
+* You could only submit files from given folder to Antivirus vendorą
+
+
 **Features**:
 
 * Accepts basic URL obfuscation which gets automatically resolved
   <pre>
   urls.txt:
     hxxp://2k20[.]tk/
-    http[:]//120.132.17[.]180:66/</pre>
+    http[:]//120.132.17[.]180:66/ </pre>
   <pre>
   Parsing URL: hxxp://2k20[.]tk/ to: http://2k20.tk/
   Parsing URL: http[:]//120.132.17[.]180:66/ to: http://120.132.17.180:66/
