@@ -6,7 +6,7 @@
   <pre>
   urls.txt:
     hxxp://2k20.tk/
-    hxxp://120.132.17[.]180:66/</pre>
+    hxxp[:]//120.132.17[.]180:66/</pre>
   <pre>
   Parsing URL: hxxp://2k20[.]tk/ to: http://2k20.tk/
   Parsing URL: http[:]//120.132.17[.]180:66/ to: http://120.132.17.180:66/
