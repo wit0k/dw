@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-13"
-__version__ = '0.0.4'
+__version__ = '0.0.6'
 
 
 from bs4 import BeautifulSoup # pip install bs4
@@ -197,6 +197,7 @@ class downloader (object):
 
         links = []
         url_host = ""
+        response = None
 
         try:
             logger.info("Getting hrefs from: %s" % url)
@@ -206,50 +207,58 @@ class downloader (object):
             url = urlunparse(url_obj)
             _url = url_obj.scheme + "://" + url_obj.netloc
 
+
             if self.requests_debug:
-                response = requests.get(url, proxies=debug_proxies, verify=False)
+                try:
+                    response = requests.get(url, proxies=debug_proxies, verify=False)
+                except Exception as msg:
+                    logger.error(msg)
             else:
-                response = requests.get(url, verify=False)
+                try:
+                    response = requests.get(url, verify=False)
+                except Exception as msg:
+                    logger.error(msg)
 
-            if not response.status_code == 200:
-                logger.info("URL Fetch -> FAILED -> URL: %s" % url)
-                return []
-            else:
-                logger.info("URL Fetch -> SUCCESS -> URL: %s" % url)
+            if response:
+                if not response.status_code == 200:
+                    logger.info("URL Fetch -> FAILED -> URL: %s" % url)
+                    return []
+                else:
+                    logger.info("URL Fetch -> SUCCESS -> URL: %s" % url)
 
-            soup = BeautifulSoup(response.text, "html.parser")
+                    soup = BeautifulSoup(response.text, "html.parser")
 
-            for link in soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")}):
+                    for link in soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")}):
 
-                _href = link.get('href')
-                """ Append http://%url_host% whenever necessary """
-                if url_host not in _href:
-                    if _href.startswith("http://") or _href.startswith("https://"):
-                        pass
-                    else:
+                        _href = link.get('href')
+                        """ Append http://%url_host% whenever necessary """
+                        if url_host not in _href:
+                            if _href.startswith("http://") or _href.startswith("https://"):
+                                pass
+                            else:
 
-                        #Fix (Shall update the code later)
-                        url = _url
+                                # Fix (Shall update the code later)
+                                url = _url
 
-                        if url[-1:] != "/" and _href[:1] != "/":
-                            """  url does not end with / and the path does not start with / """
-                            _href = url + r"/" + _href
-                            links.append(_href)
-                            continue
-                        elif url[-1:] == "/" and _href[:1] == "/":
-                            """  url ends with / and the path start with / """
-                            _href = url + _href[1:]
-                            links.append(_href)
-                            continue
-                        elif url[-1:] != "/" and _href[:1] == "/":
-                            """  url does not end with / and path does start from /"""
-                            _href = url + _href
-                            links.append(_href)
-                        elif url[-1:] == "/" and _href[:1] != "/":
-                            """  url does not end with / and path does start from /"""
-                            _href = url + _href
-                            links.append(_href)
-                            continue
+                                if url[-1:] != "/" and _href[:1] != "/":
+                                    """  url does not end with / and the path does not start with / """
+                                    _href = url + r"/" + _href
+                                    links.append(_href)
+                                    continue
+                                elif url[-1:] == "/" and _href[:1] == "/":
+                                    """  url ends with / and the path start with / """
+                                    _href = url + _href[1:]
+                                    links.append(_href)
+                                    continue
+                                elif url[-1:] != "/" and _href[:1] == "/":
+                                    """  url does not end with / and path does start from /"""
+                                    _href = url + _href
+                                    links.append(_href)
+                                elif url[-1:] == "/" and _href[:1] != "/":
+                                    """  url does not end with / and path does start from /"""
+                                    _href = url + _href
+                                    links.append(_href)
+                                    continue
 
 
         except requests.exceptions.InvalidSchema:

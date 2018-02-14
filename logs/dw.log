@@ -1,13 +1,24 @@
-DEBUG - THREAD-140735157784576 - 2018-02-13 22:15:59,619 - dw.py - main - Initialize dw (Downloader)
-DEBUG - THREAD-140735157784576 - 2018-02-13 22:15:59,621 - dw.py - parse_urls - Parsing URL: hxxp://2k20[.]tk/ to: http://2k20.tk/
-DEBUG - THREAD-140735157784576 - 2018-02-13 22:15:59,621 - dw.py - main - Loaded [1] URLs from: urls.txt
-DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - main - Initialize dw (Downloader)
-DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - parse_urls - Parsing URL: hxxp://2k20[.]tk/ to: http://2k20.tk/
-DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - main - Loaded [1] URLs from: urls.txt
-DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - main - Get links from each URL
-INFO - THREAD-140735157784576 - 2018-02-13 22:16:52,342 - dw.py - get_hrefs - Getting hrefs from: http://2k20.tk/
-INFO - THREAD-140735157784576 - 2018-02-13 22:16:53,040 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://2k20.tk/
-DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:53,048 - dw.py - main - Found [9] hrefs on: http://2k20.tk/
-INFO - THREAD-140735157784576 - 2018-02-13 22:16:53,048 - dw.py - main - All retrieved HREFs:
-INFO - THREAD-140735157784576 - 2018-02-13 22:16:53,048 - dw.py - main - ['http://2k20.tk/0199.doc', 'http://2k20.tk/1.exe', 'http://2k20.tk/1.hta', 'http://2k20.tk/1.rar', 'http://2k20.tk/1.zip', 'http://2k20.tk/8570.docx', 'http://2k20.tk/8759.doc', 'http://2k20.tk/a.apk', 'http://2k20.tk/doc.doc']
-DEBUG - THREAD-140735157784576 - 2018-02-13 22:16:53,048 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:51,422 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:51,423 - dw.py - parse_urls - Parsing URL: http://cgi.htdrc.co to: http://cgi.htdrc.co
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:51,423 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:51,423 - dw.py - main - Get links from each URL
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:51,423 - dw.py - get_hrefs - Getting hrefs from: http://cgi.htdrc.co
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:51,659 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://cgi.htdrc.co
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:51,664 - dw.py - main - Found [4] hrefs on: http://cgi.htdrc.co
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:51,664 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:51,664 - dw.py - main - ['http://cgi.htdrc.co/L1.exe', 'http://cgi.htdrc.co/PO-09LO.exe', 'http://cgi.htdrc.co/Taskbar.exe', 'http://cgi.htdrc.co/lo1.exe']
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:51,891 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://cgi.htdrc.co/L1.exe
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:52,805 - dw.py - download - [sha256: 7026a2e762948dcdeff3d2ccfc5fa2d61c01f4ac734631b8f1e405bd6ba4bb46] - downloads//L1.exe
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:53,016 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://cgi.htdrc.co/PO-09LO.exe
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:53,807 - dw.py - download - [sha256: d16e7f75646f0ea9fb3c75662947bc81f1be1f91abc8f71b87bafb433361320e] - downloads//PO-09LO.exe
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:54,018 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://cgi.htdrc.co/Taskbar.exe
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:54,977 - dw.py - download - [sha256: 0a613e035863c7d439518b5ca6d6c4603d719a784b5a5ecd5e966d1cc9d069d9] - downloads//Taskbar.exe
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:55,188 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://cgi.htdrc.co/lo1.exe
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:56,046 - dw.py - download - [sha256: cc25d2de81f13746afc2290129822ebe22a329077471074515d1268535d9f0d4] - downloads//lo1.exe
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:56,046 - dw.py - _zip - Add 'downloads//L1.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:56,048 - dw.py - _zip - Add 'downloads//PO-09LO.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:56,050 - dw.py - _zip - Add 'downloads//Taskbar.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:56,052 - dw.py - _zip - Add 'downloads//lo1.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735073218560 - 2018-02-14 08:53:56,056 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['L1.exe', 'PO-09LO.exe', 'Taskbar.exe', 'lo1.exe']
+INFO - THREAD-140735073218560 - 2018-02-14 08:53:56,056 - dw.py - submit - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735073218560 - 2018-02-14 08:54:13,315 - dw.py - submit - Submission OK -> archive/samples-1.zip
