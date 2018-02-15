@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-13"
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 
 
 from bs4 import BeautifulSoup # pip install bs4
@@ -43,6 +43,157 @@ debug_proxies = {
   'https': 'http://127.0.0.1:8080'
 }
 
+default_mime_types = [
+    "application/hta",
+    "application/x-internet-signup",
+    "application/x-mscardfile",
+    "application/x-perfmon",
+    "application/x-pkcs7-certificates",
+    "application/x-sv4crc",
+    "application/octet-stream",
+    "application/x-msclip",
+    "application/x-msmoney",
+    "application/x-pkcs7-certreqresp",
+    "application/envoy",
+    "application/pkcs7-signature",
+    "application/postscript",
+    "application/set-registration-initiation",
+    "application/vnd.ms-excel",
+    "application/x-cpio",
+    "application/x-dvi",
+    "application/x-pkcs7-certificates",
+    "application/msword",
+    "application/msword",
+    "application/pkcs7-mime",
+    "application/postscript",
+    "application/vnd.ms-works",
+    "application/x-csh",
+    "application/x-iphone",
+    "application/x-perfmon",
+    "application/x-troff-man",
+    "application/x-hdf",
+    "application/x-msmediaview",
+    "application/x-texinfo",
+    "application/set-payment-initiation",
+    "application/vndms-pkistl",
+    "application/x-msaccess",
+    "application/oda",
+    "application/winhlp",
+    "application/x-netcdf",
+    "application/x-sh",
+    "application/x-shar",
+    "application/x-tcl",
+    "application/x-troff-ms",
+    "application/oleobject",
+    "application/olescript",
+    "application/vnd.ms-excel",
+    "application/vnd.ms-project",
+    "application/x-director",
+    "application/x-stuffit",
+    "application/octet-stream",
+    "application/pkix-crl",
+    "application/postscript",
+    "application/vnd.ms-excel",
+    "application/vnd.ms-works",
+    "application/x-internet-signup",
+    "application/x-mspublisher",
+    "application/x-mswrite",
+    "application/futuresplash",
+    "application/mac-binhex40",
+    "application/pkcs10",
+    "application/vnd.ms-excel",
+    "application/vnd.ms-excel",
+    "application/x-director",
+    "application/x-javascript",
+    "application/x-msmediaview",
+    "application/x-msterminal",
+    "application/x-perfmon",
+    "application/x-troff-me",
+    "application/vnd.ms-works",
+    "application/x-latex",
+    "application/x-msmediaview",
+    "application/x-msmetafile",
+    "application/x-x509-ca-cert",
+    "application/x-zip-compressed",
+    "application/x-pkcs12",
+    "application/x-pkcs12",
+    "application/x-x509-ca-cert",
+    "application/pdf",
+    "application/vnd.ms-excel",
+    "application/x-texinfo",
+    "application/pkcs7-mime",
+    "application/vnd.ms-powerpoint",
+    "application/x-director",
+    "application/x-gtar",
+    "text/scriptlet",
+    "application/fractals",
+    "application/octet-stream",
+    "application/vnd.ms-powerpoint",
+    "application/vndms-pkicertstore",
+    "application/vndms-pkipko",
+    "application/x-msschedule",
+    "application/x-tar",
+    "application/x-troff",
+    "application/x-troff",
+    "application/pics-rules",
+    "application/rtf",
+    "application/vnd.ms-powerpoint",
+    "application/vnd.ms-works",
+    "application/x-bcpio",
+    "application/x-msdownload",
+    "application/x-perfmon",
+    "application/x-perfmon",
+    "application/x-troff",
+    "application/x-wais-source",
+    "application/internet-property-stream",
+    "application/vndms-pkiseccat",
+    "application/x-cdf",
+    "application/x-compressed",
+    "application/x-sv4cpio",
+    "application/x-tex",
+    "application/x-ustar",
+    "application/x-x509-ca-cert",
+    "audio/x-pn-realaudio",
+    "audio/mid",
+    "audio/basic",
+    "audio/basic",
+    "audio/wav",
+    "audio/aiff",
+    "audio/x-mpegurl",
+    "audio/x-pn-realaudio",
+    "audio/aiff",
+    "audio/mid",
+    "audio/x-aiff",
+    "audio/mpeg",
+    "application/x-gzip",
+    "application/x-compress",
+    "text/tab-separated-values",
+    "text/xml",
+    "text/h323",
+    "text/webviewhtml",
+    "text/html",
+    "text/html",
+    "text/xml",
+    "text/html",
+    "image/cis-cod",
+    "image/ief",
+    "image/x-portable-bitmap",
+    "image/tiff",
+    "image/x-portable-pixmap",
+    "image/x-rgb",
+    "image/bmp",
+    "image/jpeg",
+    "image/x-cmx",
+    "image/x-portable-anymap",
+    "image/jpeg",
+    "image/pjpeg",
+    "image/tiff",
+    "image/jpeg",
+    "image/x-xbitmap",
+    "image/x-cmu-raster",
+    "image/gif"
+]
+
 class downloader (object):
 
     def __init__(self, args):
@@ -58,6 +209,8 @@ class downloader (object):
         self.download_folder = args.download_folder
         self.submission_comments = args.submission_comments
         self.requests_debug = args.requests_debug
+        self.recursion_depth = args.recursion_depth
+        self.recursion = args.recursion
 
         """ Check script arguments """
         self.check_args()
@@ -193,32 +346,51 @@ class downloader (object):
 
         return files
 
-    def get_hrefs(self, url):
+    def update_list(self, url, links):
+        if url not in links:
+            links.append(url)
 
-        links = []
+    def pull_url(self, url):
+        pass
+
+    def get_hrefs(self, url, parent="", links=[], depth=0):
+
         url_host = ""
         response = None
 
         try:
-            logger.info("Getting hrefs from: %s" % url)
-            print("Getting hrefs from: %s" % url)
+
+            self.update_list(url, links)
+
+            if depth == 0:
+                logger.info("Getting hrefs from: %s" % url)
+                print("Getting hrefs from: %s" % url)
+            elif depth >= self.recursion_depth:
+                logger.info("href: %s -> Max depth [%d] reached!" % (url, depth))
+                return []
+
+            """ Standardize URL """
             url_obj = urlparse(url, 'http')
             url_host = url_obj.hostname
+            parent = url_obj.path
+            url_base = url_obj.scheme + "://" + url_obj.netloc
             url = urlunparse(url_obj)
-            _url = url_obj.scheme + "://" + url_obj.netloc
 
-
+            """ Get URL's headers (Only) """
             if self.requests_debug:
                 try:
-                    response = requests.get(url, proxies=debug_proxies, verify=False)
+                    response = requests.head(url, proxies=debug_proxies, verify=False, allow_redirects=True)
                 except Exception as msg:
                     logger.error(msg)
+                    return links
             else:
                 try:
-                    response = requests.get(url, verify=False)
+                    response = requests.head(url, verify=False, allow_redirects=True)
                 except Exception as msg:
                     logger.error(msg)
+                    return links
 
+            """ Handle the response data from the server """
             if response:
                 if not response.status_code == 200:
                     logger.info("URL Fetch -> FAILED -> URL: %s" % url)
@@ -226,46 +398,69 @@ class downloader (object):
                 else:
                     logger.info("URL Fetch -> SUCCESS -> URL: %s" % url)
 
+                    """ If the resource is of given MIME type, mark it as href and do not resolve the links  """
+                    response_headers = response.headers
+                    if "Content-Type" in response_headers:
+                        if response_headers["Content-Type"] in default_mime_types:
+                            logger.debug("Skip href lookup for: %s - The resource is: %s" % (
+                            url, response_headers["Content-Type"]))
+                            self.update_list(url, links)
+                            return links
+
+                    """ This time, get the content with GET request """
+                    if self.requests_debug:
+                        try:
+                            response = requests.get(url, proxies=debug_proxies, verify=False, allow_redirects=True)
+                        except Exception as msg:
+                            logger.error(msg)
+                            return links
+                    else:
+                        try:
+                            response = requests.get(url, verify=False, allow_redirects=True)
+                        except Exception as msg:
+                            logger.error(msg)
+                            return links
+
+                    """ There Content-Type header was not set at all"""
                     soup = BeautifulSoup(response.text, "html.parser")
 
-                    for link in soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")}):
+                    """ Get the list of links """
+                    #_links = soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")})
+                    _links = soup.findAll('a')
 
-                        _href = link.get('href')
-                        """ Append http://%url_host% whenever necessary """
-                        if url_host not in _href:
-                            if _href.startswith("http://") or _href.startswith("https://"):
-                                pass
+                    if _links:
+                        for link in _links:
+                            _url = ""
+                            _href = link.get('href')
+
+                            """ Skip hrefs to Parent Directory !!!!  To be improved """
+                            if _href == "/":
+                                continue
+                            """ Build new url """
+                            if url_host not in _href:
+                                if _href.startswith("http://") or _href.startswith("https://"):
+                                    _url = _href
+                                else:
+                                    if _href[:1] != "/":
+                                        """  The href does not start with / """
+                                        _url = url_base + r"/" + _href
+                                    elif _href[:1] == "/":
+                                        """ The href start with / """
+                                        _url = url_base + _href
+
+                            if self.recursion:
+                                if _url not in links:
+                                    self.get_hrefs(_url, parent, links, depth + 1)
                             else:
+                                self.update_list(_url, links)
 
-                                # Fix (Shall update the code later)
-                                url = _url
-
-                                if url[-1:] != "/" and _href[:1] != "/":
-                                    """  url does not end with / and the path does not start with / """
-                                    _href = url + r"/" + _href
-                                    links.append(_href)
-                                    continue
-                                elif url[-1:] == "/" and _href[:1] == "/":
-                                    """  url ends with / and the path start with / """
-                                    _href = url + _href[1:]
-                                    links.append(_href)
-                                    continue
-                                elif url[-1:] != "/" and _href[:1] == "/":
-                                    """  url does not end with / and path does start from /"""
-                                    _href = url + _href
-                                    links.append(_href)
-                                elif url[-1:] == "/" and _href[:1] != "/":
-                                    """  url does not end with / and path does start from /"""
-                                    _href = url + _href
-                                    links.append(_href)
-                                    continue
-
+                    else:
+                        self.update_list(url, links)
 
         except requests.exceptions.InvalidSchema:
             logger.error("Invalid URL format: %s" % url)
             return links
 
-        print(*links, sep="\n")
         return links
 
     def _update_headers(self, headers, vendor_file):
@@ -494,6 +689,12 @@ def main(argv):
     script_args.add_argument("-gl", "--get-links", action='store_true', dest='get_links', required=False,
                              default=False, help="Retrieve all available links/hrefs from loaded URLs")
 
+    script_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
+                             default=100, help="Retrieve all available links/hrefs from loaded URLs")
+
+    script_args.add_argument("-r", "--recursive", action='store_true', dest='recursion', required=False,
+                             default=False, help="...")
+
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
                              default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")
 
@@ -528,6 +729,8 @@ def main(argv):
             logger.setLevel(logging.DEBUG)
     else:
         logger.setLevel(logging.WARNING)
+
+
 
     """ Init dw class """
     logger.debug("Initialize dw (Downloader)")
