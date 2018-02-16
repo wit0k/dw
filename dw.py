@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-13"
-__version__ = '0.0.7'
+__version__ = '0.0.8'
 
 
 from bs4 import BeautifulSoup # pip install bs4
@@ -37,6 +37,8 @@ logger_verobse_levels = ["INFO", "WARNING", "ERROR", "DEBUG"]
 
 DOWNLOADED_FILE_NAME_LEN = 60
 ARCHIVE_FOLDER = "archive/"
+
+user_agents = ["Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)"]
 
 debug_proxies = {
   'http': 'http://127.0.0.1:8080',
@@ -349,19 +351,15 @@ class downloader (object):
     def update_list(self, url, links):
         if url not in links:
             links.append(url)
+        else:
+            logger.error("TEST: URL: %s already in links list!")
 
     def pull_url(self, url):
         pass
 
-    def get_hrefs(self, url, parent="", links=[], depth=0):
-
-        url_host = ""
-        response = None
+    def get_hrefs(self, url, con=None, links=[], depth=0):
 
         try:
-
-            self.update_list(url, links)
-
             if depth == 0:
                 logger.info("Getting hrefs from: %s" % url)
                 print("Getting hrefs from: %s" % url)
@@ -372,90 +370,107 @@ class downloader (object):
             """ Standardize URL """
             url_obj = urlparse(url, 'http')
             url_host = url_obj.hostname
-            parent = url_obj.path
             url_base = url_obj.scheme + "://" + url_obj.netloc
             url = urlunparse(url_obj)
 
+            """ Create new session """
+            response = None
+
+            if not con:
+                con = requests.Session()
+                con.headers.update({'User-Agent': user_agents[0]})
+
+                """ Set connection/session properties """
+                if self.requests_debug:
+                    con.proxies.update(debug_proxies)
+                    con.verify = False,
+                    con.allow_redirects = True
+                else:
+                    con.verify = False,
+                    con.allow_redirects = True
+
             """ Get URL's headers (Only) """
-            if self.requests_debug:
-                try:
-                    response = requests.head(url, proxies=debug_proxies, verify=False, allow_redirects=True)
-                except Exception as msg:
-                    logger.error(msg)
-                    return links
-            else:
-                try:
-                    response = requests.head(url, verify=False, allow_redirects=True)
-                except Exception as msg:
-                    logger.error(msg)
-                    return links
+            try:
+                response = con.head(url)
+            except Exception as msg:
+                logger.error(msg)
+                return links
 
             """ Handle the response data from the server """
             if response:
                 if not response.status_code == 200:
-                    logger.info("URL Fetch -> FAILED -> URL: %s" % url)
-                    return []
-                else:
-                    logger.info("URL Fetch -> SUCCESS -> URL: %s" % url)
-
-                    """ If the resource is of given MIME type, mark it as href and do not resolve the links  """
-                    response_headers = response.headers
-                    if "Content-Type" in response_headers:
-                        if response_headers["Content-Type"] in default_mime_types:
-                            logger.debug("Skip href lookup for: %s - The resource is: %s" % (
-                            url, response_headers["Content-Type"]))
-                            self.update_list(url, links)
-                            return links
-
-                    """ This time, get the content with GET request """
-                    if self.requests_debug:
+                    if response.status_code in [301, 302]:
                         try:
-                            response = requests.get(url, proxies=debug_proxies, verify=False, allow_redirects=True)
-                        except Exception as msg:
-                            logger.error(msg)
+                            url = response.headers["Location"]
+                            logger.debug("HTTP: %s -> %s to %s" % (response.status_code, response.url, url))
+
+                            """ Get URL's headers (Only) """
+                            try:
+                                response = con.head(url)
+                            except Exception as msg:
+                                logger.error(msg)
+                                return links
+
+                        except KeyError:
+                            logger.debug("[HTTP %s]: %s -> Failed to retrieve final URL" % (response.status_code, url))
                             return links
                     else:
-                        try:
-                            response = requests.get(url, verify=False, allow_redirects=True)
-                        except Exception as msg:
-                            logger.error(msg)
-                            return links
+                        logger.info("[HTTP %s]: URL Fetch -> FAILED -> URL: %s" % (response.status_code, url))
+                        return links
 
-                    """ There Content-Type header was not set at all"""
-                    soup = BeautifulSoup(response.text, "html.parser")
+            logger.info("URL Fetch -> SUCCESS -> URL: %s" % url)
 
-                    """ Get the list of links """
-                    #_links = soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")})
-                    _links = soup.findAll('a')
+            """ If the resource is of given MIME type, mark it as href and do not resolve the links  """
+            response_headers = response.headers
+            if "Content-Type" in response_headers:
+                if response_headers["Content-Type"] in default_mime_types:
+                    logger.debug("Skip href lookup for: %s - The resource is: %s" % (
+                        url, response_headers["Content-Type"]))
+                    self.update_list(url, links)
+                    return links
 
-                    if _links:
-                        for link in _links:
-                            _url = ""
-                            _href = link.get('href')
+            """ Update visited URLs (Links) """
+            self.update_list(url, links)
 
-                            """ Skip hrefs to Parent Directory !!!!  To be improved """
-                            if _href == "/":
-                                continue
-                            """ Build new url """
-                            if url_host not in _href:
-                                if _href.startswith("http://") or _href.startswith("https://"):
-                                    _url = _href
-                                else:
-                                    if _href[:1] != "/":
-                                        """  The href does not start with / """
-                                        _url = url_base + r"/" + _href
-                                    elif _href[:1] == "/":
-                                        """ The href start with / """
-                                        _url = url_base + _href
+            """ This time, get the content with GET request """
+            try:
+                response = con.get(url)
+            except Exception as msg:
+                logger.error(msg)
+                return links
 
-                            if self.recursion:
-                                if _url not in links:
-                                    self.get_hrefs(_url, parent, links, depth + 1)
-                            else:
-                                self.update_list(_url, links)
+            """ There Content-Type header was not set at all"""
+            soup = BeautifulSoup(response.text, "html.parser")
 
+            """ Get the list of links """
+            # _links = soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")})
+            _links = soup.findAll('a')
+
+            if _links:
+                for link in _links:
+                    _url = ""
+                    _href = link.get('href')
+
+                    """ Skip hrefs to Parent Directory !!!!  To be improved """
+                    if _href == "/":
+                        continue
+                    """ Build new url """
+                    if url_host not in _href:
+                        if _href.startswith("http://") or _href.startswith("https://"):
+                            _url = _href
+                        else:
+                            if _href[:1] != "/":
+                                """  The href does not start with / """
+                                _url = url_base + r"/" + _href
+                            elif _href[:1] == "/":
+                                """ The href start with / """
+                                _url = url_base + _href
+
+                    if self.recursion:
+                        if _url not in links:
+                            self.get_hrefs(_url, con, links, depth + 1)
                     else:
-                        self.update_list(url, links)
+                        self.update_list(_url, links)
 
         except requests.exceptions.InvalidSchema:
             logger.error("Invalid URL format: %s" % url)
@@ -690,10 +705,10 @@ def main(argv):
                              default=False, help="Retrieve all available links/hrefs from loaded URLs")
 
     script_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
-                             default=100, help="Retrieve all available links/hrefs from loaded URLs")
+                             default=20, help="Max recursion depth level")
 
     script_args.add_argument("-r", "--recursive", action='store_true', dest='recursion', required=False,
-                             default=False, help="...")
+                             default=False, help="Enable recursive crawling")
 
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
                              default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")

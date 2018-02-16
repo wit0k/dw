@@ -56,6 +56,19 @@ The tool is quite granular:
 * Vendor submission (Requires specific config/%vendonr_name%.vd file)
   <pre>śsubmit - Submitting: archive/samples-2.zip to: https://...
   submit - Submission OK -> archive/samples-2.zip</pre>
+* Recursive < a href > crawling: 
+  <pre> dw.py -i urls.txt -gl --skip-download -r
+    Getting hrefs from: http://109.234.36.233/bot
+    All retrieved HREFs:
+    http://109.234.36.233/bot/
+    http://109.234.36.233/bot/.vs/
+    http://109.234.36.233/bot/.vs/LoaderBot/
+    ...
+    http://109.234.36.233/bot/Miner/bin/Release/LoaderBot.vshost.exe
+    http://109.234.36.233/bot/Miner/bin/Release/LoaderBot.vshost.exe.config
+    http://109.234.36.233/bot/Miner/bin/Release/LoaderBot.vshost.exe.manifest
+    ...
+  </pre>  
 
 **Use cases:**
 
@@ -80,3 +93,10 @@ The tool is quite granular:
 * Process files from downloads/ [zip them when necessary]
 * Processed/compressed files are saved into archive/ folder
 * Submits files from archive/ folder to configured vendors [--submit enables -z automatically]
+
+**Change log:**
+
+Ver. 0.0.8:
+
+* -r, --recursive: Enable recursive crawling
+* -rd, --recursion-depth: Max recursion depth level (default: 20)
