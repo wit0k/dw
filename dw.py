@@ -389,14 +389,14 @@ class downloader (object):
                     con.verify = False,
                     con.allow_redirects = True
 
-            """ Get URL's headers (Only) """
+            """ Access given URL (Get the headers only) """
             try:
                 response = con.head(url)
             except Exception as msg:
                 logger.error(msg)
                 return links
 
-            """ Handle the response data from the server """
+            """ Obtain the final URL after redirection """
             if response:
                 if not response.status_code == 200:
                     if response.status_code in [301, 302]:
@@ -439,21 +439,23 @@ class downloader (object):
                 logger.error(msg)
                 return links
 
-            """ There Content-Type header was not set at all"""
+            """ Parse the HTTP response """
             soup = BeautifulSoup(response.text, "html.parser")
 
-            """ Get the list of links """
+            """ Retrieve all href/a elements  """
             # _links = soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")})
             _links = soup.findAll('a')
 
+            """ If any hrefs found, build href's url """
             if _links:
                 for link in _links:
                     _url = ""
                     _href = link.get('href')
 
-                    """ Skip hrefs to Parent Directory !!!!  To be improved """
+                    """ Skip hrefs to Parent Directory """
                     if _href == "/":
                         continue
+
                     """ Build new url """
                     if url_host not in _href:
                         if _href.startswith("http://") or _href.startswith("https://"):
