@@ -354,9 +354,6 @@ class downloader (object):
         else:
             logger.error("TEST: URL: %s already in links list!")
 
-    def pull_url(self, url):
-        pass
-
     def get_hrefs(self, url, con=None, links=[], depth=0):
 
         try:
