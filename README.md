@@ -56,7 +56,7 @@ The tool is quite granular:
 * Vendor submission (Requires specific config/%vendonr_name%.vd file)
   <pre>submit - Submitting: archive/samples-2.zip to: https://...
   submit - Submission OK -> archive/samples-2.zip</pre>
-* Recursive < a href > crawling (option -r): 
+* Recursive < a href > crawling: 
     <pre> 
     Getting hrefs from: http://109.234.36.233/bot
     All retrieved HREFs:
@@ -95,6 +95,8 @@ The tool is quite granular:
 * Submits files from archive/ folder to configured vendors [--submit enables -z automatically]
 
 <pre> dw.py -i urls.txt -r --skip-download </pre> 
+
+<span style="color:#FF0000"> Use with caution!!! </span>
 
 * Retrieve all available links/hrefs from loaded URLs (Recursively) 
 * Automatically enables -gl mode 

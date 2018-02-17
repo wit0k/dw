@@ -352,7 +352,7 @@ class downloader (object):
         if url not in links:
             links.append(url)
         else:
-            logger.error("TEST: URL: %s already in links list!")
+            logger.debug("DEV: URL: '%s' already in links list!" % url)
 
     def get_hrefs(self, url, con=None, links=[], depth=0):
 
@@ -433,7 +433,7 @@ class downloader (object):
             try:
                 response = con.get(url)
             except Exception as msg:
-                logger.error(msg)
+                logger.error("con.get(%s) -> Error: " % (url, msg))
                 return links
 
             """ Parse the HTTP response """
@@ -466,10 +466,17 @@ class downloader (object):
                                 _url = url_base + _href
 
                     if self.recursion:
-                        if _url not in links:
-                            self.get_hrefs(_url, con, links, depth + 1)
+                        if _url:
+                            if _url not in links:
+                                self.get_hrefs(_url, con, links, depth + 1)
+                        else:
+                            if _href not in links:
+                                self.get_hrefs(_href, con, links, depth + 1)
                     else:
-                        self.update_list(_url, links)
+                        if _url:
+                            self.update_list(_url, links)
+                        else:
+                            self.update_list(_href, links)
 
         except requests.exceptions.InvalidSchema:
             logger.error("Invalid URL format: %s" % url)
@@ -505,66 +512,103 @@ class downloader (object):
         sha256 = ""
 
         for url in urls:
-            """ Submit the request """
+
+            con = requests.Session()
+            con.headers.update({'User-Agent': user_agents[0]})
+
+            """ Set connection/session properties """
             if self.requests_debug:
-                response = requests.get(url, stream=True, proxies=debug_proxies, verify=False)
+                con.proxies.update(debug_proxies)
+                con.verify = False,
+                con.allow_redirects = True
             else:
-                response = requests.get(url, stream=True, verify=False)
+                con.verify = False,
+                con.allow_redirects = True
 
-            if not response.status_code == 200:
-                logger.info("URL Download -> FAILED -> [HTTP%s] - URL: %s" % (response.status_code, url))
+            """ Access given URL """
+            try:
+                response = con.get(url)
+            except Exception as msg:
+                logger.error(msg)
                 continue
-            else:
-                logger.info("URL Download -> SUCCESS -> [HTTP%s] - URL: %s" % (response.status_code, url))
 
-                """ Determine output file name """
-                local_filename = ""
-                url_obj = urlparse(url, 'http')
-                if 'Content-Disposition' in response.headers.keys():
-                    local_filename = response.headers['Content-Disposition'].split('=')[-1].strip('"')
-
-                if not local_filename:
-                    local_filename = os.path.basename(url)
-
-                if not local_filename:
-                    local_filename = url_obj.path.replace(r"/", "")
-
-                if not local_filename:
-                    local_filename = url_obj.netloc.replace(r"/", "")
-
-                if len(local_filename) > DOWNLOADED_FILE_NAME_LEN:
-                    local_filename = local_filename[1:DOWNLOADED_FILE_NAME_LEN]
-
-                out_file = self.download_folder + "/" + local_filename
-
-                """ Make sure that files do not get overwritten """
-                _out_file = out_file
-                while True:
-                    if os.path.isfile(_out_file):
-                        _out_file = out_file + " - " + str(download_index)
-                        download_index += 1
+            """ Obtain the final URL after redirection """
+            if response:
+                if not response.status_code == 200:
+                    if response.status_code in [301, 302]:
+                        try:
+                            url = response.headers["Location"]
+                            logger.debug("HTTP: %s -> %s to %s" % (response.status_code, response.url, url))
+                            """ Get final URL """
+                            try:
+                                response = con.get(url)
+                            except Exception as msg:
+                                logger.error(msg)
+                                continue
+                        except KeyError:
+                            logger.info("URL Download -> FAILED -> [HTTP%s] - URL: %s" % (response.status_code, url))
+                            continue
                     else:
-                        out_file = _out_file
-                        break
+                        logger.info("URL Download -> FAILED -> [HTTP%s] - URL: %s" % (response.status_code, url))
+                        continue
 
+            logger.info("URL Download -> SUCCESS -> [HTTP%s] - URL: %s" % (response.status_code, url))
+
+            """ Determine output file name """
+            local_filename = ""
+            url_obj = urlparse(url, 'http')
+            if 'Content-Disposition' in response.headers.keys():
+                local_filename = response.headers['Content-Disposition'].split('=')[-1].strip('"')
+
+            if not local_filename:
+                local_filename = os.path.basename(url)
+
+            if not local_filename:
+                local_filename = url_obj.path.replace(r"/", "")
+
+            if not local_filename:
+                local_filename = url_obj.netloc.replace(r"/", "")
+
+            if len(local_filename) > DOWNLOADED_FILE_NAME_LEN:
+                local_filename = local_filename[1:DOWNLOADED_FILE_NAME_LEN]
+
+            out_file = self.download_folder + "/" + local_filename
+            out_file = out_file.replace(r"//", r"/")
+            """ Make sure that files do not get overwritten """
+            _out_file = out_file
+            while True:
+                if os.path.isfile(_out_file):
+                    _out_file = out_file + " - " + str(download_index)
+                    download_index += 1
+                else:
+                    out_file = _out_file
+                    break
+
+            if response.raw.data:
                 with open(out_file, 'wb') as file:
                     shutil.copyfileobj(response.raw, file)
                     downloaded_files.append(out_file)
                     file.close()
-
-                """ Log downloaded file and its hash """
-                hash_obj = hashlib.sha256()
-                with open(out_file, "rb") as file:
-                    for chunk in iter(lambda: file.read(4096), b""):
-                        hash_obj.update(chunk)
-
-                    sha256 = hash_obj.hexdigest()
+            else:
+                with open(out_file, 'w', encoding="utf8") as file:
+                    file.write(response.text)
+                    downloaded_files.append(out_file)
                     file.close()
 
-                logger.info("[sha256: %s] - %s" % (sha256, out_file))
-                print("[sha256: %s] - %s" % (sha256, out_file))
+            """ Log downloaded file and its hash """
+            hash_obj = hashlib.sha256()
+            with open(out_file, "rb") as file:
+                for chunk in iter(lambda: file.read(4096), b""):
+                    hash_obj.update(chunk)
+
+                sha256 = hash_obj.hexdigest()
+                file.close()
+
+            logger.info("[sha256: %s] - %s" % (sha256, out_file))
+            print("[sha256: %s] - %s" % (sha256, out_file))
 
         return downloaded_files
+
 
     # http://docs.python-requests.org/en/master/user/quickstart/
     POST_DATA = {
