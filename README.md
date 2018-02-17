@@ -148,3 +148,8 @@ Ver. 0.0.8:
 * Simplified get_hrefs() code
 * get_hrefs will use the requests session object and mix of HEAD and GET requests to speed up crawling performance
 * get_hrefs set to return unique hrefs only 
+
+Ver. 0.0.9:
+
+* Fixes to download and get_hrefs functions 
+* Documentation update 

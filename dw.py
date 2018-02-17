@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-13"
-__version__ = '0.0.8'
+__version__ = '0.0.9'
 
 
 from bs4 import BeautifulSoup # pip install bs4
