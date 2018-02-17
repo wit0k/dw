@@ -100,6 +100,42 @@ The tool is quite granular:
 * Automatically enables -gl mode 
 * Skip the download action
 
+**Command Line:**
+
+<pre>
+optional arguments:
+  -h, --help            show this help message and exit
+
+Script arguments:
+
+  -i INPUT, --input INPUT
+                        Load and deobfuscate URLs from input file, or load
+                        files from given folder
+  -d DOWNLOAD_FOLDER, --download-folder DOWNLOAD_FOLDER
+                        Specify custom download folder location (Default:
+                        downloads/
+  -gl, --get-links      Retrieve all available links/hrefs from loaded URLs
+  -r, --recursive       Enable recursive crawling (Applies to -gl)
+  -z, --zip             Compress all downloaded files, or files from input
+                        folder (If not zipped already)
+  --submit              Submit files to AV vendors
+  --skip-download       Skips the download operation
+  --debug-requests      Sends GET/POST requests via local proxy server
+                        127.0.0.1:8080
+  -v VERBOSE_LEVEL, --verbose VERBOSE_LEVEL
+                        Set the logging level to one of following: INFO,
+                        WARNING, ERROR or DEBUG (Default: WARNING)
+
+Custom arguments:
+
+  -rd RECURSION_DEPTH, --recursion-depth RECURSION_DEPTH
+                        Max recursion depth level for -r option (Default: 20)
+  --limit-archive-items MAX_FILE_COUNT_PER_ARCHIVE
+                        Sets the limit of files per archive (Default: 9). [0 =
+                        Unlimited]
+  -sc SUBMISSION_COMMENTS, --submission-comments SUBMISSION_COMMENTS
+                        Insert submission comments (Default: <archive_name>)
+</pre>
  
 **Change log:**
 
