@@ -693,41 +693,45 @@ def main(argv):
 
     """ Argument groups """
     script_args = argsparser.add_argument_group('Script arguments', "\n")
+    custom_args = argsparser.add_argument_group('Custom arguments', "\n")
     """ Script arguments """
-    script_args.add_argument("-v", "--verbose", type=str, action='store', dest='verbose_level', required=False,
-                             default="DEBUG", help="Set the verbose level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
     script_args.add_argument("-i", "--input", type=str, action='store', dest='input', required=False,
                              help="Load and deobfuscate URLs from input file, or load files from given folder")
 
     script_args.add_argument("-d", "--download-folder", action='store', dest='download_folder', required=False,
                              default="downloads/", help="Specify custom download folder location (Default: downloads/")
 
-    script_args.add_argument("--skip-download", action='store_true', dest='skip_download', required=False,
-                             default=False, help="Skips the download operation")
-
     script_args.add_argument("-gl", "--get-links", action='store_true', dest='get_links', required=False,
                              default=False, help="Retrieve all available links/hrefs from loaded URLs")
 
-    script_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
-                             default=20, help="Max recursion depth level")
+    custom_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
+                             default=20, help="Max recursion depth level for -r option (Default: 20)")
 
     script_args.add_argument("-r", "--recursive", action='store_true', dest='recursion', required=False,
-                             default=False, help="Enable recursive crawling")
+                             default=False, help="Enable recursive crawling (Applies to -gl)")
 
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
                              default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")
 
-    script_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
-                             default=9, help="Sets the limit of files per archive (Default: 9, 0: Unlimited)")
+    custom_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
+                             default=9, help="Sets the limit of files per archive (Default: 9). [0 = Unlimited]")
 
     script_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
-                             default=False, help="Submit files to AV vendors (Default: False)")
+                             default=False, help="Submit files to AV vendors")
 
-    script_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
-                             help="Insert submission comments (Default: archive name)")
+    script_args.add_argument("--skip-download", action='store_true', dest='skip_download', required=False,
+                             default=False, help="Skips the download operation")
 
     script_args.add_argument("--debug-requests", action='store_true', dest='requests_debug', required=False,
                              default=False, help="Sends GET/POST requests via local proxy server 127.0.0.1:8080")
+
+    script_args.add_argument("-v", "--verbose", type=str, action='store', dest='verbose_level', required=False,
+                             default="DEBUG",
+                             help="Set the logging level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
+    custom_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
+                             help="Insert submission comments (Default: <archive_name>)")
+
+
 
     args = argsparser.parse_args()
     argc = argv.__len__()
