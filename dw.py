@@ -351,6 +351,8 @@ class downloader (object):
     def update_list(self, url, links):
         if url not in links:
             links.append(url)
+            if self.verbose_level == "DEBUG":
+                print(url)
         else:
             logger.debug("DEV: URL: '%s' already in links list!" % url)
 
@@ -390,7 +392,7 @@ class downloader (object):
             try:
                 response = con.head(url)
             except Exception as msg:
-                logger.error(msg)
+                logger.error("con.get(%s) -> Error: %s" % (url, msg))
                 return links
 
             """ Obtain the final URL after redirection """
@@ -405,7 +407,7 @@ class downloader (object):
                             try:
                                 response = con.head(url)
                             except Exception as msg:
-                                logger.error(msg)
+                                logger.error("con.get(%s) -> Error: %s" % (url, msg))
                                 return links
 
                         except KeyError:
@@ -433,7 +435,7 @@ class downloader (object):
             try:
                 response = con.get(url)
             except Exception as msg:
-                logger.error("con.get(%s) -> Error: " % (url, msg))
+                logger.error("con.get(%s) -> Error: %s" % (url, msg))
                 return links
 
             """ Parse the HTTP response """

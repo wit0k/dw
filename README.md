@@ -151,5 +151,6 @@ Ver. 0.0.8:
 
 Ver. 0.0.9:
 
-* Fixes to download and get_hrefs functions 
+* Fixes to download and get_hrefs functions
+* If verbose level is set to DEBUG, print the href every time it's added to links list 
 * Documentation update 
