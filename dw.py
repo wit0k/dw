@@ -679,6 +679,11 @@ class downloader (object):
         if self.input_type == "folder":
             self.skip_download = True
 
+        """ Enable -gl if recursive mode (-r) selected """
+        if self.recursion:
+            logger.debug("Recursive mode specified, hence enabling '-gl' ...")
+            self.get_links = True
+
 
 
 def main(argv):

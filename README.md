@@ -54,10 +54,10 @@ The tool is quite granular:
   Add 'downloads//1.hta' to: 'archive/samples-1.zip'
   Add 'downloads//1.rar' to: 'archive/samples-1.zip'</pre>
 * Vendor submission (Requires specific config/%vendonr_name%.vd file)
-  <pre>śsubmit - Submitting: archive/samples-2.zip to: https://...
+  <pre>submit - Submitting: archive/samples-2.zip to: https://...
   submit - Submission OK -> archive/samples-2.zip</pre>
 * Recursive < a href > crawling (option -r): 
-  <pre> dw.py -i urls.txt -gl --skip-download -r
+    <pre> 
     Getting hrefs from: http://109.234.36.233/bot
     All retrieved HREFs:
     http://109.234.36.233/bot/
@@ -94,6 +94,13 @@ The tool is quite granular:
 * Processed/compressed files are saved into archive/ folder
 * Submits files from archive/ folder to configured vendors [--submit enables -z automatically]
 
+<pre> dw.py -i urls.txt -r --skip-download </pre> 
+
+* Retrieve all available links/hrefs from loaded URLs (Recursively) 
+* Automatically enables -gl mode 
+* Skip the download action
+
+ 
 **Change log:**
 
 Ver. 0.0.8:
