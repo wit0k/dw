@@ -164,4 +164,10 @@ Ver. 0.1.0:
 * Fixes to get_hrefs function
 * "-rl", "--recursive-hostonly". Would crawl webistes which have the same url host as the input URL (Recommended)
 * Small error handling to showing archive content (Didn't work for .jar files)
-* Documentation update 
+* Fix to download function (it was corrupting files)
+* Documentation update
+
+Ver. 0.1.1:
+
+* Fix to download function (it was corrupting files)
+* Documentation update

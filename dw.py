@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-13"
-__version__ = '0.0.9'
+__version__ = '0.1.1'
 
 
 from bs4 import BeautifulSoup # pip install bs4
@@ -534,9 +534,11 @@ class downloader (object):
                 con.proxies.update(debug_proxies)
                 con.verify = False
                 con.allow_redirects = True
+                con.stream = True
             else:
                 con.verify = False
                 con.allow_redirects = True
+                con.stream = True
 
             """ Access given URL """
             try:
@@ -599,7 +601,7 @@ class downloader (object):
 
             if response.raw.data:
                 with open(out_file, 'wb') as file:
-                    shutil.copyfileobj(response.raw, file)
+                    file.write(response.raw.data)
                     downloaded_files.append(out_file)
                     file.close()
             else:
