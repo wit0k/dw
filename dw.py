@@ -382,10 +382,10 @@ class downloader (object):
                 """ Set connection/session properties """
                 if self.requests_debug:
                     con.proxies.update(debug_proxies)
-                    con.verify = False,
+                    con.verify = False
                     con.allow_redirects = True
                 else:
-                    con.verify = False,
+                    con.verify = False
                     con.allow_redirects = True
 
             """ Access given URL (Get the headers only) """
@@ -521,10 +521,10 @@ class downloader (object):
             """ Set connection/session properties """
             if self.requests_debug:
                 con.proxies.update(debug_proxies)
-                con.verify = False,
+                con.verify = False
                 con.allow_redirects = True
             else:
-                con.verify = False,
+                con.verify = False
                 con.allow_redirects = True
 
             """ Access given URL """
