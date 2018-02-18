@@ -117,6 +117,10 @@ Script arguments:
                         Specify custom download folder location (Default:
                         downloads/
   -gl, --get-links      Retrieve all available links/hrefs from loaded URLs
+  -rl, --recursive-hostonly
+                        Enable recursive crawling (Applies to -gl), but crawl
+                        for hrefs containing the same url host as input url
+                        (Sets --limit-archive-items 0)
   -r, --recursive       Enable recursive crawling (Applies to -gl)
   -z, --zip             Compress all downloaded files, or files from input
                         folder (If not zipped already)
@@ -153,4 +157,11 @@ Ver. 0.0.9:
 
 * Fixes to download and get_hrefs functions
 * If verbose level is set to DEBUG, print the href every time it's added to links list 
+* Documentation update 
+
+Ver. 0.1.0:
+
+* Fixes to get_hrefs function
+* "-rl", "--recursive-hostonly". Would crawl webistes which have the same url host as the input URL (Recommended)
+* Small error handling to showing archive content (Didn't work for .jar files)
 * Documentation update 

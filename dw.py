@@ -213,6 +213,7 @@ class downloader (object):
         self.requests_debug = args.requests_debug
         self.recursion_depth = args.recursion_depth
         self.recursion = args.recursion
+        self.crawl_local_host_only = args.crawl_local_host_only
 
         """ Check script arguments """
         self.check_args()
@@ -362,7 +363,7 @@ class downloader (object):
             if depth == 0:
                 logger.info("Getting hrefs from: %s" % url)
                 print("Getting hrefs from: %s" % url)
-            elif depth >= self.recursion_depth:
+            elif depth >= self.recursion_depth and self.recursion_depth != 0:
                 logger.info("href: %s -> Max depth [%d] reached!" % (url, depth))
                 return []
 
@@ -455,6 +456,9 @@ class downloader (object):
                     if _href == "/":
                         continue
 
+                    if not _href:
+                        continue
+
                     """ Build new url """
                     if url_host not in _href:
                         if _href.startswith("http://") or _href.startswith("https://"):
@@ -468,6 +472,13 @@ class downloader (object):
                                 _url = url_base + _href
 
                     if self.recursion:
+
+                        """ Skip the URL if it's not in allowed list """
+                        if self.crawl_local_host_only:
+                            if url_host not in _url:
+                                logger.debug("Skip: %s -> The host: %s not found" % (_url, url_host))
+                                continue
+
                         if _url:
                             if _url not in links:
                                 self.get_hrefs(_url, con, links, depth + 1)
@@ -730,6 +741,11 @@ class downloader (object):
             logger.debug("Recursive mode specified, hence enabling '-gl' ...")
             self.get_links = True
 
+        """ Disable --recursion-depth """
+        if self.crawl_local_host_only:
+            self.recursion = True
+            self.recursion_depth = 0
+
 
 
 def main(argv):
@@ -750,11 +766,14 @@ def main(argv):
     script_args.add_argument("-gl", "--get-links", action='store_true', dest='get_links', required=False,
                              default=False, help="Retrieve all available links/hrefs from loaded URLs")
 
-    custom_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
-                             default=20, help="Max recursion depth level for -r option (Default: 20)")
+    script_args.add_argument("-rl", "--recursive-hostonly", action='store_true', dest='crawl_local_host_only', required=False,
+                             help="Enable recursive crawling (Applies to -gl), but crawl for hrefs containing the same url host as input url (Sets --limit-archive-items 0)")
 
     script_args.add_argument("-r", "--recursive", action='store_true', dest='recursion', required=False,
                              default=False, help="Enable recursive crawling (Applies to -gl)")
+
+    custom_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
+                             default=20, help="Max recursion depth level for -r option (Default: 20)")
 
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
                              default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")
@@ -776,6 +795,8 @@ def main(argv):
                              help="Set the logging level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
     custom_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
                              help="Insert submission comments (Default: <archive_name>)")
+
+    #custom_args.add_argument("--allowed-hosts", action='store', dest='allowed_hosts', required=False, help="List of allowed domains, IPs that will be crawled")
 
 
 
@@ -873,12 +894,16 @@ def main(argv):
     if archives:
         print("Archives content:")
         for archive in archives:
-            with zipfile.ZipFile(archive, 'r') as _archive:
-                members = _archive.namelist()
-                print("Archive: %s" % archive)
-                for member in members:
-                    print(" - %s" % member)
-                logger.debug("Archive: %s -> Members: %s" % (archive, members))
+            try:
+                with zipfile.ZipFile(archive, 'r') as _archive:
+                    members = _archive.namelist()
+                    print("Archive: %s" % archive)
+                    for member in members:
+                        print(" - %s" % member)
+                    logger.debug("Archive: %s -> Members: %s" % (archive, members))
+            except Exception as msg:
+                print("Archive: %s -> Unable to get members" % archive)
+                logger.warning("Archive: %s -> Unable to get members" % archive)
 
     """ Submit files to vendors """
     if dw.submit_to_vendors:
