@@ -524,21 +524,21 @@ class downloader (object):
         downloaded_files = []
         sha256 = ""
 
+        con = requests.Session()
+        con.headers.update({'User-Agent': user_agents[0]})
+
+        """ Set connection/session properties """
+        if self.requests_debug:
+            con.proxies.update(debug_proxies)
+            con.verify = False
+            con.allow_redirects = True
+            con.stream = True
+        else:
+            con.verify = False
+            con.allow_redirects = True
+            con.stream = True
+            
         for url in urls:
-
-            con = requests.Session()
-            con.headers.update({'User-Agent': user_agents[0]})
-
-            """ Set connection/session properties """
-            if self.requests_debug:
-                con.proxies.update(debug_proxies)
-                con.verify = False
-                con.allow_redirects = True
-                con.stream = True
-            else:
-                con.verify = False
-                con.allow_redirects = True
-                con.stream = True
 
             """ Access given URL """
             try:
