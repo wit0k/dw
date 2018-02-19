@@ -537,7 +537,7 @@ class downloader (object):
             con.verify = False
             con.allow_redirects = True
             con.stream = True
-            
+
         for url in urls:
 
             """ Access given URL """
@@ -607,7 +607,6 @@ class downloader (object):
                     file.write(response.raw.data)
                     downloaded_files.append(out_file)
                     file.close()
-
             else:
                 try:
                     response_text = response.text
@@ -616,9 +615,13 @@ class downloader (object):
 
                 if response_text:
                     with open(out_file, 'w') as file:
-                        file.write(response.text)
-                        downloaded_files.append(out_file)
-                        file.close()
+                        try:
+                            file.write(response.text)
+                            downloaded_files.append(out_file)
+                            file.close()
+                        except:
+                            logger.warning("Unable to save response.text -> ur:" % url)
+                            continue
                 else:
                     # Fix to requests bug
                     logger.warning("Error: response.raw.data and response.text are Null. URL: %s" % url)
