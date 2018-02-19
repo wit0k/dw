@@ -171,3 +171,7 @@ Ver. 0.1.1:
 
 * Fix to download function (it was corrupting files)
 * Documentation update
+
+Ver. 0.1.2:
+
+* Fix to download function (Logic imrpoved)

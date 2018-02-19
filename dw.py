@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-13"
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 
 from bs4 import BeautifulSoup # pip install bs4
@@ -566,6 +566,9 @@ class downloader (object):
                     else:
                         logger.info("URL Download -> FAILED -> [HTTP%s] - URL: %s" % (response.status_code, url))
                         continue
+            else:
+                logger.info("URL Download -> FAILED -> [HTTP%s] - URL: %s" % (response.status_code, url))
+                continue
 
             logger.info("URL Download -> SUCCESS -> [HTTP%s] - URL: %s" % (response.status_code, url))
 
@@ -604,11 +607,22 @@ class downloader (object):
                     file.write(response.raw.data)
                     downloaded_files.append(out_file)
                     file.close()
+
             else:
-                with open(out_file, 'w', encoding="utf8") as file:
-                    file.write(response.text)
-                    downloaded_files.append(out_file)
-                    file.close()
+                try:
+                    response_text = response.text
+                except Exception as msg:
+                    response_text = None
+
+                if response_text:
+                    with open(out_file, 'w') as file:
+                        file.write(response.text)
+                        downloaded_files.append(out_file)
+                        file.close()
+                else:
+                    # Fix to requests bug
+                    logger.warning("Error: response.raw.data and response.text are Null. URL: %s" % url)
+                    continue
 
             """ Log downloaded file and its hash """
             hash_obj = hashlib.sha256()
