@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-13"
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 """ TO DO
 - Print MIME type 
@@ -18,6 +18,11 @@ import zipfile
 import shutil
 import json
 import hashlib
+
+import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 app_name = "dw (Downloader)"
 """ Set working directory so the script can be executed from any location/symlink """
