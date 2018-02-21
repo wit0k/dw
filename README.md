@@ -182,4 +182,4 @@ Ver. 0.1.3:
 
 Ver. 0.1.4:
 
-* Critical fix to get_hrefs (Automatic parent folder and mod_autoindex detection; preventing back loops)
+* Critical fix to get_hrefs (Automatic parent folder and mod_autoindex detection; preventing back loops).
