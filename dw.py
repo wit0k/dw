@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-13"
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 
 """ TO DO
 - Print MIME type 
@@ -459,11 +459,25 @@ class downloader (object):
                     _url = ""
                     _href = link.get('href')
 
+                    if not _href:
+                        continue
+
                     """ Skip hrefs to Parent Directory """
                     if _href == "/":
                         continue
 
-                    if not _href:
+                    if r"../" in _href:
+                        continue
+
+                    """ Automatically detect parent dir """
+                    if _href[:1] == "/":
+                        parent_url = url_base + _href
+                        if len(parent_url) < len(url):
+                            if parent_url in url:
+                                continue
+
+                    """ Detect and Skip mod_autoindex hrefs """
+                    if re.match(r"(^\?[a-zA-Z]=[0-9A-Za-z];{0,1})([a-zA-Z]=[0-9A-Za-z];{0,1})*", _href):
                         continue
 
                     """ Build new url """
@@ -471,15 +485,17 @@ class downloader (object):
                         if _href.startswith("http://") or _href.startswith("https://"):
                             _url = _href
                         else:
-                            if _href[:1] != "/":
-                                """  The href does not start with / """
-                                _url = url_base + r"/" + _href
-                            elif _href[:1] == "/":
-                                """ The href start with / """
-                                _url = url_base + _href
+
+                            if url[-1:] == "/" and _href[:1] == "/":
+                                """  The url ends with / and the href starts with / """
+                                _url = url + _href[1:]
+                            elif url[-1:] != "/" and _href[:1] != "/":
+                                """  The url does not end with / and the href does not start with / """
+                                _url = url + "/" + _href
+                            else:
+                                _url = url + _href
 
                     if self.recursion:
-
                         """ Skip the URL if it's not in allowed list """
                         if self.crawl_local_host_only:
                             if url_host not in _url:

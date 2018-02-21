@@ -1,0 +1,327 @@
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:00:38,225 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:00:38,227 - dw.py - main - Loaded [0] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:00:50,044 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:01:17,029 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:01:17,031 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/next/ to: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:01:17,031 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:01:17,032 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:01:17,058 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:01:17,889 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:14:39,560 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:14:39,562 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/next/ to: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:14:39,562 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:14:39,562 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:14:39,585 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:14:40,335 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:18:16,655 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:18:16,658 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/next/ to: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:18:16,659 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:18:16,659 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:18:16,687 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:18:17,041 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:32:17,144 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:32:17,146 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/next/ to: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:32:17,146 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:32:17,146 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:32:17,166 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:32:17,970 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:40:56,100 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:40:56,103 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/next/ to: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:40:56,103 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:40:56,103 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:40:56,122 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:40:56,945 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:43:24,157 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:43:24,160 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/next/ to: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:43:24,160 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:43:24,160 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:43:24,173 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:43:24,505 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:53:44,595 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:53:44,597 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/next/ to: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:53:44,598 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:53:44,598 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:53:44,614 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:53:45,432 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:55:34,118 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:55:34,120 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/next/ to: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:55:34,121 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:55:34,121 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:55:34,140 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:55:34,529 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:08,318 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/IKESTUB.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:08,318 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/IKESTUB.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:11,083 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/Newapp.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:11,083 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/Newapp.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:18,093 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/dorobuchi.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:18,093 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/dorobuchi.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:22,109 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/durlad.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:22,109 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/durlad.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:30,705 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:30,705 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/next/ to: http://chantracomputer.com/2I1/next/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:30,705 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:30,705 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:30,705 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:31,051 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:31,366 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/IKESTUB.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:31,366 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/IKESTUB.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:31,515 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/Newapp.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:31,515 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/Newapp.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:31,666 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/dorobuchi.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:31,666 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/dorobuchi.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:31,822 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/durlad.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:31,823 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/durlad.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:31,972 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/fresh.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:31,972 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/fresh.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:32,121 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/otolodone.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:32,122 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/otolodone.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:32,275 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/sesex.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:32,275 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/sesex.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:32,423 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/surla.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:32,423 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/surla.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:32,572 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/zubycrypter.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:32,572 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/zubycrypter.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:32,573 - dw.py - main - Found [10] hrefs on: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:32,573 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:32,573 - dw.py - main - ['http://chantracomputer.com/2I1/next/', 'http://chantracomputer.com/2I1/next/IKESTUB.exe', 'http://chantracomputer.com/2I1/next/Newapp.exe', 'http://chantracomputer.com/2I1/next/dorobuchi.exe', 'http://chantracomputer.com/2I1/next/durlad.exe', 'http://chantracomputer.com/2I1/next/fresh.exe', 'http://chantracomputer.com/2I1/next/otolodone.exe', 'http://chantracomputer.com/2I1/next/sesex.exe', 'http://chantracomputer.com/2I1/next/surla.exe', 'http://chantracomputer.com/2I1/next/zubycrypter.exe']
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:32,894 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:32,897 - dw.py - download - [sha256: 1896751d4fbe95b29d837c7bb49a84cfdba3d209af23a1d1e971d66e4cb57f25] - downloads/2I1next
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:33,048 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/IKESTUB.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:33,792 - dw.py - download - [sha256: 54d7a8028f6338776713973d2b290cf67aec65046420541ab5222d8776654545] - downloads/IKESTUB.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:33,960 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/Newapp.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:34,185 - dw.py - download - [sha256: 466bfc22035b91bb7d4adaa38fedd264e5f8a343966098c7e31d457656da4ddf] - downloads/Newapp.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:34,338 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/dorobuchi.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:34,492 - dw.py - download - [sha256: 2ae13d3cf6ee39ceac1add91e50c25860fa9bc2a9768f1cc5e623211659b14f2] - downloads/dorobuchi.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:34,704 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/durlad.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:34,859 - dw.py - download - [sha256: edfde051c967ffb5becae7ade5135748317a33031cd438c9ecfb6c57785a7b91] - downloads/durlad.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:35,007 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/fresh.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:35,153 - dw.py - download - [sha256: ec1d2e5f7525af4b74200637763e179b4d448d97cb7bd59cb55616db4a96f4e5] - downloads/fresh.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:35,306 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/otolodone.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:35,426 - dw.py - download - [sha256: 495d3b4f0cf3a60fa3e32f52ee821632bbaa96421b3eee40b6665eba7bdaa420] - downloads/otolodone.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:35,576 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/sesex.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:35,791 - dw.py - download - [sha256: 15273cba1a07b33d15131a66f7d8c62adfea67eda03f7d6783d3b1b8c35c38ea] - downloads/sesex.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:35,941 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/surla.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:36,115 - dw.py - download - [sha256: d6847b7f1cf99aff421542813647fa440be8e49a68918709601ffe0ff49f5ab9] - downloads/surla.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:36,489 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://chantracomputer.com/2I1/next/zubycrypter.exe
+INFO - THREAD-140735169662976 - 2018-02-21 16:56:37,084 - dw.py - download - [sha256: eac6474104a6ccaa562bc3de90adaf756c236fcc19e3d9db96047c269f664cce] - downloads/zubycrypter.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:56:37,084 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:03,383 - dw.py - main - Initialize dw (Downloader)
+WARNING - THREAD-140735169662976 - 2018-02-21 16:58:03,383 - dw.py - check_args - Input file: downloads/ not found!
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:03,383 - dw.py - main - Loaded [1] files from: downloads/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:03,383 - dw.py - _zip - Add 'downloads/IKESTUB.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:03,389 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['IKESTUB.exe']
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:03,389 - dw.py - submit - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:07,411 - dw.py - submit - Submission OK -> archive/samples-1.zip
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:36,399 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:36,400 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/ to: http://chantracomputer.com/2I1/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:36,400 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:36,400 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:36,400 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:36,802 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:37,311 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/360.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:37,311 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/360.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:37,619 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/3168.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:37,619 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/3168.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:37,932 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/5378.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:37,932 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/5378.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:38,233 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/7579.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:38,233 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/7579.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:38,540 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/A12.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:38,541 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/A12.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:38,848 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/A12S.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:38,848 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/A12S.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:39,155 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/A13.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:39,155 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/A13.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:39,483 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P11.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:39,483 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P11.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:39,783 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P13.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:39,783 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P13.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:39,935 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P51.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:39,935 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P51.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:40,282 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P53.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:40,282 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P53.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:40,589 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P74.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:40,589 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P74.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:40,896 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/R3.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:40,896 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/R3.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:41,203 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/R5.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:41,203 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/R5.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:41,510 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/S10.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:41,510 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/S10.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:41,817 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/S11.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:41,818 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/S11.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:42,125 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/T304U.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:42,125 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/T304U.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:42,432 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/W10.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:42,432 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/W10.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:42,841 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/X370.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:42,842 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/X370.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:42,993 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:43,300 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/IKESTUB.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:43,300 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/IKESTUB.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:43,455 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/Newapp.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:43,456 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/Newapp.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:43,610 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/dorobuchi.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:43,610 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/dorobuchi.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:43,763 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/durlad.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:43,763 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/durlad.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:43,915 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/fresh.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:43,915 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/fresh.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:44,066 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/otolodone.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:44,066 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/otolodone.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:44,218 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/sesex.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:44,219 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/sesex.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:44,374 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/surla.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:44,374 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/surla.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:44,525 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/zubycrypter.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:44,525 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/zubycrypter.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:44,526 - dw.py - main - Found [30] hrefs on: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:44,526 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735169662976 - 2018-02-21 16:58:44,526 - dw.py - main - ['http://chantracomputer.com/2I1/', 'http://chantracomputer.com/2I1/360.jpg', 'http://chantracomputer.com/2I1/3168.jpg', 'http://chantracomputer.com/2I1/5378.jpg', 'http://chantracomputer.com/2I1/7579.jpg', 'http://chantracomputer.com/2I1/A12.jpg', 'http://chantracomputer.com/2I1/A12S.jpg', 'http://chantracomputer.com/2I1/A13.jpg', 'http://chantracomputer.com/2I1/P11.jpg', 'http://chantracomputer.com/2I1/P13.jpg', 'http://chantracomputer.com/2I1/P51.jpg', 'http://chantracomputer.com/2I1/P53.jpg', 'http://chantracomputer.com/2I1/P74.jpg', 'http://chantracomputer.com/2I1/R3.jpg', 'http://chantracomputer.com/2I1/R5.jpg', 'http://chantracomputer.com/2I1/S10.jpg', 'http://chantracomputer.com/2I1/S11.jpg', 'http://chantracomputer.com/2I1/T304U.jpg', 'http://chantracomputer.com/2I1/W10.jpg', 'http://chantracomputer.com/2I1/X370.jpg', 'http://chantracomputer.com/2I1/next/', 'http://chantracomputer.com/2I1/next/IKESTUB.exe', 'http://chantracomputer.com/2I1/next/Newapp.exe', 'http://chantracomputer.com/2I1/next/dorobuchi.exe', 'http://chantracomputer.com/2I1/next/durlad.exe', 'http://chantracomputer.com/2I1/next/fresh.exe', 'http://chantracomputer.com/2I1/next/otolodone.exe', 'http://chantracomputer.com/2I1/next/sesex.exe', 'http://chantracomputer.com/2I1/next/surla.exe', 'http://chantracomputer.com/2I1/next/zubycrypter.exe']
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:58:44,526 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:03,605 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:03,605 - dw.py - check_args - Recursive mode specified, hence enabling '-gl' ...
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:03,605 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/ to: http://chantracomputer.com/2I1/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:03,605 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:03,605 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:03,605 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:04,859 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,068 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/360.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,069 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/360.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,110 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/3168.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,111 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/3168.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,155 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/5378.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,155 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/5378.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,188 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/7579.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,189 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/7579.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,224 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/A12.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,225 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/A12.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,256 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/A12S.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,257 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/A12S.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,290 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/A13.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,290 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/A13.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,324 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P11.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,324 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P11.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,356 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P13.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,356 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P13.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,394 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P51.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,394 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P51.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,429 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P53.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,429 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P53.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,461 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P74.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,461 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P74.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,530 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/R3.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,530 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/R3.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,566 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/R5.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,566 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/R5.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,599 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/S10.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,599 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/S10.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,639 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/S11.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,639 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/S11.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,678 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/T304U.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,679 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/T304U.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,711 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/W10.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,711 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/W10.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,746 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/X370.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:05,746 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/X370.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:05,904 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:06,210 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/IKESTUB.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:06,211 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/IKESTUB.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:06,364 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/Newapp.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:06,364 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/Newapp.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:06,521 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/dorobuchi.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:06,521 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/dorobuchi.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:06,675 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/durlad.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:06,675 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/durlad.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:06,830 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/fresh.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:06,831 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/fresh.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:06,981 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/otolodone.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:06,981 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/otolodone.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:07,131 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/sesex.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:07,131 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/sesex.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:07,350 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/surla.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:07,350 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/surla.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:07,501 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/zubycrypter.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:07,501 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/zubycrypter.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:07,502 - dw.py - main - Found [30] hrefs on: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:07,502 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:07,502 - dw.py - main - ['http://chantracomputer.com/2I1/', 'http://chantracomputer.com/2I1/360.jpg', 'http://chantracomputer.com/2I1/3168.jpg', 'http://chantracomputer.com/2I1/5378.jpg', 'http://chantracomputer.com/2I1/7579.jpg', 'http://chantracomputer.com/2I1/A12.jpg', 'http://chantracomputer.com/2I1/A12S.jpg', 'http://chantracomputer.com/2I1/A13.jpg', 'http://chantracomputer.com/2I1/P11.jpg', 'http://chantracomputer.com/2I1/P13.jpg', 'http://chantracomputer.com/2I1/P51.jpg', 'http://chantracomputer.com/2I1/P53.jpg', 'http://chantracomputer.com/2I1/P74.jpg', 'http://chantracomputer.com/2I1/R3.jpg', 'http://chantracomputer.com/2I1/R5.jpg', 'http://chantracomputer.com/2I1/S10.jpg', 'http://chantracomputer.com/2I1/S11.jpg', 'http://chantracomputer.com/2I1/T304U.jpg', 'http://chantracomputer.com/2I1/W10.jpg', 'http://chantracomputer.com/2I1/X370.jpg', 'http://chantracomputer.com/2I1/next/', 'http://chantracomputer.com/2I1/next/IKESTUB.exe', 'http://chantracomputer.com/2I1/next/Newapp.exe', 'http://chantracomputer.com/2I1/next/dorobuchi.exe', 'http://chantracomputer.com/2I1/next/durlad.exe', 'http://chantracomputer.com/2I1/next/fresh.exe', 'http://chantracomputer.com/2I1/next/otolodone.exe', 'http://chantracomputer.com/2I1/next/sesex.exe', 'http://chantracomputer.com/2I1/next/surla.exe', 'http://chantracomputer.com/2I1/next/zubycrypter.exe']
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:07,502 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:10,400 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:10,400 - dw.py - check_args - Recursive mode specified, hence enabling '-gl' ...
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:10,401 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/ to: http://chantracomputer.com/2I1/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:10,401 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:10,401 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:10,401 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:10,800 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:10,993 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/360.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:10,993 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/360.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,035 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/3168.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,036 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/3168.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,068 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/5378.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,068 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/5378.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,103 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/7579.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,104 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/7579.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,138 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/A12.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,138 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/A12.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,179 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/A12S.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,180 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/A12S.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,213 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/A13.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,213 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/A13.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,258 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P11.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,259 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P11.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,290 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P13.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,291 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P13.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,334 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P51.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,334 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P51.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,366 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P53.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,366 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P53.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,397 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/P74.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,398 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/P74.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,437 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/R3.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,437 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/R3.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,475 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/R5.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,476 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/R5.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,513 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/S10.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,513 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/S10.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,546 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/S11.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,546 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/S11.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,580 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/T304U.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,580 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/T304U.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:11,613 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/W10.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:11,613 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/W10.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:12,435 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/X370.jpg
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:12,436 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/X370.jpg - The resource is: image/jpeg
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:12,589 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:12,895 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/IKESTUB.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:12,895 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/IKESTUB.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:13,046 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/Newapp.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:13,046 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/Newapp.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:13,198 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/dorobuchi.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:13,198 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/dorobuchi.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:13,353 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/durlad.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:13,353 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/durlad.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:13,501 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/fresh.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:13,501 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/fresh.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:13,650 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/otolodone.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:13,650 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/otolodone.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:13,799 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/sesex.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:13,800 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/sesex.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:13,949 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/surla.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:13,949 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/surla.exe - The resource is: application/x-msdownload
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:14,097 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/next/zubycrypter.exe
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:14,097 - dw.py - get_hrefs - Skip href lookup for: http://chantracomputer.com/2I1/next/zubycrypter.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:14,098 - dw.py - main - Found [30] hrefs on: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:14,098 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:14,098 - dw.py - main - ['http://chantracomputer.com/2I1/', 'http://chantracomputer.com/2I1/360.jpg', 'http://chantracomputer.com/2I1/3168.jpg', 'http://chantracomputer.com/2I1/5378.jpg', 'http://chantracomputer.com/2I1/7579.jpg', 'http://chantracomputer.com/2I1/A12.jpg', 'http://chantracomputer.com/2I1/A12S.jpg', 'http://chantracomputer.com/2I1/A13.jpg', 'http://chantracomputer.com/2I1/P11.jpg', 'http://chantracomputer.com/2I1/P13.jpg', 'http://chantracomputer.com/2I1/P51.jpg', 'http://chantracomputer.com/2I1/P53.jpg', 'http://chantracomputer.com/2I1/P74.jpg', 'http://chantracomputer.com/2I1/R3.jpg', 'http://chantracomputer.com/2I1/R5.jpg', 'http://chantracomputer.com/2I1/S10.jpg', 'http://chantracomputer.com/2I1/S11.jpg', 'http://chantracomputer.com/2I1/T304U.jpg', 'http://chantracomputer.com/2I1/W10.jpg', 'http://chantracomputer.com/2I1/X370.jpg', 'http://chantracomputer.com/2I1/next/', 'http://chantracomputer.com/2I1/next/IKESTUB.exe', 'http://chantracomputer.com/2I1/next/Newapp.exe', 'http://chantracomputer.com/2I1/next/dorobuchi.exe', 'http://chantracomputer.com/2I1/next/durlad.exe', 'http://chantracomputer.com/2I1/next/fresh.exe', 'http://chantracomputer.com/2I1/next/otolodone.exe', 'http://chantracomputer.com/2I1/next/sesex.exe', 'http://chantracomputer.com/2I1/next/surla.exe', 'http://chantracomputer.com/2I1/next/zubycrypter.exe']
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:14,098 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:49,489 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:49,489 - dw.py - parse_urls - Parsing URL: http://chantracomputer.com/2I1/ to: http://chantracomputer.com/2I1/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:49,489 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:49,489 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:49,489 - dw.py - get_hrefs - Getting hrefs from: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:49,815 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://chantracomputer.com/2I1/
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:49,978 - dw.py - main - Found [21] hrefs on: http://chantracomputer.com/2I1/
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:49,978 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735169662976 - 2018-02-21 16:59:49,978 - dw.py - main - ['http://chantracomputer.com/2I1/', 'http://chantracomputer.com/2I1/360.jpg', 'http://chantracomputer.com/2I1/3168.jpg', 'http://chantracomputer.com/2I1/5378.jpg', 'http://chantracomputer.com/2I1/7579.jpg', 'http://chantracomputer.com/2I1/A12.jpg', 'http://chantracomputer.com/2I1/A12S.jpg', 'http://chantracomputer.com/2I1/A13.jpg', 'http://chantracomputer.com/2I1/P11.jpg', 'http://chantracomputer.com/2I1/P13.jpg', 'http://chantracomputer.com/2I1/P51.jpg', 'http://chantracomputer.com/2I1/P53.jpg', 'http://chantracomputer.com/2I1/P74.jpg', 'http://chantracomputer.com/2I1/R3.jpg', 'http://chantracomputer.com/2I1/R5.jpg', 'http://chantracomputer.com/2I1/S10.jpg', 'http://chantracomputer.com/2I1/S11.jpg', 'http://chantracomputer.com/2I1/T304U.jpg', 'http://chantracomputer.com/2I1/W10.jpg', 'http://chantracomputer.com/2I1/X370.jpg', 'http://chantracomputer.com/2I1/next/']
+DEBUG - THREAD-140735169662976 - 2018-02-21 16:59:49,978 - dw.py - main - Skipping Vendor submission

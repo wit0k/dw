@@ -179,3 +179,7 @@ Ver. 0.1.2:
 Ver. 0.1.3:
 
 * Supressed the warning: urllib3/connectionpool.py:852: InsecureRequestWarning: Unverified HTTPS request is being made
+
+Ver. 0.1.4:
+
+* Critical fix to get_hrefs (Automatic parent folder and mod_autoindex detection; preventing back loops)
