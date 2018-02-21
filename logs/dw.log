@@ -1,0 +1,95 @@
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,427 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,427 - dw.py - parse_urls - Parsing URL: http://tokhaybewja.com/dp/
+ to: http://tokhaybewja.com/dp/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,427 - dw.py - parse_urls - Parsing URL: http://tokhaybewja.com/files/ to: http://tokhaybewja.com/files/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,427 - dw.py - main - Loaded [2] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,427 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 10:39:43,427 - dw.py - get_hrefs - Getting hrefs from: http://tokhaybewja.com/dp/
+INFO - THREAD-140735169662976 - 2018-02-21 10:39:43,536 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/dp/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,595 - dw.py - main - Found [6] hrefs on: http://tokhaybewja.com/dp/
+INFO - THREAD-140735169662976 - 2018-02-21 10:39:43,595 - dw.py - get_hrefs - Getting hrefs from: http://tokhaybewja.com/files/
+INFO - THREAD-140735169662976 - 2018-02-21 10:39:43,684 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/files/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,753 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/?C=N;O=D' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,753 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/?C=M;O=A' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,754 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/?C=S;O=A' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,754 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/?C=D;O=A' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,754 - dw.py - main - Found [8] hrefs on: http://tokhaybewja.com/files/
+INFO - THREAD-140735169662976 - 2018-02-21 10:39:43,754 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735169662976 - 2018-02-21 10:39:43,754 - dw.py - main - ['http://tokhaybewja.com/dp/', 'http://tokhaybewja.com/?C=N;O=D', 'http://tokhaybewja.com/?C=M;O=A', 'http://tokhaybewja.com/?C=S;O=A', 'http://tokhaybewja.com/?C=D;O=A', 'http://tokhaybewja.com/account/', 'http://tokhaybewja.com/dp/', 'http://tokhaybewja.com/?C=N;O=D', 'http://tokhaybewja.com/?C=M;O=A', 'http://tokhaybewja.com/?C=S;O=A', 'http://tokhaybewja.com/?C=D;O=A', 'http://tokhaybewja.com/account/', 'http://tokhaybewja.com/files/', 'http://tokhaybewja.com/doc/']
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:39:43,754 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,340 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,340 - dw.py - parse_urls - Parsing URL: http://tokhaybewja.com/dp/
+ to: http://tokhaybewja.com/dp/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,340 - dw.py - parse_urls - Parsing URL: http://tokhaybewja.com/files/
+ to: http://tokhaybewja.com/files/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,340 - dw.py - parse_urls - Parsing URL: http://tokhaybewja.com/doc/ to: http://tokhaybewja.com/doc/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,340 - dw.py - main - Loaded [3] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,340 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:13,340 - dw.py - get_hrefs - Getting hrefs from: http://tokhaybewja.com/dp/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:13,444 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/dp/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,499 - dw.py - main - Found [6] hrefs on: http://tokhaybewja.com/dp/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:13,499 - dw.py - get_hrefs - Getting hrefs from: http://tokhaybewja.com/files/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:13,588 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/files/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,646 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/?C=N;O=D' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,646 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/?C=M;O=A' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,646 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/?C=S;O=A' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,646 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/?C=D;O=A' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,646 - dw.py - main - Found [8] hrefs on: http://tokhaybewja.com/files/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:13,646 - dw.py - get_hrefs - Getting hrefs from: http://tokhaybewja.com/doc/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:13,745 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/doc/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,745 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/doc/' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,795 - dw.py - main - Found [8] hrefs on: http://tokhaybewja.com/doc/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:13,796 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:13,796 - dw.py - main - ['http://tokhaybewja.com/dp/', 'http://tokhaybewja.com/?C=N;O=D', 'http://tokhaybewja.com/?C=M;O=A', 'http://tokhaybewja.com/?C=S;O=A', 'http://tokhaybewja.com/?C=D;O=A', 'http://tokhaybewja.com/account/', 'http://tokhaybewja.com/dp/', 'http://tokhaybewja.com/?C=N;O=D', 'http://tokhaybewja.com/?C=M;O=A', 'http://tokhaybewja.com/?C=S;O=A', 'http://tokhaybewja.com/?C=D;O=A', 'http://tokhaybewja.com/account/', 'http://tokhaybewja.com/files/', 'http://tokhaybewja.com/doc/', 'http://tokhaybewja.com/dp/', 'http://tokhaybewja.com/?C=N;O=D', 'http://tokhaybewja.com/?C=M;O=A', 'http://tokhaybewja.com/?C=S;O=A', 'http://tokhaybewja.com/?C=D;O=A', 'http://tokhaybewja.com/account/', 'http://tokhaybewja.com/files/', 'http://tokhaybewja.com/doc/']
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:13,796 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:34,078 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:34,078 - dw.py - parse_urls - Parsing URL: http://tokhaybewja.com/dp/
+ to: http://tokhaybewja.com/dp/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:34,078 - dw.py - parse_urls - Parsing URL: http://tokhaybewja.com/files/
+ to: http://tokhaybewja.com/files/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:34,078 - dw.py - parse_urls - Parsing URL: http://tokhaybewja.com/doc/ to: http://tokhaybewja.com/doc/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:34,078 - dw.py - main - Loaded [3] URLs from: urls.txt
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:34,078 - dw.py - main - Get links from each URL
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:34,078 - dw.py - get_hrefs - Getting hrefs from: http://tokhaybewja.com/dp/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:34,183 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/dp/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:34,278 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/?C=N;O=D
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:34,378 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/?C=N;O=A
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:34,480 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/?C=M;O=A
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:34,586 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/?C=M;O=D
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:34,691 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/?C=S;O=A
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:34,794 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/?C=S;O=D
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:34,911 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/?C=D;O=A
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:35,039 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/?C=D;O=D
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:35,151 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/files/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:35,250 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/doc/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:35,507 - dw.py - get_hrefs - HTTP: 302 -> http://tokhaybewja.com/documentation.php/ to login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=
+ERROR - THREAD-140735169662976 - 2018-02-21 10:40:35,508 - dw.py - get_hrefs - con.get(login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=) -> Error: Invalid URL 'login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=': No schema supplied. Perhaps you meant http://login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=?
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:35,557 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/docs/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:35,654 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/cgi-bin/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:35,874 - dw.py - get_hrefs - HTTP: 302 -> http://tokhaybewja.com/documentation.php/ to login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=
+ERROR - THREAD-140735169662976 - 2018-02-21 10:40:35,875 - dw.py - get_hrefs - con.get(login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=) -> Error: Invalid URL 'login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=': No schema supplied. Perhaps you meant http://login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=?
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:36,045 - dw.py - get_hrefs - HTTP: 302 -> http://tokhaybewja.com/documentation.php/ to login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=
+ERROR - THREAD-140735169662976 - 2018-02-21 10:40:36,045 - dw.py - get_hrefs - con.get(login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=) -> Error: Invalid URL 'login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=': No schema supplied. Perhaps you meant http://login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=?
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:36,226 - dw.py - get_hrefs - HTTP: 302 -> http://tokhaybewja.com/documentation.php/ to login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=
+ERROR - THREAD-140735169662976 - 2018-02-21 10:40:36,227 - dw.py - get_hrefs - con.get(login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=) -> Error: Invalid URL 'login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=': No schema supplied. Perhaps you meant http://login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=?
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:36,435 - dw.py - get_hrefs - HTTP: 302 -> http://tokhaybewja.com/documentation.php/ to login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=
+ERROR - THREAD-140735169662976 - 2018-02-21 10:40:36,435 - dw.py - get_hrefs - con.get(login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=) -> Error: Invalid URL 'login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=': No schema supplied. Perhaps you meant http://login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=?
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:36,594 - dw.py - get_hrefs - HTTP: 302 -> http://tokhaybewja.com/documentation.php/ to login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=
+ERROR - THREAD-140735169662976 - 2018-02-21 10:40:36,594 - dw.py - get_hrefs - con.get(login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=) -> Error: Invalid URL 'login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=': No schema supplied. Perhaps you meant http://login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=?
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:36,778 - dw.py - get_hrefs - HTTP: 302 -> http://tokhaybewja.com/documentation.php/ to login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=
+ERROR - THREAD-140735169662976 - 2018-02-21 10:40:36,779 - dw.py - get_hrefs - con.get(login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=) -> Error: Invalid URL 'login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=': No schema supplied. Perhaps you meant http://login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=?
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:36,932 - dw.py - get_hrefs - HTTP: 302 -> http://tokhaybewja.com/documentation.php/ to login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=
+ERROR - THREAD-140735169662976 - 2018-02-21 10:40:36,933 - dw.py - get_hrefs - con.get(login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=) -> Error: Invalid URL 'login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=': No schema supplied. Perhaps you meant http://login.php?l=_JeHFUq_VJOXK0QWHtoGYDw1774256418&fid.13InboxLight.aspxn.1774256418&fid.125289964252813InboxLight99642_Product-email&email=?
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:36,978 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/account/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:37,025 - dw.py - main - Found [14] hrefs on: http://tokhaybewja.com/dp/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:37,025 - dw.py - get_hrefs - Getting hrefs from: http://tokhaybewja.com/files/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:37,121 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/files/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:37,121 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/files/' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:37,175 - dw.py - main - Found [14] hrefs on: http://tokhaybewja.com/files/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:37,175 - dw.py - get_hrefs - Getting hrefs from: http://tokhaybewja.com/doc/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:37,258 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://tokhaybewja.com/doc/
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:37,258 - dw.py - update_list - DEV: URL: 'http://tokhaybewja.com/doc/' already in links list!
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:37,306 - dw.py - main - Found [14] hrefs on: http://tokhaybewja.com/doc/
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:37,306 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735169662976 - 2018-02-21 10:40:37,306 - dw.py - main - ['http://tokhaybewja.com/dp/', 'http://tokhaybewja.com/?C=N;O=D', 'http://tokhaybewja.com/?C=N;O=A', 'http://tokhaybewja.com/?C=M;O=A', 'http://tokhaybewja.com/?C=M;O=D', 'http://tokhaybewja.com/?C=S;O=A', 'http://tokhaybewja.com/?C=S;O=D', 'http://tokhaybewja.com/?C=D;O=A', 'http://tokhaybewja.com/?C=D;O=D', 'http://tokhaybewja.com/files/', 'http://tokhaybewja.com/doc/', 'http://tokhaybewja.com/docs/', 'http://tokhaybewja.com/cgi-bin/', 'http://tokhaybewja.com/account/', 'http://tokhaybewja.com/dp/', 'http://tokhaybewja.com/?C=N;O=D', 'http://tokhaybewja.com/?C=N;O=A', 'http://tokhaybewja.com/?C=M;O=A', 'http://tokhaybewja.com/?C=M;O=D', 'http://tokhaybewja.com/?C=S;O=A', 'http://tokhaybewja.com/?C=S;O=D', 'http://tokhaybewja.com/?C=D;O=A', 'http://tokhaybewja.com/?C=D;O=D', 'http://tokhaybewja.com/files/', 'http://tokhaybewja.com/doc/', 'http://tokhaybewja.com/docs/', 'http://tokhaybewja.com/cgi-bin/', 'http://tokhaybewja.com/account/', 'http://tokhaybewja.com/dp/', 'http://tokhaybewja.com/?C=N;O=D', 'http://tokhaybewja.com/?C=N;O=A', 'http://tokhaybewja.com/?C=M;O=A', 'http://tokhaybewja.com/?C=M;O=D', 'http://tokhaybewja.com/?C=S;O=A', 'http://tokhaybewja.com/?C=S;O=D', 'http://tokhaybewja.com/?C=D;O=A', 'http://tokhaybewja.com/?C=D;O=D', 'http://tokhaybewja.com/files/', 'http://tokhaybewja.com/doc/', 'http://tokhaybewja.com/docs/', 'http://tokhaybewja.com/cgi-bin/', 'http://tokhaybewja.com/account/']
+DEBUG - THREAD-140735169662976 - 2018-02-21 10:40:37,306 - dw.py - main - Skipping Vendor submission

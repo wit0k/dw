@@ -2,7 +2,9 @@ __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-13"
 __version__ = '0.1.2'
 
-
+""" TO DO
+- Print MIME type 
+"""
 from bs4 import BeautifulSoup # pip install bs4
 from urllib.parse import urlparse, urlunparse
 
