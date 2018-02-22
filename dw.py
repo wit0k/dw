@@ -664,7 +664,6 @@ class downloader (object):
 
         return downloaded_files
 
-
     # http://docs.python-requests.org/en/master/user/quickstart/
     POST_DATA = {
         "Symantec": {
