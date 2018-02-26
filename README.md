@@ -183,3 +183,7 @@ Ver. 0.1.3:
 Ver. 0.1.4:
 
 * Critical fix to get_hrefs (Automatic parent folder and mod_autoindex detection; preventing back loops).
+
+Ver. 0.1.5:
+
+* Detect and skip links automatically created in open directory like: Name, Last modified, Size, Description

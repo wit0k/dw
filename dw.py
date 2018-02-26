@@ -1,12 +1,13 @@
 __author__  = "Witold Lawacz (wit0k)"
-__date__    = "2018-02-13"
-__version__ = '0.1.4'
+__date__    = "2018-02-26"
+__version__ = '0.1.5'
 
 """ TO DO
 - Print MIME type 
 """
 from bs4 import BeautifulSoup # pip install bs4
 from urllib.parse import urlparse, urlunparse
+import md.submitter as submission
 
 import requests
 import re
@@ -480,6 +481,10 @@ class downloader (object):
                     if re.match(r"(^\?[a-zA-Z]=[0-9A-Za-z];{0,1})([a-zA-Z]=[0-9A-Za-z];{0,1})*", _href):
                         continue
 
+                    """ Detect and skip links automatically created in open directory like: Name, Last modified, Size, Description """
+                    if _href in ["?ND", "?MA", "?SA", "?DA"]:
+                        continue
+
                     """ Build new url """
                     if url_host not in _href:
                         if _href.startswith("http://") or _href.startswith("https://"):
@@ -870,6 +875,11 @@ def main(argv):
     hrefs = []
     downloaded_files = []
     archives = []
+
+    """ Get URLs proxy category """
+    s = submission.proxy("bluecoat")
+    #print(s.get_category("http://regenerus.com"))
+    #sys.exit(-1)
 
     """ Proceed accordingly to input type """
     if dw.input:
