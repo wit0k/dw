@@ -3,7 +3,7 @@ __date__    = "2018-02-28"
 __version__ = '0.1.7'
 
 """ TO DO
-- Double check just the -gl  (it duplicates the hrefs)
+- Double check just the -gl (it duplicates the hrefs)
 
 Sys req:
 - brew install tesseract
