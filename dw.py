@@ -920,7 +920,7 @@ def main(argv):
                              default=False, help="Retrieve all available links/hrefs from loaded URLs")
 
     script_args.add_argument("-rl", "--recursive-hostonly", action='store_true', dest='crawl_local_host_only', required=False,
-                             help="Enable recursive crawling (Applies to -gl), but crawl for hrefs containing the same url host as input url (Sets --limit-archive-items 0)")
+                             help="Enable recursive crawling (Applies to -gl), but crawl for hrefs containing the same url host as input url (Sets --recursion-depth 0)")
 
     script_args.add_argument("-r", "--recursive", action='store_true', dest='recursion', required=False,
                              default=False, help="Enable recursive crawling (Applies to -gl)")

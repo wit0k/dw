@@ -124,7 +124,7 @@ Script arguments:
   -rl, --recursive-hostonly
                         Enable recursive crawling (Applies to -gl), but crawl
                         for hrefs containing the same url host as input url
-                        (Sets --limit-archive-items 0)
+                        (Sets --recursion-depth 0)
   -r, --recursive       Enable recursive crawling (Applies to -gl)
   -z, --zip             Compress all downloaded files, or files from input
                         folder (If not zipped already)
