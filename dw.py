@@ -1,15 +1,20 @@
 __author__  = "Witold Lawacz (wit0k)"
-__date__    = "2018-02-26"
-__version__ = '0.1.5'
+__date__    = "2018-02-28"
+__version__ = '0.1.7'
 
 """ TO DO
-- Print MIME type 
+- Double check just the -gl  (it duplicates the hrefs)
+
+Sys req:
+- brew install tesseract
 """
+
+from md.uniq import *
+
 from bs4 import BeautifulSoup # pip install bs4
 from urllib.parse import urlparse, urlunparse
-import md.submitter as submission
 
-import requests
+import md.submitter as submission
 import re
 import os
 import logging
@@ -19,7 +24,8 @@ import zipfile
 import shutil
 import json
 import hashlib
-
+import magic
+import platform as _os
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
@@ -28,6 +34,9 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 app_name = "dw (Downloader)"
 """ Set working directory so the script can be executed from any location/symlink """
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+MAGIC_FILE_PATH_LINUX = '/etc/magic'
+MAGIC_FILE_PATH_MAC = '/usr/local/Cellar/libmagic/5.29/share/misc/magic'
 
 """ Logger settings """
 logger = logging.getLogger('dw')
@@ -201,7 +210,8 @@ default_mime_types = [
     "image/jpeg",
     "image/x-xbitmap",
     "image/x-cmu-raster",
-    "image/gif"
+    "image/gif",
+    "application/x-dosexec"
 ]
 
 class downloader (object):
@@ -222,6 +232,10 @@ class downloader (object):
         self.recursion_depth = args.recursion_depth
         self.recursion = args.recursion
         self.crawl_local_host_only = args.crawl_local_host_only
+        self.url_info = args.url_info
+        self.unique_files = args.unique_files
+        self.output_directory = args.output_directory
+        self.url_info_force = args.url_info_force
 
         """ Check script arguments """
         self.check_args()
@@ -316,6 +330,8 @@ class downloader (object):
             url = url.replace("[:]", ":")
             url = url.replace("[.", ".")
             url = url.replace(".]", ".")
+            url = url.replace("]]", "")
+            url = url.replace("[[", "")
             urls[index] = url
 
             if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", url):
@@ -358,10 +374,20 @@ class downloader (object):
         return files
 
     def update_list(self, url, links):
+
+        mime = None
+
+        if isinstance(url, tuple):
+            url = url[0]
+            mime = url[1]
+
         if url not in links:
             links.append(url)
             if self.verbose_level == "DEBUG":
-                print(url)
+                if mime:
+                    print("%s (%s)" % (url, mime))
+                else:
+                    print(url)
         else:
             logger.debug("DEV: URL: '%s' already in links list!" % url)
 
@@ -434,7 +460,7 @@ class downloader (object):
                 if response_headers["Content-Type"] in default_mime_types:
                     logger.debug("Skip href lookup for: %s - The resource is: %s" % (
                         url, response_headers["Content-Type"]))
-                    self.update_list(url, links)
+                    self.update_list((url, response_headers["Content-Type"]), links)
                     return links
 
             """ Update visited URLs (Links) """
@@ -546,6 +572,46 @@ class downloader (object):
 
         return headers
 
+    def get_file_info(self, filepath, url=None):
+
+        file_info = []
+
+        """ Get the hash """
+        hash_obj = hashlib.sha256()
+        with open(filepath, "rb") as file:
+            for chunk in iter(lambda: file.read(4096), b""):
+                hash_obj.update(chunk)
+
+            file_info.append(hash_obj.hexdigest())
+
+        """ Get file MIME type """
+        if 'Darwin' in _os.platform():
+            MAGIC_FILE_PATH = MAGIC_FILE_PATH_MAC
+        elif 'Linux' in _os.platform():
+            MAGIC_FILE_PATH = MAGIC_FILE_PATH_LINUX
+
+        obj_magic = magic.Magic(magic_file=MAGIC_FILE_PATH, mime=True, uncompress=True)
+        file_info.append(obj_magic.from_file(filepath))
+
+        """ Append file path """
+        file_info.append(filepath)
+
+        if url:
+            url_obj = urlparse(url, 'http')
+            url_host = url_obj.hostname
+
+            if self.url_info_force:
+                proxy_category = self.get_url_info(url)
+            else:
+                proxy_category = self.get_url_info(url_host)
+
+            if proxy_category:
+                file_info.append(proxy_category)
+
+            file_info.append(url)
+
+        return ",".join(file_info)
+
     def download(self, urls):
 
         download_index = 0
@@ -655,17 +721,13 @@ class downloader (object):
                     logger.warning("Error: response.raw.data and response.text are Null. URL: %s" % url)
                     continue
 
-            """ Log downloaded file and its hash """
-            hash_obj = hashlib.sha256()
-            with open(out_file, "rb") as file:
-                for chunk in iter(lambda: file.read(4096), b""):
-                    hash_obj.update(chunk)
+            """ Log file info """
+            file_info = self.get_file_info(out_file, url)
+            print(file_info)
+            logger.info(file_info)
 
-                sha256 = hash_obj.hexdigest()
-                file.close()
 
-            logger.info("[sha256: %s] - %s" % (sha256, out_file))
-            print("[sha256: %s] - %s" % (sha256, out_file))
+
 
         return downloaded_files
 
@@ -778,10 +840,6 @@ class downloader (object):
         if self.submit_to_vendors:
             self.zip_downloaded_files = True
 
-        """ Skip download in case user specified a folder """
-        if self.input_type == "folder":
-            self.skip_download = True
-
         """ Enable -gl if recursive mode (-r) selected """
         if self.recursion:
             logger.debug("Recursive mode specified, hence enabling '-gl' ...")
@@ -792,12 +850,54 @@ class downloader (object):
             self.recursion = True
             self.recursion_depth = 0
 
+        """ Skip download in case user specified a folder """
+        if self.input_type == "folder":
+            self.skip_download = True
+            self.get_links = False
+            self.url_info = False
+
+
+    URL_PROXY_CATEGORIZATION = {}  # Keeps track of proxy categorization
+
+    def get_url_info(self, urls, vendor_name="bluecoat"):
+
+        url_submitter = submission.proxy(vendor_name)
+
+        if url_submitter.initialized:
+
+            if not isinstance(urls, list):
+                urls = [urls]
+
+            for url in urls:
+
+                if url in self.URL_PROXY_CATEGORIZATION.keys():
+                    msg = "CACHE: Vendor: '%s' | Category: '%s' | Domain: '%s'" % (
+                        vendor_name, self.URL_PROXY_CATEGORIZATION[url], url)
+                    logger.info(msg)
+                    return self.URL_PROXY_CATEGORIZATION[url]
+
+                url_obj = urlparse(url, 'http')
+                url_host = url_obj.hostname
+
+                url_category = url_submitter.get_category(url)
+
+                if url_category:
+                    msg = "QUERY: Vendor: '%s' | Category: '%s' | URL: '%s'" % (
+                    vendor_name, url_category, url)
+                    logger.info(msg)
+                    self.URL_PROXY_CATEGORIZATION[url_host] = url_category
+                    self.URL_PROXY_CATEGORIZATION[url] = url_category
+
+
+
+
+        else:
+            logger.error("Vendor: '%s' -> Unable to initialize the submitter class" % vendor_name)
 
 
 def main(argv):
 
-    argsparser = argparse.ArgumentParser(usage=argparse.SUPPRESS,
-                                     description='Hyperion parser')
+    argsparser = argparse.ArgumentParser(usage=argparse.SUPPRESS, description='Hyperion parser')
 
     """ Argument groups """
     script_args = argsparser.add_argument_group('Script arguments', "\n")
@@ -805,6 +905,13 @@ def main(argv):
     """ Script arguments """
     script_args.add_argument("-i", "--input", type=str, action='store', dest='input', required=False,
                              help="Load and deobfuscate URLs from input file, or load files from given folder")
+
+    script_args.add_argument("--deduplicate-input", action='store_true', dest='unique_files', required=False,
+                             default=False, help="Deduplicate the list of downloaded files before their compression or submissions")
+
+    script_args.add_argument("-o", action='store', dest='output_directory', required=False,
+                             default=False,
+                             help="If --deduplicate-input specified, it would copy unique files to output directory from -o")
 
     script_args.add_argument("-d", "--download-folder", action='store', dest='download_folder', required=False,
                              default="downloads/", help="Specify custom download folder location (Default: downloads/")
@@ -829,6 +936,13 @@ def main(argv):
 
     script_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
                              default=False, help="Submit files to AV vendors")
+
+    script_args.add_argument("-ui", "--url-info", action='store_true', dest='url_info', required=False,
+                             default=False, help="Retrieve URL information from supported vendors for all loaded input URLs.")
+
+    script_args.add_argument("-uif", "--url-info-force", action='store_true', dest='url_info_force', required=False,
+                             default=False,
+                             help="Force url info lookup for every crawled URL (NOT recommended)")
 
     script_args.add_argument("--skip-download", action='store_true', dest='skip_download', required=False,
                              default=False, help="Skips the download operation")
@@ -867,7 +981,6 @@ def main(argv):
         logger.setLevel(logging.WARNING)
 
 
-
     """ Init dw class """
     logger.debug("Initialize dw (Downloader)")
     dw = downloader(args)
@@ -876,12 +989,7 @@ def main(argv):
     downloaded_files = []
     archives = []
 
-    """ Get URLs proxy category """
-    s = submission.proxy("bluecoat")
-    #print(s.get_category("http://regenerus.com"))
-    #sys.exit(-1)
-
-    """ Proceed accordingly to input type """
+    """ Load URLs from input file, or directly load files from a folder """
     if dw.input:
         if dw.input_type == "file":
             urls = dw.load_urls_from_input_file(dw.input)
@@ -893,22 +1001,51 @@ def main(argv):
             logger.error("Unsupported input type" % dw.input)
             exit(-1)
 
-    """ Skip download step if required """
+    """ Deduplicate the input """
+    if dw.unique_files:
+        _uniq = uniq()
+        if downloaded_files:
+            downloaded_files = _uniq.get_unique_files(downloaded_files)
+        elif urls:
+            urls = _uniq.get_unique_entries(urls)
+
+    """ Save deduplicated loaded files to another directory """
+    if dw.output_directory:
+        if dw.unique_files:
+            if downloaded_files:
+                if not os.path.isdir(dw.output_directory):
+                    logger.debug("Creating output folder: %s" % dw.output_directory)
+                    os.mkdir(dw.output_directory)
+
+                for file in downloaded_files:
+                    logger.debug("Save: %s to %s/ folder" % (file, dw.output_directory))
+                    shutil.copy2(file, dw.output_directory)
+
+    """ Get URL info for all loaded URLs (Fills in the URL_PROXY_CATEGORIZATION dict)"""
+    if dw.url_info:
+        for url in urls:
+            dw.get_url_info(url)
+    else:
+        logger.debug("Skipping URL info gathering")
+
+    """ Retrieve HREFs for each URL """
+    if dw.get_links and urls:
+        logger.debug("Get links from each URL")
+        for url in urls:
+            _urls = dw.get_hrefs(url)
+            logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
+            hrefs.extend(_urls)
+
+        logger.info("All retrieved HREFs:")
+        logger.info(hrefs)
+        print("All retrieved HREFs:")
+        print(*hrefs, sep="\n")
+        print("----------------------------------------------------------.")
+    else:
+        logger.debug("Skipping href lookup")
+
+    """ Download if required """
     if not dw.skip_download:
-        """ Retrieve HREFs from URLs """
-        if dw.get_links and urls:
-            if urls:
-                logger.debug("Get links from each URL")
-                for url in urls:
-                    _urls = dw.get_hrefs(url)
-                    logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
-                    hrefs.extend(_urls)
-
-                logger.info("All retrieved HREFs:")
-                logger.info(hrefs)
-                print("All retrieved HREFs:")
-                print(*hrefs, sep="\n")
-
         if hrefs:
             """ Download pulled hrefs """
             downloaded_files = dw.download(hrefs)
@@ -916,30 +1053,19 @@ def main(argv):
             """ Download given URLs """
             downloaded_files = dw.download(urls)
 
-        """ Compress files if instructed to """
-        if downloaded_files and dw.zip_downloaded_files:
-            archives = dw.compress_files(downloaded_files)
-
+        """ Deduplicate downloaded files """
+        if dw.unique_files:
+            _uniq = uniq()
+            if downloaded_files:
+                downloaded_files = _uniq.get_unique_files(downloaded_files)
     else:
+        logger.debug("Skipping files download")
 
-        """ Retrieve HREFs from URLs """
-        if dw.get_links and urls:
-            if urls:
-                logger.debug("Get links from each URL")
-                for url in urls:
-                    _urls = dw.get_hrefs(url)
-                    logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
-                    hrefs.extend(_urls)
-
-                logger.info("All retrieved HREFs:")
-                logger.info(hrefs)
-                print("All retrieved HREFs:")
-                print(*hrefs, sep="\n")
-
-        # Local file processing only (No download)
-        """ Compress files if instructed to """
-        if downloaded_files and dw.zip_downloaded_files:
-            archives = dw.compress_files(downloaded_files)
+    """ Compress files if instructed to """
+    if downloaded_files and dw.zip_downloaded_files:
+        archives = dw.compress_files(downloaded_files)
+    else:
+        logger.debug("Skipping files compression")
 
     """ Print files by archive """
     if archives:

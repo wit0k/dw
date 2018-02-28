@@ -23,17 +23,21 @@ class proxy(submitter):
             'X-Requested-With': 'XMLHttpRequest',
             'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',
             'Origin': 'https://sitereview.bluecoat.com',
-            'Referrer': 'https://sitereview.bluecoat.com/sitereview.jsp'
+            'Referer': 'https://sitereview.bluecoat.com/sitereview.jsp'
         }
     }
 
     def __init__(self, proxy_vendor):
 
+        self.initialized = None
+
         if proxy_vendor in self.POST_DATA.keys():
             self.con_post_data = self.POST_DATA[proxy_vendor]
             self.con = requests.session()
+            self.initialized = True
         else:
             logger.error("Vendor: %s - not supported yet" % proxy_vendor)
+            self.initialized = False
 
 
     def is_valid_url(self):
@@ -58,7 +62,7 @@ class proxy(submitter):
         the captcha and store the solution as a string to be submitted with our URL request.
         '''
         self.url = url
-
+        current_categorization = None
         epoch_timestamp = str(calendar.timegm(time.gmtime()) * 1000)  # Epoch timestamp in ms.
         captcha_url = 'https://sitereview.bluecoat.com/rest/captcha.jpg?%s' % (
             epoch_timestamp)  # Captcha URL
@@ -71,19 +75,21 @@ class proxy(submitter):
                 if chunk:
                     f.write(chunk)
 
-        captcha = pytesseract.image_to_string(Image.open('captcha.jpg'))
-        captcha = "".join(captcha.split())
+        if os.path.isfile('captcha.jpg'):
 
-        os.remove('captcha.jpg')  # Remove the downloaded captcha.
+            captcha = pytesseract.image_to_string(Image.open('captcha.jpg'))
+            captcha = "".join(captcha.split())
 
-        check_status_payload = 'url=%s&captcha=%s' % (
-            self.url, captcha)  # URL format to be used when Captcha is required.
-        r = self.con.post('https://sitereview.bluecoat.com/rest/categorization', headers=self.con_post_data,
-                        data=check_status_payload)  # Generate HTTP POST to check current category status
-        response_dict = simplejson.loads(r.text)
+            os.remove('captcha.jpg')  # Remove the downloaded captcha.
 
-        self.tracking_id = response_dict.get("curtrackingid", {})
-        current_categorization = response_dict.get("categorization", {}).split(">")[1].split("<")[0]
+            check_status_payload = 'url=%s&captcha=%s' % (
+                self.url, captcha)  # URL format to be used when Captcha is required.
+            r = self.con.post('https://sitereview.bluecoat.com/rest/categorization', headers=self.con_post_data,
+                            data=check_status_payload)  # Generate HTTP POST to check current category status
+            response_dict = simplejson.loads(r.text)
+
+            self.tracking_id = response_dict.get("curtrackingid", {})
+            current_categorization = response_dict.get("categorization", {}).split(">")[1].split("<")[0]
 
         return (current_categorization)
 

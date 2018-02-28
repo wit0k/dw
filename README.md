@@ -113,6 +113,10 @@ Script arguments:
   -i INPUT, --input INPUT
                         Load and deobfuscate URLs from input file, or load
                         files from given folder
+  --deduplicate-input   Deduplicate the list of downloaded files before their
+                        compression or submissions
+  -o OUTPUT_DIRECTORY   If --deduplicate-input specified, it would copy unique
+                        files to output directory from -o
   -d DOWNLOAD_FOLDER, --download-folder DOWNLOAD_FOLDER
                         Specify custom download folder location (Default:
                         downloads/
@@ -125,6 +129,11 @@ Script arguments:
   -z, --zip             Compress all downloaded files, or files from input
                         folder (If not zipped already)
   --submit              Submit files to AV vendors
+  -ui, --url-info       Retrieve URL information from supported vendors for
+                        all loaded input URLs.
+  -uif, --url-info-force
+                        Force url info lookup for every crawled URL (NOT
+                        recommended)
   --skip-download       Skips the download operation
   --debug-requests      Sends GET/POST requests via local proxy server
                         127.0.0.1:8080
@@ -187,3 +196,11 @@ Ver. 0.1.4:
 Ver. 0.1.5:
 
 * Detect and skip links automatically created in open directory like: Name, Last modified, Size, Description
+
+Ver. 0.1.7:
+
+* Slight logic change to tasks execution 
+* New parameters for input and downloaded files deduplication and copying files to an output folder 
+* BC proxy lookup support
+* uniq class for handling deduplication 
+* Submitter class (so far for proxy lookup only, but soon for VT as well)
