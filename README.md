@@ -112,34 +112,36 @@ Script arguments:
 
   -i INPUT, --input INPUT
                         Load and deobfuscate URLs from input file, or load
-                        files from given folder
-  --deduplicate-input   Deduplicate the list of downloaded files before their
-                        compression or submissions
-  -o OUTPUT_DIRECTORY   If --deduplicate-input specified, it would copy unique
-                        files to output directory from -o
+                        files from given folder for further processing
   -d DOWNLOAD_FOLDER, --download-folder DOWNLOAD_FOLDER
                         Specify custom download folder location (Default:
                         downloads/
+  -a ARCHIVE_FOLDER, --archive ARCHIVE_FOLDER
+                        Specify custom archive folder location (Default:
+                        'archive/')
+  -o OUTPUT_DIRECTORY   Copy loaded/deduplicated files into specified output
+                        directory (Applicable when -dd is used)
+  -dd, --dedup          Deduplicate the input and downloaded files
   -gl, --get-links      Retrieve all available links/hrefs from loaded URLs
   -rl, --recursive-hostonly
                         Enable recursive crawling (Applies to -gl), but crawl
                         for hrefs containing the same url host as input url
-                        (Sets --recursion-depth 0)
+                        (Sets --recursion-depth 0 and enables -gl)
   -r, --recursive       Enable recursive crawling (Applies to -gl)
-  -z, --zip             Compress all downloaded files, or files from input
-                        folder (If not zipped already)
-  --submit              Submit files to AV vendors
   -ui, --url-info       Retrieve URL information from supported vendors for
                         all loaded input URLs.
   -uif, --url-info-force
                         Force url info lookup for every crawled URL (NOT
                         recommended)
   --skip-download       Skips the download operation
-  --debug-requests      Sends GET/POST requests via local proxy server
-                        127.0.0.1:8080
+  -z, --zip             Compress all downloaded files, or files from input
+                        folder (If not zipped already)
+  --submit              Submit files to AV vendors (Enables -z by default)
   -v VERBOSE_LEVEL, --verbose VERBOSE_LEVEL
                         Set the logging level to one of following: INFO,
                         WARNING, ERROR or DEBUG (Default: WARNING)
+  --debug-requests      Sends GET/POST requests via local proxy server
+                        127.0.0.1:8080
 
 Custom arguments:
 
@@ -209,5 +211,10 @@ Ver. 0.1.7:
 
 * If DEBUG mode enabled, it would print detected href's mime type if such was directly sent by the server 
 * Download function prints detailed info about downloaded file like:  file_hash,file_destination,file_mime_type,proxy_category,url 
-* 
+
+Ver. 0.1.9:
+
+* Params names and documentation update
+
+
 

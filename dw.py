@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-28"
-__version__ = '0.1.8'
+__version__ = '0.1.9'
 
 """
 Sys req:
@@ -831,6 +831,15 @@ class downloader (object):
             except Exception:
                 exit(-1)
 
+        """ Check output directory """
+        if self.output_directory:
+            if os.path.isfile(self.output_directory):
+                logger.error("The output folder: %s is already taken by file" % self.output_directory)
+                exit(-1)
+            elif not os.path.isdir(self.output_directory):
+                logger.debug("Creating output folder: %s" % self.output_directory)
+                os.mkdir(self.output_directory)
+
         """ When zip enabled and archive folder does not exist """
         if self.zip_downloaded_files and not os.path.isdir(self.archive_folder):
             os.makedirs(self.archive_folder)
@@ -848,6 +857,7 @@ class downloader (object):
         if self.crawl_local_host_only:
             self.recursion = True
             self.recursion_depth = 0
+            self.get_links = True
 
         """ Skip download in case user specified a folder """
         if self.input_type == "folder":
@@ -903,44 +913,32 @@ def main(argv):
     custom_args = argsparser.add_argument_group('Custom arguments', "\n")
     """ Script arguments """
     script_args.add_argument("-i", "--input", type=str, action='store', dest='input', required=False,
-                             help="Load and deobfuscate URLs from input file, or load files from given folder")
-
-    script_args.add_argument("-a", "--archive", type=str, action='store', dest='archive_folder', required=False, default="archive/",
-                             help="Compressed files would be save into folder specified by -a parameter (Default: 'archive/')")
-
-    script_args.add_argument("--deduplicate-input", action='store_true', dest='unique_files', required=False,
-                             default=False, help="Deduplicate the list of downloaded files before their compression or submissions")
-
-    script_args.add_argument("-o", action='store', dest='output_directory', required=False,
-                             default=False,
-                             help="If --deduplicate-input specified, it would copy unique files to output directory from -o")
+                             help="Load and deobfuscate URLs from input file, or load files from given folder for further processing")
 
     script_args.add_argument("-d", "--download-folder", action='store', dest='download_folder', required=False,
                              default="downloads/", help="Specify custom download folder location (Default: downloads/")
+
+    script_args.add_argument("-a", "--archive", type=str, action='store', dest='archive_folder', required=False, default="archive/",
+                             help="Specify custom archive folder location (Default: 'archive/')")
+
+    script_args.add_argument("-o", action='store', dest='output_directory', required=False,
+                             default=None, help="Copy loaded/deduplicated files into specified output directory (Applicable when -dd is used)")
+
+    script_args.add_argument("-dd", "--dedup", action='store_true', dest='unique_files', required=False,
+                             default=False, help="Deduplicate the input and downloaded files")
 
     script_args.add_argument("-gl", "--get-links", action='store_true', dest='get_links', required=False,
                              default=False, help="Retrieve all available links/hrefs from loaded URLs")
 
     script_args.add_argument("-rl", "--recursive-hostonly", action='store_true', dest='crawl_local_host_only', required=False,
-                             help="Enable recursive crawling (Applies to -gl), but crawl for hrefs containing the same url host as input url (Sets --recursion-depth 0)")
+                             help="Enable recursive crawling (Applies to -gl), but crawl for hrefs containing the same url host as input url (Sets --recursion-depth 0 and enables -gl)")
 
     script_args.add_argument("-r", "--recursive", action='store_true', dest='recursion', required=False,
                              default=False, help="Enable recursive crawling (Applies to -gl)")
 
-    custom_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
-                             default=20, help="Max recursion depth level for -r option (Default: 20)")
-
-    script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
-                             default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")
-
-    custom_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
-                             default=9, help="Sets the limit of files per archive (Default: 9). [0 = Unlimited]")
-
-    script_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
-                             default=False, help="Submit files to AV vendors")
-
     script_args.add_argument("-ui", "--url-info", action='store_true', dest='url_info', required=False,
-                             default=False, help="Retrieve URL information from supported vendors for all loaded input URLs.")
+                             default=False,
+                             help="Retrieve URL information from supported vendors for all loaded input URLs.")
 
     script_args.add_argument("-uif", "--url-info-force", action='store_true', dest='url_info_force', required=False,
                              default=False,
@@ -949,16 +947,27 @@ def main(argv):
     script_args.add_argument("--skip-download", action='store_true', dest='skip_download', required=False,
                              default=False, help="Skips the download operation")
 
+    script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
+                             default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")
+
+    script_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
+                             default=False, help="Submit files to AV vendors (Enables -z by default)")
+
+    script_args.add_argument("-v", "--verbose", type=str, action='store', dest='verbose_level', required=False,
+                             default="INFO",
+                             help="Set the logging level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
+
     script_args.add_argument("--debug-requests", action='store_true', dest='requests_debug', required=False,
                              default=False, help="Sends GET/POST requests via local proxy server 127.0.0.1:8080")
 
-    script_args.add_argument("-v", "--verbose", type=str, action='store', dest='verbose_level', required=False,
-                             default="DEBUG",
-                             help="Set the logging level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
+    custom_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
+                             default=20, help="Max recursion depth level for -r option (Default: 20)")
+
+    custom_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
+                             default=9, help="Sets the limit of files per archive (Default: 9). [0 = Unlimited]")
+
     custom_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
                              help="Insert submission comments (Default: <archive_name>)")
-
-    #custom_args.add_argument("--allowed-hosts", action='store', dest='allowed_hosts', required=False, help="List of allowed domains, IPs that will be crawled")
 
 
 
@@ -1015,10 +1024,6 @@ def main(argv):
     if dw.output_directory:
         if dw.unique_files:
             if downloaded_files:
-                if not os.path.isdir(dw.output_directory):
-                    logger.debug("Creating output folder: %s" % dw.output_directory)
-                    os.mkdir(dw.output_directory)
-
                 for file in downloaded_files:
                     logger.debug("Save: %s to %s/ folder" % (file, dw.output_directory))
                     shutil.copy2(file, dw.output_directory)
