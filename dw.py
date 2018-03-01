@@ -1,16 +1,13 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-02-28"
-__version__ = '0.1.7'
+__version__ = '0.1.8'
 
-""" TO DO
-- Double check just the -gl (it duplicates the hrefs)
-
+"""
 Sys req:
 - brew install tesseract
 """
 
 from md.uniq import *
-
 from bs4 import BeautifulSoup # pip install bs4
 from urllib.parse import urlparse, urlunparse
 
@@ -31,7 +28,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-app_name = "dw (Downloader)"
+app_name = "dw"
 """ Set working directory so the script can be executed from any location/symlink """
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -53,8 +50,6 @@ logger.setLevel(logging.NOTSET)  # Would be set by a parameter
 logger_verobse_levels = ["INFO", "WARNING", "ERROR", "DEBUG"]
 
 DOWNLOADED_FILE_NAME_LEN = 60
-ARCHIVE_FOLDER = "archive/"
-
 user_agents = ["Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)"]
 
 debug_proxies = {
@@ -222,6 +217,7 @@ class downloader (object):
         self.skip_download = args.skip_download
         self.submit_to_vendors = args.submit_to_vendors
         self.input = args.input
+        self.archive_folder = args.archive_folder
         self.input_type = None  # file | folder
         self.get_links = args.get_links
         self.zip_downloaded_files = args.zip_downloaded_files
@@ -270,7 +266,7 @@ class downloader (object):
 
                 """ Skip compression of already compressed files """
                 if zipfile.is_zipfile(file):
-                    archive_file = ARCHIVE_FOLDER + os.path.basename(file)
+                    archive_file = self.archive_folder + os.path.basename(file)
                     if file == archive_file:
                         archive_files.append(archive_file)
                     else:
@@ -284,15 +280,15 @@ class downloader (object):
                 # Case: Unlimited items in archive
                 if self.max_file_count_per_archive == 0:
                     if zip_name_prefix:
-                        archive_file = ARCHIVE_FOLDER + zip_name_prefix + archive_extension
+                        archive_file = self.archive_folder + zip_name_prefix + archive_extension
                     else:
-                        archive_file = ARCHIVE_FOLDER + archive_name_prefix + archive_extension
+                        archive_file = self.archive_folder + archive_name_prefix + archive_extension
                 else:
                     # Case: Limit items count in archive
                     if zip_name_prefix:
-                        archive_file = ARCHIVE_FOLDER + zip_name_prefix + "-" + str(archive_name_index) + archive_extension
+                        archive_file = self.archive_folder + zip_name_prefix + "-" + str(archive_name_index) + archive_extension
                     else:
-                        archive_file = ARCHIVE_FOLDER + archive_name_prefix + "-" + str(archive_name_index) + archive_extension
+                        archive_file = self.archive_folder + archive_name_prefix + "-" + str(archive_name_index) + archive_extension
 
                     if file_count == self.max_file_count_per_archive:
                         file_count = 0
@@ -326,12 +322,13 @@ class downloader (object):
             url = url.strip()
             url = url.replace(" ", "")
             url = url.replace("hxxp", "http")
+            url = url.replace("]]", "")
+            url = url.replace("[[", "")
             url = url.replace("[.]", ".")
             url = url.replace("[:]", ":")
             url = url.replace("[.", ".")
             url = url.replace(".]", ".")
-            url = url.replace("]]", "")
-            url = url.replace("[[", "")
+
             urls[index] = url
 
             if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", url):
@@ -343,7 +340,7 @@ class downloader (object):
                 if re.match(r"(^/+|^:/+|^:+)", url):
                     """ Remove incorrect scheme, and leave it empty """
                     url = re.sub(r"(^/+|^:/+|^:+)", "", url)
-                    urls[index] = url
+                    urls[index] = "http://" + url
 
             logger.debug("Parsing URL: %s to: %s" % (_url, urls[index]))
             new_urls.append(urls[index])
@@ -378,14 +375,15 @@ class downloader (object):
         mime = None
 
         if isinstance(url, tuple):
-            url = url[0]
             mime = url[1]
+            url = url[0]
+
 
         if url not in links:
             links.append(url)
             if self.verbose_level == "DEBUG":
                 if mime:
-                    print("%s (%s)" % (url, mime))
+                    print("%s, (%s)" % (url, mime))
                 else:
                     print(url)
         else:
@@ -458,8 +456,9 @@ class downloader (object):
             response_headers = response.headers
             if "Content-Type" in response_headers:
                 if response_headers["Content-Type"] in default_mime_types:
+                    content_type = response_headers["Content-Type"]
                     logger.debug("Skip href lookup for: %s - The resource is: %s" % (
-                        url, response_headers["Content-Type"]))
+                        url, content_type))
                     self.update_list((url, response_headers["Content-Type"]), links)
                     return links
 
@@ -516,7 +515,6 @@ class downloader (object):
                         if _href.startswith("http://") or _href.startswith("https://"):
                             _url = _href
                         else:
-
                             if url[-1:] == "/" and _href[:1] == "/":
                                 """  The url ends with / and the href starts with / """
                                 _url = url + _href[1:]
@@ -526,8 +524,9 @@ class downloader (object):
                             else:
                                 _url = url + _href
 
+                    """ Case: -r """
                     if self.recursion:
-                        """ Skip the URL if it's not in allowed list """
+                        """ Case: -rl Skip the href if its host is not the same as the host of the base URL  """
                         if self.crawl_local_host_only:
                             if url_host not in _url:
                                 logger.debug("Skip: %s -> The host: %s not found" % (_url, url_host))
@@ -833,8 +832,8 @@ class downloader (object):
                 exit(-1)
 
         """ When zip enabled and archive folder does not exist """
-        if self.zip_downloaded_files and not os.path.isdir(ARCHIVE_FOLDER):
-            os.makedirs(ARCHIVE_FOLDER)
+        if self.zip_downloaded_files and not os.path.isdir(self.archive_folder):
+            os.makedirs(self.archive_folder)
 
         """ Enable compression if submit option is enabled """
         if self.submit_to_vendors:
@@ -905,6 +904,9 @@ def main(argv):
     """ Script arguments """
     script_args.add_argument("-i", "--input", type=str, action='store', dest='input', required=False,
                              help="Load and deobfuscate URLs from input file, or load files from given folder")
+
+    script_args.add_argument("-a", "--archive", type=str, action='store', dest='archive_folder', required=False, default="archive/",
+                             help="Compressed files would be save into folder specified by -a parameter (Default: 'archive/')")
 
     script_args.add_argument("--deduplicate-input", action='store_true', dest='unique_files', required=False,
                              default=False, help="Deduplicate the list of downloaded files before their compression or submissions")

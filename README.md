@@ -1,4 +1,4 @@
-# dw (Downloader) [BETA]
+# dw [BETA]
 
 **Description**:
 
@@ -204,3 +204,10 @@ Ver. 0.1.7:
 * BC proxy lookup support
 * uniq class for handling deduplication 
 * Submitter class (so far for proxy lookup only, but soon for VT as well)
+
+Ver. 0.1.7:
+
+* If DEBUG mode enabled, it would print detected href's mime type if such was directly sent by the server 
+* Download function prints detailed info about downloaded file like:  file_hash,file_destination,file_mime_type,proxy_category,url 
+* 
+
