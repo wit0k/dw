@@ -11,12 +11,6 @@ Normally to download these files you would have to manually save them (or retrie
 
 The “dw” if instructed to do so, could crawl the site for all available href elements and reconstruct their full URLs properly. The list of retrieved URLs could be automatically downloaded; or you could stop at this stage and decide to modify the list etc. The downloaded files could be compressed (zipped) and eventually automatically submitted to Antivirus vendor.
 
-The tool is quite granular: 
-* You could decide to only crawl for href elements from given URL(s) or to directly download URLs indicated in the input file.
-* You could only compress downloaded files 
-* You could only submit files from given folder to Antivirus vendor
-
-
 **Features**:
 
 * Accepts basic URL obfuscation which gets automatically resolved
@@ -69,7 +63,18 @@ The tool is quite granular:
     http://109.234.36.233/bot/Miner/bin/Release/LoaderBot.vshost.exe.manifest
     ...
   </pre>  
-
+* URL and file deduplication (--dedup, -dd)
+   <pre> 
+    DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:12,262 - dw.py - main - Loaded [1] URLs from: urls.txt
+    INFO - THREAD-140735156867072 - 2018-03-01 14:31:12,262 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+    ...
+    INFO - THREAD-140735156867072 - 2018-03-01 14:31:17,582 - uniq.py - get_unique_files - Deduplication: 8 -> 7
+  </pre>
+* URL Info lookup (--url-info, -ui)
+    <pre>
+    INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,176 - dw.py - get_url_info - QUERY: Vendor: 'bluecoat' | Category: 'Uncategorized' | URL: 'http://176.107.176.75/'
+  </pre>  
+  
 **Use cases:**
 
 <pre> dw.py -z -gl -i urls.txt </pre>
