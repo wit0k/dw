@@ -139,7 +139,7 @@ Script arguments:
   -uif, --url-info-force
                         Force url info lookup for every crawled URL (NOT
                         recommended)
-  --download            Skips the download operation
+  --download            Download loaded or crawled URLs
   -z, --zip             Compress all downloaded files, or files from input
                         folder (If not zipped already)
   --submit              Submit files to AV vendors (Enables -z by default)

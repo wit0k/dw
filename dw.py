@@ -954,7 +954,7 @@ def main(argv):
                              help="Force url info lookup for every crawled URL (NOT recommended)")
 
     script_args.add_argument("--download", action='store_true', dest='download_files', required=False,
-                             default=False, help="Skips the download operation")
+                             default=False, help="Download loaded or crawled URLs")
 
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
                              default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")
