@@ -1,52 +1,33 @@
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:12,261 - dw.py - main - Initialize dw (Downloader)
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:12,262 - dw.py - parse_urls - Parsing URL: ://176.107[[[[[[[[[[.176.75/ to: http://176.107.176.75/
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:12,262 - dw.py - main - Loaded [1] URLs from: urls.txt
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:12,262 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,176 - dw.py - get_url_info - QUERY: Vendor: 'bluecoat' | Category: 'Uncategorized' | URL: 'http://176.107.176.75/'
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:13,178 - dw.py - main - Get links from each URL
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,178 - dw.py - get_hrefs - Getting hrefs from: http://176.107.176.75/
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,312 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://176.107.176.75/
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,452 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://176.107.176.75/Agent100925857.vbs
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:13,452 - dw.py - get_hrefs - Skip href lookup for: http://176.107.176.75/Agent100925857.vbs - The resource is: application/octet-stream
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,518 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://176.107.176.75/DK.msi
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:13,518 - dw.py - get_hrefs - Skip href lookup for: http://176.107.176.75/DK.msi - The resource is: application/x-msdownload
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,584 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable.vbs
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:13,584 - dw.py - get_hrefs - Skip href lookup for: http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable.vbs - The resource is: application/octet-stream
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,650 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable2.vbs
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:13,650 - dw.py - get_hrefs - Skip href lookup for: http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable2.vbs - The resource is: application/octet-stream
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,715 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://176.107.176.75/caffee.msi
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:13,715 - dw.py - get_hrefs - Skip href lookup for: http://176.107.176.75/caffee.msi - The resource is: application/x-msdownload
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,780 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://176.107.176.75/html.html
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:13,780 - dw.py - get_hrefs - Skip href lookup for: http://176.107.176.75/html.html - The resource is: text/html
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,845 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://176.107.176.75/nc.msi
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:13,845 - dw.py - get_hrefs - Skip href lookup for: http://176.107.176.75/nc.msi - The resource is: application/x-msdownload
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:13,846 - dw.py - main - Found [8] hrefs on: http://176.107.176.75/
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,846 - dw.py - main - All retrieved HREFs:
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,846 - dw.py - main - ['http://176.107.176.75/', 'http://176.107.176.75/Agent100925857.vbs', 'http://176.107.176.75/DK.msi', 'http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable.vbs', 'http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable2.vbs', 'http://176.107.176.75/caffee.msi', 'http://176.107.176.75/html.html', 'http://176.107.176.75/nc.msi']
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:13,985 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://176.107.176.75/
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:14,000 - dw.py - get_url_info - CACHE: Vendor: 'bluecoat' | Category: 'Uncategorized' | Domain: '176.107.176.75'
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:14,000 - dw.py - download - af7ddcd7a0b471f38101aa1d5828bd2abd99f428b1dfa0f0fdd2f9450ac24173,text/html,downloads/176.107.176.75 - 2,Uncategorized,http://176.107.176.75/
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:14,068 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://176.107.176.75/Agent100925857.vbs
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:14,153 - dw.py - get_url_info - CACHE: Vendor: 'bluecoat' | Category: 'Uncategorized' | Domain: '176.107.176.75'
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:14,153 - dw.py - download - 626812490d51d5f8a2841e2ecda40e70e34a0dd3e8cc511d9f88315dcf09f208,text/plain,downloads/Agent100925857.vbs - 3,Uncategorized,http://176.107.176.75/Agent100925857.vbs
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:14,222 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://176.107.176.75/DK.msi
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:15,194 - dw.py - get_url_info - CACHE: Vendor: 'bluecoat' | Category: 'Uncategorized' | Domain: '176.107.176.75'
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:15,194 - dw.py - download - eb5a4ee878274d9c834240597a5ff8e1e5983830612baf23486cb5dfbb991c3d,application/x-msi,downloads/DK.msi - 4,Uncategorized,http://176.107.176.75/DK.msi
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:15,261 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable.vbs
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:15,282 - dw.py - get_url_info - CACHE: Vendor: 'bluecoat' | Category: 'Uncategorized' | Domain: '176.107.176.75'
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:15,282 - dw.py - download - 626812490d51d5f8a2841e2ecda40e70e34a0dd3e8cc511d9f88315dcf09f208,text/plain,downloads/ReservationFlightNumber78297326323DateAvailable.vbs - 5,Uncategorized,http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable.vbs
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:15,350 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable2.vbs
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:15,370 - dw.py - get_url_info - CACHE: Vendor: 'bluecoat' | Category: 'Uncategorized' | Domain: '176.107.176.75'
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:15,370 - dw.py - download - 75a0f3ddeb8ac04ade94ffd4769b24d50fd02a61570d0d3d585ad185f5b270b6,text/plain,downloads/ReservationFlightNumber78297326323DateAvailable2.vbs - 6,Uncategorized,http://176.107.176.75/ReservationFlightNumber78297326323DateAvailable2.vbs
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:15,437 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://176.107.176.75/caffee.msi
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:16,614 - dw.py - get_url_info - CACHE: Vendor: 'bluecoat' | Category: 'Uncategorized' | Domain: '176.107.176.75'
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:16,614 - dw.py - download - 94a25136930d13c339a2006fa79dece0d3bd5e9ca3da520fcfd2ebc0b1dd3ef1,application/x-msi,downloads/caffee.msi - 7,Uncategorized,http://176.107.176.75/caffee.msi
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:16,681 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://176.107.176.75/html.html
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:16,688 - dw.py - get_url_info - CACHE: Vendor: 'bluecoat' | Category: 'Uncategorized' | Domain: '176.107.176.75'
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:16,688 - dw.py - download - 47efbc55024ef60bf6d6255ab61d53b631e4cc55db2153f77ca20ffabb526207,text/html,downloads/html.html - 8,Uncategorized,http://176.107.176.75/html.html
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:16,756 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://176.107.176.75/nc.msi
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:17,572 - dw.py - get_url_info - CACHE: Vendor: 'bluecoat' | Category: 'Uncategorized' | Domain: '176.107.176.75'
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:17,572 - dw.py - download - 4bbe55bb073b0d2e11e418f68961b8542e113ecd9d40cb947575c1efc3402944,application/x-msi,downloads/nc.msi - 9,Uncategorized,http://176.107.176.75/nc.msi
-INFO - THREAD-140735156867072 - 2018-03-01 14:31:17,582 - uniq.py - get_unique_files - Deduplication: 8 -> 7
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:17,582 - dw.py - main - Skipping files compression
-DEBUG - THREAD-140735156867072 - 2018-03-01 14:31:17,582 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,704 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,704 - dw.py - parse_urls - Parsing URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png to: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,704 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,373 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,374 - dw.py - parse_urls - Parsing URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png to: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,374 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,374 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,374 - dw.py - main - Skipping href lookup
+INFO - THREAD-140735188877312 - 2018-03-02 16:44:28,025 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:29,410 - submitter.py - get_category - QUERY -> Vendor: bluecoat | Category: Technology/Internet | URL: regenerus.com
+INFO - THREAD-140735188877312 - 2018-03-02 16:44:29,410 - dw.py - download - 5f8de925083b6eb3e24f75d77489962c068216fbde380b3bb2ea826c60274205,image/png,downloads/audionet-100x100.png,Technology/Internet,http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:29,410 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:29,410 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,851 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,852 - dw.py - parse_urls - Parsing URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png to: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,852 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,852 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,852 - dw.py - main - Skipping href lookup
+INFO - THREAD-140735188877312 - 2018-03-02 16:53:57,886 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,348 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,349 - dw.py - parse_urls - Parsing URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png to: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,349 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,349 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,349 - dw.py - main - Skipping href lookup
+INFO - THREAD-140735188877312 - 2018-03-02 16:54:13,383 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
+INFO - THREAD-140735188877312 - 2018-03-02 16:54:13,399 - dw.py - download - 5f8de925083b6eb3e24f75d77489962c068216fbde380b3bb2ea826c60274205,image/png,downloads/audionet-100x100.png - 1,http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,399 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,399 - dw.py - main - Skipping Vendor submission

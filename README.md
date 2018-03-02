@@ -221,5 +221,13 @@ Ver. 0.1.9:
 
 * Params names and documentation update
 
+Ver. 0.2.0:
+
+* --url-info, --submit-url, --email < email_address >, used for querying current proxy category or submitting new one for loaded URLs 
+* --download, would enable download action
+* --skip-download got removed
+* --proxy-category: Specify new proxy category (Default: 'Malicious Sources/Malnets')
+* --proxy-vendors: Comma separated list of PROXY vendors used for URL category lookup and submission
+
 
 

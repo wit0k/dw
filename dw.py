@@ -1,15 +1,14 @@
 __author__  = "Witold Lawacz (wit0k)"
-__date__    = "2018-02-28"
-__version__ = '0.1.9'
+__date__    = "2018-03-02"
+__version__ = '0.2.0'
 
 """
+TO DO:
+- Adopt AV to load_vendors (Proxy already supported)
+
 Sys req:
 - brew install tesseract
 """
-
-from md.uniq import *
-from bs4 import BeautifulSoup # pip install bs4
-from urllib.parse import urlparse, urlunparse
 
 import md.submitter as submission
 import re
@@ -24,8 +23,11 @@ import hashlib
 import magic
 import platform as _os
 import requests
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
+from md.uniq import *
+from bs4 import BeautifulSoup # pip install bs4
+from urllib.parse import urlparse, urlunparse
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 app_name = "dw"
@@ -214,7 +216,7 @@ class downloader (object):
     def __init__(self, args):
 
         self.verbose_level = args.verbose_level
-        self.skip_download = args.skip_download
+        self.download_files = args.download_files
         self.submit_to_vendors = args.submit_to_vendors
         self.input = args.input
         self.archive_folder = args.archive_folder
@@ -232,9 +234,28 @@ class downloader (object):
         self.unique_files = args.unique_files
         self.output_directory = args.output_directory
         self.url_info_force = args.url_info_force
+        self.submitter_email = args.submitter_email
+        self.submit_to_proxy_vendors = args.submit_to_proxy_vendors
+        self.new_proxy_category = args.new_proxy_category
+        self.proxy_vendors = {}
+        self.submitter_obj = submission.submitter()
+
+        """ Load proxy vendors """
+        _proxy_vendor_names = self.to_list(args.proxy_vendors)
+        self.proxy_vendors = self.submitter_obj.load_vendors("PROXY", _proxy_vendor_names, {"submitter_email": self.submitter_email})
 
         """ Check script arguments """
         self.check_args()
+
+    def to_list(self, param, separator=","):
+        param_list = []
+        if param:
+            if separator in param:
+                for p in param.split(","):
+                    param_list.append(p.strip())
+            else:
+                return [param]
+        return param_list
 
     open_zip_files = {}
 
@@ -574,7 +595,8 @@ class downloader (object):
     def get_file_info(self, filepath, url=None):
 
         file_info = []
-
+        proxy_category = None
+        
         """ Get the hash """
         hash_obj = hashlib.sha256()
         with open(filepath, "rb") as file:
@@ -601,7 +623,8 @@ class downloader (object):
 
             if self.url_info_force:
                 proxy_category = self.get_url_info(url)
-            else:
+
+            if self.url_info:
                 proxy_category = self.get_url_info(url_host)
 
             if proxy_category:
@@ -861,48 +884,34 @@ class downloader (object):
 
         """ Skip download in case user specified a folder """
         if self.input_type == "folder":
-            self.skip_download = True
+            self.download_files = False
             self.get_links = False
             self.url_info = False
 
-
-    URL_PROXY_CATEGORIZATION = {}  # Keeps track of proxy categorization
-
     def get_url_info(self, urls, vendor_name="bluecoat"):
 
-        url_submitter = submission.proxy(vendor_name)
+        url_submitter = self.proxy_vendors[vendor_name.upper()]
 
-        if url_submitter.initialized:
+        if url_submitter:
 
             if not isinstance(urls, list):
                 urls = [urls]
 
             for url in urls:
-
-                if url in self.URL_PROXY_CATEGORIZATION.keys():
-                    msg = "CACHE: Vendor: '%s' | Category: '%s' | Domain: '%s'" % (
-                        vendor_name, self.URL_PROXY_CATEGORIZATION[url], url)
-                    logger.info(msg)
-                    return self.URL_PROXY_CATEGORIZATION[url]
-
-                url_obj = urlparse(url, 'http')
-                url_host = url_obj.hostname
-
                 url_category = url_submitter.get_category(url)
 
                 if url_category:
-                    msg = "QUERY: Vendor: '%s' | Category: '%s' | URL: '%s'" % (
-                    vendor_name, url_category, url)
-                    logger.info(msg)
-                    self.URL_PROXY_CATEGORIZATION[url_host] = url_category
-                    self.URL_PROXY_CATEGORIZATION[url] = url_category
+                   pass
 
-
-
+            return  url_category
 
         else:
             logger.error("Vendor: '%s' -> Unable to initialize the submitter class" % vendor_name)
 
+    def submit_url_category(self, url, category):
+
+        for vendor_name, submitter in self.proxy_vendors.items():
+            submitter.submit_category(category, url)
 
 def main(argv):
 
@@ -934,7 +943,7 @@ def main(argv):
                              help="Enable recursive crawling (Applies to -gl), but crawl for hrefs containing the same url host as input url (Sets --recursion-depth 0 and enables -gl)")
 
     script_args.add_argument("-r", "--recursive", action='store_true', dest='recursion', required=False,
-                             default=False, help="Enable recursive crawling (Applies to -gl)")
+                             default=False, help="Enable recursive crawling (Applies to -gl, enables -gl)")
 
     script_args.add_argument("-ui", "--url-info", action='store_true', dest='url_info', required=False,
                              default=False,
@@ -944,7 +953,7 @@ def main(argv):
                              default=False,
                              help="Force url info lookup for every crawled URL (NOT recommended)")
 
-    script_args.add_argument("--skip-download", action='store_true', dest='skip_download', required=False,
+    script_args.add_argument("--download", action='store_true', dest='download_files', required=False,
                              default=False, help="Skips the download operation")
 
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
@@ -953,12 +962,27 @@ def main(argv):
     script_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
                              default=False, help="Submit files to AV vendors (Enables -z by default)")
 
+
+    script_args.add_argument("--submit-url", action='store_true', dest='submit_to_proxy_vendors', required=False,
+                             default=False, help="Submit loaded URLs to PROXY vendors...")
+
+    script_args.add_argument("--proxy-vendors", action='store', dest='proxy_vendors', required=False,
+                             default="bluecoat", help="Comma separated list of PROXY vendors used for URL category lookup and submission")
+
+
     script_args.add_argument("-v", "--verbose", type=str, action='store', dest='verbose_level', required=False,
                              default="INFO",
                              help="Set the logging level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
 
     script_args.add_argument("--debug-requests", action='store_true', dest='requests_debug', required=False,
                              default=False, help="Sends GET/POST requests via local proxy server 127.0.0.1:8080")
+
+    custom_args.add_argument("--email", action='store', dest='submitter_email', required=False,
+                             default="",
+                             help="Specify the submitter's e-mail address")
+
+    custom_args.add_argument("--proxy-category", action='store', dest='new_proxy_category', required=False,
+                             default="Malicious Sources/Malnets", help="Specify new proxy category (Default: 'Malicious Sources/Malnets')")
 
     custom_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
                              default=20, help="Max recursion depth level for -r option (Default: 20)")
@@ -968,7 +992,6 @@ def main(argv):
 
     custom_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
                              help="Insert submission comments (Default: <archive_name>)")
-
 
 
     args = argsparser.parse_args()
@@ -1035,6 +1058,11 @@ def main(argv):
     else:
         logger.debug("Skipping URL info gathering")
 
+    """ Submit loaded URLs to proxy vendors """
+    if dw.submit_to_proxy_vendors:
+        for url in urls:
+            dw.submit_url_category(url, dw.new_proxy_category)
+
     """ Retrieve HREFs for each URL """
     if dw.get_links and urls:
         logger.debug("Get links from each URL")
@@ -1052,7 +1080,7 @@ def main(argv):
         logger.debug("Skipping href lookup")
 
     """ Download if required """
-    if not dw.skip_download:
+    if dw.download_files:
         if hrefs:
             """ Download pulled hrefs """
             downloaded_files = dw.download(hrefs)
