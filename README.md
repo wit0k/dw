@@ -28,11 +28,11 @@ Some of available functionalities:
 
 **Use cases:**
 
-<pre> dw.py -z -gl -i urls.txt </pre>
+<pre> dw.py -i urls.txt -z -gl --download </pre>
 
 * Load and deobfuscate URLs from input file (url.txt) [-i < filer >]
 * Retrieve all available links/hrefs from loaded URLs [-gl]
-* Download all detected links/hrefs [If --skip-download not specified]
+* Download all detected links/hrefs [--download]
 * Compress downloaded files and save in archive/ folder (Default 9 files by zip archive) [-z]
 
 <pre> dw.py -gl --submit -i urls.txt </pre>
