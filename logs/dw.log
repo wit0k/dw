@@ -1,33 +1,14 @@
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,704 - dw.py - main - Initialize dw (Downloader)
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,704 - dw.py - parse_urls - Parsing URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png to: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,704 - dw.py - main - Loaded [1] URLs from: urls.txt
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping URL info gathering
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping href lookup
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping files download
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping files compression
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:19:27,705 - dw.py - main - Skipping Vendor submission
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,373 - dw.py - main - Initialize dw (Downloader)
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,374 - dw.py - parse_urls - Parsing URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png to: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,374 - dw.py - main - Loaded [1] URLs from: urls.txt
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,374 - dw.py - main - Skipping URL info gathering
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:27,374 - dw.py - main - Skipping href lookup
-INFO - THREAD-140735188877312 - 2018-03-02 16:44:28,025 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:29,410 - submitter.py - get_category - QUERY -> Vendor: bluecoat | Category: Technology/Internet | URL: regenerus.com
-INFO - THREAD-140735188877312 - 2018-03-02 16:44:29,410 - dw.py - download - 5f8de925083b6eb3e24f75d77489962c068216fbde380b3bb2ea826c60274205,image/png,downloads/audionet-100x100.png,Technology/Internet,http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:29,410 - dw.py - main - Skipping files compression
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:44:29,410 - dw.py - main - Skipping Vendor submission
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,851 - dw.py - main - Initialize dw (Downloader)
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,852 - dw.py - parse_urls - Parsing URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png to: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,852 - dw.py - main - Loaded [1] URLs from: urls.txt
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,852 - dw.py - main - Skipping URL info gathering
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:53:57,852 - dw.py - main - Skipping href lookup
-INFO - THREAD-140735188877312 - 2018-03-02 16:53:57,886 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,348 - dw.py - main - Initialize dw (Downloader)
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,349 - dw.py - parse_urls - Parsing URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png to: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,349 - dw.py - main - Loaded [1] URLs from: urls.txt
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,349 - dw.py - main - Skipping URL info gathering
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,349 - dw.py - main - Skipping href lookup
-INFO - THREAD-140735188877312 - 2018-03-02 16:54:13,383 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
-INFO - THREAD-140735188877312 - 2018-03-02 16:54:13,399 - dw.py - download - 5f8de925083b6eb3e24f75d77489962c068216fbde380b3bb2ea826c60274205,image/png,downloads/audionet-100x100.png - 1,http://regenerus.com/wp-content/uploads/2013/05/audionet-100x100.png
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,399 - dw.py - main - Skipping files compression
-DEBUG - THREAD-140735188877312 - 2018-03-02 16:54:13,399 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:05,664 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:05,665 - dw.py - parse_urls - Parsing URL: hxxp://lr7ecjzx-site.itempurl[.]com/f/D79612F.exe to: http://lr7ecjzx-site.itempurl.com/f/D79612F.exe
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:05,665 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:05,665 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:07,444 - submitter.py - get_category - QUERY -> Vendor: bluecoat | Category: Malicious Sources/Malnets | URL: http://lr7ecjzx-site.itempurl.com/f/D79612F.exe
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:07,444 - submitter.py - submit_category - Submitting new category: 'Malicious Sources/Malnets' for: http://lr7ecjzx-site.itempurl.com/f/D79612F.exe
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:07,603 - submitter.py - submit_category - Submission NOT REQUIRED -> Vendor: bluecoat | URL: http://lr7ecjzx-site.itempurl.com/f/D79612F.exe | Result: This Web page is already categorized as you believe it should be
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:07,603 - dw.py - main - Skipping href lookup
+INFO - THREAD-140735256657920 - 2018-03-02 21:19:08,086 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://lr7ecjzx-site.itempurl.com/f/D79612F.exe
+INFO - THREAD-140735256657920 - 2018-03-02 21:19:12,895 - dw.py - download - 0668690219909dd79f1d886b67e4fc62c165a46fe809ea6ea228b9658bf1acfc,application/x-dosexec,downloads/D79612F.exe - 0,http://lr7ecjzx-site.itempurl.com/f/D79612F.exe
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:12,896 - dw.py - _zip - Add 'downloads/D79612F.exe - 0' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:12,897 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['D79612F.exe - 0']
+INFO - THREAD-140735256657920 - 2018-03-02 21:19:12,897 - dw.py - submit - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735256657920 - 2018-03-02 21:19:19,261 - dw.py - submit - Submission OK -> archive/samples-1.zip
