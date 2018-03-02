@@ -132,16 +132,21 @@ Script arguments:
                         Enable recursive crawling (Applies to -gl), but crawl
                         for hrefs containing the same url host as input url
                         (Sets --recursion-depth 0 and enables -gl)
-  -r, --recursive       Enable recursive crawling (Applies to -gl)
+  -r, --recursive       Enable recursive crawling (Applies to -gl, enables
+                        -gl)
   -ui, --url-info       Retrieve URL information from supported vendors for
                         all loaded input URLs.
   -uif, --url-info-force
                         Force url info lookup for every crawled URL (NOT
                         recommended)
-  --skip-download       Skips the download operation
+  --download            Skips the download operation
   -z, --zip             Compress all downloaded files, or files from input
                         folder (If not zipped already)
   --submit              Submit files to AV vendors (Enables -z by default)
+  --submit-url          Submit loaded URLs to PROXY vendors...
+  --proxy-vendors PROXY_VENDORS
+                        Comma separated list of PROXY vendors used for URL
+                        category lookup and submission
   -v VERBOSE_LEVEL, --verbose VERBOSE_LEVEL
                         Set the logging level to one of following: INFO,
                         WARNING, ERROR or DEBUG (Default: WARNING)
@@ -150,6 +155,11 @@ Script arguments:
 
 Custom arguments:
 
+  --email SUBMITTER_EMAIL
+                        Specify the submitter's e-mail address
+  --proxy-category NEW_PROXY_CATEGORY
+                        Specify new proxy category (Default: 'Malicious
+                        Sources/Malnets')
   -rd RECURSION_DEPTH, --recursion-depth RECURSION_DEPTH
                         Max recursion depth level for -r option (Default: 20)
   --limit-archive-items MAX_FILE_COUNT_PER_ARCHIVE

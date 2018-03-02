@@ -596,7 +596,7 @@ class downloader (object):
 
         file_info = []
         proxy_category = None
-        
+
         """ Get the hash """
         hash_obj = hashlib.sha256()
         with open(filepath, "rb") as file:
