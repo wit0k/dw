@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-02"
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 """
 TO DO:
@@ -211,6 +211,8 @@ default_mime_types = [
     "application/x-dosexec"
 ]
 
+file_extensions = [".zip", ".7z", ".rar", ".exe", ".dll", ".msi", ".ps1", ".jar", ".vbs"]
+
 class downloader (object):
 
     def __init__(self, args):
@@ -410,6 +412,16 @@ class downloader (object):
         else:
             logger.debug("DEV: URL: '%s' already in links list!" % url)
 
+    def _url_endswith(self, url="", extensions=[]):
+
+        if url:
+            if extensions:
+                for _ext in extensions:
+                    if url.endswith(_ext):
+                        return True
+
+                return False
+
     def get_hrefs(self, url, con=None, links=[], depth=0):
 
         try:
@@ -482,6 +494,11 @@ class downloader (object):
                         url, content_type))
                     self.update_list((url, response_headers["Content-Type"]), links)
                     return links
+
+            """ If the resource is know file extension, but Content-Type is not sent by the server """
+            if self._url_endswith(url, file_extensions):
+                self.update_list(url, links)
+                return links
 
             """ Update visited URLs (Links) """
             self.update_list(url, links)

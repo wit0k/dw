@@ -12,3 +12,121 @@ DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:12,896 - dw.py - _zip - Add 'd
 DEBUG - THREAD-140735256657920 - 2018-03-02 21:19:12,897 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['D79612F.exe - 0']
 INFO - THREAD-140735256657920 - 2018-03-02 21:19:12,897 - dw.py - submit - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
 INFO - THREAD-140735256657920 - 2018-03-02 21:19:19,261 - dw.py - submit - Submission OK -> archive/samples-1.zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:30:46,243 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:30:46,244 - dw.py - parse_urls - Parsing URL: hxxp://caponpellami.com to: http://caponpellami.com
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:30:46,244 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:30:46,244 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:30:46,244 - dw.py - main - Get links from each URL
+INFO - THREAD-140735175630848 - 2018-03-03 07:30:46,244 - dw.py - get_hrefs - Getting hrefs from: http://caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:30:47,211 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:30:47,618 - dw.py - main - Found [10] hrefs on: http://caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:30:47,618 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735175630848 - 2018-03-03 07:30:47,618 - dw.py - main - ['http://caponpellami.com', 'http://caponpellami.com/Loki%201.8.zip', 'http://caponpellami.com/Panel.essseeee/', 'http://caponpellami.com/Panel.zip', 'http://caponpellami.com/alos/', 'http://caponpellami.com/cgi-bin/', 'http://caponpellami.com/chh.eseeeee/', 'http://caponpellami.com/dio/', 'http://caponpellami.com/law/', 'http://caponpellami.com/pasc.eseeee/']
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:30:47,618 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:30:47,618 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:30:47,618 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:31:37,392 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:31:37,392 - dw.py - parse_urls - Parsing URL: hxxp://caponpellami.com to: http://caponpellami.com
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:31:37,392 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:31:37,392 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:31:37,392 - dw.py - main - Get links from each URL
+INFO - THREAD-140735175630848 - 2018-03-03 07:31:37,392 - dw.py - get_hrefs - Getting hrefs from: http://caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:31:37,807 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:31:38,316 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Loki%201.8.zip
+INFO - THREAD-140735175630848 - 2018-03-03 07:34:29,874 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.essseeee/
+INFO - THREAD-140735175630848 - 2018-03-03 07:34:30,298 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.essseeee/five/
+INFO - THREAD-140735175630848 - 2018-03-03 07:34:32,895 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.essseeee/five/fre.php
+INFO - THREAD-140735175630848 - 2018-03-03 07:34:35,664 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.essseeee/five/inc/
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:34:35,664 - dw.py - get_hrefs - Skip href lookup for: http://caponpellami.com/Panel.essseeee/five/inc/ - The resource is: text/html
+INFO - THREAD-140735175630848 - 2018-03-03 07:34:35,870 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.zip
+INFO - THREAD-140735175630848 - 2018-03-03 07:35:27,779 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/alos/
+INFO - THREAD-140735175630848 - 2018-03-03 07:35:28,296 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/alos/dio/
+INFO - THREAD-140735175630848 - 2018-03-03 07:35:28,708 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/cgi-bin/
+INFO - THREAD-140735175630848 - 2018-03-03 07:35:29,215 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/chh.eseeeee/
+INFO - THREAD-140735175630848 - 2018-03-03 07:35:29,622 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/chh.eseeeee/dio%20(1).zip
+INFO - THREAD-140735175630848 - 2018-03-03 07:36:01,258 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/dio/
+INFO - THREAD-140735175630848 - 2018-03-03 07:36:01,676 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/law/
+INFO - THREAD-140735175630848 - 2018-03-03 07:36:02,615 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/law/dio/
+INFO - THREAD-140735175630848 - 2018-03-03 07:36:03,031 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/pasc.eseeee/
+INFO - THREAD-140735175630848 - 2018-03-03 07:36:03,461 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/pasc.eseeee/dio/
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:36:03,729 - dw.py - main - Found [17] hrefs on: http://caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:36:03,729 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735175630848 - 2018-03-03 07:36:03,729 - dw.py - main - ['http://caponpellami.com', 'http://caponpellami.com/Loki%201.8.zip', 'http://caponpellami.com/Panel.essseeee/', 'http://caponpellami.com/Panel.essseeee/five/', 'http://caponpellami.com/Panel.essseeee/five/fre.php', 'http://caponpellami.com/Panel.essseeee/five/inc/', 'http://caponpellami.com/Panel.zip', 'http://caponpellami.com/alos/', 'http://caponpellami.com/alos/dio/', 'http://caponpellami.com/cgi-bin/', 'http://caponpellami.com/chh.eseeeee/', 'http://caponpellami.com/chh.eseeeee/dio%20(1).zip', 'http://caponpellami.com/dio/', 'http://caponpellami.com/law/', 'http://caponpellami.com/law/dio/', 'http://caponpellami.com/pasc.eseeee/', 'http://caponpellami.com/pasc.eseeee/dio/']
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:36:03,729 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:36:03,729 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:36:03,729 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:37,421 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:37,422 - dw.py - parse_urls - Parsing URL: hxxp://caponpellami.com to: http://caponpellami.com
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:37,422 - dw.py - main - Loaded [1] URLs from: urls.txt
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:37,422 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:37,422 - dw.py - main - Get links from each URL
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:37,422 - dw.py - get_hrefs - Getting hrefs from: http://caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:37,840 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:38,481 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Loki%201.8.zip
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:38,714 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.essseeee/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:39,249 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.essseeee/five/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:41,686 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.essseeee/five/fre.php
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:44,161 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.essseeee/five/inc/
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:44,161 - dw.py - get_hrefs - Skip href lookup for: http://caponpellami.com/Panel.essseeee/five/inc/ - The resource is: text/html
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:44,366 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/Panel.zip
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:44,614 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/alos/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:45,036 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/alos/dio/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:45,451 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/cgi-bin/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:45,890 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/chh.eseeeee/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:46,320 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/chh.eseeeee/dio%20(1).zip
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:46,529 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/dio/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:47,014 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/law/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:47,532 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/law/dio/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:48,035 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/pasc.eseeee/
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:48,551 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: http://caponpellami.com/pasc.eseeee/dio/
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:48,759 - dw.py - main - Found [17] hrefs on: http://caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:48,760 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735175630848 - 2018-03-03 07:46:48,760 - dw.py - main - ['http://caponpellami.com', 'http://caponpellami.com/Loki%201.8.zip', 'http://caponpellami.com/Panel.essseeee/', 'http://caponpellami.com/Panel.essseeee/five/', 'http://caponpellami.com/Panel.essseeee/five/fre.php', 'http://caponpellami.com/Panel.essseeee/five/inc/', 'http://caponpellami.com/Panel.zip', 'http://caponpellami.com/alos/', 'http://caponpellami.com/alos/dio/', 'http://caponpellami.com/cgi-bin/', 'http://caponpellami.com/chh.eseeeee/', 'http://caponpellami.com/chh.eseeeee/dio%20(1).zip', 'http://caponpellami.com/dio/', 'http://caponpellami.com/law/', 'http://caponpellami.com/law/dio/', 'http://caponpellami.com/pasc.eseeee/', 'http://caponpellami.com/pasc.eseeee/dio/']
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:48,760 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:48,760 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:46:48,760 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:46,483 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:46,484 - dw.py - parse_urls - Parsing URL: http://caponpellami.com/Loki%201.8.zip
+ to: http://caponpellami.com/Loki%201.8.zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:46,484 - dw.py - parse_urls - Parsing URL: http://caponpellami.com/Panel.zip
+ to: http://caponpellami.com/Panel.zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:46,484 - dw.py - parse_urls - Parsing URL: http://caponpellami.com/Panel.essseeee/five/fre.php
+ to: http://caponpellami.com/Panel.essseeee/five/fre.php
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:46,484 - dw.py - parse_urls - Parsing URL: http://caponpellami.com/chh.eseeeee/dio%20(1).zip to: http://caponpellami.com/chh.eseeeee/dio%20(1).zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:46,484 - dw.py - main - Loaded [4] URLs from: urls.txt
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:47,879 - submitter.py - get_category - QUERY -> Vendor: bluecoat | Category: Malicious Sources/Malnets | URL: http://caponpellami.com/Loki%201.8.zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:48,379 - submitter.py - get_category - QUERY -> Vendor: bluecoat | Category: Malicious Sources/Malnets | URL: http://caponpellami.com/Panel.zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:48,882 - submitter.py - get_category - QUERY -> Vendor: bluecoat | Category: Malicious Sources/Malnets | URL: http://caponpellami.com/Panel.essseeee/five/fre.php
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:49,386 - submitter.py - get_category - QUERY -> Vendor: bluecoat | Category: Malicious Sources/Malnets | URL: http://caponpellami.com/chh.eseeeee/dio%20(1).zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:49,387 - dw.py - main - Skipping href lookup
+INFO - THREAD-140735175630848 - 2018-03-03 07:47:49,792 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://caponpellami.com/Loki%201.8.zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:55,737 - submitter.py - get_category - CACHE -> Vendor: bluecoat | URL: caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:47:55,738 - dw.py - download - 8dbefc290211b079e19dcdb653f29fa60de71b372aa16fb36c3402f32f883088,gzip ERROR: Unknown compression format,downloads/Loki%201.8.zip,Malicious Sources/Malnets,http://caponpellami.com/Loki%201.8.zip
+INFO - THREAD-140735175630848 - 2018-03-03 07:47:56,030 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://caponpellami.com/Panel.zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:47:58,583 - submitter.py - get_category - CACHE -> Vendor: bluecoat | URL: caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:47:58,583 - dw.py - download - 9ea43ebf7f10277adddd1674a8539893fa21a501e4f2fb2a59ff5c541ec147e8,gzip ERROR: Unknown compression format,downloads/Panel.zip,Malicious Sources/Malnets,http://caponpellami.com/Panel.zip
+INFO - THREAD-140735175630848 - 2018-03-03 07:48:00,739 - dw.py - download - URL Download -> FAILED -> [HTTP404] - URL: http://caponpellami.com/Panel.essseeee/five/fre.php
+INFO - THREAD-140735175630848 - 2018-03-03 07:48:01,144 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://caponpellami.com/chh.eseeeee/dio%20(1).zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:48:03,672 - submitter.py - get_category - CACHE -> Vendor: bluecoat | URL: caponpellami.com
+INFO - THREAD-140735175630848 - 2018-03-03 07:48:03,672 - dw.py - download - 845eacd335664c3e0e2488999a1a98039b148537f791253fde26b77f21f45efe,gzip ERROR: Unknown compression format,downloads/dio%20(1).zip,Malicious Sources/Malnets,http://caponpellami.com/chh.eseeeee/dio%20(1).zip
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:48:03,673 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:48:03,673 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,457 - dw.py - main - Initialize dw (Downloader)
+WARNING - THREAD-140735175630848 - 2018-03-03 07:51:37,458 - dw.py - check_args - Input file: downloads/mal not found!
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,458 - dw.py - main - Loaded [7] files from: downloads/mal
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,458 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,458 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,458 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,461 - dw.py - _zip - Add 'downloads/mal/bin.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,467 - dw.py - compress_files - Copy: downloads/mal/build.exe to: archive/build.exe
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,469 - dw.py - _zip - Add 'downloads/mal/CookComputing.XmlRpcV2.dll' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,472 - dw.py - _zip - Add 'downloads/mal/Loki_original.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,474 - dw.py - _zip - Add 'downloads/mal/MRG.Controls.UI.dll' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,475 - dw.py - _zip - Add 'downloads/mal/NReadability.dll' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,476 - dw.py - _zip - Add 'downloads/mal/SgmlReaderDll.dll' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,479 - dw.py - main - Archive: archive/build.exe -> Members: []
+DEBUG - THREAD-140735175630848 - 2018-03-03 07:51:37,479 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['bin.exe', 'CookComputing.XmlRpcV2.dll', 'Loki_original.exe', 'MRG.Controls.UI.dll', 'NReadability.dll', 'SgmlReaderDll.dll']
+INFO - THREAD-140735175630848 - 2018-03-03 07:51:37,479 - dw.py - submit - Submitting: archive/build.exe to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735175630848 - 2018-03-03 07:51:41,958 - dw.py - submit - Submission OK -> archive/build.exe
+INFO - THREAD-140735175630848 - 2018-03-03 07:51:41,958 - dw.py - submit - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735175630848 - 2018-03-03 07:51:54,111 - dw.py - submit - Submission OK -> archive/samples-1.zip

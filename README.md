@@ -191,5 +191,9 @@ Ver. 0.2.0:
 * --proxy-category: Specify new proxy category (Default: 'Malicious Sources/Malnets')
 * --proxy-vendors: Comma separated list of PROXY vendors used for URL category lookup and submission
 
+Ver. 0.2.1:
+
+* Crawling for a hrefs shall be faster (the tool would flag as final href if the resource has known file extensions)
+
 
 
