@@ -1,10 +1,11 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-02"
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 
 """
 TO DO:
 - Adopt AV to load_vendors (Proxy already supported)
+- Make links table global, to avoid some duplication...
 
 Sys req:
 - brew install tesseract
@@ -363,7 +364,13 @@ class downloader (object):
                 if re.match(r"(^/+|^:/+|^:+)", url):
                     """ Remove incorrect scheme, and leave it empty """
                     url = re.sub(r"(^/+|^:/+|^:+)", "", url)
-                    urls[index] = "http://" + url
+                    url = "http://" + url
+                    url = url.replace(r"///", r"//")
+                    urls[index] = url
+                else:
+                    url = "http://" + url
+                    url = url.replace(r"///", r"//")
+                    urls[index] = url
 
             logger.debug("Parsing URL: %s to: %s" % (_url, urls[index]))
             new_urls.append(urls[index])
@@ -1057,8 +1064,12 @@ def main(argv):
         _uniq = uniq()
         if downloaded_files:
             downloaded_files = _uniq.get_unique_files(downloaded_files)
+            print("Distinct files:")
+            print(*downloaded_files, sep="\n")
         elif urls:
             urls = _uniq.get_unique_entries(urls)
+            print("Distinct URLs:")
+            print(*urls, sep="\n")
 
     """ Save deduplicated loaded files to another directory """
     if dw.output_directory:

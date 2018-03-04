@@ -195,5 +195,10 @@ Ver. 0.2.1:
 
 * Crawling for a hrefs shall be faster (the tool would flag as final href if the resource has known file extensions)
 
+Ver. 0.2.2:
+
+* Print deduplicated links
+* Minor fixes
+
 
 
