@@ -1,11 +1,12 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-02"
-__version__ = '0.2.2'
+__version__ = '0.2.3'
 
 """
 TO DO:
 - Adopt AV to load_vendors (Proxy already supported)
 - Make links table global, to avoid some duplication...
+- Print file info, when only loding files (like hash etc.)
 
 Sys req:
 - brew install tesseract
@@ -25,6 +26,9 @@ import magic
 import platform as _os
 import requests
 
+import md.smb as cifs
+
+from md.pastebin import *
 from md.uniq import *
 from bs4 import BeautifulSoup # pip install bs4
 from urllib.parse import urlparse, urlunparse
@@ -242,6 +246,7 @@ class downloader (object):
         self.new_proxy_category = args.new_proxy_category
         self.proxy_vendors = {}
         self.submitter_obj = submission.submitter()
+        self.api_key_pastebin = args.api_key_pastebin
 
         """ Load proxy vendors """
         _proxy_vendor_names = self.to_list(args.proxy_vendors)
@@ -891,10 +896,6 @@ class downloader (object):
         if self.zip_downloaded_files and not os.path.isdir(self.archive_folder):
             os.makedirs(self.archive_folder)
 
-        """ Enable compression if submit option is enabled """
-        if self.submit_to_vendors:
-            self.zip_downloaded_files = True
-
         """ Enable -gl if recursive mode (-r) selected """
         if self.recursion:
             logger.debug("Recursive mode specified, hence enabling '-gl' ...")
@@ -911,6 +912,13 @@ class downloader (object):
             self.download_files = False
             self.get_links = False
             self.url_info = False
+
+        """ Enable compression if submit option is enabled """
+        if self.submit_to_vendors:
+            self.zip_downloaded_files = True
+            self.get_links = False
+            self.recursion = False
+            self.download_files = True
 
     def get_url_info(self, urls, vendor_name="bluecoat"):
 
@@ -936,6 +944,15 @@ class downloader (object):
 
         for vendor_name, submitter in self.proxy_vendors.items():
             submitter.submit_category(category, url)
+
+    def uplaod_to_pastebin(self, data, is_guest=True, paste_name='Example Script', paste_format='Python', paste_type='0', paste_expire='1H'):
+
+        if self.api_key_pastebin:
+            api = PasteBin(api_dev_key=self.api_key_pastebin)
+
+            data = "Testing PasteBin API..."
+            paste_url = api.paste(data, guest=is_guest, name=paste_name, format=paste_format, private=paste_type, expire=paste_expire)
+            print("PasteBin URL: %s" % paste_url)
 
 def main(argv):
 
@@ -1017,6 +1034,9 @@ def main(argv):
     custom_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
                              help="Insert submission comments (Default: <archive_name>)")
 
+    custom_args.add_argument("--api-pastebin", action='store', dest='api_key_pastebin', required=False,
+                             help="Insert API dev ket for PasteBin")
+
 
     args = argsparser.parse_args()
     argc = argv.__len__()
@@ -1046,6 +1066,11 @@ def main(argv):
     hrefs = []
     downloaded_files = []
     archives = []
+    links = []
+
+    #smb = cifs.smb()
+    #smb.connect("185.176.221.45")
+    #sys.exit(-1)
 
     """ Load URLs from input file, or directly load files from a folder """
     if dw.input:
@@ -1095,7 +1120,7 @@ def main(argv):
     if dw.get_links and urls:
         logger.debug("Get links from each URL")
         for url in urls:
-            _urls = dw.get_hrefs(url)
+            _urls = dw.get_hrefs(url, links=links)
             logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
             hrefs.extend(_urls)
 

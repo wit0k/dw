@@ -200,5 +200,7 @@ Ver. 0.2.2:
 * Print deduplicated links
 * Minor fixes
 
+Ver. 0.2.3:
 
+* Cosmetic changes (working on adding smb support)
 
