@@ -1,12 +1,13 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-02"
-__version__ = '0.2.3'
+__version__ = '0.2.4'
 
 """
 TO DO:
 - Adopt AV to load_vendors (Proxy already supported)
-- Make links table global, to avoid some duplication...
 - Print file info, when only loding files (like hash etc.)
+- When --download and -gl are specified, files do not get downloaded ...
+- Add user agent param and user agent randomization 
 
 Sys req:
 - brew install tesseract
@@ -57,8 +58,9 @@ logger.setLevel(logging.NOTSET)  # Would be set by a parameter
 logger_verobse_levels = ["INFO", "WARNING", "ERROR", "DEBUG"]
 
 DOWNLOADED_FILE_NAME_LEN = 60
-user_agents = ["Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)"]
-
+current_user_agent_index = 0
+user_agents = ["Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)", "Wget/1.19.4 (darwin15.6.0)"]
+user_headers = {'Accept': '*/*'}
 debug_proxies = {
   'http': 'http://127.0.0.1:8080',
   'https': 'http://127.0.0.1:8080'
@@ -247,6 +249,7 @@ class downloader (object):
         self.proxy_vendors = {}
         self.submitter_obj = submission.submitter()
         self.api_key_pastebin = args.api_key_pastebin
+        self.user_agent = args.user_agent
 
         """ Load proxy vendors """
         _proxy_vendor_names = self.to_list(args.proxy_vendors)
@@ -455,7 +458,8 @@ class downloader (object):
 
             if not con:
                 con = requests.Session()
-                con.headers.update({'User-Agent': user_agents[0]})
+                con.headers.update({'User-Agent': self.get_user_agent()})
+                con.headers.update(user_headers)
 
                 """ Set connection/session properties """
                 if self.requests_debug:
@@ -474,7 +478,7 @@ class downloader (object):
                 return links
 
             """ Obtain the final URL after redirection """
-            if response:
+            if response is not None:
                 if not response.status_code == 200:
                     if response.status_code in [301, 302]:
                         try:
@@ -663,6 +667,13 @@ class downloader (object):
 
         return ",".join(file_info)
 
+    def get_user_agent(self):
+
+        if self.user_agent:
+            return self.user_agent
+
+        return user_agents[current_user_agent_index]
+
     def download(self, urls):
 
         download_index = 0
@@ -670,7 +681,10 @@ class downloader (object):
         sha256 = ""
 
         con = requests.Session()
-        con.headers.update({'User-Agent': user_agents[0]})
+        con.headers.update({'User-Agent': self.get_user_agent()})
+        con.headers.update(user_headers)
+
+        logger.debug("Headers: %s" % con.headers.items())
 
         """ Set connection/session properties """
         if self.requests_debug:
@@ -869,6 +883,7 @@ class downloader (object):
             logger.warning("Input file: %s not found!" % self.input)
             if os.path.isdir(self.input):
                 self.input_type = "folder"
+                logger.info("Input folder set to: %s" % self.input)
             else:
                 logger.error("Input file or folder: %s not found!" % self.input)
                 exit(-1)
@@ -918,7 +933,9 @@ class downloader (object):
             self.zip_downloaded_files = True
             self.get_links = False
             self.recursion = False
-            self.download_files = True
+
+            if self.input_type != "folder":
+                self.download_files = True
 
     def get_url_info(self, urls, vendor_name="bluecoat"):
 
@@ -1036,6 +1053,10 @@ def main(argv):
 
     custom_args.add_argument("--api-pastebin", action='store', dest='api_key_pastebin', required=False,
                              help="Insert API dev ket for PasteBin")
+
+
+    custom_args.add_argument("--user-agent", action='store', dest='user_agent', required=False,
+                             help="Inser custom user-agent string, which would be used by -gl and --download")
 
 
     args = argsparser.parse_args()

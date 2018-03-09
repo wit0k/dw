@@ -1,0 +1,7 @@
+DEBUG - THREAD-140735208169472 - 2018-03-09 21:46:38,720 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735208169472 - 2018-03-09 21:46:38,720 - dw.py - main - Loaded [0] URLs from: urls.txt
+DEBUG - THREAD-140735208169472 - 2018-03-09 21:46:38,720 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735208169472 - 2018-03-09 21:46:38,720 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735208169472 - 2018-03-09 21:46:38,721 - dw.py - download - Headers: ItemsView({'User-Agent': 'Trust Me', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'})
+DEBUG - THREAD-140735208169472 - 2018-03-09 21:46:38,721 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735208169472 - 2018-03-09 21:46:38,721 - dw.py - main - Skipping Vendor submission

@@ -204,3 +204,6 @@ Ver. 0.2.3:
 
 * Cosmetic changes (working on adding smb support)
 
+Ver. 0.2.4:
+
+* The session would use the user-agent specified by the user via --user-agent, if such is not specified it would use the one pointed by current_user_agent_index variable
