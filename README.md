@@ -207,3 +207,7 @@ Ver. 0.2.3:
 Ver. 0.2.4:
 
 * The session would use the user-agent specified by the user via --user-agent, if such is not specified it would use the one pointed by current_user_agent_index variable
+
+Ver. 0.2.5:
+
+* Cosmetic changes (--submit is not disabling -gl nor -rl params)

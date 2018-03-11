@@ -1,13 +1,12 @@
 __author__  = "Witold Lawacz (wit0k)"
-__date__    = "2018-03-02"
-__version__ = '0.2.4'
+__date__    = "2018-03-11"
+__version__ = '0.2.5'
 
 """
 TO DO:
 - Adopt AV to load_vendors (Proxy already supported)
 - Print file info, when only loding files (like hash etc.)
-- When --download and -gl are specified, files do not get downloaded ...
-- Add user agent param and user agent randomization 
+- Add user agent randomization 
 
 Sys req:
 - brew install tesseract
@@ -931,8 +930,8 @@ class downloader (object):
         """ Enable compression if submit option is enabled """
         if self.submit_to_vendors:
             self.zip_downloaded_files = True
-            self.get_links = False
-            self.recursion = False
+            #self.get_links = False
+            #self.recursion = False
 
             if self.input_type != "folder":
                 self.download_files = True
