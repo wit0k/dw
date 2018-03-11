@@ -119,6 +119,12 @@ Custom arguments:
                         Unlimited]
   -sc SUBMISSION_COMMENTS, --submission-comments SUBMISSION_COMMENTS
                         Insert submission comments (Default: <archive_name>)
+  --api-pastebin API_KEY_PASTEBIN
+                        Insert API dev ket for PasteBin
+  --user-agent USER_AGENT
+                        Inser custom user-agent string, which would be used by
+                        -gl and --download
+
 </pre>
  
 **Change log:**
