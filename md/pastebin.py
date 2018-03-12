@@ -295,7 +295,6 @@ private_values = {
     '2': 'Private'
 }
 
-
 class PasteBin:
     def __init__(self, api_dev_key, api_user_key=None, timeout=10):
 

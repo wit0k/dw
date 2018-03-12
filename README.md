@@ -79,6 +79,18 @@ Script arguments:
   -o OUTPUT_DIRECTORY   Copy loaded/deduplicated files into specified output
                         directory (Applicable when -dd is used)
   -dd, --dedup          Deduplicate the input and downloaded files
+  -v VERBOSE_LEVEL, --verbose VERBOSE_LEVEL
+                        Set the logging level to one of following: INFO,
+                        WARNING, ERROR or DEBUG (Default: WARNING)
+  --download            Download loaded or crawled URLs
+  -z, --zip             Compress all downloaded files, or files from input
+                        folder (If not zipped already)
+  --limit-archive-items MAX_FILE_COUNT_PER_ARCHIVE
+                        Sets the limit of files per archive (Default: 9). [0 =
+                        Unlimited]
+
+Crawling arguments:
+
   -gl, --get-links      Retrieve all available links/hrefs from loaded URLs
   -rl, --recursive-hostonly
                         Enable recursive crawling (Applies to -gl), but crawl
@@ -86,45 +98,54 @@ Script arguments:
                         (Sets --recursion-depth 0 and enables -gl)
   -r, --recursive       Enable recursive crawling (Applies to -gl, enables
                         -gl)
+  -rd RECURSION_DEPTH, --recursion-depth RECURSION_DEPTH
+                        Max recursion depth level for -r option (Default: 20)
+
+Networking arguments:
+
+  --user-agent USER_AGENT
+                        User-agent string, which would be used by -gl and
+                        --download
+  --debug-requests      Sends GET/POST requests via local proxy server
+                        127.0.0.1:8080
+
+submission arguments:
+
+  --submit              Submit files to AV vendors (Enables -z by default)
+  --submit-url          Submit loaded URLs to PROXY vendors...
   -ui, --url-info       Retrieve URL information from supported vendors for
                         all loaded input URLs.
   -uif, --url-info-force
                         Force url info lookup for every crawled URL (NOT
                         recommended)
-  --download            Download loaded or crawled URLs
-  -z, --zip             Compress all downloaded files, or files from input
-                        folder (If not zipped already)
-  --submit              Submit files to AV vendors (Enables -z by default)
-  --submit-url          Submit loaded URLs to PROXY vendors...
+  -sc SUBMISSION_COMMENTS, --submission-comments SUBMISSION_COMMENTS
+                        Insert submission comments (Default: <archive_name>)
   --proxy-vendors PROXY_VENDORS
                         Comma separated list of PROXY vendors used for URL
                         category lookup and submission
-  -v VERBOSE_LEVEL, --verbose VERBOSE_LEVEL
-                        Set the logging level to one of following: INFO,
-                        WARNING, ERROR or DEBUG (Default: WARNING)
-  --debug-requests      Sends GET/POST requests via local proxy server
-                        127.0.0.1:8080
-
-Custom arguments:
-
   --email SUBMITTER_EMAIL
                         Specify the submitter's e-mail address
   --proxy-category NEW_PROXY_CATEGORY
-                        Specify new proxy category (Default: 'Malicious
-                        Sources/Malnets')
-  -rd RECURSION_DEPTH, --recursion-depth RECURSION_DEPTH
-                        Max recursion depth level for -r option (Default: 20)
-  --limit-archive-items MAX_FILE_COUNT_PER_ARCHIVE
-                        Sets the limit of files per archive (Default: 9). [0 =
-                        Unlimited]
-  -sc SUBMISSION_COMMENTS, --submission-comments SUBMISSION_COMMENTS
-                        Insert submission comments (Default: <archive_name>)
-  --api-pastebin API_KEY_PASTEBIN
-                        Insert API dev ket for PasteBin
-  --user-agent USER_AGENT
-                        Inser custom user-agent string, which would be used by
-                        -gl and --download
+                        Specify new proxy category (If not specified default
+                        proxy category will be used)
 
+pastebin arguments:
+
+  --pastebin-api PASTEBIN_API_KEY
+                        API dev key for pastebin.com (If not specified, other
+                        pastebin params would be ignored)
+  -pu, --pastebin-upload
+                        Uploads stdout to pastebin and prints the paste's url
+  -pv PASTEBIN_TYPE, --pastebin-visibility PASTEBIN_TYPE
+                        Set the paste visibility: 0 - Public or 2 - Private
+                        (Default: 0)
+  -pe PASTEBIN_PASTE_EXPIRATION, --pastebin-expiration PASTEBIN_PASTE_EXPIRATION
+                        Set the paste expiration time to one of following:
+                        'N': 'Never', '10M': '10 Minutes','1H': '1 Hour','1D':
+                        '1 Day','1W': '1 Week','2W': '2 Weeks','1M': '1 Month'
+                        ... (Default: 1H)
+  -pt PASTEBIN_TITLE, --pastebin-title PASTEBIN_TITLE
+                        Paste title
 </pre>
  
 **Change log:**
@@ -217,3 +238,11 @@ Ver. 0.2.4:
 Ver. 0.2.5:
 
 * Cosmetic changes (--submit is not disabling -gl nor -rl params)
+
+Ver. 0.2.6:
+
+* New params for pastebin upload (run -h to find out)
+* Few cosmetic and printing code changes 
+* Changed the display of -h param groups 
+* No need to specify -i urls.txr (if urls.txt exist)
+* Check_args function adjustment  

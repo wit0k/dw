@@ -49,6 +49,8 @@ class proxy(submitter):
     class bluecoat():
 
         name = "bluecoat"
+        default_category = "Malicious Sources/Malnets"
+
         POST_DATA = {
             "headers": {
                 'X-Requested-With': 'XMLHttpRequest',
@@ -181,6 +183,9 @@ class proxy(submitter):
             return (current_categorization)
 
         def submit_category(self, new_category, url):
+
+            if new_category == "":
+                new_category = self.default_category
 
             if new_category not in self.category_mappings.keys():
                 logger.error("New category: %s not implemented yet. Skip the submission")

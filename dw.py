@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
-__date__    = "2018-03-11"
-__version__ = '0.2.5'
+__date__    = "2018-03-12"
+__version__ = '0.2.6'
 
 """
 TO DO:
@@ -27,8 +27,8 @@ import platform as _os
 import requests
 
 import md.smb as cifs
+import md.pastebin as _paste_bin
 
-from md.pastebin import *
 from md.uniq import *
 from bs4 import BeautifulSoup # pip install bs4
 from urllib.parse import urlparse, urlunparse
@@ -247,8 +247,14 @@ class downloader (object):
         self.new_proxy_category = args.new_proxy_category
         self.proxy_vendors = {}
         self.submitter_obj = submission.submitter()
-        self.api_key_pastebin = args.api_key_pastebin
+        self.pastebin_api_key = args.pastebin_api_key
         self.user_agent = args.user_agent
+
+        """ pastebin """
+        self.stdout_to_pastebin = args.stdout_to_pastebin
+        self.pastebin_type = str(args.pastebin_type)
+        self.pastebin_paste_expiration = args.pastebin_paste_expiration
+        self.pastebin_title = args.pastebin_title
 
         """ Load proxy vendors """
         _proxy_vendor_names = self.to_list(args.proxy_vendors)
@@ -673,7 +679,7 @@ class downloader (object):
 
         return user_agents[current_user_agent_index]
 
-    def download(self, urls):
+    def download(self, urls, report=[]):
 
         download_index = 0
         downloaded_files = []
@@ -790,7 +796,7 @@ class downloader (object):
             print(file_info)
             logger.info(file_info)
 
-
+            report.append(file_info)
 
 
         return downloaded_files
@@ -884,7 +890,7 @@ class downloader (object):
                 self.input_type = "folder"
                 logger.info("Input folder set to: %s" % self.input)
             else:
-                logger.error("Input file or folder: %s not found!" % self.input)
+                logger.error("Input file or folder: %s not found! Use -i <param> to specify the input data" % self.input)
                 exit(-1)
         else:
             self.input_type = "file"
@@ -936,6 +942,20 @@ class downloader (object):
             if self.input_type != "folder":
                 self.download_files = True
 
+        """ pastebin params """
+        if self.stdout_to_pastebin:
+            if not self.pastebin_api_key:
+                logger.error("pastebin: API key not specified !")
+                sys.exit(-1)
+
+        if self.pastebin_type not in _paste_bin.private_values.keys():
+            logger.error("pastebin: Incorrect paste type !")
+            sys.exit(-1)
+
+        if self.pastebin_paste_expiration not in _paste_bin.expire_values.keys():
+            logger.error("pastebin: Incorrect expiration time !")
+            sys.exit(-1)
+
     def get_url_info(self, urls, vendor_name="bluecoat"):
 
         url_submitter = self.proxy_vendors[vendor_name.upper()]
@@ -955,18 +975,27 @@ class downloader (object):
 
         else:
             logger.error("Vendor: '%s' -> Unable to initialize the submitter class" % vendor_name)
+            return "Error"
 
     def submit_url_category(self, url, category):
 
         for vendor_name, submitter in self.proxy_vendors.items():
             submitter.submit_category(category, url)
 
-    def uplaod_to_pastebin(self, data, is_guest=True, paste_name='Example Script', paste_format='Python', paste_type='0', paste_expire='1H'):
+    def uplaod_to_pastebin(self, data_entries, paste_name='Example Script', paste_type='0', paste_expire='1H', paste_format='Python', is_guest=True):
 
-        if self.api_key_pastebin:
-            api = PasteBin(api_dev_key=self.api_key_pastebin)
+        _ldata = []
+        for entry in data_entries:
+            if isinstance(entry, list):
+                for i in entry:
+                    _ldata.append(i)
+            else:
+                _ldata.append(entry)
 
-            data = "Testing PasteBin API..."
+        data = "\n".join(_ldata)
+
+        if self.pastebin_api_key:
+            api = _paste_bin.PasteBin(api_dev_key=self.pastebin_api_key)
             paste_url = api.paste(data, guest=is_guest, name=paste_name, format=paste_format, private=paste_type, expire=paste_expire)
             print("PasteBin URL: %s" % paste_url)
 
@@ -976,10 +1005,14 @@ def main(argv):
 
     """ Argument groups """
     script_args = argsparser.add_argument_group('Script arguments', "\n")
-    custom_args = argsparser.add_argument_group('Custom arguments', "\n")
+    crawling_args = argsparser.add_argument_group('Crawling arguments', "\n")
+    networking_args = argsparser.add_argument_group('Networking arguments', "\n")
+    submission_args = argsparser.add_argument_group('submission arguments', "\n")
+    pastebin_args = argsparser.add_argument_group('pastebin arguments', "\n")
+
     """ Script arguments """
     script_args.add_argument("-i", "--input", type=str, action='store', dest='input', required=False,
-                             help="Load and deobfuscate URLs from input file, or load files from given folder for further processing")
+                             default="urls.txt", help="Load and deobfuscate URLs from input file, or load files from given folder for further processing")
 
     script_args.add_argument("-d", "--download-folder", action='store', dest='download_folder', required=False,
                              default="downloads/", help="Specify custom download folder location (Default: downloads/")
@@ -993,22 +1026,9 @@ def main(argv):
     script_args.add_argument("-dd", "--dedup", action='store_true', dest='unique_files', required=False,
                              default=False, help="Deduplicate the input and downloaded files")
 
-    script_args.add_argument("-gl", "--get-links", action='store_true', dest='get_links', required=False,
-                             default=False, help="Retrieve all available links/hrefs from loaded URLs")
-
-    script_args.add_argument("-rl", "--recursive-hostonly", action='store_true', dest='crawl_local_host_only', required=False,
-                             help="Enable recursive crawling (Applies to -gl), but crawl for hrefs containing the same url host as input url (Sets --recursion-depth 0 and enables -gl)")
-
-    script_args.add_argument("-r", "--recursive", action='store_true', dest='recursion', required=False,
-                             default=False, help="Enable recursive crawling (Applies to -gl, enables -gl)")
-
-    script_args.add_argument("-ui", "--url-info", action='store_true', dest='url_info', required=False,
-                             default=False,
-                             help="Retrieve URL information from supported vendors for all loaded input URLs.")
-
-    script_args.add_argument("-uif", "--url-info-force", action='store_true', dest='url_info_force', required=False,
-                             default=False,
-                             help="Force url info lookup for every crawled URL (NOT recommended)")
+    script_args.add_argument("-v", "--verbose", type=str, action='store', dest='verbose_level', required=False,
+                             default="INFO",
+                             help="Set the logging level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
 
     script_args.add_argument("--download", action='store_true', dest='download_files', required=False,
                              default=False, help="Download loaded or crawled URLs")
@@ -1016,47 +1036,74 @@ def main(argv):
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
                              default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")
 
-    script_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
-                             default=False, help="Submit files to AV vendors (Enables -z by default)")
-
-
-    script_args.add_argument("--submit-url", action='store_true', dest='submit_to_proxy_vendors', required=False,
-                             default=False, help="Submit loaded URLs to PROXY vendors...")
-
-    script_args.add_argument("--proxy-vendors", action='store', dest='proxy_vendors', required=False,
-                             default="bluecoat", help="Comma separated list of PROXY vendors used for URL category lookup and submission")
-
-
-    script_args.add_argument("-v", "--verbose", type=str, action='store', dest='verbose_level', required=False,
-                             default="INFO",
-                             help="Set the logging level to one of following: INFO, WARNING, ERROR or DEBUG (Default: WARNING)")
-
-    script_args.add_argument("--debug-requests", action='store_true', dest='requests_debug', required=False,
-                             default=False, help="Sends GET/POST requests via local proxy server 127.0.0.1:8080")
-
-    custom_args.add_argument("--email", action='store', dest='submitter_email', required=False,
-                             default="",
-                             help="Specify the submitter's e-mail address")
-
-    custom_args.add_argument("--proxy-category", action='store', dest='new_proxy_category', required=False,
-                             default="Malicious Sources/Malnets", help="Specify new proxy category (Default: 'Malicious Sources/Malnets')")
-
-    custom_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
-                             default=20, help="Max recursion depth level for -r option (Default: 20)")
-
-    custom_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
+    script_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
                              default=9, help="Sets the limit of files per archive (Default: 9). [0 = Unlimited]")
 
-    custom_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments', required=False,
-                             help="Insert submission comments (Default: <archive_name>)")
+    """  CRAWLING  ------------------------------------------------------------------------------------------------- """
+    crawling_args.add_argument("-gl", "--get-links", action='store_true', dest='get_links', required=False,
+                               default=False, help="Retrieve all available links/hrefs from loaded URLs")
 
-    custom_args.add_argument("--api-pastebin", action='store', dest='api_key_pastebin', required=False,
-                             help="Insert API dev ket for PasteBin")
+    crawling_args.add_argument("-rl", "--recursive-hostonly", action='store_true', dest='crawl_local_host_only',
+                               required=False,
+                               help="Enable recursive crawling (Applies to -gl), but crawl for hrefs containing the same url host as input url (Sets --recursion-depth 0 and enables -gl)")
 
+    crawling_args.add_argument("-r", "--recursive", action='store_true', dest='recursion', required=False,
+                               default=False, help="Enable recursive crawling (Applies to -gl, enables -gl)")
 
-    custom_args.add_argument("--user-agent", action='store', dest='user_agent', required=False,
-                             help="Inser custom user-agent string, which would be used by -gl and --download")
+    crawling_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
+                               default=20, help="Max recursion depth level for -r option (Default: 20)")
 
+    """  SUBMISSION  ----------------------------------------------------------------------------------------------- """
+    submission_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
+                             default=False, help="Submit files to AV vendors (Enables -z by default)")
+
+    submission_args.add_argument("--submit-url", action='store_true', dest='submit_to_proxy_vendors', required=False,
+                             default=False, help="Submit loaded URLs to PROXY vendors...")
+
+    submission_args.add_argument("-ui", "--url-info", action='store_true', dest='url_info', required=False,
+                             default=False,
+                             help="Retrieve URL information from supported vendors for all loaded input URLs.")
+
+    submission_args.add_argument("-uif", "--url-info-force", action='store_true', dest='url_info_force', required=False,
+                             default=False,
+                             help="Force url info lookup for every crawled URL (NOT recommended)")
+
+    submission_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments',
+                                 required=False,
+                                 help="Insert submission comments (Default: <archive_name>)")
+
+    submission_args.add_argument("--proxy-vendors", action='store', dest='proxy_vendors', required=False,
+                             default="bluecoat", help="Comma separated list of PROXY vendors used for URL category lookup and submission")
+
+    submission_args.add_argument("--email", action='store', dest='submitter_email', required=False,
+                             default="", help="Specify the submitter's e-mail address")
+
+    submission_args.add_argument("--proxy-category", action='store', dest='new_proxy_category', required=False,
+                             default="", help="Specify new proxy category (If not specified default proxy category will be used)")
+
+    """  REQUESTS -------------------------------------------------------------------------------------------------- """
+    networking_args.add_argument("--user-agent", action='store', dest='user_agent', required=False,
+                             help="User-agent string, which would be used by -gl and --download")
+
+    networking_args.add_argument("--debug-requests", action='store_true', dest='requests_debug', required=False,
+                                 default=False, help="Sends GET/POST requests via local proxy server 127.0.0.1:8080")
+
+    """  PASTEBIN -------------------------------------------------------------------------------------------------- """
+    pastebin_args.add_argument("--pastebin-api", action='store', dest='pastebin_api_key', required=False,
+                             help="API dev key for pastebin.com (If not specified, other pastebin params would be ignored)")
+
+    pastebin_args.add_argument("-pu", "--pastebin-upload", action='store_true', dest='stdout_to_pastebin', required=False, default=False,
+                             help="Uploads stdout to pastebin and prints the paste's url")
+
+    pastebin_args.add_argument("-pv", "--pastebin-visibility", action='store', dest='pastebin_type', required=False,
+                             default="0", help="Set the paste visibility: 0 - Public or 2 - Private (Default: 0)")
+
+    pastebin_args.add_argument("-pe", "--pastebin-expiration", action='store', dest='pastebin_paste_expiration', required=False,
+                               default="1H", help="Set the paste expiration time to one of following: 'N': 'Never', '10M': "
+                                                  "'10 Minutes','1H': '1 Hour','1D': '1 Day','1W': '1 Week','2W': '2 Weeks','1M': '1 Month' ... (Default: 1H)")
+
+    pastebin_args.add_argument("-pt", "--pastebin-title", action='store', dest='pastebin_title', required=False,
+                               default="", help="Paste title")
 
     args = argsparser.parse_args()
     argc = argv.__len__()
@@ -1064,7 +1111,6 @@ def main(argv):
     logger.info(f"Starting {app_name}")
 
     """ Check and set appropriate logger level """
-
     args.verbose_level = args.verbose_level.upper()
     if args.verbose_level.upper() in logger_verobse_levels:
         if args.verbose_level == "INFO":
@@ -1082,11 +1128,13 @@ def main(argv):
     """ Init dw class """
     logger.debug("Initialize dw (Downloader)")
     dw = downloader(args)
+    _uniq = uniq()
     urls = []
     hrefs = []
     downloaded_files = []
     archives = []
     links = []
+    pastebin_report = []
 
     #smb = cifs.smb()
     #smb.connect("185.176.221.45")
@@ -1116,6 +1164,14 @@ def main(argv):
             print("Distinct URLs:")
             print(*urls, sep="\n")
 
+    """ Update pastebin report """
+    if urls:
+        pastebin_report.append("Input URLs:")
+        pastebin_report.append(urls)
+    else:
+        pastebin_report.append("Input files:")
+        pastebin_report.append(downloaded_files)
+
     """ Save deduplicated loaded files to another directory """
     if dw.output_directory:
         if dw.unique_files:
@@ -1126,8 +1182,12 @@ def main(argv):
 
     """ Get URL info for all loaded URLs (Fills in the URL_PROXY_CATEGORIZATION dict)"""
     if dw.url_info:
+        pastebin_report.append("Input URL(s) proxy categorization:")
+        print("Input URL(s) proxy categorization:")
         for url in urls:
-            dw.get_url_info(url)
+            _category = dw.get_url_info(url)
+            pastebin_report.append("%s (%s)" % (url, _category))
+            print("%s (%s)" % (url, _category))
     else:
         logger.debug("Skipping URL info gathering")
 
@@ -1149,21 +1209,27 @@ def main(argv):
         print("All retrieved HREFs:")
         print(*hrefs, sep="\n")
         print("----------------------------------------------------------.")
+
+        pastebin_report.append("Detected HREFs:")
+        pastebin_report.append(_uniq.get_unique_entries(hrefs))
+
     else:
         logger.debug("Skipping href lookup")
 
     """ Download if required """
     if dw.download_files:
+
+        pastebin_report.append("Downloaded files:")
+
         if hrefs:
             """ Download pulled hrefs """
-            downloaded_files = dw.download(hrefs)
+            downloaded_files = dw.download(hrefs, pastebin_report)
         else:
             """ Download given URLs """
-            downloaded_files = dw.download(urls)
+            downloaded_files = dw.download(urls, pastebin_report)
 
         """ Deduplicate downloaded files """
         if dw.unique_files:
-            _uniq = uniq()
             if downloaded_files:
                 downloaded_files = _uniq.get_unique_files(downloaded_files)
     else:
@@ -1195,6 +1261,12 @@ def main(argv):
         dw.submit(archives)
     else:
         logger.debug("Skipping Vendor submission")
+
+    """ Upload a report to pastebin """
+    if dw.stdout_to_pastebin:
+        dw.uplaod_to_pastebin(pastebin_report, dw.pastebin_title, dw.pastebin_type, dw.pastebin_paste_expiration)
+    else:
+        logger.debug("Skipping pastebin submission")
 
 
 if __name__ == "__main__":
