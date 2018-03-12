@@ -25,7 +25,8 @@ Some of available functionalities:
 * Antivirus vendor submission (Requires specific config/%vendonr_name%.vd file)
 * Input URL infromation lookup like proxy category etc. (VT information soon)
 * URL proxy re-categorization (Will be shortly moved to a config/%vendonr_name%.vd file)
-
+* Upload of an execution report (stdout) to pastebin
+ 
 **Use cases:**
 
 <pre> dw.py -i urls.txt -z -gl --download </pre>
