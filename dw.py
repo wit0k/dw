@@ -4,6 +4,7 @@ __version__ = '0.2.7'
 
 """
 TO DO:
+- archive folder check 
 - Adopt AV to load_vendors (Proxy already supported)
 - Print file info, when only loding files (like hash etc.)
 - Add user agent randomization 
@@ -41,6 +42,8 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 MAGIC_FILE_PATH_LINUX = '/etc/magic'
 MAGIC_FILE_PATH_MAC = '/usr/local/Cellar/libmagic/5.29/share/misc/magic'
+MAGIC_FILE_PATH_WIN = r'C:/Users/Python3/Lib/site-packages/magic/libmagic/magic'
+
 
 """ Logger settings """
 logger = logging.getLogger('dw')
@@ -651,6 +654,8 @@ class downloader (object):
             MAGIC_FILE_PATH = MAGIC_FILE_PATH_MAC
         elif 'Linux' in _os.platform():
             MAGIC_FILE_PATH = MAGIC_FILE_PATH_LINUX
+        else:
+            MAGIC_FILE_PATH = MAGIC_FILE_PATH_WIN
 
         obj_magic = magic.Magic(magic_file=MAGIC_FILE_PATH, mime=True, uncompress=True)
         file_info.append(obj_magic.from_file(filepath))

@@ -1,4 +1,4 @@
-from smb.SMBConnection import SMBConnection
+from smb.SMBConnection import SMBConnection # pip install pysmb
 from smb import smb_structs
 
 class smb(object):
