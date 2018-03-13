@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.2.6'
+__version__ = '0.2.7'
 
 """
 TO DO:
@@ -602,6 +602,9 @@ class downloader (object):
                             self.update_list(_url, links)
                         else:
                             self.update_list(_href, links)
+            else:
+                """ Update visited URLs (Links) """
+                self.update_list(url, links)
 
         except requests.exceptions.InvalidSchema:
             logger.error("Invalid URL format: %s" % url)
@@ -1203,6 +1206,7 @@ def main(argv):
             _urls = dw.get_hrefs(url, links=links)
             logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
             hrefs.extend(_urls)
+            _urls.clear()
 
         logger.info("All retrieved HREFs:")
         logger.info(hrefs)

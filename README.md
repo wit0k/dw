@@ -247,3 +247,8 @@ Ver. 0.2.6:
 * Changed the display of -h param groups 
 * No need to specify -i urls.txr (if urls.txt exist)
 * Check_args function adjustment  
+
+Ver. 0.2.7:
+
+* FIX: _urls variable was not properly cleared, hence duplicating output HREFs
+* FIX: If -gl, -rl, -r does not find any hrefs, the input URL will be added to HREFs list
