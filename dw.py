@@ -1,9 +1,11 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.2.7'
+__version__ = '0.2.8'
 
 """
 TO DO:
+- Add IP 
+- Add random wait time for Proxy and AV lookups and submissions
 - archive folder check 
 - Adopt AV to load_vendors (Proxy already supported)
 - Print file info, when only loding files (like hash etc.)
@@ -29,6 +31,7 @@ import requests
 
 import md.smb as cifs
 import md.pastebin as _paste_bin
+import md.url as _url_mod
 
 from md.uniq import *
 from bs4 import BeautifulSoup # pip install bs4
@@ -220,7 +223,10 @@ default_mime_types = [
     "application/x-dosexec"
 ]
 
-file_extensions = [".zip", ".7z", ".rar", ".exe", ".dll", ".msi", ".ps1", ".jar", ".vbs"]
+file_extensions = [".zip", ".7z", ".rar", ".exe", ".dll", ".msi", ".ps1", ".jar", ".vbs", ".log", ".frx", ".frm", ".log", ".cls", ".vbp", ".SCC", ".bas"]
+
+# Cache of URLs (It links URL string [key] with associated url object [value])
+URL_CACHE = {}
 
 class downloader (object):
 
@@ -400,7 +406,12 @@ class downloader (object):
         if os.path.isfile(input_file):
             with open(input_file, "r", encoding="utf8") as file:
                 lines = file.readlines()
-                return self.parse_urls(lines)
+                for line in lines:
+                    if not line.strip().startswith("#"):
+                        _url = _url_mod.url(line.strip())
+                        urls.append(_url)
+
+                return urls
         else:
             logger.error("Input file: %s -> Not found!" % input_file)
 
@@ -979,7 +990,7 @@ class downloader (object):
                 if url_category:
                    pass
 
-            return  url_category
+            return url_category
 
         else:
             logger.error("Vendor: '%s' -> Unable to initialize the submitter class" % vendor_name)
@@ -1107,7 +1118,7 @@ def main(argv):
                              default="0", help="Set the paste visibility: 0 - Public or 2 - Private (Default: 0)")
 
     pastebin_args.add_argument("-pe", "--pastebin-expiration", action='store', dest='pastebin_paste_expiration', required=False,
-                               default="1H", help="Set the paste expiration time to one of following: 'N': 'Never', '10M': "
+                               default="1W", help="Set the paste expiration time to one of following: 'N': 'Never', '10M': "
                                                   "'10 Minutes','1H': '1 Hour','1D': '1 Day','1W': '1 Week','2W': '2 Weeks','1M': '1 Month' ... (Default: 1H)")
 
     pastebin_args.add_argument("-pt", "--pastebin-title", action='store', dest='pastebin_title', required=False,
@@ -1165,17 +1176,17 @@ def main(argv):
         _uniq = uniq()
         if downloaded_files:
             downloaded_files = _uniq.get_unique_files(downloaded_files)
-            print("Distinct files:")
+            print("Distinct input files:")
             print(*downloaded_files, sep="\n")
         elif urls:
             urls = _uniq.get_unique_entries(urls)
-            print("Distinct URLs:")
-            print(*urls, sep="\n")
+            print("Distinct input URLs:")
+            print(*[u.url for u in urls], sep="\n")
 
     """ Update pastebin report """
     if urls:
         pastebin_report.append("Input URLs:")
-        pastebin_report.append(urls)
+        pastebin_report.append([u.url for u in urls])
     else:
         pastebin_report.append("Input files:")
         pastebin_report.append(downloaded_files)
@@ -1190,25 +1201,25 @@ def main(argv):
 
     """ Get URL info for all loaded URLs (Fills in the URL_PROXY_CATEGORIZATION dict)"""
     if dw.url_info:
-        pastebin_report.append("Input URL(s) proxy categorization:")
-        print("Input URL(s) proxy categorization:")
+        pastebin_report.append("Input URL(s) info:")
+        print("Input URL(s) info:")
         for url in urls:
-            _category = dw.get_url_info(url)
-            pastebin_report.append("%s (%s)" % (url, _category))
-            print("%s (%s)" % (url, _category))
+            url.set_proxy_category({"bluecoat": dw.get_url_info(url.url)})
+            pastebin_report.append("%s, %s, %s, %s" % (url.ip, url.domain, url.get_proxy_catgeory(True), url.url))
+            print("%s, %s, %s, %s" % (url.ip, url.domain, url.get_proxy_catgeory(True), url.url))
     else:
         logger.debug("Skipping URL info gathering")
 
     """ Submit loaded URLs to proxy vendors """
     if dw.submit_to_proxy_vendors:
         for url in urls:
-            dw.submit_url_category(url, dw.new_proxy_category)
+            dw.submit_url_category(url.url, dw.new_proxy_category)
 
     """ Retrieve HREFs for each URL """
     if dw.get_links and urls:
         logger.debug("Get links from each URL")
         for url in urls:
-            _urls = dw.get_hrefs(url, links=links)
+            _urls = dw.get_hrefs(url.url, links=links)
             logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
             hrefs.extend(_urls)
             _urls.clear()
@@ -1235,7 +1246,7 @@ def main(argv):
             downloaded_files = dw.download(hrefs, pastebin_report)
         else:
             """ Download given URLs """
-            downloaded_files = dw.download(urls, pastebin_report)
+            downloaded_files = dw.download([u.url for u in urls], pastebin_report)
 
         """ Deduplicate downloaded files """
         if dw.unique_files:

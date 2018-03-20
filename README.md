@@ -252,3 +252,11 @@ Ver. 0.2.7:
 
 * FIX: _urls variable was not properly cleared, hence duplicating output HREFs
 * FIX: If -gl, -rl, -r does not find any hrefs, the input URL will be added to HREFs list
+
+Ver. 0.2.8:
+* pastebin: 1W instead of 1H
+
+* -i would skip entries from URL input file which starts with "#"
+* --url-info prints proxy category, ip, doamin, and url 
+* Code re-design to support URL object (which would hold all information about the URL)
+* Update to file_extensions dictionary (i still need to add a lot)
