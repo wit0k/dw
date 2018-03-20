@@ -1,0 +1,89 @@
+INFO - THREAD-2652 - 2018-03-20 18:33:16,501 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+INFO - THREAD-2652 - 2018-03-20 18:33:16,501 - dw.py - get_hrefs - Getting hrefs from: http://hxxp://27.255.77.37/
+ERROR - THREAD-2652 - 2018-03-20 18:33:18,766 - dw.py - get_hrefs - con.get(http://hxxp://27.255.77.37/) -> Error: HTTPConnectionPool(host='hxxp', port=80): Max retries exceeded with url: //27.255.77.37/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x05A367D0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',))
+INFO - THREAD-2652 - 2018-03-20 18:33:18,766 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-2652 - 2018-03-20 18:33:18,766 - dw.py - main - []
+INFO - THREAD-2652 - 2018-03-20 18:33:18,766 - uniq.py - get_unique_entries - Deduplication: 0 -> 0
+INFO - THREAD-4460 - 2018-03-20 18:35:10,644 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+INFO - THREAD-4460 - 2018-03-20 18:35:10,644 - dw.py - get_hrefs - Getting hrefs from: https://www.uwaoma.info/
+INFO - THREAD-4460 - 2018-03-20 18:35:11,623 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: https://www.uwaoma.info/
+INFO - THREAD-4460 - 2018-03-20 18:35:12,364 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-4460 - 2018-03-20 18:35:12,364 - dw.py - main - ['https://www.uwaoma.info/', 'https://www.uwaoma.info/cgi-bin/', 'https://www.uwaoma.info/1.msi', 'https://www.uwaoma.info/Payment%20copy.Doc', 'https://www.uwaoma.info/alabama.msi', 'https://www.uwaoma.info/alabama1.msi', 'https://www.uwaoma.info/ben1.msi', 'https://www.uwaoma.info/buck1.msi', 'https://www.uwaoma.info/buck2.msi', 'https://www.uwaoma.info/bucknew.msi', 'https://www.uwaoma.info/fg.msi', 'https://www.uwaoma.info/fgn.msi', 'https://www.uwaoma.info/fri1.msi', 'https://www.uwaoma.info/friday2.msi', 'https://www.uwaoma.info/hans.msi', 'https://www.uwaoma.info/joe1.msi', 'https://www.uwaoma.info/king001.msi', 'https://www.uwaoma.info/king2.msi', 'https://www.uwaoma.info/king86.msi', 'https://www.uwaoma.info/king88.msi', 'https://www.uwaoma.info/kingeze1.msi', 'https://www.uwaoma.info/kingeze88.msi', 'https://www.uwaoma.info/kinglatest.msi', 'https://www.uwaoma.info/kingnew.msi', 'https://www.uwaoma.info/new.msi', 'https://www.uwaoma.info/newm.msi', 'https://www.uwaoma.info/shaq.msi', 'https://www.uwaoma.info/shaq11.msi', 'https://www.uwaoma.info/shaqnew.msi']
+INFO - THREAD-4460 - 2018-03-20 18:35:12,364 - uniq.py - get_unique_entries - Deduplication: 29 -> 29
+INFO - THREAD-11428 - 2018-03-20 18:35:55,337 - uniq.py - get_unique_entries - Deduplication: 27 -> 27
+INFO - THREAD-11428 - 2018-03-20 18:35:56,087 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/1.msi
+INFO - THREAD-11428 - 2018-03-20 18:35:57,312 - dw.py - download - 34ec4ca486be7a2ca093275b6161d210f2dded3eaa37e996fbc1fd1010d33647,application/x-msi,downloads/1.msi,https://www.uwaoma.info/1.msi
+INFO - THREAD-11428 - 2018-03-20 18:35:58,087 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/Payment%20copy.Doc
+INFO - THREAD-11428 - 2018-03-20 18:35:58,102 - dw.py - download - 5e82c1a293f90b49d1b86a847b092e4a10e9f534de70f06aa06bc3f3020c39cf,text/rtf,downloads/Payment%20copy.Doc,https://www.uwaoma.info/Payment%20copy.Doc
+INFO - THREAD-11428 - 2018-03-20 18:35:58,899 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/alabama.msi
+INFO - THREAD-11428 - 2018-03-20 18:35:59,952 - dw.py - download - 9053cd2f9adc89827f369e030e715b471c8eb2c72d6ace00293e07a3588bdf76,application/x-msi,downloads/alabama.msi,https://www.uwaoma.info/alabama.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:00,671 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/alabama1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:01,791 - dw.py - download - af4c6c2c0d0f55d72d5bc67e60361a65e18a44ffcf23f9a05566adbab1024c65,application/x-msi,downloads/alabama1.msi,https://www.uwaoma.info/alabama1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:02,502 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/ben1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:03,948 - dw.py - download - 4245c011f43e29830c0907d6376477a2660cd7b842ffc20dd12c7c9c491511cf,application/x-msi,downloads/ben1.msi,https://www.uwaoma.info/ben1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:04,707 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/buck1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:05,681 - dw.py - download - a14ce52855fbe48bbb142e3be35fa7ef42c4aedb41962c919301102ddd35a21e,application/x-msi,downloads/buck1.msi,https://www.uwaoma.info/buck1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:06,414 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/buck2.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:07,740 - dw.py - download - b1b75ce3cb155ede4e9ffdd4540e779054849e5d129dc7b94027e0ece0feef64,application/x-msi,downloads/buck2.msi,https://www.uwaoma.info/buck2.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:08,448 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/bucknew.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:10,409 - dw.py - download - 32dbc6e91f67a5830c454488b42cc8660781b23e691304659e141c1b90cf96da,application/x-msi,downloads/bucknew.msi,https://www.uwaoma.info/bucknew.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:11,121 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/fg.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:12,733 - dw.py - download - dd9b97f238ad1e4534d30f747b9af917f58dd30fd585030da7f3c858bbffc52d,application/x-msi,downloads/fg.msi,https://www.uwaoma.info/fg.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:13,470 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/fgn.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:15,342 - dw.py - download - 87b757caae66e09219e3cc5208611afcbe5397fa7d6ea2ddd8529857fb0b0bde,application/x-msi,downloads/fgn.msi,https://www.uwaoma.info/fgn.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:16,090 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/fri1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:18,300 - dw.py - download - d8810f80c0bd993f9a0a51891403304707f98dd1237837247c9a50b0bb41675c,application/x-msi,downloads/fri1.msi,https://www.uwaoma.info/fri1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:19,053 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/friday2.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:20,658 - dw.py - download - cc6207f3e996ca8aa03c857dca2d348c6f6c376a00383b9c2ce0c3cae01b22ab,application/x-msi,downloads/friday2.msi,https://www.uwaoma.info/friday2.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:21,409 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/hans.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:23,653 - dw.py - download - f3c755a41252eb137e64adc2fbb826a693069c50c8d78e573206b37ebb655b97,application/x-msi,downloads/hans.msi,https://www.uwaoma.info/hans.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:24,441 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/joe1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:26,965 - dw.py - download - 8ddb8cf3d4909ef63c2bbce15ffc23233e9b96aef2a92ac659e193c2c73fedbb,application/x-msi,downloads/joe1.msi,https://www.uwaoma.info/joe1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:27,739 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/king001.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:29,905 - dw.py - download - b2b294d384d9b9f17454d9a4845dc334d54fae257d24bdac02641703bb4f9fb4,application/x-msi,downloads/king001.msi,https://www.uwaoma.info/king001.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:30,622 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/king2.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:33,352 - dw.py - download - 7637603e61c5d3d5e47f556e552bbc5962f290ac10998173738f1afd19326060,application/x-msi,downloads/king2.msi,https://www.uwaoma.info/king2.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:34,069 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/king86.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:36,721 - dw.py - download - 696b5c5937a438b774c49064b36a5dfb4888c259b272cf69b9b3e5c0cdf9b638,application/x-msi,downloads/king86.msi,https://www.uwaoma.info/king86.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:37,424 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/king88.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:39,737 - dw.py - download - d3d3543ce5f40bafe112fd233e8244867a464f3ed67da06f21100186469742f7,application/x-msi,downloads/king88.msi,https://www.uwaoma.info/king88.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:40,458 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/kingeze1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:42,391 - dw.py - download - 01777161e51bc1119bb61d535a41b1e3b3b1a1598c60c050b4703d9ba723e33d,application/x-msi,downloads/kingeze1.msi,https://www.uwaoma.info/kingeze1.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:43,169 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/kingeze88.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:45,673 - dw.py - download - c52a4accd5d2cf83e82163e253c5bfd1e637eb13134e79c2f05503f29343c312,application/x-msi,downloads/kingeze88.msi,https://www.uwaoma.info/kingeze88.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:46,448 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/kinglatest.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:51,158 - dw.py - download - 71d991c9c5b6366cce195a04d3dc6fb58fe0f6d6eeb263fc9892acc5960090a4,application/x-msi,downloads/kinglatest.msi,https://www.uwaoma.info/kinglatest.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:51,946 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/kingnew.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:54,305 - dw.py - download - 5784e3304904432666a1dffa85a301c053a3f9c436f69bff83c5071e52ae3f77,application/x-msi,downloads/kingnew.msi,https://www.uwaoma.info/kingnew.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:55,104 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/new.msi
+INFO - THREAD-11428 - 2018-03-20 18:36:59,688 - dw.py - download - 95ff2e86c30106b2bc0cfad23645b1203ae63a5ff953d3ed2476f765f9d913d7,application/x-msi,downloads/new.msi,https://www.uwaoma.info/new.msi
+INFO - THREAD-11428 - 2018-03-20 18:37:00,425 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/newm.msi
+INFO - THREAD-11428 - 2018-03-20 18:37:02,800 - dw.py - download - f02996b2e1fccd103a37a5e708106c1dc08f818e0cc82cb1b9a19f9372db38e2,application/x-msi,downloads/newm.msi,https://www.uwaoma.info/newm.msi
+INFO - THREAD-11428 - 2018-03-20 18:37:03,536 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/shaq.msi
+INFO - THREAD-11428 - 2018-03-20 18:37:05,386 - dw.py - download - ac1927f82f2bc09387a247bc6d6b9b22208bad122bc847f98472abf4d828123d,application/x-msi,downloads/shaq.msi,https://www.uwaoma.info/shaq.msi
+INFO - THREAD-11428 - 2018-03-20 18:37:06,101 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/shaq11.msi
+INFO - THREAD-11428 - 2018-03-20 18:37:08,574 - dw.py - download - e9814f2eed202eed5791ec344c42f0281a955ae45ecd813f069da026dc8eee84,application/x-msi,downloads/shaq11.msi,https://www.uwaoma.info/shaq11.msi
+INFO - THREAD-11428 - 2018-03-20 18:37:09,296 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: https://www.uwaoma.info/shaqnew.msi
+INFO - THREAD-11428 - 2018-03-20 18:37:11,798 - dw.py - download - 3e05b8187447af264fa15188c8006a816a99905b4f2c4cb736028ba6a249dac3,application/x-msi,downloads/shaqnew.msi,https://www.uwaoma.info/shaqnew.msi
+INFO - THREAD-11428 - 2018-03-20 18:37:11,861 - uniq.py - get_unique_files - Deduplication: 27 -> 27
+INFO - THREAD-13196 - 2018-03-20 18:38:34,080 - uniq.py - get_unique_entries - Deduplication: 4 -> 4
+INFO - THREAD-13196 - 2018-03-20 18:38:34,252 - dw.py - download - URL Download -> FAILED -> [HTTP499] - URL: http://pdfdocsline.usa.cc/web/Xindaumnet.exe
+INFO - THREAD-13196 - 2018-03-20 18:38:34,346 - dw.py - download - URL Download -> FAILED -> [HTTP499] - URL: http://pdfdocsline.usa.cc/Fcbol/rdfpv.exe
+INFO - THREAD-13196 - 2018-03-20 18:38:34,455 - dw.py - download - URL Download -> FAILED -> [HTTP499] - URL: http://pdfdocsline.usa.cc/mnddns/hinmaw.exe
+INFO - THREAD-13196 - 2018-03-20 18:38:34,596 - dw.py - download - URL Download -> FAILED -> [HTTP499] - URL: http://spldernet.com/web/axeopma.exe
+INFO - THREAD-7676 - 2018-03-20 18:38:57,762 - uniq.py - get_unique_entries - Deduplication: 4 -> 4
+INFO - THREAD-7676 - 2018-03-20 18:38:57,871 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://pdfdocsline.usa.cc/web/Xindaumnet.exe
+INFO - THREAD-7676 - 2018-03-20 18:38:59,058 - dw.py - download - 2f17e9139576a5296606f33239518adee6166f7918a5ff780d9cea075c4e5924,application/x-dosexec,downloads/Xindaumnet.exe,http://pdfdocsline.usa.cc/web/Xindaumnet.exe
+INFO - THREAD-7676 - 2018-03-20 18:38:59,120 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://pdfdocsline.usa.cc/Fcbol/rdfpv.exe
+INFO - THREAD-7676 - 2018-03-20 18:39:00,002 - dw.py - download - dc6300bb5e29e111fb0848adcd74f008a7edab7e428f1ec6c5cf38f269fd3c5f,application/x-dosexec,downloads/rdfpv.exe,http://pdfdocsline.usa.cc/Fcbol/rdfpv.exe
+INFO - THREAD-7676 - 2018-03-20 18:39:00,064 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://pdfdocsline.usa.cc/mnddns/hinmaw.exe
+INFO - THREAD-7676 - 2018-03-20 18:39:00,488 - dw.py - download - 867b700433837cc90ff24ed8a6cc553dc67b078bd467e34e614db8148a508990,application/x-dosexec,downloads/hinmaw.exe,http://pdfdocsline.usa.cc/mnddns/hinmaw.exe
+INFO - THREAD-7676 - 2018-03-20 18:39:00,581 - dw.py - download - URL Download -> SUCCESS -> [HTTP200] - URL: http://spldernet.com/web/axeopma.exe
+INFO - THREAD-7676 - 2018-03-20 18:39:00,925 - dw.py - download - bae0a4510cbab248d5e662f96b89a729d48099541bb7b70ceb0b0e640200545e,application/x-dosexec,downloads/axeopma.exe,http://spldernet.com/web/axeopma.exe
+INFO - THREAD-7676 - 2018-03-20 18:39:00,925 - uniq.py - get_unique_files - Deduplication: 4 -> 4
+INFO - THREAD-13472 - 2018-03-20 18:45:37,123 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+INFO - THREAD-13472 - 2018-03-20 18:45:37,123 - dw.py - get_hrefs - Getting hrefs from: https://www.uwaoma.info/
+INFO - THREAD-13472 - 2018-03-20 18:45:37,873 - dw.py - get_hrefs - URL Fetch -> SUCCESS -> URL: https://www.uwaoma.info/
+INFO - THREAD-13472 - 2018-03-20 18:45:38,623 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-13472 - 2018-03-20 18:45:38,623 - dw.py - main - ['https://www.uwaoma.info/', 'https://www.uwaoma.info/cgi-bin/', 'https://www.uwaoma.info/1.msi', 'https://www.uwaoma.info/Payment%20copy.Doc', 'https://www.uwaoma.info/alabama.msi', 'https://www.uwaoma.info/alabama1.msi', 'https://www.uwaoma.info/ben1.msi', 'https://www.uwaoma.info/buck1.msi', 'https://www.uwaoma.info/buck2.msi', 'https://www.uwaoma.info/bucknew.msi', 'https://www.uwaoma.info/fg.msi', 'https://www.uwaoma.info/fgn.msi', 'https://www.uwaoma.info/fri1.msi', 'https://www.uwaoma.info/friday2.msi', 'https://www.uwaoma.info/hans.msi', 'https://www.uwaoma.info/joe1.msi', 'https://www.uwaoma.info/king001.msi', 'https://www.uwaoma.info/king2.msi', 'https://www.uwaoma.info/king86.msi', 'https://www.uwaoma.info/king88.msi', 'https://www.uwaoma.info/kingeze1.msi', 'https://www.uwaoma.info/kingeze88.msi', 'https://www.uwaoma.info/kinglatest.msi', 'https://www.uwaoma.info/kingnew.msi', 'https://www.uwaoma.info/new.msi', 'https://www.uwaoma.info/newm.msi', 'https://www.uwaoma.info/shaq.msi', 'https://www.uwaoma.info/shaq11.msi', 'https://www.uwaoma.info/shaqnew.msi']
+INFO - THREAD-13472 - 2018-03-20 18:45:38,623 - uniq.py - get_unique_entries - Deduplication: 29 -> 29
