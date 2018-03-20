@@ -259,4 +259,4 @@ Ver. 0.2.8:
 * -i would skip entries from URL input file which starts with "#"
 * --url-info prints proxy category, ip, doamin, and url 
 * Code re-design to support URL object (which would hold all information about the URL)
-* Update to file_extensions dictionary (i still need to add a lot)
+* Update to file_extensions dictionary (i still need to add a lot!)

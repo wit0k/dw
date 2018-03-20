@@ -4,7 +4,6 @@ __version__ = '0.2.8'
 
 """
 TO DO:
-- Add IP 
 - Add random wait time for Proxy and AV lookups and submissions
 - archive folder check 
 - Adopt AV to load_vendors (Proxy already supported)
