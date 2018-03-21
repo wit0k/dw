@@ -1,0 +1,99 @@
+INFO - THREAD-18204 - 2018-03-21 22:50:19,007 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/buggs.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:20,554 - dw.py - download - b53391a7428c3c5bdb68483fa446c92c42e7ea952df2b4d7bd0ed0b0ab367749,application/x-dosexec,downloads/buggs.exe,http://dhm-mhn.com/sunday/buggs.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:20,741 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/charhuey.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:21,663 - dw.py - download - a93bcae03583670c2aeaa59314d486f2968d1e9df8ea329497658d471aabca68,application/x-dosexec,downloads/charhuey.exe,http://dhm-mhn.com/sunday/charhuey.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:21,851 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/crypted1.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:22,565 - dw.py - download - 2ec0dba38183ee8d48ae3917502db39e44d80270e06ead778fa090f5a2215320,application/x-dosexec,downloads/crypted1.exe,http://dhm-mhn.com/sunday/crypted1.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:22,746 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/crypted2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:23,306 - dw.py - download - f391b4b9c1c64d04101d258c57640aebb3bc7f69f999ca97d1a11c651baeb674,application/x-dosexec,downloads/crypted2.exe,http://dhm-mhn.com/sunday/crypted2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:23,478 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/ebuka.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:24,245 - dw.py - download - 46af23b841f9fe4537783ee6e0862239d4a2295e37c82cdd24cc38e0c3efcb2e,application/x-dosexec,downloads/ebuka.exe,http://dhm-mhn.com/sunday/ebuka.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:24,432 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htabuggs.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:24,432 - dw.py - download - 7c50563840b6a6ef8b6f81ae509801cdcaec45ec7236bc260bbf2b5f39f80312,application/x-gzip,downloads/htabuggs.hta,http://dhm-mhn.com/sunday/htabuggs.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:24,620 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htachahuey.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:24,620 - dw.py - download - ddeaa9e88c72882f9c099499da0d1ef274e83fc3d7e427eb8938b52fbb1faf64,application/x-gzip,downloads/htachahuey.hta,http://dhm-mhn.com/sunday/htachahuey.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:24,808 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htacrypted1.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:24,808 - dw.py - download - e4beaf90c06447179e8c94044076dc17703969602e398a103994fd30c0fc021c,application/x-gzip,downloads/htacrypted1.hta,http://dhm-mhn.com/sunday/htacrypted1.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:24,980 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htacrypted2.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:24,996 - dw.py - download - bd56086841e0cc3646dcae6a1b8e5490ce1c10e502fbbd96eb174ee84cdd001a,application/x-gzip,downloads/htacrypted2.hta,http://dhm-mhn.com/sunday/htacrypted2.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,168 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htaebuka.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,168 - dw.py - download - 865f35af60561870ff8a3318f321a2507c0853f3a2843e5e72936f291ca1e3b8,application/x-gzip,downloads/htaebuka.hta,http://dhm-mhn.com/sunday/htaebuka.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,340 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htamandbro.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,355 - dw.py - download - bed638354d746036efffc37465e526d003d476149dbbe8f03345fa4927b7324f,application/x-gzip,downloads/htamandbro.hta,http://dhm-mhn.com/sunday/htamandbro.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,527 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htamandela.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,543 - dw.py - download - 67daab10e5394cfea34c7d8bf98585711b00a7714c0e8a4abb2fcf1f35180d4c,application/x-gzip,downloads/htamandela.hta,http://dhm-mhn.com/sunday/htamandela.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,715 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htaochili.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,715 - dw.py - download - 187c91ba7b9eeca2bd3d556fee48e86183f52a9b7f48ba052eaff934dcf5fa6b,application/x-gzip,downloads/htaochili.hta,http://dhm-mhn.com/sunday/htaochili.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,888 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htarapture.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:25,904 - dw.py - download - 88dc40b59a9846aaf5b7a2661df72a0cca017e93a504c1ec7a89008af17f7c1d,application/x-gzip,downloads/htarapture.hta,http://dhm-mhn.com/sunday/htarapture.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,091 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htaspider.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,091 - dw.py - download - ddb12a1b7324ac0c302a8ac5cca4ac3022251ddd5b45dae5a199331f95958478,application/x-gzip,downloads/htaspider.hta,http://dhm-mhn.com/sunday/htaspider.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,279 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htatnt.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,279 - dw.py - download - 62ee681b8509f92bc881866cf02bf96d618391f0b1fe4985ce4f64f76cd24958,application/x-gzip,downloads/htatnt.hta,http://dhm-mhn.com/sunday/htatnt.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,457 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htazcfrnd2.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,472 - dw.py - download - 55ebbc1328c206d9dbb50b38b1d34dd07106b33272b1fa358729febdc1b4a464,application/x-gzip,downloads/htazcfrnd2.hta,http://dhm-mhn.com/sunday/htazcfrnd2.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,660 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htazcfrnd3.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,660 - dw.py - download - 4f3f39fd7a8f1ee4c7aba507daf7486f658d62daf79d00b979851012de1b4269,application/x-gzip,downloads/htazcfrnd3.hta,http://dhm-mhn.com/sunday/htazcfrnd3.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,845 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htazcrnd1.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:26,845 - dw.py - download - 6f41f27bd7d87329e8b86e3fa5c5ffa37c4dc7cccadaa9867589394bc5f4d2c1,application/x-gzip,downloads/htazcrnd1.hta,http://dhm-mhn.com/sunday/htazcrnd1.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:27,017 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/htazeco.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:27,032 - dw.py - download - 3505949a60c4a6eefc65f843a1baadcfc5df5126064bb74803dff7cccaf2f756,application/x-gzip,downloads/htazeco.hta,http://dhm-mhn.com/sunday/htazeco.hta
+INFO - THREAD-18204 - 2018-03-21 22:50:27,251 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/mandebroda.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:29,053 - dw.py - download - 38bf63c332dcd26e8190765438b90c34ecf49e2824c7c0e7ef74582f03190242,application/x-dosexec,downloads/mandebroda.exe,http://dhm-mhn.com/sunday/mandebroda.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:29,225 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/mandela.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:31,915 - dw.py - download - 03cad9a8003bf5bac03f3d794c5979984be8700556d32e80a1ac54b3416e550c,application/x-dosexec,downloads/mandela.exe,http://dhm-mhn.com/sunday/mandela.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:32,181 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/ochili.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:34,754 - dw.py - download - 18611e72bebb2c0bf891aac9d0b3397ae913021582305f71f1d379d823757fb0,application/x-dosexec,downloads/ochili.exe,http://dhm-mhn.com/sunday/ochili.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:34,939 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/rapture.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:37,080 - dw.py - download - 81d3b0909be8b27da8535ec84cbf8c80fbd47cc477e5a6a499c80199acdabda0,application/x-dosexec,downloads/rapture.exe,http://dhm-mhn.com/sunday/rapture.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:37,288 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/spider.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:38,732 - dw.py - download - 4ef3455ec259d17898d12efffe5995c2c6df04b091896d3e3bc15811bcc72f79,application/x-dosexec,downloads/spider.exe,http://dhm-mhn.com/sunday/spider.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:38,901 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/tnt.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:39,854 - dw.py - download - a5d3cd6efea84987a352f5b605d070b320f82f861ec1748670a5384516914824,application/x-dosexec,downloads/tnt.exe,http://dhm-mhn.com/sunday/tnt.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:40,026 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/zcfrnd1.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:40,620 - dw.py - download - 51fdbfcf85916555c08df2f0e981ce97f0da72275028e5dbcbce0695b9425bc4,application/x-dosexec,downloads/zcfrnd1.exe,http://dhm-mhn.com/sunday/zcfrnd1.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:40,807 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/zcfrnd2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:41,370 - dw.py - download - 783dd6ecf84e17b19791ddcae4f4aa767cf664720a3a233bf3719a157f9765ee,application/x-dosexec,downloads/zcfrnd2.exe,http://dhm-mhn.com/sunday/zcfrnd2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:41,542 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/zcfrnd3.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:42,104 - dw.py - download - d0a20e366fef5784dbe2c7cd14328399b77cd503002e1510d41380b42ffe457e,application/x-dosexec,downloads/zcfrnd3.exe,http://dhm-mhn.com/sunday/zcfrnd3.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:42,276 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://dhm-mhn.com/sunday/zeco.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:42,706 - dw.py - download - 4b97a2f828725c94873a9fd059ce7f53cd49230330902ba52440b44a6af71976,application/x-dosexec,downloads/zeco.exe,http://dhm-mhn.com/sunday/zeco.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:42,846 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/DIHN2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:43,280 - dw.py - download - ed9bc45e8aeba1e9ad0aa80d370de9a96daff33c0b80a9e8c67f3e29cbf9f175,application/x-gzip,downloads/DIHN2.exe,http://domianphp.biozyme.ro/DIHN2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:43,358 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/EKAT2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:43,514 - dw.py - download - 995367e862acd76fcd189cc7ab52cdfc1f01f7519ba07bef74759650daa8bf10,application/x-gzip,downloads/EKAT2.exe,http://domianphp.biozyme.ro/EKAT2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:43,592 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/EXGT.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:43,592 - dw.py - download - 3db1a84553838f39fdbd0096180d28eecb333ba0315dc1b136591f08b845e6b9,application/x-gzip,downloads/EXGT.doc,http://domianphp.biozyme.ro/EXGT.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:43,670 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/EXGT.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:43,780 - dw.py - download - c847e3650ddcbc56ad57b520287dfb41588738d013bcdde44031c2fcf4076d5d,application/x-gzip,downloads/EXGT.exe,http://domianphp.biozyme.ro/EXGT.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:43,842 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/FGBN.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:43,858 - dw.py - download - 51f090aa93520146e11abb9b7e1d64462a7db9d94828dcb54a51cd810724d2df,application/x-gzip,downloads/FGBN.doc,http://domianphp.biozyme.ro/FGBN.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:43,925 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/FGBN.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:44,019 - dw.py - download - e076e22296324d16d518544fef00be571d0bfb2057f7218101fa2033f830cf90,application/x-gzip,downloads/FGBN.exe,http://domianphp.biozyme.ro/FGBN.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:44,097 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/JCBH.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:44,097 - dw.py - download - 0da0a8d3ac22dfa0876475e7183dd91fe4b2ae6ba059b9de787462ca2145ce58,application/x-gzip,downloads/JCBH.doc,http://domianphp.biozyme.ro/JCBH.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:44,160 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/ONGB.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:44,175 - dw.py - download - 1b6ec410fb079c9181a8d87590f3bb75cf1682a7ea88193bcba04157126b77fe,application/x-gzip,downloads/ONGB.doc,http://domianphp.biozyme.ro/ONGB.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:44,238 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/ONGB.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:44,300 - dw.py - download - 867e954e780ac83b3496c7ffdd0f9da4b2c27764c5b2d70898d5ba344129efb7,application/x-gzip,downloads/ONGB.exe,http://domianphp.biozyme.ro/ONGB.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:44,363 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/STAT2.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:44,378 - dw.py - download - 6641257d16c4439061973015449be9e5eec65c13df57db7bd6ad66c1c9494bb5,application/x-gzip,downloads/STAT2.doc,http://domianphp.biozyme.ro/STAT2.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:44,441 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/STAT2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:44,488 - dw.py - download - bc4f299811c2f43c5b9916bef0ca9e5a91113bbd9365d19f02169dc503b4d430,application/x-gzip,downloads/STAT2.exe,http://domianphp.biozyme.ro/STAT2.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:44,566 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/STFF.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:44,566 - dw.py - download - 227bc4c98364d513856319125ce5902dfa082a9e9fe7110d36876508fb989b3b,application/x-gzip,downloads/STFF.doc,http://domianphp.biozyme.ro/STFF.doc
+INFO - THREAD-18204 - 2018-03-21 22:50:44,644 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://domianphp.biozyme.ro/STFF.exe
+INFO - THREAD-18204 - 2018-03-21 22:50:44,691 - dw.py - download - 1bd461df01a64f33dbf49c436f6dad2c9fe1d0a4f5ae9e717748e6bf3449ee99,application/x-gzip,downloads/STFF.exe,http://domianphp.biozyme.ro/STFF.exe
+ERROR - THREAD-18204 - 2018-03-21 22:50:45,456 - dw.py - download - HTTPConnectionPool(host='www.mol.gov.mm', port=80): Max retries exceeded with url: /en/wp-content/plugins/download-monitor/css/usdpdl.exe (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x067F24D0>: Failed to establish a new connection: [Errno 11002] getaddrinfo failed',))
+INFO - THREAD-18204 - 2018-03-21 22:50:46,082 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://211.169.35.250/exploit.swf
+INFO - THREAD-18204 - 2018-03-21 22:50:46,394 - dw.py - download - e51ee7df87f87318678280103f1ff40105cbd5040dd5e7fa2d8b22522ecda4c6,application/x-shockwave-flash,downloads/exploit.swf,http://211.169.35.250/exploit.swf
+INFO - THREAD-18204 - 2018-03-21 22:50:46,494 - dw.py - submit - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-18204 - 2018-03-21 22:50:54,288 - dw.py - submit - Submission OK -> archive/samples-1.zip
+INFO - THREAD-18204 - 2018-03-21 22:50:54,288 - dw.py - submit - Submitting: archive/samples-2.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-18204 - 2018-03-21 22:50:55,823 - dw.py - submit - Submission OK -> archive/samples-2.zip
+INFO - THREAD-18204 - 2018-03-21 22:50:55,823 - dw.py - submit - Submitting: archive/samples-3.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-18204 - 2018-03-21 22:51:07,590 - dw.py - submit - Submission OK -> archive/samples-3.zip
+INFO - THREAD-18204 - 2018-03-21 22:51:07,590 - dw.py - submit - Submitting: archive/samples-4.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-18204 - 2018-03-21 22:51:16,806 - dw.py - submit - Submission OK -> archive/samples-4.zip
+INFO - THREAD-18204 - 2018-03-21 22:51:16,806 - dw.py - submit - Submitting: archive/samples-5.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-18204 - 2018-03-21 22:51:19,979 - dw.py - submit - Submission OK -> archive/samples-5.zip

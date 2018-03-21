@@ -114,11 +114,11 @@ class url(object):
         output_url = url.strip()
         output_url = output_url.replace(" ", "")
         output_url = output_url.replace("hxxp", "http")
+        output_url = output_url.replace("[.]", ".")
         output_url = output_url.replace(".]]]", ".")
         output_url = output_url.replace("[[[.", ".")
         output_url = output_url.replace("]]", "")
         output_url = output_url.replace("[[", "")
-        output_url = output_url.replace("[.]", ".")
         output_url = output_url.replace("[:]", ":")
         output_url = output_url.replace("[.", ".")
         output_url = output_url.replace(".]", ".")
@@ -136,7 +136,7 @@ class url(object):
                 output_url = "http://" + output_url
                 output_url = output_url.replace(r"///", r"//")
             else:
-                output_url = "http://" + url
+                output_url = "http://" + output_url
                 output_url = output_url.replace(r"///", r"//")
 
         logger.debug("Parsing URL: %s to: %s" % (input_url, output_url))
