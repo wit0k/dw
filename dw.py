@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.2.9'
+__version__ = '0.3.0'
 
 """
 TO DO:
@@ -222,7 +222,11 @@ default_mime_types = [
     "application/x-dosexec"
 ]
 
-file_extensions = [".zip", ".7z", ".rar", ".exe", ".dll", ".msi", ".ps1", ".jar", ".vbs", ".log", ".frx", ".frm", ".log", ".cls", ".vbp", ".SCC", ".bas"]
+file_extensions = ["386","acm","asp","bas","bat","cab","cgi","chm","cla","class","cmd","cnv","com","cpl","crt","csh",
+                   "ctl","dll","drv","exe","gms","hlp","hta","inf","ini","ins","isp","job","js","jse","lnk","mpd","msik",
+                   "msp","ocx","opo","php","pif","pl","prc","rat","reg","scf","sct","scr","sh","shs","sys","tlb","tsp","vb",
+                   "vbe","vbs","vxd","wbs","wbt","wiz","wsc","wsf","wsh",".zip",".7z",".rar",".exe",".dll",".msi",".ps1",".jar",
+                   ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas"]
 
 # Cache of URLs (It links URL string [key] with associated url object [value])
 URL_CACHE = {}

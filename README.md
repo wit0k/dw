@@ -263,3 +263,6 @@ Ver. 0.2.8:
 
 Ver. 0.2.9:
 * Quick fix in url.py->parse_url() ... shall be parsing URLs correctly
+
+Ver. 0.3.0:
+* Update to file_extensions (it has 76 extensions of well known files)
