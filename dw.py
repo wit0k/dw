@@ -357,52 +357,6 @@ class downloader (object):
         for archive in self.open_zip_files.values():
             archive.close()
 
-    def parse_urls(self, urls):
-        """ Remove URL obfuscation ect. """
-
-        new_urls = []
-        index = 0
-        for url in urls:
-            _url = url
-            """ Replace well known obfuscation strings """
-            if url == "\n":
-                continue
-
-            url = url.strip()
-            url = url.replace(" ", "")
-            url = url.replace("hxxp", "http")
-            url = url.replace("]]", "")
-            url = url.replace("[[", "")
-            url = url.replace("[.]", ".")
-            url = url.replace("[:]", ":")
-            url = url.replace("[.", ".")
-            url = url.replace(".]", ".")
-
-            urls[index] = url
-
-            if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", url):
-                logger.debug("Parsing URL: %s to: %s" % (_url, urls[index]))
-                new_urls.append(url)
-                continue
-            else:
-                """ Remove incorrect schema like: :// or : or :/ etc. """
-                if re.match(r"(^/+|^:/+|^:+)", url):
-                    """ Remove incorrect scheme, and leave it empty """
-                    url = re.sub(r"(^/+|^:/+|^:+)", "", url)
-                    url = "http://" + url
-                    url = url.replace(r"///", r"//")
-                    urls[index] = url
-                else:
-                    url = "http://" + url
-                    url = url.replace(r"///", r"//")
-                    urls[index] = url
-
-            logger.debug("Parsing URL: %s to: %s" % (_url, urls[index]))
-            new_urls.append(urls[index])
-            index += 1
-
-        return new_urls
-
     def load_urls_from_input_file(self, input_file):
 
         urls = []
@@ -494,6 +448,7 @@ class downloader (object):
 
             """ Access given URL (Get the headers only) """
             try:
+                logger.debug("HTTP HEAD: %s" % url)
                 response = con.head(url)
             except Exception as msg:
                 logger.error("con.get(%s) -> Error: %s" % (url, msg))
@@ -505,23 +460,24 @@ class downloader (object):
                     if response.status_code in [301, 302]:
                         try:
                             url = response.headers["Location"]
-                            logger.debug("HTTP: %s -> %s to %s" % (response.status_code, response.url, url))
+                            logger.debug("HTTP HEAD: %s -> %s to %s" % (response.status_code, response.url, url))
 
                             """ Get URL's headers (Only) """
                             try:
+                                logger.debug("HTTP HEAD: %s" % url)
                                 response = con.head(url)
                             except Exception as msg:
                                 logger.error("con.get(%s) -> Error: %s" % (url, msg))
                                 return links
 
                         except KeyError:
-                            logger.debug("[HTTP %s]: %s -> Failed to retrieve final URL" % (response.status_code, url))
+                            logger.debug("[HTTP HEAD %s]: %s -> Failed to retrieve final URL" % (response.status_code, url))
                             return links
                     else:
-                        logger.info("[HTTP %s]: URL Fetch -> FAILED -> URL: %s" % (response.status_code, url))
+                        logger.info("[HTTP HEAD %s]: URL Fetch -> FAILED -> URL: %s" % (response.status_code, url))
                         return links
 
-            logger.info("URL Fetch -> SUCCESS -> URL: %s" % url)
+            logger.info("HTTP HEAD -> URL Fetch -> SUCCESS -> URL: %s" % url)
 
             """ If the resource is of given MIME type, mark it as href and do not resolve the links  """
             response_headers = response.headers
@@ -543,6 +499,7 @@ class downloader (object):
 
             """ This time, get the content with GET request """
             try:
+                logger.debug("HTTP GET: %s" % url)
                 response = con.get(url)
             except Exception as msg:
                 logger.error("con.get(%s) -> Error: %s" % (url, msg))
@@ -747,16 +704,16 @@ class downloader (object):
                                 logger.error(msg)
                                 continue
                         except KeyError:
-                            logger.info("URL Download -> FAILED -> [HTTP%s] - URL: %s" % (response.status_code, url))
+                            logger.info("URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
                             continue
                     else:
-                        logger.info("URL Download -> FAILED -> [HTTP%s] - URL: %s" % (response.status_code, url))
+                        logger.info("URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
                         continue
             else:
-                logger.info("URL Download -> FAILED -> [HTTP%s] - URL: %s" % (response.status_code, url))
+                logger.info("URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
                 continue
 
-            logger.info("URL Download -> SUCCESS -> [HTTP%s] - URL: %s" % (response.status_code, url))
+            logger.info("URL Download -> SUCCESS -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
 
             """ Determine output file name """
             local_filename = ""
@@ -1223,7 +1180,7 @@ def main(argv):
         logger.debug("Get links from each URL")
         for url in urls:
             _urls = dw.get_hrefs(url.url, links=links)
-            logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url))
+            logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url.url))
             hrefs.extend(_urls)
             _urls.clear()
 

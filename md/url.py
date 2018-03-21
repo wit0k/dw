@@ -123,7 +123,6 @@ class url(object):
         output_url = output_url.replace("[.", ".")
         output_url = output_url.replace(".]", ".")
 
-        test = ""
         """ Assume that the URL is valid at this stage """
         if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", output_url):
             logger.debug("Parsing URL: %s to: %s" % (input_url, output_url))

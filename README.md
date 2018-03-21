@@ -266,3 +266,5 @@ Ver. 0.2.9:
 
 Ver. 0.3.0:
 * Update to file_extensions (it has 76 extensions of well known files)
+* Removed parse_urls from dw (it's now part of url object)
+* Cosmetic code changes to logging
