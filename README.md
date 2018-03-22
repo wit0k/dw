@@ -271,3 +271,6 @@ Ver. 0.3.0:
 
 Ver. 0.3.1:
 * Code fix: Again for url.py -> parse_urls (i missed one error last time)
+
+Ver. 0.3.2:
+* Code update: to get_hrefs. Preventing a case with a continuous loop

@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.3.1'
+__version__ = '0.3.2'
 
 """
 TO DO:
@@ -448,6 +448,10 @@ class downloader (object):
 
             """ Access given URL (Get the headers only) """
             try:
+
+                if url in links:
+                    return links
+
                 logger.debug("HTTP HEAD: %s" % url)
                 response = con.head(url)
             except Exception as msg:
