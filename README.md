@@ -278,3 +278,7 @@ Ver. 0.3.2:
 Ver. 0.3.3:
 * Fix to Bluecoat proxy category lookup and submission (URL changes, POST data changes etc.)
 * Added actual check if captcha is required, if not, no need to download it from the server.
+
+Ver. 0.3.4:
+* Cosmetic code change in the function loading URLs from a file (it would skip the lines which are just '\n')
+* --url-info-force is well respected by --url-info 

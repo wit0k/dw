@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.3.3'
+__version__ = '0.3.4'
 
 """
 TO DO:
@@ -365,6 +365,9 @@ class downloader (object):
             with open(input_file, "r", encoding="utf8") as file:
                 lines = file.readlines()
                 for line in lines:
+                    if line == "\n":
+                        continue
+
                     if not line.strip().startswith("#"):
                         _url = _url_mod.url(line.strip())
                         urls.append(_url)
@@ -943,6 +946,7 @@ class downloader (object):
     def get_url_info(self, urls, vendor_name="bluecoat"):
 
         url_submitter = self.proxy_vendors[vendor_name.upper()]
+        url_category = None
 
         if url_submitter:
 
@@ -950,10 +954,11 @@ class downloader (object):
                 urls = [urls]
 
             for url in urls:
-                url_category = url_submitter.get_category(url)
+                if url:
+                    url_category = url_submitter.get_category(url, self.url_info_force)
 
-                if url_category:
-                   pass
+                    if url_category:
+                       pass
 
             return url_category
 
