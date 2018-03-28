@@ -2,6 +2,7 @@
 
 import requests
 import logging
+import random
 
 from PIL import Image  # pip install pillow
 from urllib.parse import urlparse
@@ -54,9 +55,11 @@ class proxy(submitter):
         POST_DATA = {
             "headers": {
                 'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json, text/plain, */*',
                 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',
                 'Origin': 'https://sitereview.bluecoat.com',
-                'Referer': 'https://sitereview.bluecoat.com/sitereview.jsp'
+                'Content-Type': 'application/json; charset=UTF-8'
+
             }
         }
 
@@ -126,10 +129,15 @@ class proxy(submitter):
 
         def get_category(self, url):
 
-            '''
-            Download the captcha and save it to the CWD as 'captcha.jpg'.  Then, use tesseract-ocr to solve
-            the captcha and store the solution as a string to be submitted with our URL request.
-            '''
+            """
+            28.03.2018:
+
+            IF the captcha is required:
+             - Download the captcha and save it to the CWD as 'captcha.jpg'.  Then, use tesseract-ocr to solve
+               the captcha and store the solution as a string to be submitted with our URL request.
+
+            IF the captcha is not required, submit the url directly
+            """
 
             """ Return cached category """
             if url in self.URL_TRACKING.keys():
@@ -138,51 +146,85 @@ class proxy(submitter):
 
             current_categorization = None
             tracking_id = None
-            epoch_timestamp = str(calendar.timegm(time.gmtime()) * 1000)  # Epoch timestamp in ms.
-            captcha_url = 'https://sitereview.bluecoat.com/rest/captcha.jpg?%s' % (
-                epoch_timestamp)  # Captcha URL
-            local_filename = 'captcha.jpg'
 
-            try:
-                r = self.con.get(captcha_url, headers=self.headers, stream=True)
-            except Exception as msg:
-                return ("N/A")
+            """ Check if captcha is required """
+            self.headers['Referer'] = 'https://sitereview.bluecoat.com/'
+            r = self.con.get('https://sitereview.bluecoat.com/resource/captcha-request', headers=self.headers)
 
-            with open(local_filename, 'wb') as f:
-                for chunk in r.iter_content(chunk_size=1024):
-                    if chunk:
-                        f.write(chunk)
+            response_dict = simplejson.loads(r.text)
+            captcha_required = response_dict.get("required", None)
 
-            if os.path.isfile('captcha.jpg'):
-                captcha = pytesseract.image_to_string(Image.open('captcha.jpg'))
-                captcha = "".join(captcha.split())
-                os.remove('captcha.jpg')  # Remove the downloaded captcha.
-                check_status_payload = 'url=%s&captcha=%s' % (
-                url, captcha)  # URL format to be used when Captcha is required.
+            """ Resolve captcha (Still the old method, but it works)"""
+            if captcha_required:
+                logger.debug("Captcha check is required. Pulling the captcha from the server")
+                epoch_timestamp = str(calendar.timegm(time.gmtime()) * 1000)  # Epoch timestamp in ms.
+                captcha_url = 'https://sitereview.bluecoat.com/rest/captcha.jpg?%s' % (epoch_timestamp)  # Captcha URL
+                local_filename = 'captcha.jpg'
 
                 try:
-                    r = self.con.post('https://sitereview.bluecoat.com/rest/categorization', headers=self.headers,
-                                      data=check_status_payload)  # Generate HTTP POST to check current category status
-
-                    response_dict = simplejson.loads(r.text)
-
-                    tracking_id = response_dict.get("curtrackingid", {})
-                    current_categorization = response_dict.get("categorization", {}).split(">")[1].split("<")[0]
-
-                    url_obj = urlparse(url, 'http')
-                    url_host = url_obj.hostname
-
-                    """ Update URL cache """
-                    self.URL_TRACKING[url] = {"tracking_id": tracking_id, "category": current_categorization}
-                    self.URL_TRACKING[url_host] = {"tracking_id": tracking_id, "category": current_categorization}
-
+                    r = self.con.get(captcha_url, headers=self.headers, stream=True)
                 except Exception as msg:
                     return ("N/A")
 
-            logger.debug("QUERY -> Vendor: %s | Category: %s | URL: %s" % (self.name, current_categorization, url))
-            return (current_categorization)
+                with open(local_filename, 'wb') as f:
+                    for chunk in r.iter_content(chunk_size=1024):
+                        if chunk:
+                            f.write(chunk)
 
-        def submit_category(self, new_category, url):
+                if os.path.isfile('captcha.jpg'):
+                    captcha = pytesseract.image_to_string(Image.open('captcha.jpg'))
+                    captcha = "".join(captcha.split())
+                    os.remove('captcha.jpg')  # Remove the downloaded captcha.
+                    # OLD: check_status_payload = 'url=%s&captcha=%s' % (url, captcha)  # URL format to be used when Captcha is required.
+                    check_status_payload = {"url": f'{url}', "captcha": f'{captcha}'}
+
+            else:
+                check_status_payload = {"url": f'{url}', "captcha": ''}
+
+            """ Lookup url """
+            try:
+
+                """ Wait a random time """
+                sleep_time = random.randint(1,3)
+                logger.debug("Thread Sleep for %d seconds" % sleep_time)
+                time.sleep(sleep_time)
+
+                self.headers['Referer'] = 'https://sitereview.bluecoat.com/lookup'
+                r = self.con.post('https://sitereview.bluecoat.com/resource/lookup', headers=self.headers,
+                                  json=check_status_payload)
+
+                if r.status_code != 200:
+                    logger.error("HTTP POST Failed -> https://sitereview.bluecoat.com/resource/lookup")
+                    logger.error("Headers: %s" % self.headers)
+                    logger.error("Data: %s" % check_status_payload)
+                    return ("ERROR")
+
+                response_dict = simplejson.loads(r.text)
+
+                tracking_id = response_dict.get("curTrackingId", {})
+                current_categorization = response_dict.get("categorization", [])
+
+                category = []
+                for _category in current_categorization:
+                    category.append(_category.get('name', ""))
+
+                category = ",".join(category)
+
+                url_obj = urlparse(url, 'http')
+                url_host = url_obj.hostname
+
+                """ Update URL cache """
+                self.URL_TRACKING[url] = {"tracking_id": tracking_id, "category": category}
+                self.URL_TRACKING[url_host] = {"tracking_id": tracking_id, "category": category}
+
+            except Exception as msg:
+                return ("N/A")
+
+            logger.debug("QUERY -> Vendor: %s | Category: %s | URL: %s" % (self.name, category, url))
+            return (category)
+
+        def submit_category(self, new_category, url, comments=" "):
+            """ Submit new category to bluecoat """
 
             if new_category == "":
                 new_category = self.default_category
@@ -196,7 +238,76 @@ class proxy(submitter):
 
             """ Tracking ID not found, hence running get_category"""
             if not tracking_id:
-                self.get_category(url)
+                category = self.get_category(url)
+                tracking_id = self.lookup_url_tracking_table(url, "tracking_id")
+
+            if not tracking_id:
+                logger.warning("Unable to obtain Tracking ID for: %s" % url)
+                return None
+
+            if self.submitter_email == '':
+                email_checkbox = 'off'
+
+                payload = {"comments":comments,"email1":"","email2":"","partner":"bluecoatsg"
+                    ,"referrer":"","sendEmail":False,"trackid":tracking_id,"cat1":category_id,"cat2":None}
+
+            else:
+                email_checkbox = 'on'
+                payload = {"comments": comments, "email1": self.submitter_email, "email2": "", "partner": "bluecoatsg"
+                    , "referrer": "", "sendEmail": True, "trackid": tracking_id, "cat1": category_id, "cat2": None}
+
+            #payload = 'referrer=bluecoatsg&suggestedcat=%s&suggestedcat2=&emailCheckBox=%s&email=%s&emailcc=&comments=&overwrite=no&trackid=%s' \
+                      #% (category_id, email_checkbox, self.submitter_email, str(tracking_id))
+
+            try:
+                logger.debug("Submitting new category: '%s' for: %s" % (new_category, url))
+
+                """ Wait a random time """
+                sleep_time = random.randint(1, 3)
+                logger.debug("Thread Sleep for %d seconds" % sleep_time)
+                time.sleep(sleep_time)
+
+                self.headers['Referer'] = 'https://sitereview.bluecoat.com/lookup'
+                r = self.con.post('https://sitereview.bluecoat.com/resource/submitCategorization',
+                                  headers=self.headers, json=payload)
+            except Exception as msg:
+                logger.error("Failed to submit new category")
+                return ("N/A")
+
+            response_dict = simplejson.loads(r.text)
+            submission_message = response_dict.get("message", {})
+
+            print("%s, %s" % (url, submission_message))
+
+            if (str(r.status_code) == '200' and submission_message[0:38] == 'Your page submission has been received'):
+                logger.debug("Submission OK -> Vendor: %s | URL: %s" % (self.name, url))
+                return True
+            elif 'This Web page is already categorized as you believe it should be' in submission_message:
+                logger.debug("Submission NOT REQUIRED -> Vendor: %s | URL: %s | Result: %s" % (self.name, url, "This Web page is already categorized as you believe it should be"))
+                return True
+            elif 'The Web page that you entered is currently under review' in submission_message:
+                logger.debug("Submission NOT REQUIRED -> Vendor: %s | URL: %s | Result: %s" % (self.name, url, "The Web page that you entered is currently under review"))
+                return True
+            else:
+                test = ""
+                logger.debug("Submission FAILED -> Vendor: %s | URL: %s" % (self.name, url))
+                return False
+
+        def submit_category_old(self, new_category, url):
+
+            if new_category == "":
+                new_category = self.default_category
+
+            if new_category not in self.category_mappings.keys():
+                logger.error("New category: %s not implemented yet. Skip the submission")
+                return False
+
+            category_id = self.category_mappings[new_category]
+            tracking_id = self.lookup_url_tracking_table(url, "tracking_id")
+
+            """ Tracking ID not found, hence running get_category"""
+            if not tracking_id:
+                category = self.get_category(url)
                 tracking_id = self.lookup_url_tracking_table(url, "tracking_id")
 
             if not tracking_id:

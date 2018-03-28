@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.3.2'
+__version__ = '0.3.3'
 
 """
 TO DO:
@@ -31,6 +31,7 @@ import requests
 import md.smb as cifs
 import md.pastebin as _paste_bin
 import md.url as _url_mod
+from md.db import handler, database
 
 from md.uniq import *
 from bs4 import BeautifulSoup # pip install bs4
@@ -968,6 +969,7 @@ class downloader (object):
     def uplaod_to_pastebin(self, data_entries, paste_name='Example Script', paste_type='0', paste_expire='1H', paste_format='Python', is_guest=True):
 
         _ldata = []
+        _data = []
         for entry in data_entries:
             if isinstance(entry, list):
                 for i in entry:
@@ -975,7 +977,13 @@ class downloader (object):
             else:
                 _ldata.append(entry)
 
-        data = "\n".join(_ldata)
+        # Make it less error prone with For and try catch
+        try:
+            data = "\n".join(_ldata)
+        except Exception:
+            logger.error("Unexpected data found. Cancelling pastebin upload.")
+            logger.error("Pastebin data: %s %s" % ("\n", _ldata))
+            return None
 
         if self.pastebin_api_key:
             api = _paste_bin.PasteBin(api_dev_key=self.pastebin_api_key)
@@ -1119,6 +1127,12 @@ def main(argv):
     links = []
     pastebin_report = []
 
+
+    """ TEST """
+    db = database("database.pdl")
+    db_handler = handler(db)
+
+
     #smb = cifs.smb()
     #smb.connect("185.176.221.45")
     #sys.exit(-1)
@@ -1134,6 +1148,9 @@ def main(argv):
         else:
             logger.error("Unsupported input type" % dw.input)
             exit(-1)
+
+    # TEST
+    # db_handler.insert(urls[0])
 
     """ Deduplicate the input """
     if dw.unique_files:

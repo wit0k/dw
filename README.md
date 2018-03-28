@@ -274,3 +274,7 @@ Ver. 0.3.1:
 
 Ver. 0.3.2:
 * Code update: to get_hrefs. Preventing a case with a continuous loop
+
+Ver. 0.3.3:
+* Fix to Bluecoat proxy category lookup and submission (URL changes, POST data changes etc.)
+* Added actual check if captcha is required, if not, no need to download it from the server.

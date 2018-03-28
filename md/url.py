@@ -16,7 +16,12 @@ class url(object):
 
     def __init__(self, url):
 
+        """ I shall add the file type as well and expose it as a sample class or so """
         self.url = None
+        self.time_created = None
+        self.file = None
+        self.hash = None
+
         self.initialized = None
         self.host = None
         self.host_name = None
@@ -27,6 +32,7 @@ class url(object):
         self.domain = None
         self.mime_type = None
         self.av_category = None
+
         self.proxy_category = {}
 
         if not url:
