@@ -1,0 +1,39 @@
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:06:17,212 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:06:17,213 - db.py - open - Connecting to: database.pdl
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:06:17,213 - db.py - open - Creating new connection object
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:06:17,218 - url.py - parse_url - Parsing URL: http://209]]].141.49.93/hello.bin to: http://209].141.49.93/hello.bin
+ERROR - THREAD-140735238246400 - 2018-05-02 08:06:17,218 - url.py - _split_url - Unable to parse URL: http://209].141.49.93/hello.bin -> Error: Invalid IPv6 URL
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:07:04,008 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:07:04,009 - db.py - open - Connecting to: database.pdl
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:07:04,009 - db.py - open - Creating new connection object
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:07:04,009 - url.py - parse_url - Parsing URL: http://209]]].141.49.93/hello.bin to: http://209].141.49.93/hello.bin
+ERROR - THREAD-140735238246400 - 2018-05-02 08:07:04,009 - url.py - _split_url - Unable to parse URL: http://209].141.49.93/hello.bin -> Error: Invalid IPv6 URL
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:07:27,073 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:07:27,076 - db.py - open - Connecting to: database.pdl
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:07:27,076 - db.py - open - Creating new connection object
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:30,303 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:30,304 - db.py - open - Connecting to: database.pdl
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:30,304 - db.py - open - Creating new connection object
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:30,304 - url.py - parse_url - Parsing URL: http://209]]].141.49.93/hello.bin to: http://209.141.49.93/hello.bin
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:30,600 - url.py - parse_url - Parsing URL: http://66]]].70.202.173/bin/ to: http://66.70.202.173/bin/
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:30,751 - dw.py - main - Loaded [2] URLs from: urls.txt
+INFO - THREAD-140735238246400 - 2018-05-02 08:08:30,752 - uniq.py - get_unique_entries - Deduplication: 2 -> 2
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:30,752 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:30,752 - dw.py - main - Get links from each URL
+INFO - THREAD-140735238246400 - 2018-05-02 08:08:30,752 - dw.py - get_hrefs - Getting hrefs from: http://209.141.49.93/hello.bin
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:30,753 - dw.py - get_hrefs - HTTP HEAD: http://209.141.49.93/hello.bin
+INFO - THREAD-140735238246400 - 2018-05-02 08:08:31,166 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://209.141.49.93/hello.bin
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:31,166 - dw.py - get_hrefs - Skip href lookup for: http://209.141.49.93/hello.bin - The resource is: application/octet-stream
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:31,166 - dw.py - main - Found [1] hrefs on: http://209.141.49.93/hello.bin
+INFO - THREAD-140735238246400 - 2018-05-02 08:08:31,167 - dw.py - get_hrefs - Getting hrefs from: http://66.70.202.173/bin/
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:31,167 - dw.py - get_hrefs - HTTP HEAD: http://66.70.202.173/bin/
+INFO - THREAD-140735238246400 - 2018-05-02 08:08:31,465 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://66.70.202.173/bin/
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:31,465 - dw.py - get_hrefs - HTTP GET: http://66.70.202.173/bin/
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:31,628 - dw.py - main - Found [8] hrefs on: http://66.70.202.173/bin/
+INFO - THREAD-140735238246400 - 2018-05-02 08:08:31,629 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735238246400 - 2018-05-02 08:08:31,629 - dw.py - main - ['http://209.141.49.93/hello.bin', 'http://66.70.202.173/bin/', 'http://66.70.202.173/bin/bin.exe', 'http://66.70.202.173/bin/cj.exe', 'http://66.70.202.173/bin/den.exe', 'http://66.70.202.173/bin/kenny.exe', 'http://66.70.202.173/bin/qq.exe', 'http://66.70.202.173/bin/tc.exe', 'http://66.70.202.173/bin/user.jar']
+INFO - THREAD-140735238246400 - 2018-05-02 08:08:31,629 - uniq.py - get_unique_entries - Deduplication: 9 -> 9
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:31,629 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:31,629 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:31,629 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735238246400 - 2018-05-02 08:08:31,629 - dw.py - main - Skipping pastebin submission

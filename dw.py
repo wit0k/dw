@@ -1,10 +1,12 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.3.4'
+__version__ = '0.3.5'
 
 """
 TO DO:
-- Add random wait time for Proxy and AV lookups and submissions
+- Add bit.ly resolution to url class maybe ...
+- Add timeout
+- Add random wait time for Proxy and AV lookups and submissions (i think it's done, but need to check it)
 - archive folder check 
 - Adopt AV to load_vendors (Proxy already supported)
 - Print file info, when only loding files (like hash etc.)
@@ -227,7 +229,7 @@ file_extensions = ["386","acm","asp","bas","bat","cab","cgi","chm","cla","class"
                    "ctl","dll","drv","exe","gms","hlp","hta","inf","ini","ins","isp","job","js","jse","lnk","mpd","msik",
                    "msp","ocx","opo","php","pif","pl","prc","rat","reg","scf","sct","scr","sh","shs","sys","tlb","tsp","vb",
                    "vbe","vbs","vxd","wbs","wbt","wiz","wsc","wsf","wsh",".zip",".7z",".rar",".exe",".dll",".msi",".ps1",".jar",
-                   ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas"]
+                   ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas", ".lib"]
 
 # Cache of URLs (It links URL string [key] with associated url object [value])
 URL_CACHE = {}
@@ -417,6 +419,15 @@ class downloader (object):
 
                 return False
 
+    def get_hrefs_smb(self, url_obj, con=None, links=[], depth=0, protocol="file"):
+
+        if not con:
+            con = cifs.smb()
+
+        con.connect(remote_server=url_obj.hostname, path=url_obj.path[1:])
+        sys.exit(-1)
+
+
     def get_hrefs(self, url, con=None, links=[], depth=0):
 
         try:
@@ -427,11 +438,18 @@ class downloader (object):
                 logger.info("href: %s -> Max depth [%d] reached!" % (url, depth))
                 return []
 
-            """ Standardize URL """
-            url_obj = urlparse(url, 'http')
+            """ Standardize URL ... i shall adopt it to new url object style """
+            url_obj = urlparse(url, "http")
             url_host = url_obj.hostname
             url_base = url_obj.scheme + "://" + url_obj.netloc
-            url = urlunparse(url_obj)
+            #url = urlunparse(url_obj)
+
+
+            # test
+            if url_obj.scheme == "file":
+                self.get_hrefs_smb(url_obj=url_obj, links=links)
+
+
 
             """ Create new session """
             response = None
@@ -467,6 +485,7 @@ class downloader (object):
                 if not response.status_code == 200:
                     if response.status_code in [301, 302]:
                         try:
+                            # Check here once the location is not URL!!!
                             url = response.headers["Location"]
                             logger.debug("HTTP HEAD: %s -> %s to %s" % (response.status_code, response.url, url))
 
@@ -526,6 +545,9 @@ class downloader (object):
                     _url = ""
                     _href = link.get('href')
 
+                    if url == "?":
+                        pass
+
                     if not _href:
                         continue
 
@@ -548,7 +570,8 @@ class downloader (object):
                         continue
 
                     """ Detect and skip links automatically created in open directory like: Name, Last modified, Size, Description """
-                    if _href in ["?ND", "?MA", "?SA", "?DA"]:
+                    if _href in ["?ND", "?MA", "?SA", "?DA", "?sort=na", "?sort=nd", "?sort=da", "?sort=dd", "?sort=ea",
+                                 "?sort=ed", "#"]:
                         continue
 
                     """ Build new url """
@@ -593,27 +616,6 @@ class downloader (object):
             return links
 
         return links
-
-    def _update_headers(self, headers, vendor_file):
-
-        vendor_config = None
-
-        if os.path.isfile(vendor_file):
-            with open(vendor_file, 'r') as file:
-                vendor_config = json.load(file)
-
-                for header_name, value in headers.items():
-                    if value == "":
-                        try:
-                            headers[header_name] = (None, vendor_config["form_data"][header_name])
-                        except KeyError:
-                            pass
-
-        else:
-            logger.error("Unable to load vendor file: %s" % vendor_file)
-            exit(-1)
-
-        return headers
 
     def get_file_info(self, filepath, url=None):
 
@@ -701,10 +703,10 @@ class downloader (object):
             """ Obtain the final URL after redirection """
             if response:
                 if not response.status_code == 200:
-                    if response.status_code in [301, 302]:
+                    if response.status_code in [301, 302]: # Sometimes allow_redirects does not work; hence this additional routine
                         try:
                             url = response.headers["Location"]
-                            logger.debug("HTTP: %s -> %s to %s" % (response.status_code, response.url, url))
+                            logger.info("Resolve redirect: HTTP: %s -> %s to %s" % (response.status_code, response.url, url))
                             """ Get final URL """
                             try:
                                 response = con.get(url)
@@ -720,6 +722,13 @@ class downloader (object):
             else:
                 logger.info("URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
                 continue
+
+            """ Keep the track of final URL """
+            if response.url != url:
+                url = response.url
+                logger.info("Final URL: %s -> %s" % (url, response.url))
+            else:
+                url = response.url
 
             logger.info("URL Download -> SUCCESS -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
 
@@ -818,6 +827,27 @@ class downloader (object):
             }
         }
     }
+
+    def _update_headers(self, headers, vendor_file):
+
+        vendor_config = None
+
+        if os.path.isfile(vendor_file):
+            with open(vendor_file, 'r') as file:
+                vendor_config = json.load(file)
+
+                for header_name, value in headers.items():
+                    if value == "":
+                        try:
+                            headers[header_name] = (None, vendor_config["form_data"][header_name])
+                        except KeyError:
+                            pass
+
+        else:
+            logger.error("Unable to load vendor file: %s" % vendor_file)
+            exit(-1)
+
+        return headers
 
     def submit(self, files, vendor_name="Symantec"):
 
@@ -1136,11 +1166,6 @@ def main(argv):
     """ TEST """
     db = database("database.pdl")
     db_handler = handler(db)
-
-
-    #smb = cifs.smb()
-    #smb.connect("185.176.221.45")
-    #sys.exit(-1)
 
     """ Load URLs from input file, or directly load files from a folder """
     if dw.input:

@@ -282,3 +282,7 @@ Ver. 0.3.3:
 Ver. 0.3.4:
 * Cosmetic code change in the function loading URLs from a file (it would skip the lines which are just '\n')
 * --url-info-force is well respected by --url-info 
+
+Ver. 0.3.5:
+* url parsing improvements 
+* preparing for other enhancements like smb support, submission tracking (databse)

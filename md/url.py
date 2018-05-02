@@ -18,9 +18,12 @@ class url(object):
 
         """ I shall add the file type as well and expose it as a sample class or so """
         self.url = None
+        self.url_final = None
         self.time_created = None
         self.file = None
         self.hash = None
+
+        self.protocol = None
 
         self.initialized = None
         self.host = None
@@ -80,7 +83,7 @@ class url(object):
             return True
 
         except Exception as msg:
-            logger.error("Unable to parse URL: %s -> Error: %s" % (url, msg.message))
+            logger.error("Unable to parse URL: %s -> Error: %s" % (self.url, msg))
             return None
 
     def _resolve_url(self):
@@ -118,20 +121,34 @@ class url(object):
             return None
 
         output_url = url.strip()
+
+        output_url = output_url.replace("[http://]", "http://")
+        output_url = output_url.replace("[https://]", "https://")
+        output_url = output_url.replace(" (HTTP)", "")
         output_url = output_url.replace(" ", "")
         output_url = output_url.replace("hxxp", "http")
+        output_url = output_url.replace("]]", "")
+        output_url = output_url.replace("[[", "")
         output_url = output_url.replace("[.]", ".")
         output_url = output_url.replace(".]]]", ".")
         output_url = output_url.replace("[[[.", ".")
-        output_url = output_url.replace("]]", "")
-        output_url = output_url.replace("[[", "")
         output_url = output_url.replace("[:]", ":")
         output_url = output_url.replace("[.", ".")
         output_url = output_url.replace(".]", ".")
+        output_url = output_url.replace(".[", ".")
+        output_url = output_url.replace("].", ".")
+        output_url = output_url.replace("[.", ".")
+        output_url = output_url.replace("/]", "/")
+        output_url = output_url.replace(r"\]", '\\')
 
         """ Assume that the URL is valid at this stage """
         if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", output_url):
             logger.debug("Parsing URL: %s to: %s" % (input_url, output_url))
+            self.url = output_url
+            return output_url
+
+        elif re.match(r"^file:/{2}[^/]", output_url):
+            self.protocol = "file"
             self.url = output_url
             return output_url
         else:
