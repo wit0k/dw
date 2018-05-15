@@ -86,6 +86,8 @@ Script arguments:
   --download            Download loaded or crawled URLs
   -z, --zip             Compress all downloaded files, or files from input
                         folder (If not zipped already)
+  --no-mime, -nm        Compress all downloaded files, or files from input
+                        folder (If not zipped already)
   --limit-archive-items MAX_FILE_COUNT_PER_ARCHIVE
                         Sets the limit of files per archive (Default: 9). [0 =
                         Unlimited]
