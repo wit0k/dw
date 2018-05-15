@@ -1321,7 +1321,7 @@ def main(argv):
 
     script_args.add_argument("--no-mime", "-nm", action='store_true', dest='do_not_print_mime_type', required=False,
                              default=False,
-                             help="Compress all downloaded files, or files from input folder (If not zipped already)")
+                             help="Print All retrieved HREFs without a mime type")
 
     script_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
                              default=9, help="Sets the limit of files per archive (Default: 9). [0 = Unlimited]")
