@@ -22,9 +22,7 @@ class url(object):
         self.time_created = None
         self.file = None
         self.hash = None
-
         self.protocol = None
-
         self.initialized = None
         self.host = None
         self.host_name = None

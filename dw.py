@@ -1,9 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.3.5'
+__version__ = '0.3.7'
 
 """
 TO DO:
+- Add option to display urls having mime type 
 - Add bit.ly resolution to url class maybe ...
 - Add timeout
 - Add random wait time for Proxy and AV lookups and submissions (i think it's done, but need to check it)
@@ -19,6 +20,7 @@ Sys req:
 import md.submitter as submission
 import re
 import os
+import pathlib
 import logging
 import argparse
 import sys
@@ -29,11 +31,13 @@ import hashlib
 import magic
 import platform as _os
 import requests
-
+import time
 import md.smb as cifs
 import md.pastebin as _paste_bin
 import md.url as _url_mod
 from md.db import handler, database
+
+import random
 
 from md.uniq import *
 from bs4 import BeautifulSoup # pip install bs4
@@ -49,6 +53,8 @@ MAGIC_FILE_PATH_LINUX = '/etc/magic'
 MAGIC_FILE_PATH_MAC = '/usr/local/Cellar/libmagic/5.29/share/misc/magic'
 MAGIC_FILE_PATH_WIN = r'C:/Users/Python3/Lib/site-packages/magic/libmagic/magic'
 
+MIME_MARKER = ' ,(MIME: '
+MIME_FOOTER = ')'
 
 """ Logger settings """
 logger = logging.getLogger('dw')
@@ -66,7 +72,8 @@ logger_verobse_levels = ["INFO", "WARNING", "ERROR", "DEBUG"]
 
 DOWNLOADED_FILE_NAME_LEN = 60
 current_user_agent_index = 0
-user_agents = ["Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)", "Wget/1.19.4 (darwin15.6.0)"]
+user_agents = ["Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)",
+               "Wget/1.19.4 (darwin15.6.0)"]
 user_headers = {'Accept': '*/*'}
 debug_proxies = {
   'http': 'http://127.0.0.1:8080',
@@ -229,7 +236,7 @@ file_extensions = ["386","acm","asp","bas","bat","cab","cgi","chm","cla","class"
                    "ctl","dll","drv","exe","gms","hlp","hta","inf","ini","ins","isp","job","js","jse","lnk","mpd","msik",
                    "msp","ocx","opo","php","pif","pl","prc","rat","reg","scf","sct","scr","sh","shs","sys","tlb","tsp","vb",
                    "vbe","vbs","vxd","wbs","wbt","wiz","wsc","wsf","wsh",".zip",".7z",".rar",".exe",".dll",".msi",".ps1",".jar",
-                   ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas", ".lib"]
+                   ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas", ".lib", ".apk"]
 
 # Cache of URLs (It links URL string [key] with associated url object [value])
 URL_CACHE = {}
@@ -264,6 +271,7 @@ class downloader (object):
         self.submitter_obj = submission.submitter()
         self.pastebin_api_key = args.pastebin_api_key
         self.user_agent = args.user_agent
+        self.do_not_print_mime_type = args.do_not_print_mime_type
 
         """ pastebin """
         self.stdout_to_pastebin = args.stdout_to_pastebin
@@ -367,10 +375,20 @@ class downloader (object):
             with open(input_file, "r", encoding="utf8") as file:
                 lines = file.readlines()
                 for line in lines:
+
                     if line == "\n":
                         continue
 
-                    if not line.strip().startswith("#"):
+                    line = line.strip()
+                    if not line.startswith("#"):
+
+                        # Handle the case with MIME type included in the URL
+                        if MIME_MARKER in line:
+                            url, _, mime = line.partition(MIME_MARKER)
+                            url = url.strip()
+                            if url:
+                                line = url
+
                         _url = _url_mod.url(line.strip())
                         urls.append(_url)
 
@@ -392,15 +410,44 @@ class downloader (object):
 
     def update_list(self, url, links):
 
-        mime = None
+        if isinstance(url, tuple):
+            mime = url[1]
+            url = url[0]
+            url_with_mime = url + MIME_MARKER + str(mime) + MIME_FOOTER
+        else:
+            mime = None
+            url_with_mime = None
+            url_with_mime = url + MIME_MARKER + "None" + MIME_FOOTER
+
+        if url not in links.keys():
+
+            links[url] = {"mime": mime, "url_mime": url_with_mime}
+
+            #links.append(url_with_mime)
+
+            if self.verbose_level == "DEBUG":
+                if mime:
+                    print("%s, (%s)" % (url, mime))
+                else:
+                    print(url)
+        else:
+            logger.debug("DEV: URL: '%s' already in links list!" % url)
+
+    def update_list_org(self, url, links):
 
         if isinstance(url, tuple):
             mime = url[1]
             url = url[0]
-
+            url_with_mime = url + MIME_MARKER + str(mime) + MIME_FOOTER
+        else:
+            mime = None
+            url_with_mime = None
+            url_with_mime = url + MIME_MARKER + "None" + MIME_FOOTER
 
         if url not in links:
             links.append(url)
+            #links.append(url_with_mime)
+
             if self.verbose_level == "DEBUG":
                 if mime:
                     print("%s, (%s)" % (url, mime))
@@ -427,8 +474,7 @@ class downloader (object):
         con.connect(remote_server=url_obj.hostname, path=url_obj.path[1:])
         sys.exit(-1)
 
-
-    def get_hrefs(self, url, con=None, links=[], depth=0):
+    def get_hrefs(self, url, con=None, links={}, depth=0):
 
         try:
             if depth == 0:
@@ -436,7 +482,8 @@ class downloader (object):
                 print("Getting hrefs from: %s" % url)
             elif depth >= self.recursion_depth and self.recursion_depth != 0:
                 logger.info("href: %s -> Max depth [%d] reached!" % (url, depth))
-                return []
+                return links
+
 
             """ Standardize URL ... i shall adopt it to new url object style """
             url_obj = urlparse(url, "http")
@@ -447,8 +494,7 @@ class downloader (object):
 
             # test
             if url_obj.scheme == "file":
-                self.get_hrefs_smb(url_obj=url_obj, links=links)
-
+                self.get_hrefs_smb(url_obj=url_obj, links=links.keys())
 
 
             """ Create new session """
@@ -470,7 +516,206 @@ class downloader (object):
 
             """ Access given URL (Get the headers only) """
             try:
+                if self.in_links(url, links):
+                    return links
 
+                logger.debug("HTTP HEAD: %s" % url)
+                response = con.head(url)
+            except Exception as msg:
+                logger.error("con.get(%s) -> Error: %s" % (url, msg))
+                return links
+
+            """ Obtain the final URL after redirection """
+            if response is not None:
+                if not response.status_code == 200:
+                    if response.status_code in [301, 302]:
+                        try:
+                            # Check here once the location is not URL!!!
+                            url = response.headers["Location"]
+                            logger.debug("HTTP HEAD: %s -> %s to %s" % (response.status_code, response.url, url))
+
+                            """ Get URL's headers (Only) """
+                            try:
+                                logger.debug("HTTP HEAD: %s" % url)
+                                response = con.head(url)
+                            except Exception as msg:
+                                logger.error("con.get(%s) -> Error: %s" % (url, msg))
+                                return links
+
+                        except KeyError:
+                            logger.debug("[HTTP HEAD %s]: %s -> Failed to retrieve final URL" % (response.status_code, url))
+                            return links
+                    else:
+                        logger.info("[HTTP HEAD %s]: URL Fetch -> FAILED -> URL: %s" % (response.status_code, url))
+                        return links
+
+            logger.info("HTTP HEAD -> URL Fetch -> SUCCESS -> URL: %s" % url)
+
+            """ If the resource is of given MIME type, mark it as href and do not resolve the links  """
+            response_headers = response.headers
+            if "Content-Type" in response_headers:
+                if response_headers["Content-Type"] in default_mime_types:
+                    content_type = response_headers["Content-Type"]
+                    logger.debug("Skip href lookup for: %s - The resource is: %s" % (
+                        url, content_type))
+                    self.update_list((url, response_headers["Content-Type"]), links)
+                    return links
+
+            """ If the resource is know file extension, but Content-Type is not sent by the server """
+            if self._url_endswith(url, file_extensions):
+                self.update_list(url, links)
+                return links
+
+            """ Update visited URLs (Links) """
+            self.update_list(url, links)
+
+            """ This time, get the content with GET request """
+            try:
+                logger.debug("HTTP GET: %s" % url)
+                response = con.get(url)
+            except Exception as msg:
+                logger.error("con.get(%s) -> Error: %s" % (url, msg))
+                return links
+
+            """ Parse the HTTP response """
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            """ Retrieve all href/a elements  """
+            # _links = soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")})
+            _links = soup.findAll('a')
+
+            """ If any hrefs found, build href's url """
+            if _links:
+                for link in _links:
+                    _url = ""
+                    _href = link.get('href')
+
+                    if url == "?":
+                        pass
+
+                    if not _href:
+                        continue
+
+                    """ Skip hrefs to Parent Directory """
+                    if _href == "/":
+                        continue
+
+                    if r"../" in _href:
+                        continue
+
+                    """ Automatically detect parent dir """
+                    if _href[:1] == "/":
+                        parent_url = url_base + _href
+                        if len(parent_url) < len(url):
+                            if parent_url in url:
+                                continue
+
+                    """ Detect and Skip mod_autoindex hrefs """
+                    if re.match(r"(^\?[a-zA-Z]=[0-9A-Za-z];{0,1})([a-zA-Z]=[0-9A-Za-z];{0,1})*", _href):
+                        continue
+
+                    """ Detect and skip links automatically created in open directory like: Name, Last modified, Size, Description """
+                    if _href in ["?ND", "?MA", "?SA", "?DA", "?sort=na", "?sort=nd", "?sort=da", "?sort=dd", "?sort=ea",
+                                 "?sort=ed", "#"]:
+                        continue
+
+                    """ Build new url """
+                    if url_host not in _href:
+                        if _href.startswith("http://") or _href.startswith("https://"):
+                            _url = _href
+                        else:
+                            if url[-1:] == "/" and _href[:1] == "/":
+                                """  The url ends with / and the href starts with / """
+                                _url = url + _href[1:]
+                            elif url[-1:] != "/" and _href[:1] != "/":
+                                """  The url does not end with / and the href does not start with / """
+                                _url = url + "/" + _href
+                            else:
+                                _url = url + _href
+
+                    """ Case: -r """
+                    if self.recursion:
+                        """ Case: -rl Skip the href if its host is not the same as the host of the base URL  """
+                        if self.crawl_local_host_only:
+                            if url_host not in _url:
+                                logger.debug("Skip: %s -> The host: %s not found" % (_url, url_host))
+                                continue
+
+                        if _url:
+                            # _url not in links
+                            if not self.in_links(_url, links):
+                                self.get_hrefs(_url, con, links, depth + 1)
+                        else:
+                            # _href not in links
+                            if not self.in_links(_href, links):
+                                self.get_hrefs(_href, con, links, depth + 1)
+                    else:
+                        if _url:
+                            self.update_list(_url, links)
+                        else:
+                            self.update_list(_href, links)
+            else:
+                """ Update visited URLs (Links) """
+                self.update_list(url, links)
+
+        except requests.exceptions.InvalidSchema:
+            logger.error("Invalid URL format: %s" % url)
+            return links
+
+        return links
+
+    def in_links(self, link, links={}):
+        if links:
+            if link in links.keys():
+                return True
+            else:
+                return False
+
+        else:
+            return False
+
+    def get_hrefs_org(self, url, con=None, links=[], depth=0):
+
+        try:
+            if depth == 0:
+                logger.info("Getting hrefs from: %s" % url)
+                print("Getting hrefs from: %s" % url)
+            elif depth >= self.recursion_depth and self.recursion_depth != 0:
+                logger.info("href: %s -> Max depth [%d] reached!" % (url, depth))
+                return []
+
+
+            """ Standardize URL ... i shall adopt it to new url object style """
+            url_obj = urlparse(url, "http")
+            url_host = url_obj.hostname
+            url_base = url_obj.scheme + "://" + url_obj.netloc
+            #url = urlunparse(url_obj)
+
+
+            # test
+            if url_obj.scheme == "file":
+                self.get_hrefs_smb(url_obj=url_obj, links=links)
+
+
+            """ Create new session """
+            response = None
+
+            if not con:
+                con = requests.Session()
+                con.headers.update({'User-Agent': self.get_user_agent()})
+                con.headers.update(user_headers)
+
+                """ Set connection/session properties """
+                if self.requests_debug:
+                    con.proxies.update(debug_proxies)
+                    con.verify = False
+                    con.allow_redirects = True
+                else:
+                    con.verify = False
+                    con.allow_redirects = True
+
+            """ Access given URL (Get the headers only) """
+            try:
                 if url in links:
                     return links
 
@@ -750,6 +995,12 @@ class downloader (object):
             if len(local_filename) > DOWNLOADED_FILE_NAME_LEN:
                 local_filename = local_filename[1:DOWNLOADED_FILE_NAME_LEN]
 
+            # Make sure that the local file name is safe file name
+            extension = pathlib.Path(local_filename).suffix
+            local_filename = "".join(x for x in local_filename if x.isalnum())
+            if extension:
+                local_filename = local_filename + extension
+
             out_file = self.download_folder + "/" + local_filename
             out_file = out_file.replace(r"//", r"/")
             """ Make sure that files do not get overwritten """
@@ -896,6 +1147,12 @@ class downloader (object):
                     if vendor_name == "Symantec":
                         if submission_success_message in response.text:
                             logger.info("Submission OK -> %s" % file)
+
+                            """ Wait a random time """
+                            sleep_time = random.randint(1, 3)
+                            logger.debug("Thread Sleep for %d seconds" % sleep_time)
+                            time.sleep(sleep_time)
+
         else:
             logger.warning("Nothing to submit!")
 
@@ -1062,6 +1319,10 @@ def main(argv):
     script_args.add_argument("-z", "--zip", action='store_true', dest='zip_downloaded_files', required=False,
                              default=False, help="Compress all downloaded files, or files from input folder (If not zipped already)")
 
+    script_args.add_argument("--no-mime", "-nm", action='store_true', dest='do_not_print_mime_type', required=False,
+                             default=False,
+                             help="Compress all downloaded files, or files from input folder (If not zipped already)")
+
     script_args.add_argument("--limit-archive-items", action='store', dest='max_file_count_per_archive', required=False,
                              default=9, help="Sets the limit of files per archive (Default: 9). [0 = Unlimited]")
 
@@ -1157,15 +1418,15 @@ def main(argv):
     _uniq = uniq()
     urls = []
     hrefs = []
+    hrefs_mime = []
     downloaded_files = []
     archives = []
-    links = []
     pastebin_report = []
 
 
     """ TEST """
-    db = database("database.pdl")
-    db_handler = handler(db)
+    #db = database("database.pdl")
+    #db_handler = handler(db)
 
     """ Load URLs from input file, or directly load files from a folder """
     if dw.input:
@@ -1230,16 +1491,32 @@ def main(argv):
     if dw.get_links and urls:
         logger.debug("Get links from each URL")
         for url in urls:
-            _urls = dw.get_hrefs(url.url, links=links)
-            logger.debug("Found [%d] hrefs on: %s" % (len(_urls), url.url))
-            hrefs.extend(_urls)
-            _urls.clear()
 
-        logger.info("All retrieved HREFs:")
-        logger.info(hrefs)
-        print("All retrieved HREFs:")
-        print(*hrefs, sep="\n")
-        print("----------------------------------------------------------.")
+            if url.url not in hrefs:
+                links = {}
+                _hrefs = dw.get_hrefs(url.url, links=links)
+                logger.debug("Found [%d] hrefs on: %s" % (len(_hrefs), url.url))
+                hrefs.extend(links.copy())
+
+                for key, value in _hrefs.items():
+                    url_mime = value.get("url_mime", None)
+                    hrefs_mime.append(url_mime)
+
+            else:
+                logger.debug("SKIP: %s -> already in URL cache" % url.url)
+
+        if dw.do_not_print_mime_type:
+            logger.info("All retrieved HREFs:")
+            logger.info(hrefs)
+            print("All retrieved HREFs:")
+            print(*hrefs, sep="\n")
+            print("----------------------------------------------------------.")
+        else:
+            logger.info("All retrieved HREFs:")
+            logger.info(hrefs_mime)
+            print("All retrieved HREFs:")
+            print(*hrefs_mime, sep="\n")
+            print("----------------------------------------------------------.")
 
         pastebin_report.append("Detected HREFs:")
         pastebin_report.append(_uniq.get_unique_entries(hrefs))

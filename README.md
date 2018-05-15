@@ -286,3 +286,13 @@ Ver. 0.3.4:
 Ver. 0.3.5:
 * url parsing improvements 
 * preparing for other enhancements like smb support, submission tracking (databse)
+
+Ver. 0.3.6:
+* Small fix to download function better handling of output file names
+
+Ver. 0.3.7:
+* Small fix to download function better handling of output file names (Previous fix was cutting the file extension)
+* -nm: All retrieved HREFs will be printed without <mime_type> (By default <mime_type> is printed)
+* -i: supports a notation with mime type like: http://host[.]domain/path/etc ,(MIME: <mime_type>), so you can just copy the result from -gl, -rl etc. 
+
+
