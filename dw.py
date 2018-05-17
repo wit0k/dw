@@ -1,13 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.3.7'
+__version__ = '0.3.8'
 
 """
 TO DO:
-- Add option to display urls having mime type 
 - Add bit.ly resolution to url class maybe ...
-- Add timeout
-- Add random wait time for Proxy and AV lookups and submissions (i think it's done, but need to check it)
 - archive folder check 
 - Adopt AV to load_vendors (Proxy already supported)
 - Print file info, when only loding files (like hash etc.)
@@ -272,6 +269,7 @@ class downloader (object):
         self.pastebin_api_key = args.pastebin_api_key
         self.user_agent = args.user_agent
         self.do_not_print_mime_type = args.do_not_print_mime_type
+        self.submit_hashes = args.submit_hashes
 
         """ pastebin """
         self.stdout_to_pastebin = args.stdout_to_pastebin
@@ -368,6 +366,27 @@ class downloader (object):
         for archive in self.open_zip_files.values():
             archive.close()
 
+    def load_hashes_from_input_file(self, input_file):
+
+        hashes = []
+        if os.path.isfile(input_file):
+            with open(input_file, "r", encoding="utf8") as file:
+                lines = file.readlines()
+                for line in lines:
+                    if line == "\n":
+                        continue
+
+                    if line.upper() == '[END]' or line.upper() == '[END]\n':
+                        break
+
+                    line = line.strip()
+                    if not line.startswith("#"):
+                        hashes.append(line)
+
+                return hashes
+        else:
+            logger.error("Input file: %s -> Not found!" % input_file)
+
     def load_urls_from_input_file(self, input_file):
 
         urls = []
@@ -376,8 +395,11 @@ class downloader (object):
                 lines = file.readlines()
                 for line in lines:
 
-                    if line == "\n":
+                    if line == '\n':
                         continue
+
+                    if line.upper() == '[END]' or line.upper() == '[END]\n':
+                        break
 
                     line = line.strip()
                     if not line.startswith("#"):
@@ -1100,6 +1122,77 @@ class downloader (object):
 
         return headers
 
+    def get_tracking_id(self, response_text):
+
+        pattern = re.compile(r'Number: ([0-9]{8,9}){1}<', re.I | re.MULTILINE)
+
+        for match in pattern.finditer(response_text):
+            tracking_id = match.groups()
+            if tracking_id:
+
+                return str(''.join(tracking_id))
+            else:
+                return None
+
+    def submit_hash(self, hashes, vendor_name="Symantec"):
+
+        if hashes:
+            url = ""
+            file_content = None
+            submission_success_message = ""
+            form_data = {}
+            headers = {}
+
+            """ Pull vendor specific POST data fields """
+            if vendor_name == "Symantec":
+                form_data = self.POST_DATA["Symantec"]["form_data"]
+                form_data['stype'] = (None, 'hash')
+                headers = self.POST_DATA["Symantec"]["headers"]
+                url = self.POST_DATA["Symantec"]["url"]
+                submission_success_message = self.POST_DATA["Symantec"]["success_message"]
+
+            for hash in hashes:
+                logger.info("Submitting: %s to: %s" % (hash, url))
+
+                form_data['hash'] = (None, hash)
+
+                """ Adjust form_data according to script parameters """
+                if self.submission_comments:
+                    form_data["comments"] = self.submission_comments
+                else:
+                    form_data["comments"] = hash
+
+                """ Adjust form_data with data from vendor file  """
+                self._update_headers(form_data, self.POST_DATA["Symantec"]["config_file"])
+
+                """ Submit the request """
+                if self.requests_debug:
+                    response = requests.post(url, files=form_data, proxies=debug_proxies, headers=headers, verify=False)
+                else:
+                    response = requests.post(url, files=form_data, headers=headers, verify=False)
+
+                if not response.status_code == 200:
+                    logger.error("[%s] - FAILED to submit: %s" % (response.status_code, url))
+                else:
+                    if vendor_name == "Symantec":
+                        if submission_success_message in response.text:
+                            tracking_id = self.get_tracking_id(response.text)
+
+                            logger.info("Vendor: %s: Submission Success -> Hash: %s, %s" % (vendor_name, hash, tracking_id))
+                            print("Vendor: %s: Submission Success -> Hash: %s, %s" % (vendor_name, hash, tracking_id))
+
+                            """ Wait a random time """
+                            sleep_time = random.randint(1, 3)
+                            logger.debug("Thread Sleep for %d seconds" % sleep_time)
+                            time.sleep(sleep_time)
+                        else:
+                            logger.info(
+                                "Vendor: %s: Submission Failure: Hash: %s\n Message: \n %s" % (vendor_name, hash, response.text))
+                            print("Vendor: %s: Submission Failure: Hash: %s\n Message: \n %s" % (vendor_name, hash, response.text))
+
+        else:
+            logger.warning("Nothing to submit!")
+
     def submit(self, files, vendor_name="Symantec"):
 
         if files:
@@ -1146,12 +1239,20 @@ class downloader (object):
                 else:
                     if vendor_name == "Symantec":
                         if submission_success_message in response.text:
-                            logger.info("Submission OK -> %s" % file)
+                            tracking_id = self.get_tracking_id(response.text)
+                            logger.info(
+                                "Vendor: %s: Submission Success -> File: %s, %s" % (vendor_name, file, tracking_id))
+                            print("Vendor: %s: Submission Success -> File: %s, %s" % (vendor_name, file, tracking_id))
 
                             """ Wait a random time """
                             sleep_time = random.randint(1, 3)
                             logger.debug("Thread Sleep for %d seconds" % sleep_time)
                             time.sleep(sleep_time)
+                        else:
+                            logger.info(
+                                "Vendor: %s: Submission Failure: File: %s\n Message: \n %s" % (vendor_name, file, response.text))
+                            print("Vendor: %s: Submission Failure: File: %s\n Message: \n %s" % (vendor_name, file, response.text))
+
 
         else:
             logger.warning("Nothing to submit!")
@@ -1344,6 +1445,9 @@ def main(argv):
     submission_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
                              default=False, help="Submit files to AV vendors (Enables -z by default)")
 
+    submission_args.add_argument("--submit-hash", action='store_true', dest='submit_hashes', required=False,
+                                 default=False, help="Submit hashes to AV vendors")
+
     submission_args.add_argument("--submit-url", action='store_true', dest='submit_to_proxy_vendors', required=False,
                              default=False, help="Submit loaded URLs to PROXY vendors...")
 
@@ -1417,6 +1521,8 @@ def main(argv):
     dw = downloader(args)
     _uniq = uniq()
     urls = []
+    hashes = []
+    hashes_tracking = []
     hrefs = []
     hrefs_mime = []
     downloaded_files = []
@@ -1431,8 +1537,12 @@ def main(argv):
     """ Load URLs from input file, or directly load files from a folder """
     if dw.input:
         if dw.input_type == "file":
-            urls = dw.load_urls_from_input_file(dw.input)
-            logger.debug("Loaded [%d] URLs from: %s" % (len(urls), dw.input))
+            if dw.submit_hashes:
+                hashes = dw.load_hashes_from_input_file(dw.input)
+                logger.debug("Loaded [%d] Hashes from: %s" % (len(hashes), dw.input))
+            else:
+                urls = dw.load_urls_from_input_file(dw.input)
+                logger.debug("Loaded [%d] URLs from: %s" % (len(urls), dw.input))
         elif dw.input_type == "folder":
             downloaded_files = dw.load_files_from_input_folder(dw.input)
             logger.debug("Loaded [%d] files from: %s" % (len(downloaded_files), dw.input))
@@ -1454,22 +1564,31 @@ def main(argv):
             urls = _uniq.get_unique_entries(urls)
             print("Distinct input URLs:")
             print(*[u.url for u in urls], sep="\n")
+        elif hashes:
+            hashes = _uniq.get_unique_entries(hashes)
 
     """ Update pastebin report """
     if urls:
         pastebin_report.append("Input URLs:")
         pastebin_report.append([u.url for u in urls])
-    else:
+    elif downloaded_files:
         pastebin_report.append("Input files:")
         pastebin_report.append(downloaded_files)
+    else:
+        pastebin_report.append("Input hashes:")
+        pastebin_report.append(hashes)
 
     """ Save deduplicated loaded files to another directory """
     if dw.output_directory:
         if dw.unique_files:
             if downloaded_files:
+                logger.info("Copy deduplicated files to %s:" % dw.output_directory)
                 for file in downloaded_files:
-                    logger.debug("Save: %s to %s/ folder" % (file, dw.output_directory))
-                    shutil.copy2(file, dw.output_directory)
+                    dirname = os.path.dirname(file)
+                    destination_file = os.path.join(dirname, dw.output_directory)
+                    logger.debug("Save: %s to %s/ folder" % (file, destination_file))
+                    shutil.copy2(file, destination_file)
+
 
     """ Get URL info for all loaded URLs (Fills in the URL_PROXY_CATEGORIZATION dict)"""
     if dw.url_info:
@@ -1486,6 +1605,13 @@ def main(argv):
     if dw.submit_to_proxy_vendors:
         for url in urls:
             dw.submit_url_category(url.url, dw.new_proxy_category)
+
+    """ Submit loaded hashes to configured AV vendors """
+    if dw.submit_hashes:
+        if hashes:
+            hashes_tracking = dw.submit_hash(hashes)
+
+
 
     """ Retrieve HREFs for each URL """
     if dw.get_links and urls:

@@ -296,4 +296,8 @@ Ver. 0.3.7:
 * -nm: All retrieved HREFs will be printed without <mime_type> (By default <mime_type> is printed)
 * -i: supports a notation with mime type like: http://host[.]domain/path/etc ,(MIME: <mime_type>), so you can just copy the result from -gl, -rl etc. 
 
-
+Ver. 0.3.8:
+* -o: Fix, it should support full and relative path as well for the output folder
+* -i: "[END]" marker would stop input file processing for both urls and hashes
+* (Beta) --submit-hash: Allows submitting hashes to AV vendor (-i <file with hashes> must be specified) 
+* Both --submit, --submit-hash would attempt to read a Tracking ID number from submission website
