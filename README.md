@@ -114,6 +114,7 @@ Networking arguments:
 submission arguments:
 
   --submit              Submit files to AV vendors (Enables -z by default)
+  --submit-hash         Submit hashes to AV vendors
   --submit-url          Submit loaded URLs to PROXY vendors...
   -ui, --url-info       Retrieve URL information from supported vendors for
                         all loaded input URLs.
@@ -148,6 +149,7 @@ pastebin arguments:
                         ... (Default: 1H)
   -pt PASTEBIN_TITLE, --pastebin-title PASTEBIN_TITLE
                         Paste title
+
 </pre>
  
 **Change log:**
