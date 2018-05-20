@@ -1,9 +1,11 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.3.8'
+__version__ = '0.3.9'
 
 """
 TO DO:
+- Add exclusion to url
+- Fix display issue when adding --url-info and mime url 
 - Add bit.ly resolution to url class maybe ...
 - archive folder check 
 - Adopt AV to load_vendors (Proxy already supported)
@@ -70,7 +72,10 @@ logger_verobse_levels = ["INFO", "WARNING", "ERROR", "DEBUG"]
 DOWNLOADED_FILE_NAME_LEN = 60
 current_user_agent_index = 0
 user_agents = ["Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)",
-               "Wget/1.19.4 (darwin15.6.0)"]
+               "Wget/1.19.4 (darwin15.6.0)",
+               "Wget/1.14 (linux-gnu)",
+               "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0"
+               ]
 user_headers = {'Accept': '*/*'}
 debug_proxies = {
   'http': 'http://127.0.0.1:8080',
@@ -482,9 +487,11 @@ class downloader (object):
 
         if url:
             if extensions:
-                for _ext in extensions:
-                    if url.endswith(_ext):
-                        return True
+                # Do not consider the TLD as an extension
+                if url.count(r'/') > 3:
+                    for _ext in extensions:
+                        if url.endswith(_ext):
+                            return True
 
                 return False
 
@@ -584,7 +591,7 @@ class downloader (object):
                     return links
 
             """ If the resource is know file extension, but Content-Type is not sent by the server """
-            if self._url_endswith(url, file_extensions):
+            if self._url_endswith(url, file_extensions) :
                 self.update_list(url, links)
                 return links
 

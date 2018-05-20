@@ -303,3 +303,7 @@ Ver. 0.3.8:
 * -i: "[END]" marker would stop input file processing for both urls and hashes
 * (Beta) --submit-hash: Allows submitting hashes to AV vendor (-i <file with hashes> must be specified) 
 * Both --submit, --submit-hash would attempt to read a Tracking ID number from submission website
+
+Ver. 0.3.9:
+* Update to url parsing " || . || " or  "||.||" to "." 
+* Fix to _url_endswith() which was incorrectly considering domain TLD as an extension 
