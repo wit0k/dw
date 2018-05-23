@@ -1,14 +1,14 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.3.9'
+__version__ = '0.4.0'
 
 """
 TO DO:
+- Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/
 - Add exclusion to url
 - Fix display issue when adding --url-info and mime url 
 - Add bit.ly resolution to url class maybe ...
 - archive folder check 
-- Adopt AV to load_vendors (Proxy already supported)
 - Print file info, when only loding files (like hash etc.)
 - Add user agent randomization 
 
@@ -43,6 +43,8 @@ from bs4 import BeautifulSoup # pip install bs4
 from urllib.parse import urlparse, urlunparse
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+from md.pluginmgr import plugin_manager
 
 app_name = "dw"
 """ Set working directory so the script can be executed from any location/symlink """
@@ -243,13 +245,14 @@ file_extensions = ["386","acm","asp","bas","bat","cab","cgi","chm","cla","class"
 # Cache of URLs (It links URL string [key] with associated url object [value])
 URL_CACHE = {}
 
+
 class downloader (object):
 
     def __init__(self, args):
 
         self.verbose_level = args.verbose_level
         self.download_files = args.download_files
-        self.submit_to_vendors = args.submit_to_vendors
+        self.submit_to_av_vendors = args.submit_to_av_vendors
         self.input = args.input
         self.archive_folder = args.archive_folder
         self.input_type = None  # file | folder
@@ -281,6 +284,14 @@ class downloader (object):
         self.pastebin_type = str(args.pastebin_type)
         self.pastebin_paste_expiration = args.pastebin_paste_expiration
         self.pastebin_title = args.pastebin_title
+
+        """ AV vendors """
+        if args.av_vendors == 'all':
+            self.submit_to_all_av_vendors = True
+        else:
+            self.submit_to_all_av_vendors = False
+            self.av_vendors = self.to_list(args.av_vendors)
+            self.av_vendors = [x.lower() for x in self.av_vendors]
 
         """ Load proxy vendors """
         _proxy_vendor_names = self.to_list(args.proxy_vendors)
@@ -460,29 +471,6 @@ class downloader (object):
         else:
             logger.debug("DEV: URL: '%s' already in links list!" % url)
 
-    def update_list_org(self, url, links):
-
-        if isinstance(url, tuple):
-            mime = url[1]
-            url = url[0]
-            url_with_mime = url + MIME_MARKER + str(mime) + MIME_FOOTER
-        else:
-            mime = None
-            url_with_mime = None
-            url_with_mime = url + MIME_MARKER + "None" + MIME_FOOTER
-
-        if url not in links:
-            links.append(url)
-            #links.append(url_with_mime)
-
-            if self.verbose_level == "DEBUG":
-                if mime:
-                    print("%s, (%s)" % (url, mime))
-                else:
-                    print(url)
-        else:
-            logger.debug("DEV: URL: '%s' already in links list!" % url)
-
     def _url_endswith(self, url="", extensions=[]):
 
         if url:
@@ -645,7 +633,7 @@ class downloader (object):
 
                     """ Detect and skip links automatically created in open directory like: Name, Last modified, Size, Description """
                     if _href in ["?ND", "?MA", "?SA", "?DA", "?sort=na", "?sort=nd", "?sort=da", "?sort=dd", "?sort=ea",
-                                 "?sort=ed", "#"]:
+                                 "?sort=ed", "#", "./"]:
                         continue
 
                     """ Build new url """
@@ -703,194 +691,6 @@ class downloader (object):
         else:
             return False
 
-    def get_hrefs_org(self, url, con=None, links=[], depth=0):
-
-        try:
-            if depth == 0:
-                logger.info("Getting hrefs from: %s" % url)
-                print("Getting hrefs from: %s" % url)
-            elif depth >= self.recursion_depth and self.recursion_depth != 0:
-                logger.info("href: %s -> Max depth [%d] reached!" % (url, depth))
-                return []
-
-
-            """ Standardize URL ... i shall adopt it to new url object style """
-            url_obj = urlparse(url, "http")
-            url_host = url_obj.hostname
-            url_base = url_obj.scheme + "://" + url_obj.netloc
-            #url = urlunparse(url_obj)
-
-
-            # test
-            if url_obj.scheme == "file":
-                self.get_hrefs_smb(url_obj=url_obj, links=links)
-
-
-            """ Create new session """
-            response = None
-
-            if not con:
-                con = requests.Session()
-                con.headers.update({'User-Agent': self.get_user_agent()})
-                con.headers.update(user_headers)
-
-                """ Set connection/session properties """
-                if self.requests_debug:
-                    con.proxies.update(debug_proxies)
-                    con.verify = False
-                    con.allow_redirects = True
-                else:
-                    con.verify = False
-                    con.allow_redirects = True
-
-            """ Access given URL (Get the headers only) """
-            try:
-                if url in links:
-                    return links
-
-                logger.debug("HTTP HEAD: %s" % url)
-                response = con.head(url)
-            except Exception as msg:
-                logger.error("con.get(%s) -> Error: %s" % (url, msg))
-                return links
-
-            """ Obtain the final URL after redirection """
-            if response is not None:
-                if not response.status_code == 200:
-                    if response.status_code in [301, 302]:
-                        try:
-                            # Check here once the location is not URL!!!
-                            url = response.headers["Location"]
-                            logger.debug("HTTP HEAD: %s -> %s to %s" % (response.status_code, response.url, url))
-
-                            """ Get URL's headers (Only) """
-                            try:
-                                logger.debug("HTTP HEAD: %s" % url)
-                                response = con.head(url)
-                            except Exception as msg:
-                                logger.error("con.get(%s) -> Error: %s" % (url, msg))
-                                return links
-
-                        except KeyError:
-                            logger.debug("[HTTP HEAD %s]: %s -> Failed to retrieve final URL" % (response.status_code, url))
-                            return links
-                    else:
-                        logger.info("[HTTP HEAD %s]: URL Fetch -> FAILED -> URL: %s" % (response.status_code, url))
-                        return links
-
-            logger.info("HTTP HEAD -> URL Fetch -> SUCCESS -> URL: %s" % url)
-
-            """ If the resource is of given MIME type, mark it as href and do not resolve the links  """
-            response_headers = response.headers
-            if "Content-Type" in response_headers:
-                if response_headers["Content-Type"] in default_mime_types:
-                    content_type = response_headers["Content-Type"]
-                    logger.debug("Skip href lookup for: %s - The resource is: %s" % (
-                        url, content_type))
-                    self.update_list((url, response_headers["Content-Type"]), links)
-                    return links
-
-            """ If the resource is know file extension, but Content-Type is not sent by the server """
-            if self._url_endswith(url, file_extensions):
-                self.update_list(url, links)
-                return links
-
-            """ Update visited URLs (Links) """
-            self.update_list(url, links)
-
-            """ This time, get the content with GET request """
-            try:
-                logger.debug("HTTP GET: %s" % url)
-                response = con.get(url)
-            except Exception as msg:
-                logger.error("con.get(%s) -> Error: %s" % (url, msg))
-                return links
-
-            """ Parse the HTTP response """
-            soup = BeautifulSoup(response.text, "html.parser")
-
-            """ Retrieve all href/a elements  """
-            # _links = soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")})
-            _links = soup.findAll('a')
-
-            """ If any hrefs found, build href's url """
-            if _links:
-                for link in _links:
-                    _url = ""
-                    _href = link.get('href')
-
-                    if url == "?":
-                        pass
-
-                    if not _href:
-                        continue
-
-                    """ Skip hrefs to Parent Directory """
-                    if _href == "/":
-                        continue
-
-                    if r"../" in _href:
-                        continue
-
-                    """ Automatically detect parent dir """
-                    if _href[:1] == "/":
-                        parent_url = url_base + _href
-                        if len(parent_url) < len(url):
-                            if parent_url in url:
-                                continue
-
-                    """ Detect and Skip mod_autoindex hrefs """
-                    if re.match(r"(^\?[a-zA-Z]=[0-9A-Za-z];{0,1})([a-zA-Z]=[0-9A-Za-z];{0,1})*", _href):
-                        continue
-
-                    """ Detect and skip links automatically created in open directory like: Name, Last modified, Size, Description """
-                    if _href in ["?ND", "?MA", "?SA", "?DA", "?sort=na", "?sort=nd", "?sort=da", "?sort=dd", "?sort=ea",
-                                 "?sort=ed", "#"]:
-                        continue
-
-                    """ Build new url """
-                    if url_host not in _href:
-                        if _href.startswith("http://") or _href.startswith("https://"):
-                            _url = _href
-                        else:
-                            if url[-1:] == "/" and _href[:1] == "/":
-                                """  The url ends with / and the href starts with / """
-                                _url = url + _href[1:]
-                            elif url[-1:] != "/" and _href[:1] != "/":
-                                """  The url does not end with / and the href does not start with / """
-                                _url = url + "/" + _href
-                            else:
-                                _url = url + _href
-
-                    """ Case: -r """
-                    if self.recursion:
-                        """ Case: -rl Skip the href if its host is not the same as the host of the base URL  """
-                        if self.crawl_local_host_only:
-                            if url_host not in _url:
-                                logger.debug("Skip: %s -> The host: %s not found" % (_url, url_host))
-                                continue
-
-                        if _url:
-                            if _url not in links:
-                                self.get_hrefs(_url, con, links, depth + 1)
-                        else:
-                            if _href not in links:
-                                self.get_hrefs(_href, con, links, depth + 1)
-                    else:
-                        if _url:
-                            self.update_list(_url, links)
-                        else:
-                            self.update_list(_href, links)
-            else:
-                """ Update visited URLs (Links) """
-                self.update_list(url, links)
-
-        except requests.exceptions.InvalidSchema:
-            logger.error("Invalid URL format: %s" % url)
-            return links
-
-        return links
-
     def get_file_info(self, filepath, url=None):
 
         file_info = []
@@ -944,169 +744,145 @@ class downloader (object):
 
     def download(self, urls, report=[]):
 
-        download_index = 0
-        downloaded_files = []
-        sha256 = ""
+        if urls:
+            download_index = 0
+            downloaded_files = []
+            sha256 = ""
 
-        con = requests.Session()
-        con.headers.update({'User-Agent': self.get_user_agent()})
-        con.headers.update(user_headers)
+            con = requests.Session()
+            con.headers.update({'User-Agent': self.get_user_agent()})
+            con.headers.update(user_headers)
 
-        logger.debug("Headers: %s" % con.headers.items())
+            logger.debug("Headers: %s" % con.headers.items())
 
-        """ Set connection/session properties """
-        if self.requests_debug:
-            con.proxies.update(debug_proxies)
-            con.verify = False
-            con.allow_redirects = True
-            con.stream = True
-        else:
-            con.verify = False
-            con.allow_redirects = True
-            con.stream = True
-
-        for url in urls:
-
-            """ Access given URL """
-            try:
-                response = con.get(url)
-            except Exception as msg:
-                logger.error(msg)
-                continue
-
-            """ Obtain the final URL after redirection """
-            if response:
-                if not response.status_code == 200:
-                    if response.status_code in [301, 302]: # Sometimes allow_redirects does not work; hence this additional routine
-                        try:
-                            url = response.headers["Location"]
-                            logger.info("Resolve redirect: HTTP: %s -> %s to %s" % (response.status_code, response.url, url))
-                            """ Get final URL """
-                            try:
-                                response = con.get(url)
-                            except Exception as msg:
-                                logger.error(msg)
-                                continue
-                        except KeyError:
-                            logger.info("URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
-                            continue
-                    else:
-                        logger.info("URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
-                        continue
+            """ Set connection/session properties """
+            if self.requests_debug:
+                con.proxies.update(debug_proxies)
+                con.verify = False
+                con.allow_redirects = True
+                con.stream = True
             else:
-                logger.info("URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
-                continue
+                con.verify = False
+                con.allow_redirects = True
+                con.stream = True
 
-            """ Keep the track of final URL """
-            if response.url != url:
-                url = response.url
-                logger.info("Final URL: %s -> %s" % (url, response.url))
-            else:
-                url = response.url
+            for url in urls:
 
-            logger.info("URL Download -> SUCCESS -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
-
-            """ Determine output file name """
-            local_filename = ""
-            url_obj = urlparse(url, 'http')
-            if 'Content-Disposition' in response.headers.keys():
-                local_filename = response.headers['Content-Disposition'].split('=')[-1].strip('"')
-
-            if not local_filename:
-                local_filename = os.path.basename(url)
-
-            if not local_filename:
-                local_filename = url_obj.path.replace(r"/", "")
-
-            if not local_filename:
-                local_filename = url_obj.netloc.replace(r"/", "")
-
-            if len(local_filename) > DOWNLOADED_FILE_NAME_LEN:
-                local_filename = local_filename[1:DOWNLOADED_FILE_NAME_LEN]
-
-            # Make sure that the local file name is safe file name
-            extension = pathlib.Path(local_filename).suffix
-            local_filename = "".join(x for x in local_filename if x.isalnum())
-            if extension:
-                local_filename = local_filename + extension
-
-            out_file = self.download_folder + "/" + local_filename
-            out_file = out_file.replace(r"//", r"/")
-            """ Make sure that files do not get overwritten """
-            _out_file = out_file
-            while True:
-                if os.path.isfile(_out_file):
-                    _out_file = out_file + " - " + str(download_index)
-                    download_index += 1
-                else:
-                    out_file = _out_file
-                    break
-
-            if response.raw.data:
-                with open(out_file, 'wb') as file:
-                    file.write(response.raw.data)
-                    downloaded_files.append(out_file)
-                    file.close()
-            else:
+                """ Access given URL """
                 try:
-                    response_text = response.text
+                    response = con.get(url)
                 except Exception as msg:
-                    response_text = None
-
-                if response_text:
-                    with open(out_file, 'w') as file:
-                        try:
-                            file.write(response.text)
-                            downloaded_files.append(out_file)
-                            file.close()
-                        except:
-                            logger.warning("Unable to save response.text -> ur:" % url)
-                            continue
-                else:
-                    # Fix to requests bug
-                    logger.warning("Error: response.raw.data and response.text are Null. URL: %s" % url)
+                    logger.error(msg)
                     continue
 
-            """ Log file info """
-            file_info = self.get_file_info(out_file, url)
-            print(file_info)
-            logger.info(file_info)
+                """ Obtain the final URL after redirection """
+                if response:
+                    if not response.status_code == 200:
+                        if response.status_code in [301,
+                                                    302]:  # Sometimes allow_redirects does not work; hence this additional routine
+                            try:
+                                url = response.headers["Location"]
+                                logger.info("Resolve redirect: HTTP: %s -> %s to %s" % (
+                                response.status_code, response.url, url))
+                                """ Get final URL """
+                                try:
+                                    response = con.get(url)
+                                except Exception as msg:
+                                    logger.error(msg)
+                                    continue
+                            except KeyError:
+                                logger.info(
+                                    "URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
+                                continue
+                        else:
+                            logger.info(
+                                "URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
+                            continue
+                else:
+                    logger.info("URL Download -> FAILED -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
+                    continue
 
-            report.append(file_info)
+                """ Keep the track of final URL """
+                if response.url != url:
+                    url = response.url
+                    logger.info("Final URL: %s -> %s" % (url, response.url))
+                else:
+                    url = response.url
 
+                logger.info("URL Download -> SUCCESS -> [HTTP GET %s] - URL: %s" % (response.status_code, url))
 
-        return downloaded_files
+                """ Determine output file name """
+                local_filename = ""
+                url_obj = urlparse(url, 'http')
+                if 'Content-Disposition' in response.headers.keys():
+                    local_filename = response.headers['Content-Disposition'].split('=')[-1].strip('"')
 
-    # http://docs.python-requests.org/en/master/user/quickstart/
-    POST_DATA = {
-        "Symantec": {
-            "url": "https://submit.symantec.com/websubmit/bcs.cgi",
-            "config_file": "config/symantec.vd",
-            "success_message": "Your submission has been sent",
-            "form_data": {
-                "mode": (None, '2'),
-                "fname": "",
-                "lname": "",
-                "cname": "",
-                "email": "",
-                "email2": "",
-                "pin": "",
-                "stype": (None, 'upfile'),
-                "url": (None, ''),
-                "hash": (None, ''),
-                "comments": (None, ''),
-                "upfile": ""
-            },
-            "headers": {
-                "User-Agent": "Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)",
-                "Cache-Control": "max-age=0",
-                "Origin": "https://submit.symantec.com",
-                "Upgrade-Insecure-Requests": "1",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                "Referer": "https://submit.symantec.com/websubmit/bcs.cgi"
-            }
-        }
-    }
+                if not local_filename:
+                    local_filename = os.path.basename(url)
+
+                if not local_filename:
+                    local_filename = url_obj.path.replace(r"/", "")
+
+                if not local_filename:
+                    local_filename = url_obj.netloc.replace(r"/", "")
+
+                if len(local_filename) > DOWNLOADED_FILE_NAME_LEN:
+                    local_filename = local_filename[1:DOWNLOADED_FILE_NAME_LEN]
+
+                # Make sure that the local file name is safe file name
+                extension = pathlib.Path(local_filename).suffix
+                local_filename = "".join(x for x in local_filename if x.isalnum())
+                if extension:
+                    local_filename = local_filename + extension
+
+                out_file = self.download_folder + "/" + local_filename
+                out_file = out_file.replace(r"//", r"/")
+                """ Make sure that files do not get overwritten """
+                _out_file = out_file
+                while True:
+                    if os.path.isfile(_out_file):
+                        _out_file = out_file + " - " + str(download_index)
+                        download_index += 1
+                    else:
+                        out_file = _out_file
+                        break
+
+                if response.raw.data:
+                    with open(out_file, 'wb') as file:
+                        file.write(response.raw.data)
+                        downloaded_files.append(out_file)
+                        file.close()
+                else:
+                    try:
+                        response_text = response.text
+                    except Exception as msg:
+                        response_text = None
+
+                    if response_text:
+                        with open(out_file, 'w') as file:
+                            try:
+                                file.write(response.text)
+                                downloaded_files.append(out_file)
+                                file.close()
+                            except:
+                                logger.warning("Unable to save response.text -> ur:" % url)
+                                continue
+                    else:
+                        # Fix to requests bug
+                        logger.warning("Error: response.raw.data and response.text are Null. URL: %s" % url)
+                        continue
+
+                """ Log file info """
+                file_info = self.get_file_info(out_file, url)
+                print(file_info)
+                logger.info(file_info)
+
+                report.append(file_info)
+
+            return downloaded_files
+        else:
+            logger.debug("Nothing to download")
+
 
     def _update_headers(self, headers, vendor_file):
 
@@ -1128,141 +904,6 @@ class downloader (object):
             exit(-1)
 
         return headers
-
-    def get_tracking_id(self, response_text):
-
-        pattern = re.compile(r'Number: ([0-9]{8,9}){1}<', re.I | re.MULTILINE)
-
-        for match in pattern.finditer(response_text):
-            tracking_id = match.groups()
-            if tracking_id:
-
-                return str(''.join(tracking_id))
-            else:
-                return None
-
-    def submit_hash(self, hashes, vendor_name="Symantec"):
-
-        if hashes:
-            url = ""
-            file_content = None
-            submission_success_message = ""
-            form_data = {}
-            headers = {}
-
-            """ Pull vendor specific POST data fields """
-            if vendor_name == "Symantec":
-                form_data = self.POST_DATA["Symantec"]["form_data"]
-                form_data['stype'] = (None, 'hash')
-                headers = self.POST_DATA["Symantec"]["headers"]
-                url = self.POST_DATA["Symantec"]["url"]
-                submission_success_message = self.POST_DATA["Symantec"]["success_message"]
-
-            for hash in hashes:
-                logger.info("Submitting: %s to: %s" % (hash, url))
-
-                form_data['hash'] = (None, hash)
-
-                """ Adjust form_data according to script parameters """
-                if self.submission_comments:
-                    form_data["comments"] = self.submission_comments
-                else:
-                    form_data["comments"] = hash
-
-                """ Adjust form_data with data from vendor file  """
-                self._update_headers(form_data, self.POST_DATA["Symantec"]["config_file"])
-
-                """ Submit the request """
-                if self.requests_debug:
-                    response = requests.post(url, files=form_data, proxies=debug_proxies, headers=headers, verify=False)
-                else:
-                    response = requests.post(url, files=form_data, headers=headers, verify=False)
-
-                if not response.status_code == 200:
-                    logger.error("[%s] - FAILED to submit: %s" % (response.status_code, url))
-                else:
-                    if vendor_name == "Symantec":
-                        if submission_success_message in response.text:
-                            tracking_id = self.get_tracking_id(response.text)
-
-                            logger.info("Vendor: %s: Submission Success -> Hash: %s, %s" % (vendor_name, hash, tracking_id))
-                            print("Vendor: %s: Submission Success -> Hash: %s, %s" % (vendor_name, hash, tracking_id))
-
-                            """ Wait a random time """
-                            sleep_time = random.randint(1, 3)
-                            logger.debug("Thread Sleep for %d seconds" % sleep_time)
-                            time.sleep(sleep_time)
-                        else:
-                            logger.info(
-                                "Vendor: %s: Submission Failure: Hash: %s\n Message: \n %s" % (vendor_name, hash, response.text))
-                            print("Vendor: %s: Submission Failure: Hash: %s\n Message: \n %s" % (vendor_name, hash, response.text))
-
-        else:
-            logger.warning("Nothing to submit!")
-
-    def submit(self, files, vendor_name="Symantec"):
-
-        if files:
-            url = ""
-            file_content = None
-            submission_success_message = ""
-            form_data = {}
-            headers = {}
-
-            """ Pull vendor specific POST data fields """
-            if vendor_name == "Symantec":
-                form_data = self.POST_DATA["Symantec"]["form_data"]
-                headers = self.POST_DATA["Symantec"]["headers"]
-                url = self.POST_DATA["Symantec"]["url"]
-                submission_success_message = self.POST_DATA["Symantec"]["success_message"]
-
-            for file in files:
-                logger.info("Submitting: %s to: %s" % (file, url))
-                file_name = os.path.basename(file)
-
-                """ Adjust form_data according to script parameters """
-                if self.submission_comments:
-                    form_data["comments"] = self.submission_comments
-                else:
-                    form_data["comments"] = file_name
-
-                """ Adjust form_data with data from vendor file  """
-                self._update_headers(form_data, self.POST_DATA["Symantec"]["config_file"])
-
-                """ Load the file content """
-                with open(file, 'rb') as file_obj:
-                    file_content = file_obj.read()
-                    form_data["upfile"] = (file_name, file_content, 'application/x-zip-compressed')
-                    file_obj.close()
-
-                """ Submit the request """
-                if self.requests_debug:
-                    response = requests.post(url, files=form_data, proxies=debug_proxies, headers=headers, verify=False)
-                else:
-                    response = requests.post(url, files=form_data, headers=headers, verify=False)
-
-                if not response.status_code == 200:
-                    logger.error("[%s] - FAILED to submit: %s" % (response.status_code, url))
-                else:
-                    if vendor_name == "Symantec":
-                        if submission_success_message in response.text:
-                            tracking_id = self.get_tracking_id(response.text)
-                            logger.info(
-                                "Vendor: %s: Submission Success -> File: %s, %s" % (vendor_name, file, tracking_id))
-                            print("Vendor: %s: Submission Success -> File: %s, %s" % (vendor_name, file, tracking_id))
-
-                            """ Wait a random time """
-                            sleep_time = random.randint(1, 3)
-                            logger.debug("Thread Sleep for %d seconds" % sleep_time)
-                            time.sleep(sleep_time)
-                        else:
-                            logger.info(
-                                "Vendor: %s: Submission Failure: File: %s\n Message: \n %s" % (vendor_name, file, response.text))
-                            print("Vendor: %s: Submission Failure: File: %s\n Message: \n %s" % (vendor_name, file, response.text))
-
-
-        else:
-            logger.warning("Nothing to submit!")
 
     def check_args(self):
 
@@ -1316,7 +957,7 @@ class downloader (object):
             self.url_info = False
 
         """ Enable compression if submit option is enabled """
-        if self.submit_to_vendors:
+        if self.submit_to_av_vendors:
             self.zip_downloaded_files = True
             #self.get_links = False
             #self.recursion = False
@@ -1449,7 +1090,7 @@ def main(argv):
                                default=20, help="Max recursion depth level for -r option (Default: 20)")
 
     """  SUBMISSION  ----------------------------------------------------------------------------------------------- """
-    submission_args.add_argument("--submit", action='store_true', dest='submit_to_vendors', required=False,
+    submission_args.add_argument("--submit", action='store_true', dest='submit_to_av_vendors', required=False,
                              default=False, help="Submit files to AV vendors (Enables -z by default)")
 
     submission_args.add_argument("--submit-hash", action='store_true', dest='submit_hashes', required=False,
@@ -1467,11 +1108,15 @@ def main(argv):
                              help="Force url info lookup for every crawled URL (NOT recommended)")
 
     submission_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments',
-                                 required=False,
+                                 required=False, default="",
                                  help="Insert submission comments (Default: <archive_name>)")
 
     submission_args.add_argument("--proxy-vendors", action='store', dest='proxy_vendors', required=False,
                              default="bluecoat", help="Comma separated list of PROXY vendors used for URL category lookup and submission")
+
+    submission_args.add_argument("--av-vendors", action='store', dest='av_vendors', required=False,
+                                 default="all",
+                                 help="Comma separated list of AV vendors used for file/hash submission (Default: all)")
 
     submission_args.add_argument("--email", action='store', dest='submitter_email', required=False,
                              default="", help="Specify the submitter's e-mail address")
@@ -1523,13 +1168,15 @@ def main(argv):
         logger.setLevel(logging.WARNING)
 
 
-    """ Init dw class """
+    """ Initialize main objects """
     logger.debug("Initialize dw (Downloader)")
     dw = downloader(args)
+    logger.debug("Initialize Plugin Manager")
+    pm = plugin_manager()
+
     _uniq = uniq()
     urls = []
     hashes = []
-    hashes_tracking = []
     hrefs = []
     hrefs_mime = []
     downloaded_files = []
@@ -1540,6 +1187,7 @@ def main(argv):
     """ TEST """
     #db = database("database.pdl")
     #db_handler = handler(db)
+
 
     """ Load URLs from input file, or directly load files from a folder """
     if dw.input:
@@ -1613,11 +1261,15 @@ def main(argv):
         for url in urls:
             dw.submit_url_category(url.url, dw.new_proxy_category)
 
-    """ Submit loaded hashes to configured AV vendors """
+    """ Submit loaded hashes to AV vendors """
     if dw.submit_hashes:
-        if hashes:
-            hashes_tracking = dw.submit_hash(hashes)
+        if dw.submit_to_all_av_vendors:
+            av_vendors = pm.get_av_vendors()
+        else:
+            av_vendors = pm.get_av_vendors(dw.av_vendors)
 
+        for vendor in av_vendors:
+            vendor.call("submit_hash", (hashes, dw.submission_comments, dw.requests_debug, debug_proxies))
 
 
     """ Retrieve HREFs for each URL """
@@ -1673,6 +1325,9 @@ def main(argv):
         if dw.unique_files:
             if downloaded_files:
                 downloaded_files = _uniq.get_unique_files(downloaded_files)
+
+                print("Unique files:")
+                print(*downloaded_files)
     else:
         logger.debug("Skipping files download")
 
@@ -1697,9 +1352,16 @@ def main(argv):
                 print("Archive: %s -> Unable to get members" % archive)
                 logger.warning("Archive: %s -> Unable to get members" % archive)
 
-    """ Submit files to vendors """
-    if dw.submit_to_vendors:
-        dw.submit(archives)
+    """ Submit files to AV vendors """
+    if dw.submit_to_av_vendors:
+        if dw.submit_to_all_av_vendors:
+            av_vendors = pm.get_av_vendors()
+        else:
+            av_vendors = pm.get_av_vendors(dw.av_vendors)
+
+        for vendor in av_vendors:
+            vendor.call("submit_file", (archives, dw.submission_comments, dw.requests_debug, debug_proxies))
+
     else:
         logger.debug("Skipping Vendor submission")
 

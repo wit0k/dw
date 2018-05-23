@@ -45,6 +45,10 @@ class submitter(object):
         else:
             return None
 
+
+class anivirus(submitter):
+    pass
+
 class proxy(submitter):
 
     class bluecoat():
@@ -281,61 +285,6 @@ class proxy(submitter):
                                   headers=self.headers, json=payload)
             except Exception as msg:
                 logger.error("Failed to submit new category")
-                return ("N/A")
-
-            response_dict = simplejson.loads(r.text)
-            submission_message = response_dict.get("message", {})
-
-            print("%s, %s" % (url, submission_message))
-
-            if (str(r.status_code) == '200' and submission_message[0:38] == 'Your page submission has been received'):
-                logger.debug("Submission OK -> Vendor: %s | URL: %s" % (self.name, url))
-                return True
-            elif 'This Web page is already categorized as you believe it should be' in submission_message:
-                logger.debug("Submission NOT REQUIRED -> Vendor: %s | URL: %s | Result: %s" % (self.name, url, "This Web page is already categorized as you believe it should be"))
-                return True
-            elif 'The Web page that you entered is currently under review' in submission_message:
-                logger.debug("Submission NOT REQUIRED -> Vendor: %s | URL: %s | Result: %s" % (self.name, url, "The Web page that you entered is currently under review"))
-                return True
-            else:
-                test = ""
-                logger.debug("Submission FAILED -> Vendor: %s | URL: %s" % (self.name, url))
-                return False
-
-        def submit_category_old(self, new_category, url):
-
-            if new_category == "":
-                new_category = self.default_category
-
-            if new_category not in self.category_mappings.keys():
-                logger.error("New category: %s not implemented yet. Skip the submission")
-                return False
-
-            category_id = self.category_mappings[new_category]
-            tracking_id = self.lookup_url_tracking_table(url, "tracking_id")
-
-            """ Tracking ID not found, hence running get_category"""
-            if not tracking_id:
-                category = self.get_category(url)
-                tracking_id = self.lookup_url_tracking_table(url, "tracking_id")
-
-            if not tracking_id:
-                logger.warning("Unable to obtain Tracking ID for: %s" % url)
-                return None
-
-            if self.submitter_email == '':
-                email_checkbox = 'off'
-            else:
-                email_checkbox = 'on'
-
-            payload = 'referrer=bluecoatsg&suggestedcat=%s&suggestedcat2=&emailCheckBox=%s&email=%s&emailcc=&comments=&overwrite=no&trackid=%s' \
-                      % (category_id, email_checkbox, self.submitter_email, str(tracking_id))
-
-            try:
-                logger.debug("Submitting new category: '%s' for: %s" % (new_category, url))
-                r = self.con.post('https://sitereview.bluecoat.com/rest/submitCategorization',
-                                  headers=self.headers, data=payload)
-            except Exception as msg:
                 return ("N/A")
 
             response_dict = simplejson.loads(r.text)

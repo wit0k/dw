@@ -126,6 +126,9 @@ submission arguments:
   --proxy-vendors PROXY_VENDORS
                         Comma separated list of PROXY vendors used for URL
                         category lookup and submission
+  --av-vendors AV_VENDORS
+                        Comma separated list of AV vendors used for file/hash
+                        submission (Default: all)
   --email SUBMITTER_EMAIL
                         Specify the submitter's e-mail address
   --proxy-category NEW_PROXY_CATEGORY
@@ -149,7 +152,6 @@ pastebin arguments:
                         ... (Default: 1H)
   -pt PASTEBIN_TITLE, --pastebin-title PASTEBIN_TITLE
                         Paste title
-
 </pre>
  
 **Change log:**
@@ -307,3 +309,9 @@ Ver. 0.3.8:
 Ver. 0.3.9:
 * Update to url parsing " || . || " or  "||.||" to "." 
 * Fix to _url_endswith() which was incorrectly considering domain TLD as an extension 
+
+Ver. 0.4.0:
+* New plugin_manger class brings dynamic plugins support (with config "[.vd]" files)
+* Not all "[.vd]" files are public, hence they  may contain PII or other sensitive data like serial numbers etc.  
+* New params: --av-vendors vendor,vendor  (Default: all) which means by default upload to all loaded vendors
+* Params: --submit, --submit-hash are handled by respective plugins
