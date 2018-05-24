@@ -5,7 +5,7 @@
 The tool has been created to speed up manual malware hunting tasks. A simple example is already covered in **“Use cases”** but let’s describe it verbally.
 Imagine following situation, you found an open directory on the Internet, which is full of malicious samples (Example below)
 
-![Open directoryąć](http://regenerus.com/download/2k20.jpg)
+![Open directory](http://regenerus.com/download/2k20.jpg)
 
 Normally to download these files you would have to manually save them (or retrieve the page source code and pull the href elements with regex or so, and then download them with curl or wget). When the amount of files is bigger than few it becomes unmanageable and simple waste of time. 
 
