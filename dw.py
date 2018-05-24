@@ -4,6 +4,7 @@ __version__ = '0.4.0'
 
 """
 TO DO:
+- When plugin config does not exist the script shall continue ...
 - Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/
 - Add exclusion to url
 - Fix display issue when adding --url-info and mime url 
