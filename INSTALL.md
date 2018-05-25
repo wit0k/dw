@@ -10,12 +10,12 @@ CAUTION: IT WOULD UNINSTALL PACKAGES INSTALLED BY brew!
  
 Dependencies:
 
-brew install tesseract
-brew install libmagic
+* brew install tesseract
+* brew install libmagic
 
-pip install bs4
-pip install python-magic
-pip install Pillow
-pip install requests
-pip install simplejson
-...
+* pip install bs4
+* pip install python-magic
+* pip install Pillow
+* pip install requests
+* pip install simplejson
+* ...
