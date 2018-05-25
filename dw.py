@@ -4,6 +4,7 @@ __version__ = '0.4.0'
 
 """
 TO DO:
+- Add libmagic detection location 
 - When plugin config does not exist the script shall continue ...
 - Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/
 - Add exclusion to url
@@ -52,7 +53,7 @@ app_name = "dw"
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 MAGIC_FILE_PATH_LINUX = '/etc/magic'
-MAGIC_FILE_PATH_MAC = '/usr/local/Cellar/libmagic/5.29/share/misc/magic'
+MAGIC_FILE_PATH_MAC = '/usr/local/Cellar/libmagic/5.33/share/misc/magic'
 MAGIC_FILE_PATH_WIN = r'C:/Users/Python3/Lib/site-packages/magic/libmagic/magic'
 
 MIME_MARKER = ' ,(MIME: '

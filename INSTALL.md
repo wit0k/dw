@@ -8,7 +8,7 @@ If you encounter issues with your brew installation, you might follow the proced
 
 CAUTION: IT WOULD UNINSTALL PACKAGES INSTALLED BY brew!
  
-Dependencies:
+Install dependencies:
 
 * brew install tesseract
 * brew install libmagic
