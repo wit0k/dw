@@ -12,7 +12,6 @@ Dependencies:
 
 * brew install tesseract
 * brew install libmagic
-
 * pip install bs4
 * pip install python-magic
 * pip install Pillow
