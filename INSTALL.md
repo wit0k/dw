@@ -18,3 +18,5 @@ Dependencies:
 * pip install requests
 * pip install simplejson
 * ...
+
+I will create requirements.txt and setup script when time allows
