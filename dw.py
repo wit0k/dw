@@ -4,6 +4,7 @@ __version__ = '0.4.1'
 
 """
 TO DO:
+- Double check url ends with and TLDs ( temporary fix done for now... but might be prone to erros)
 - Add libmagic detection location 
 - When plugin config does not exist the script shall continue ...
 - Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/

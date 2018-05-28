@@ -317,4 +317,4 @@ Ver. 0.4.0:
 * Params: --submit, --submit-hash are handled by respective plugins
 
 Ver. 0.4.1:
-* FIX: Code fix to _url_endswith() function. Due to another fix being implemented for TLDs, the function was ignoring the known file extensions list (Crawling should be faster now)
+* TEMPORARY FIX: Code fix to _url_endswith() function. Due to another fix being implemented for TLDs, the function was ignoring the known file extensions list (Crawling should be faster now)
