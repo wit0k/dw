@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.4.0'
+__version__ = '0.4.1'
 
 """
 TO DO:
@@ -478,7 +478,7 @@ class downloader (object):
         if url:
             if extensions:
                 # Do not consider the TLD as an extension
-                if url.count(r'/') > 3:
+                if url.count(r'/') >= 3:
                     for _ext in extensions:
                         if url.endswith(_ext):
                             return True
@@ -597,7 +597,10 @@ class downloader (object):
                 return links
 
             """ Parse the HTTP response """
-            soup = BeautifulSoup(response.text, "html.parser")
+            try:
+                soup = BeautifulSoup(response.text, "html.parser")
+            except Exception:
+                soup = BeautifulSoup(response.text, "lxml")
 
             """ Retrieve all href/a elements  """
             # _links = soup.findAll('a', attrs={'href': re.compile(r"^http://|https://|.*\..*")})

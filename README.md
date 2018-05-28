@@ -315,3 +315,6 @@ Ver. 0.4.0:
 * Not all "[.vd]" files are public, hence they  may contain PII or other sensitive data like serial numbers etc.  
 * New params: --av-vendors vendor,vendor  (Default: all) which means by default upload to all loaded vendors
 * Params: --submit, --submit-hash are handled by respective plugins
+
+Ver. 0.4.1:
+* FIX: Code fix to _url_endswith() function. Due to another fix being implemented for TLDs, the function was ignoring the known file extensions list (Crawling should be faster now)
