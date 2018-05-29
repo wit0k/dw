@@ -1,0 +1,80 @@
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,885 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,886 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,886 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,887 - pluginmgr.py - __init__ - Found [1] plugins
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,887 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,887 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,887 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,887 - av_symantec.py - load_config - Attempt to load_config(plugins/av-symantec.py.vd)
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,887 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,887 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,887 - pluginmgr.py - __init__ - Loaded [1] plugins
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:41,888 - url.py - parse_url - Parsing URL: hxxp://theipgenerators.com to: http://theipgenerators.com
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:42,219 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:42,219 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:42,219 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:42,219 - dw.py - main - Get links from each URL
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:42,219 - dw.py - get_hrefs - Getting hrefs from: http://theipgenerators.com
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:42,220 - dw.py - get_hrefs - HTTP HEAD: http://theipgenerators.com
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:43,192 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://theipgenerators.com [HTTP 200]
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:43,192 - dw.py - get_hrefs - HTTP GET: http://theipgenerators.com
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:43,358 - dw.py - get_hrefs - HTTP HEAD: http://theipgenerators.com/PI.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:43,517 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://theipgenerators.com/PI.exe [HTTP 200]
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:43,517 - dw.py - get_hrefs - Skip href lookup for: http://theipgenerators.com/PI.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:43,518 - dw.py - get_hrefs - HTTP HEAD: http://theipgenerators.com/POK.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:43,677 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://theipgenerators.com/POK.exe [HTTP 200]
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:43,677 - dw.py - get_hrefs - Skip href lookup for: http://theipgenerators.com/POK.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:43,677 - dw.py - get_hrefs - HTTP HEAD: http://theipgenerators.com/cgi-bin/
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:43,839 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> UNSUPPORTED -> URL: http://theipgenerators.com/cgi-bin/ [HTTP 403]
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:43,839 - dw.py - get_hrefs - HTTP HEAD: http://theipgenerators.com/pricelist.pdf
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:43,999 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://theipgenerators.com/pricelist.pdf [HTTP 200]
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:43,999 - dw.py - get_hrefs - Skip href lookup for: http://theipgenerators.com/pricelist.pdf - The resource is: application/pdf
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:43,999 - dw.py - get_hrefs - HTTP HEAD: http://theipgenerators.com/winlogon.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:44,162 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://theipgenerators.com/winlogon.exe [HTTP 200]
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:44,162 - dw.py - get_hrefs - Skip href lookup for: http://theipgenerators.com/winlogon.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:44,163 - dw.py - main - Found [5] hrefs on: http://theipgenerators.com
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:44,163 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:44,163 - dw.py - main - ['http://theipgenerators.com ,(MIME: None)', 'http://theipgenerators.com/PI.exe ,(MIME: application/x-msdownload)', 'http://theipgenerators.com/POK.exe ,(MIME: application/x-msdownload)', 'http://theipgenerators.com/pricelist.pdf ,(MIME: application/pdf)', 'http://theipgenerators.com/winlogon.exe ,(MIME: application/x-msdownload)']
+INFO - THREAD-140735268700160 - 2018-05-29 12:31:44,163 - uniq.py - get_unique_entries - Deduplication: 5 -> 5
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:44,163 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:44,163 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:44,163 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:31:44,164 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,982 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,982 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,982 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,983 - pluginmgr.py - __init__ - Found [1] plugins
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,983 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,983 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,983 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,983 - av_symantec.py - load_config - Attempt to load_config(plugins/av-symantec.py.vd)
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,983 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,983 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,983 - pluginmgr.py - __init__ - Loaded [1] plugins
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:06,984 - url.py - parse_url - Parsing URL: my-dhl-invoice.top/erufudjjsnaweq.exe to: http://my-dhl-invoice.top/erufudjjsnaweq.exe
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:07,047 - url.py - parse_url - Parsing URL: http://bathandbedlinen.com/mk/egbon.exe to: http://bathandbedlinen.com/mk/egbon.exe
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:07,103 - url.py - parse_url - Parsing URL: http://bathandbedlinen.com/mk/sammy.exe to: http://bathandbedlinen.com/mk/sammy.exe
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:07,105 - url.py - parse_url - Parsing URL: http://bathandbedlinen.com/mk/yaski.exe to: http://bathandbedlinen.com/mk/yaski.exe
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:07,105 - dw.py - main - Loaded [4] URLs from: urls.txt
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:07,105 - uniq.py - get_unique_entries - Deduplication: 4 -> 4
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:07,106 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:07,106 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:07,106 - dw.py - download - Headers: ItemsView({'User-Agent': 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'})
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:07,819 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://my-dhl-invoice.top/erufudjjsnaweq.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:08,096 - dw.py - download - 692e5397f336b5d895fa194d0b8130340e5e0655d3eae84588e20083d3eee29e,application/x-dosexec,downloads/erufudjjsnaweqexe.exe,http://my-dhl-invoice.top/erufudjjsnaweq.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:09,151 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://bathandbedlinen.com/mk/egbon.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:10,409 - dw.py - download - 080f70511a96868409118432a08aeebfcdf270fa971d4db27bc3889cc9571354,application/x-dosexec,downloads/egbonexe.exe,http://bathandbedlinen.com/mk/egbon.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:10,587 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://bathandbedlinen.com/mk/sammy.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:10,997 - dw.py - download - 9ac632a7bb135e98c77137b5c134ef5e66ca736e1fc460478856115635668b4a,application/x-dosexec,downloads/sammyexe.exe,http://bathandbedlinen.com/mk/sammy.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:11,172 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://bathandbedlinen.com/mk/yaski.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:11,579 - dw.py - download - e270edd61cae5e845afd8b961e71b2856e643af2cb498145123af842357a5fa6,application/x-dosexec,downloads/yaskiexe.exe,http://bathandbedlinen.com/mk/yaski.exe
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:11,588 - uniq.py - get_unique_files - Deduplication: 4 -> 4
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:11,588 - dw.py - _zip - Add 'downloads/erufudjjsnaweqexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:11,589 - dw.py - _zip - Add 'downloads/egbonexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:11,590 - dw.py - _zip - Add 'downloads/sammyexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:11,592 - dw.py - _zip - Add 'downloads/yaskiexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:11,595 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['erufudjjsnaweqexe.exe', 'egbonexe.exe', 'sammyexe.exe', 'yaskiexe.exe']
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:11,596 - av_symantec.py - submit_file - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735268700160 - 2018-05-29 12:32:17,052 - av_symantec.py - submit_file - Vendor: Symantec: Submission Success -> File: archive/samples-1.zip, [removed on purpose]
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:17,052 - av_symantec.py - submit_file - Thread Sleep for 2 seconds
+DEBUG - THREAD-140735268700160 - 2018-05-29 12:32:19,057 - dw.py - main - Skipping pastebin submission

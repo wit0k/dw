@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.4.1'
+__version__ = '0.4.2'
 
 """
 TO DO:
@@ -506,11 +506,8 @@ class downloader (object):
 
 
             """ Standardize URL ... i shall adopt it to new url object style """
+            url_redirected = None
             url_obj = urlparse(url, "http")
-            url_host = url_obj.hostname
-            url_base = url_obj.scheme + "://" + url_obj.netloc
-            #url = urlunparse(url_obj)
-
 
             # test
             if url_obj.scheme == "file":
@@ -542,34 +539,50 @@ class downloader (object):
                 logger.debug("HTTP HEAD: %s" % url)
                 response = con.head(url)
             except Exception as msg:
-                logger.error("con.get(%s) -> Error: %s" % (url, msg))
+                logger.info("HTTP HEAD -> URL Fetch -> FAILED -> URL: %s [HTTP %s] -> Error: %s" % (
+                url, "None", str(msg)))
                 return links
 
-            """ Obtain the final URL after redirection """
             if response is not None:
-                if not response.status_code == 200:
-                    if response.status_code in [301, 302]:
-                        try:
-                            # Check here once the location is not URL!!!
+                if response.status_code == 200:
+                    logger.info("HTTP HEAD -> URL Fetch -> SUCCESS -> URL: %s [HTTP %s]" % (url, response.status_code))
+                    url_redirected = False
+                elif response.status_code in [301, 302]:
+                    logger.info("HTTP HEAD -> URL Fetch -> REDIRECT -> URL: %s [HTTP %s]" % (url, response.status_code))
+                    url_redirected = True
+                    try:
+                        if response.headers["Location"]:
                             url = response.headers["Location"]
-                            logger.debug("HTTP HEAD: %s -> %s to %s" % (response.status_code, response.url, url))
+                            url_obj = urlparse(url, "http")
 
-                            """ Get URL's headers (Only) """
-                            try:
-                                logger.debug("HTTP HEAD: %s" % url)
-                                response = con.head(url)
-                            except Exception as msg:
-                                logger.error("con.get(%s) -> Error: %s" % (url, msg))
-                                return links
+                        if response.history:
+                            logger.debug("URL redirects:")
+                            for resp in response.history:
+                                logger.debug("url: " % resp.url)
+                    except KeyError:
+                        logger.debug("Location header not found or empty -> Use response.url")
+                        url = response.url
+                        url_obj = urlparse(url, "http")
 
-                        except KeyError:
-                            logger.debug("[HTTP HEAD %s]: %s -> Failed to retrieve final URL" % (response.status_code, url))
-                            return links
-                    else:
-                        logger.info("[HTTP HEAD %s]: URL Fetch -> FAILED -> URL: %s" % (response.status_code, url))
+                    """ Get URL's headers (Only) """
+                    try:
+                        logger.debug("HTTP HEAD: %s" % url)
+                        response = con.head(url)
+                        logger.info(
+                            "HTTP HEAD -> URL Fetch -> SUCCESS -> URL: %s [HTTP %s]" % (url, response.status_code))
+                    except Exception as msg:
+                        logger.info("HTTP HEAD -> URL Fetch -> FAILED -> URL: %s [HTTP %s] -> Error: %s" % (url, response.status_code, str(msg)))
                         return links
+                else:
+                    logger.info("HTTP HEAD -> URL Fetch -> UNSUPPORTED -> URL: %s [HTTP %s]" % (url, response.status_code))
+                    return links
+            else:
+                logger.info("HTTP HEAD -> URL Fetch -> NONE -> URL: %s [HTTP %s]" % (url, "None"))
+                return links
 
-            logger.info("HTTP HEAD -> URL Fetch -> SUCCESS -> URL: %s" % url)
+            """ Update url_object """
+            url_host = url_obj.hostname
+            url_base = url_obj.scheme + "://" + url_obj.netloc
 
             """ If the resource is of given MIME type, mark it as href and do not resolve the links  """
             response_headers = response.headers
@@ -647,12 +660,24 @@ class downloader (object):
                         if _href.startswith("http://") or _href.startswith("https://"):
                             _url = _href
                         else:
-                            if url[-1:] == "/" and _href[:1] == "/":
+
+                            url_end = url[-1:]
+                            href_start = _href[:1]
+
+                            if url_redirected and href_start == "/":
+                                _url = url_base + _href
+
+                            elif url_redirected and href_start != "/":
+                                _url = url + _href
+
+                            elif url_end == "/" and href_start == "/":
                                 """  The url ends with / and the href starts with / """
                                 _url = url + _href[1:]
-                            elif url[-1:] != "/" and _href[:1] != "/":
+
+                            elif url_end != "/" and href_start != "/":
                                 """  The url does not end with / and the href does not start with / """
                                 _url = url + "/" + _href
+
                             else:
                                 _url = url + _href
 

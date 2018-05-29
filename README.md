@@ -318,3 +318,7 @@ Ver. 0.4.0:
 
 Ver. 0.4.1:
 * TEMPORARY FIX: Code fix to _url_endswith() function. Due to another fix being implemented for TLDs, the function was ignoring the known file extensions list (Crawling should be faster now)
+
+Ver. 0.4.2:
+* CODE CHANGE: get_hrefs function has got new logic and better logging (-rl shall be more accurate now)
+ 
