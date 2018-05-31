@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.4.2'
+__version__ = '0.4.3'
 
 """
 TO DO:
@@ -589,10 +589,14 @@ class downloader (object):
             if "Content-Type" in response_headers:
                 if response_headers["Content-Type"] in default_mime_types:
                     content_type = response_headers["Content-Type"]
-                    logger.debug("Skip href lookup for: %s - The resource is: %s" % (
-                        url, content_type))
-                    self.update_list((url, response_headers["Content-Type"]), links)
-                    return links
+
+                    if content_type == 'text/html':
+                        logger.debug("Content-Type: %s -> Continue HREF lookup" % content_type)
+                        self.update_list((url, content_type), links)
+                    else:
+                        logger.debug("Skip href lookup for: %s - The resource is: %s" % (url, content_type))
+                        self.update_list((url, content_type), links)
+                        return links
 
             """ If the resource is know file extension, but Content-Type is not sent by the server """
             if self._url_endswith(url, file_extensions) :
