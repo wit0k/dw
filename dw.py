@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.4.3'
+__version__ = '0.4.4'
 
 """
 TO DO:
@@ -628,9 +628,10 @@ class downloader (object):
             if _links:
                 for link in _links:
                     _url = ""
+                    _href = ""
                     _href = link.get('href')
 
-                    if url == "?":
+                    if _href == "?":
                         pass
 
                     if not _href:
@@ -659,31 +660,35 @@ class downloader (object):
                                  "?sort=ed", "#", "./"]:
                         continue
 
+                    """ String exclusion list"""
+                    if any(word in _href for word in ["#content", "#comment", "#respond"]):
+                        logger.debug("Exlude HREF: %s -> %s" % (_href, link))
+                        continue
+
                     """ Build new url """
-                    if url_host not in _href:
-                        if _href.startswith("http://") or _href.startswith("https://"):
-                            _url = _href
+                    if _href.startswith("http://") or _href.startswith("https://"):
+                        _url = _href
+                    else:
+
+                        url_end = url[-1:]
+                        href_start = _href[:1]
+
+                        if url_redirected and href_start == "/":
+                            _url = url_base + _href
+
+                        elif url_redirected and href_start != "/":
+                            _url = url + _href
+
+                        elif url_end == "/" and href_start == "/":
+                            """  The url ends with / and the href starts with / """
+                            _url = url + _href[1:]
+
+                        elif url_end != "/" and href_start != "/":
+                            """  The url does not end with / and the href does not start with / """
+                            _url = url + "/" + _href
+
                         else:
-
-                            url_end = url[-1:]
-                            href_start = _href[:1]
-
-                            if url_redirected and href_start == "/":
-                                _url = url_base + _href
-
-                            elif url_redirected and href_start != "/":
-                                _url = url + _href
-
-                            elif url_end == "/" and href_start == "/":
-                                """  The url ends with / and the href starts with / """
-                                _url = url + _href[1:]
-
-                            elif url_end != "/" and href_start != "/":
-                                """  The url does not end with / and the href does not start with / """
-                                _url = url + "/" + _href
-
-                            else:
-                                _url = url + _href
+                            _url = url + _href
 
                     """ Case: -r """
                     if self.recursion:
