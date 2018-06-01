@@ -126,6 +126,7 @@ class url(object):
         output_url = output_url.replace(" ", "")
         output_url = output_url.replace("hxxp", "http")
         output_url = output_url.replace("h11p", "http")
+        output_url = output_url.replace("xxp://", "http")
         output_url = output_url.replace(" || . || ", ".")
         output_url = output_url.replace("|| . ||", ".")
         output_url = output_url.replace("||.||", ".")
