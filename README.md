@@ -325,5 +325,8 @@ Ver. 0.4.2:
 Ver. 0.4.3:
 * CODE CHANGE: get_hrefs function: Slight change to handling pages returning text/html mime type
 
-Ver. 0.4.2:
+Ver. 0.4.4:
 * CODE CHANGE: get_hrefs function: Slight cosmetic change. (Better handling of < a > hrefs)
+
+Ver. 0.4.5:
+* MacOS: Added automatic detection of libmagic magic file (if installed by brew)

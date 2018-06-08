@@ -1,11 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-03-12"
-__version__ = '0.4.4'
+__version__ = '0.4.5'
 
 """
 TO DO:
 - Double check url ends with and TLDs ( temporary fix done for now... but might be prone to erros)
-- Add libmagic detection location 
 - When plugin config does not exist the script shall continue ...
 - Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/
 - Add exclusion to url
@@ -53,9 +52,25 @@ app_name = "dw"
 """ Set working directory so the script can be executed from any location/symlink """
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-MAGIC_FILE_PATH_LINUX = '/etc/magic'
-MAGIC_FILE_PATH_MAC = '/usr/local/Cellar/libmagic/5.33/share/misc/magic'
-MAGIC_FILE_PATH_WIN = r'C:/Users/Python3/Lib/site-packages/magic/libmagic/magic'
+if 'Darwin' in _os.platform():
+
+    libmagic_folder = '/usr/local/Cellar/libmagic/'
+    MAGIC_FILE_PATH_MAC = '/usr/local/Cellar/libmagic/5.33/share/misc/magic'
+
+    if not os.path.isfile(MAGIC_FILE_PATH_MAC):
+
+        if os.path.isdir(libmagic_folder):
+            for root, subdirs, files in os.walk(libmagic_folder):
+                if 'magic' in root and 'magic' in files:
+                    MAGIC_FILE_PATH_MAC = root
+        else:
+            logger.error('Unable to find "%s". Please install it' % libmagic_folder)
+            sys.exit(-1)
+
+elif 'Linux' in _os.platform():
+    MAGIC_FILE_PATH_LINUX = '/etc/magic'
+elif 'Windows' in _os.platform():
+    MAGIC_FILE_PATH_WIN = r'C:/Users/Python3/Lib/site-packages/magic/libmagic/magic'
 
 MIME_MARKER = ' ,(MIME: '
 MIME_FOOTER = ')'
