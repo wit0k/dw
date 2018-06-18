@@ -5,10 +5,8 @@ __version__ = '0.4.5'
 """
 TO DO:
 - Double check url ends with and TLDs ( temporary fix done for now... but might be prone to erros)
-- When plugin config does not exist the script shall continue ...
 - Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/
 - Add exclusion to url
-- Fix display issue when adding --url-info and mime url 
 - Add bit.ly resolution to url class maybe ...
 - archive folder check 
 - Print file info, when only loding files (like hash etc.)
@@ -55,22 +53,22 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 if 'Darwin' in _os.platform():
 
     libmagic_folder = '/usr/local/Cellar/libmagic/'
-    MAGIC_FILE_PATH_MAC = '/usr/local/Cellar/libmagic/5.33/share/misc/magic'
+    MAGIC_FILE_PATH = '/usr/local/Cellar/libmagic/5.33/share/misc/magic'
 
-    if not os.path.isfile(MAGIC_FILE_PATH_MAC):
+    if not os.path.isfile(MAGIC_FILE_PATH):
 
         if os.path.isdir(libmagic_folder):
             for root, subdirs, files in os.walk(libmagic_folder):
                 if 'magic' in root and 'magic' in files:
-                    MAGIC_FILE_PATH_MAC = root
+                    MAGIC_FILE_PATH = root
         else:
             logger.error('Unable to find "%s". Please install it' % libmagic_folder)
             sys.exit(-1)
 
 elif 'Linux' in _os.platform():
-    MAGIC_FILE_PATH_LINUX = '/etc/magic'
+    MAGIC_FILE_PATH = '/etc/magic'
 elif 'Windows' in _os.platform():
-    MAGIC_FILE_PATH_WIN = r'C:/Users/Python3/Lib/site-packages/magic/libmagic/magic'
+    MAGIC_FILE_PATH = r'C:/Users/Python3/Lib/site-packages/magic/libmagic/magic'
 
 MIME_MARKER = ' ,(MIME: '
 MIME_FOOTER = ')'
@@ -489,14 +487,15 @@ class downloader (object):
         else:
             logger.debug("DEV: URL: '%s' already in links list!" % url)
 
-    def _url_endswith(self, url="", extensions=[]):
+    def _url_endswith(self, url_obj, extensions=[]):
 
-        if url:
+        if url_obj:
             if extensions:
                 # Do not consider the TLD as an extension
-                if url.count(r'/') >= 3:
+                #if url.count(r'/') >= 3:
+                if url_obj.path:
                     for _ext in extensions:
-                        if url.endswith(_ext):
+                        if url_obj.path.endswith(_ext):
                             return True
 
                 return False
@@ -614,7 +613,7 @@ class downloader (object):
                         return links
 
             """ If the resource is know file extension, but Content-Type is not sent by the server """
-            if self._url_endswith(url, file_extensions) :
+            if self._url_endswith(url_obj, file_extensions):
                 self.update_list(url, links)
                 return links
 
@@ -760,13 +759,6 @@ class downloader (object):
             file_info.append(hash_obj.hexdigest())
 
         """ Get file MIME type """
-        if 'Darwin' in _os.platform():
-            MAGIC_FILE_PATH = MAGIC_FILE_PATH_MAC
-        elif 'Linux' in _os.platform():
-            MAGIC_FILE_PATH = MAGIC_FILE_PATH_LINUX
-        else:
-            MAGIC_FILE_PATH = MAGIC_FILE_PATH_WIN
-
         obj_magic = magic.Magic(magic_file=MAGIC_FILE_PATH, mime=True, uncompress=True)
         file_info.append(obj_magic.from_file(filepath))
 
@@ -937,7 +929,6 @@ class downloader (object):
             return downloaded_files
         else:
             logger.debug("Nothing to download")
-
 
     def _update_headers(self, headers, vendor_file):
 
@@ -1238,11 +1229,9 @@ def main(argv):
     archives = []
     pastebin_report = []
 
-
     """ TEST """
     #db = database("database.pdl")
     #db_handler = handler(db)
-
 
     """ Load URLs from input file, or directly load files from a folder """
     if dw.input:
@@ -1382,7 +1371,7 @@ def main(argv):
                 downloaded_files = _uniq.get_unique_files(downloaded_files)
 
                 print("Unique files:")
-                print(*downloaded_files)
+                print(*downloaded_files, sep="\n")
     else:
         logger.debug("Skipping files download")
 

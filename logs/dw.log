@@ -1,0 +1,55 @@
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,716 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,717 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,717 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,719 - pluginmgr.py - __init__ - Found [2] plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,719 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,719 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,719 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,719 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,719 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,719 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,720 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,720 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,720 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - pluginmgr.py - __init__ - Loaded [2] plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - dw.py - main - Loaded [0] URLs from: urls.txt
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:14,721 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:40,162 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:29:40,164 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:43,364 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,470 - pluginmgr.py - __init__ - Found [2] plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,471 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,471 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,472 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,472 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,472 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,472 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,473 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,473 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,473 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,473 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,473 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:30:49,473 - pluginmgr.py - __init__ - Loaded [2] plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:39,326 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:39,328 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,394 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,405 - pluginmgr.py - __init__ - Found [2] plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,405 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,405 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,406 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,406 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,407 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,407 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,408 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,408 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,408 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,409 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,409 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735303213056 - 2018-06-18 14:31:41,409 - pluginmgr.py - __init__ - Loaded [2] plugins

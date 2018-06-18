@@ -23,7 +23,7 @@ class av_symantec(object):
 
     author = 'wit0k'
     description = 'Submits files or hashes to Symantec BCS submission portal'
-    config_file = 'plugins/av-symantec.py.vd'
+    config_file = 'plugins/av_symantec.py.vd'
     plugin_type = 'AV'
     vendor_name = 'Symantec'
     required_params = ['debug_proxies', 'submission_comments', 'requests_debug']

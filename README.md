@@ -330,3 +330,7 @@ Ver. 0.4.4:
 
 Ver. 0.4.5:
 * MacOS: Added automatic detection of libmagic magic file (if installed by brew)
+
+Ver. 0.4.6:
+* Cosmetic code changes
+

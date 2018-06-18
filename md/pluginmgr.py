@@ -8,7 +8,7 @@ logger = logging.getLogger('dw')
 
 class plugin_manager(object):
 
-    MANDATORY_PLUGIN_FUNCTIONS = ("load_config", "call")
+    MANDATORY_PLUGIN_FUNCTIONS = ["load_config", "call"]
 
     def __init__(self):
 
