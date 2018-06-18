@@ -17,6 +17,7 @@ Install dependencies:
 * pip install Pillow
 * pip install requests
 * pip install simplejson
+* pip install pytesseract
 * ...
 
 I will create requirements.txt and setup script when time allows

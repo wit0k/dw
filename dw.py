@@ -34,6 +34,9 @@ import time
 import md.smb as cifs
 import md.pastebin as _paste_bin
 import md.url as _url_mod
+
+import md.cache as cache
+
 from md.db import handler, database
 
 import random
@@ -1213,6 +1216,7 @@ def main(argv):
     else:
         logger.setLevel(logging.WARNING)
 
+    cache.URL_CACHE["PROXY"]["http://xlaski.pl"] = {"test": "OK"}
 
     """ Initialize main objects """
     logger.debug("Initialize dw (Downloader)")

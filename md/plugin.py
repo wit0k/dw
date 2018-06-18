@@ -1,7 +1,8 @@
 import logging
 import simplejson
 import os
-
+import md.config as config
+import md.cache as cache
 logger = logging.getLogger('dw')
 
 class plugin(object):
@@ -16,11 +17,10 @@ class plugin(object):
 
     def __init__(self):
 
-            self.debug_proxies = {
-                'http': 'http://127.0.0.1:8080',
-                'https': 'http://127.0.0.1:8080'
-            }
+            self.config = config
+            self.cache = cache
 
+            self.debug_proxies = config.debug_proxies
             self.submission_comments = ""
             self.requests_debug = False
 
