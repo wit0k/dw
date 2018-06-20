@@ -261,7 +261,7 @@ class proxy(submitter):
             if self.submitter_email == '':
                 email_checkbox = 'off'
 
-                payload = {"comments":comments,"email1":"","email2":"","partner":"bluecoatsg"
+                payload = {"comments": comments,"email1":"","email2":"","partner":"bluecoatsg"
                     ,"referrer":"","sendEmail":False,"trackid":tracking_id,"cat1":category_id,"cat2":None}
 
             else:
