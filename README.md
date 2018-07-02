@@ -334,3 +334,14 @@ Ver. 0.4.5:
 Ver. 0.4.6:
 * Cosmetic code changes
 
+Ver. 0.4.7:
+* Proxy query and submission moved to plugin: pp_bluecoat (pp_bluecoat.py.vd required)
+* Proxy submission comments, would be set to URL, if no specific submission comments were transferred
+* Submission code change to support additional case, where portal detects that URL was already submitted by you
+* dw code changes to handle new proxy plugin 
+* dw code changes to simplify av and proxy plugin usage
+* --url-info is using the proxy plugin
+* Removed submitter.py, replaced by plugins and plugin manager
+* Removed submit_url_category, get_url_info, _update_headers functions from dw.py (handled by plugins now)
+ 
+

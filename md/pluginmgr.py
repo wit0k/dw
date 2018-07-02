@@ -61,6 +61,20 @@ class plugin_manager(object):
         if self.plugins:
             return self.plugins
 
+    def get_proxy_vendors(self, vendor_names=[]):
+
+        vendor_objects = []
+
+        if vendor_names:
+            plugins = self.get_plugin_values_by_type("PROXY")
+            for plugin in plugins:
+                if plugin["vendor_name"].lower() in vendor_names:
+                    vendor_objects.append(plugin["plugin_object"])
+            return vendor_objects
+        else:
+            vendor_objects = self.get_plugin_objects_by_type("PROXY")
+            return vendor_objects
+
     def get_av_vendors(self, vendor_names=[]):
 
         vendor_objects = []

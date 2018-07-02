@@ -1,6 +1,8 @@
 import logging
 import simplejson
 import os
+import requests
+
 import md.config as config
 import md.cache as cache
 logger = logging.getLogger('dw')
@@ -19,10 +21,11 @@ class plugin(object):
 
             self.config = config
             self.cache = cache
-
+            self.config_data = None
             self.debug_proxies = config.debug_proxies
             self.submission_comments = ""
             self.requests_debug = False
+            self.con = requests.session()
 
     def load_config(self):
 
@@ -56,4 +59,4 @@ class plugin(object):
     def call(self, function_name, params=()):
 
         if function_name in self.plugin_functions.keys():
-            self.plugin_functions[function_name](self,  *params)
+            return self.plugin_functions[function_name](self, *params)

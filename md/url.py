@@ -19,7 +19,7 @@ class url(object):
         """ I shall add the file type as well and expose it as a sample class or so """
         self.url = None
         self.url_final = None
-        self.time_created = None
+        #self.time_created = None
         self.file = None
         self.hash = None
         self.protocol = None
@@ -33,7 +33,6 @@ class url(object):
         self.domain = None
         self.mime_type = None
         self.av_category = None
-
         self.proxy_category = {}
 
         if not url:
@@ -145,8 +144,6 @@ class url(object):
         output_url = output_url.replace("\.", ".")
         output_url = output_url.replace("/]", "/")
         output_url = output_url.replace(r"\]", '\\')
-
-
 
         """ Assume that the URL is valid at this stage """
         if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", output_url):

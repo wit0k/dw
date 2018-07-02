@@ -1,9 +1,12 @@
 __author__  = "Witold Lawacz (wit0k)"
-__date__    = "2018-03-12"
-__version__ = '0.4.5'
+__date__    = "2018-07-02"
+__version__ = '0.4.7'
 
 """
 TO DO:
+- Improve get_file_info so it can query url info when proxy category not in the cache.
+- Update get_hrefs to use self.cache instead of links
+- Make sure that .docx files (based on mimetype detection) are not considered as zip by compress file function...
 - Double check url ends with and TLDs ( temporary fix done for now... but might be prone to erros)
 - Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/
 - Add exclusion to url
@@ -16,7 +19,6 @@ Sys req:
 - brew install tesseract
 """
 
-import md.submitter as submission
 import re
 import os
 import pathlib
@@ -36,7 +38,7 @@ import md.pastebin as _paste_bin
 import md.url as _url_mod
 
 import md.cache as cache
-
+import md.config as config
 from md.db import handler, database
 
 import random
@@ -261,14 +263,12 @@ file_extensions = ["386","acm","asp","bas","bat","cab","cgi","chm","cla","class"
                    "vbe","vbs","vxd","wbs","wbt","wiz","wsc","wsf","wsh",".zip",".7z",".rar",".exe",".dll",".msi",".ps1",".jar",
                    ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas", ".lib", ".apk"]
 
-# Cache of URLs (It links URL string [key] with associated url object [value])
-URL_CACHE = {}
-
-
 class downloader (object):
 
     def __init__(self, args):
 
+        self.cache = cache
+        self.config = config
         self.verbose_level = args.verbose_level
         self.download_files = args.download_files
         self.submit_to_av_vendors = args.submit_to_av_vendors
@@ -291,8 +291,6 @@ class downloader (object):
         self.submitter_email = args.submitter_email
         self.submit_to_proxy_vendors = args.submit_to_proxy_vendors
         self.new_proxy_category = args.new_proxy_category
-        self.proxy_vendors = {}
-        self.submitter_obj = submission.submitter()
         self.pastebin_api_key = args.pastebin_api_key
         self.user_agent = args.user_agent
         self.do_not_print_mime_type = args.do_not_print_mime_type
@@ -305,16 +303,20 @@ class downloader (object):
         self.pastebin_title = args.pastebin_title
 
         """ AV vendors """
-        if args.av_vendors == 'all':
+        if args.av_vendor_names == 'all':
             self.submit_to_all_av_vendors = True
         else:
             self.submit_to_all_av_vendors = False
-            self.av_vendors = self.to_list(args.av_vendors)
-            self.av_vendors = [x.lower() for x in self.av_vendors]
+            self.av_vendor_names = self.to_list(args.av_vendor_names)
+            self.av_vendor_names = [x.lower() for x in self.av_vendor_names]
 
-        """ Load proxy vendors """
-        _proxy_vendor_names = self.to_list(args.proxy_vendors)
-        self.proxy_vendors = self.submitter_obj.load_vendors("PROXY", _proxy_vendor_names, {"submitter_email": self.submitter_email})
+        """ PROXY vendors """
+        if args.proxy_vendor_names == 'all':
+            self.submit_to_all_proxy_vendors = True
+        else:
+            self.submit_to_all_proxy_vendors = False
+            self.proxy_vendor_names = self.to_list(args.proxy_vendor_names)
+            self.proxy_vendor_names = [x.lower() for x in self.proxy_vendor_names]
 
         """ Check script arguments """
         self.check_args()
@@ -673,6 +675,10 @@ class downloader (object):
                         continue
 
                     """ Detect and skip links automatically created in open directory like: Name, Last modified, Size, Description """
+
+                    if re.match(r'/\?sort=[a-zA-Z]{1,2}', _href):
+                        continue
+
                     if _href in ["?ND", "?MA", "?SA", "?DA", "?sort=na", "?sort=nd", "?sort=da", "?sort=dd", "?sort=ea",
                                  "?sort=ed", "#", "./"]:
                         continue
@@ -773,10 +779,10 @@ class downloader (object):
             url_host = url_obj.hostname
 
             if self.url_info_force:
-                proxy_category = self.get_url_info(url)
+                proxy_category = str(self.cache.proxy.get_category(url, 'Symantec'))
 
             if self.url_info:
-                proxy_category = self.get_url_info(url_host)
+                proxy_category = str(self.cache.proxy.get_category(url_host, 'Symantec'))
 
             if proxy_category:
                 file_info.append(proxy_category)
@@ -882,6 +888,11 @@ class downloader (object):
                 # Make sure that the local file name is safe file name
                 extension = pathlib.Path(local_filename).suffix
                 local_filename = "".join(x for x in local_filename if x.isalnum())
+
+                # Dirty fix: For some reason som file names had "; in the file name... (i shall review it later)
+                local_filename = local_filename.strip(r'"')
+                local_filename = local_filename.strip(r';')
+
                 if extension:
                     local_filename = local_filename + extension
 
@@ -932,27 +943,6 @@ class downloader (object):
             return downloaded_files
         else:
             logger.debug("Nothing to download")
-
-    def _update_headers(self, headers, vendor_file):
-
-        vendor_config = None
-
-        if os.path.isfile(vendor_file):
-            with open(vendor_file, 'r') as file:
-                vendor_config = json.load(file)
-
-                for header_name, value in headers.items():
-                    if value == "":
-                        try:
-                            headers[header_name] = (None, vendor_config["form_data"][header_name])
-                        except KeyError:
-                            pass
-
-        else:
-            logger.error("Unable to load vendor file: %s" % vendor_file)
-            exit(-1)
-
-        return headers
 
     def check_args(self):
 
@@ -1027,34 +1017,6 @@ class downloader (object):
         if self.pastebin_paste_expiration not in _paste_bin.expire_values.keys():
             logger.error("pastebin: Incorrect expiration time !")
             sys.exit(-1)
-
-    def get_url_info(self, urls, vendor_name="bluecoat"):
-
-        url_submitter = self.proxy_vendors[vendor_name.upper()]
-        url_category = None
-
-        if url_submitter:
-
-            if not isinstance(urls, list):
-                urls = [urls]
-
-            for url in urls:
-                if url:
-                    url_category = url_submitter.get_category(url, self.url_info_force)
-
-                    if url_category:
-                       pass
-
-            return url_category
-
-        else:
-            logger.error("Vendor: '%s' -> Unable to initialize the submitter class" % vendor_name)
-            return "Error"
-
-    def submit_url_category(self, url, category):
-
-        for vendor_name, submitter in self.proxy_vendors.items():
-            submitter.submit_category(category, url)
 
     def uplaod_to_pastebin(self, data_entries, paste_name='Example Script', paste_type='0', paste_expire='1H', paste_format='Python', is_guest=True):
 
@@ -1157,13 +1119,13 @@ def main(argv):
                              help="Force url info lookup for every crawled URL (NOT recommended)")
 
     submission_args.add_argument("-sc", "--submission-comments", action='store', dest='submission_comments',
-                                 required=False, default="",
+                                 required=False, default=None,
                                  help="Insert submission comments (Default: <archive_name>)")
 
-    submission_args.add_argument("--proxy-vendors", action='store', dest='proxy_vendors', required=False,
-                             default="bluecoat", help="Comma separated list of PROXY vendors used for URL category lookup and submission")
+    submission_args.add_argument("--proxy-vendors", action='store', dest='proxy_vendor_names', required=False,
+                             default="all", help="Comma separated list of PROXY vendors used for URL category lookup and submission")
 
-    submission_args.add_argument("--av-vendors", action='store', dest='av_vendors', required=False,
+    submission_args.add_argument("--av-vendors", action='store', dest='av_vendor_names', required=False,
                                  default="all",
                                  help="Comma separated list of AV vendors used for file/hash submission (Default: all)")
 
@@ -1216,13 +1178,29 @@ def main(argv):
     else:
         logger.setLevel(logging.WARNING)
 
-    cache.URL_CACHE["PROXY"]["http://xlaski.pl"] = {"test": "OK"}
-
     """ Initialize main objects """
     logger.debug("Initialize dw (Downloader)")
     dw = downloader(args)
     logger.debug("Initialize Plugin Manager")
     pm = plugin_manager()
+
+    """ Init PROXY vendors """
+    proxy_vendors = []
+    if dw.submit_to_proxy_vendors or dw.url_info:
+        logger.debug("Initialize Proxy vendors")
+        if dw.submit_to_all_proxy_vendors:
+            proxy_vendors = pm.get_proxy_vendors()
+        else:
+            proxy_vendors = pm.get_proxy_vendors(dw.proxy_vendor_names)
+
+    """ Init AV vendors """
+    av_vendors = []
+    if dw.submit_to_av_vendors:
+        logger.debug("Initialize AV vendors")
+        if dw.submit_to_all_av_vendors:
+            av_vendors = pm.get_av_vendors()
+        else:
+            av_vendors = pm.get_av_vendors(dw.av_vendor_names)
 
     _uniq = uniq()
     urls = []
@@ -1292,30 +1270,29 @@ def main(argv):
                     logger.debug("Save: %s to %s/ folder" % (file, destination_file))
                     shutil.copy2(file, destination_file)
 
-
-    """ Get URL info for all loaded URLs (Fills in the URL_PROXY_CATEGORIZATION dict)"""
+    """ Get URL info for all loaded URLs """
     if dw.url_info:
         pastebin_report.append("Input URL(s) info:")
         print("Input URL(s) info:")
         for url in urls:
-            url.set_proxy_category({"bluecoat": dw.get_url_info(url.url)})
-            pastebin_report.append("%s, %s, %s, %s" % (url.ip, url.domain, url.get_proxy_catgeory(True), url.url))
-            print("%s, %s, %s, %s" % (url.ip, url.domain, url.get_proxy_catgeory(True), url.url))
+            for proxy_vendor in proxy_vendors:
+                proxy_vendor.call("query_url", (url, ))
+
+                proxy_category = dw.cache.proxy.get_category(url.url, proxy_vendor.vendor_name)
+                pastebin_report.append("%s, %s, %s, %s" % (url.ip, url.domain, proxy_category, url.url))
+                print("%s, %s, %s, %s" % (url.ip, url.domain, proxy_category, url.url))
+
     else:
         logger.debug("Skipping URL info gathering")
 
     """ Submit loaded URLs to proxy vendors """
     if dw.submit_to_proxy_vendors:
-        for url in urls:
-            dw.submit_url_category(url.url, dw.new_proxy_category)
+        for urlobj in urls:
+            for vendor in proxy_vendors:
+                vendor.call("submit_url", (urlobj, dw.submission_comments, dw.submitter_email))
 
     """ Submit loaded hashes to AV vendors """
     if dw.submit_hashes:
-        if dw.submit_to_all_av_vendors:
-            av_vendors = pm.get_av_vendors()
-        else:
-            av_vendors = pm.get_av_vendors(dw.av_vendors)
-
         for vendor in av_vendors:
             vendor.call("submit_hash", (hashes, dw.submission_comments, dw.requests_debug, debug_proxies))
 
@@ -1402,14 +1379,8 @@ def main(argv):
 
     """ Submit files to AV vendors """
     if dw.submit_to_av_vendors:
-        if dw.submit_to_all_av_vendors:
-            av_vendors = pm.get_av_vendors()
-        else:
-            av_vendors = pm.get_av_vendors(dw.av_vendors)
-
         for vendor in av_vendors:
             vendor.call("submit_file", (archives, dw.submission_comments, dw.requests_debug, debug_proxies))
-
     else:
         logger.debug("Skipping Vendor submission")
 
