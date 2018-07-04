@@ -352,3 +352,6 @@ Ver. 0.4.8:
 * New option -s, which allows to specify a local file or folder or am URL for processing 
 * -i would accept input file containing URLs or Hashes
 * Documentation update
+
+Ver. 0.4.9: 
+* Cosmetic fix to logic of -s option in case of URL treatment

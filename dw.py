@@ -1,9 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.4.8'
+__version__ = '0.4.9'
 
 """
 TO DO:
+- URLinfo should lookup the cache for more details, instead of querying all the time (it would be much faster)
 - Print meaningful output to stdout ... 
 - Add some regex checks to load hashes from file...
 - Add checks for URL syntax
@@ -13,7 +14,7 @@ TO DO:
 - Make sure that .docx files (based on mimetype detection) are not considered as zip by compress file function...
 - Double check url ends with and TLDs ( temporary fix done for now... but might be prone to erros)
 - Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/
-- Add exclusion to url ... handle exclusions db for all hashes and urls...
+- Add exclusion to url ... handle exclusions db for all hashes and urls...https://gist.github.com/Neo23x0/fd9af35c5061578025d00838c215dfe4
 - Add bit.ly resolution to url class maybe ...
 - archive folder check 
 - Print file info, when only loding files (like hash etc.)
@@ -1419,8 +1420,11 @@ def main(argv):
             downloaded_files = dw.download(hrefs, pastebin_report)
 
         elif dw.sample_file_or_folder:
-            logger.debug("Download not required. Files already located on the disk")
-            pass
+            if dw.input_type == "url":
+                downloaded_files = dw.download([dw.sample_file_or_folder], pastebin_report)
+            else:
+                logger.debug("Download not required. Files already located on the disk")
+                pass
         else:
             """ Download given URLs """
             downloaded_files = dw.download([u.url for u in urls], pastebin_report)

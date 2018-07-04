@@ -1,0 +1,125 @@
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,085 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,086 - dw.py - check_args - Specify either -i or -s. Forcing -s to be used
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,087 - url.py - parse_url - Parsing URL: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe to: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,094 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,094 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,121 - pluginmgr.py - __init__ - Found [2] plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,121 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,121 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,121 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,121 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,122 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,122 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,122 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,122 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,123 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,123 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,124 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,124 - pluginmgr.py - __init__ - Loaded [2] plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,124 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:34,124 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:52:37,826 - url.py - parse_url - Parsing URL: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe to: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe
+INFO - THREAD-140735315509248 - 2018-07-04 20:53:10,016 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:53:27,239 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:53:31,372 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,739 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,740 - dw.py - check_args - Specify either -i or -s. Forcing -s to be used
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,740 - url.py - parse_url - Parsing URL: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe to: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,748 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,748 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,763 - pluginmgr.py - __init__ - Found [2] plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,763 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,763 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,763 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,764 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,764 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,764 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,764 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,764 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,765 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,765 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,765 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,765 - pluginmgr.py - __init__ - Loaded [2] plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,766 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:33,766 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:38,262 - url.py - parse_url - Parsing URL: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe to: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe
+INFO - THREAD-140735315509248 - 2018-07-04 20:55:38,266 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:38,266 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:38,266 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:55:46,706 - dw.py - download - Headers: ItemsView({'User-Agent': 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'})
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,713 - dw.py - download - Invalid URL 'h': No schema supplied. Perhaps you meant http://h?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,715 - dw.py - download - Invalid URL 't': No schema supplied. Perhaps you meant http://t?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,716 - dw.py - download - Invalid URL 't': No schema supplied. Perhaps you meant http://t?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,718 - dw.py - download - Invalid URL 'p': No schema supplied. Perhaps you meant http://p?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,741 - dw.py - download - No connection adapters were found for ':'
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,742 - dw.py - download - Invalid URL '/': No schema supplied. Perhaps you meant http:///?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,744 - dw.py - download - Invalid URL '/': No schema supplied. Perhaps you meant http:///?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,746 - dw.py - download - Invalid URL 'l': No schema supplied. Perhaps you meant http://l?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,748 - dw.py - download - Invalid URL 'e': No schema supplied. Perhaps you meant http://e?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,749 - dw.py - download - Invalid URL 'w': No schema supplied. Perhaps you meant http://w?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,751 - dw.py - download - Invalid URL 'a': No schema supplied. Perhaps you meant http://a?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,752 - dw.py - download - Invalid URL 'n': No schema supplied. Perhaps you meant http://n?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,754 - dw.py - download - Invalid URL 'd': No schema supplied. Perhaps you meant http://d?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,755 - dw.py - download - Invalid URL 'o': No schema supplied. Perhaps you meant http://o?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,757 - dw.py - download - Invalid URL 'w': No schema supplied. Perhaps you meant http://w?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,758 - dw.py - download - Invalid URL 's': No schema supplied. Perhaps you meant http://s?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,759 - dw.py - download - Invalid URL 'k': No schema supplied. Perhaps you meant http://k?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,761 - dw.py - download - Invalid URL 'h': No schema supplied. Perhaps you meant http://h?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,762 - dw.py - download - Invalid URL 'j': No schema supplied. Perhaps you meant http://j?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,764 - dw.py - download - Invalid URL '.': No schema supplied. Perhaps you meant http://.?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,767 - dw.py - download - Invalid URL 'n': No schema supplied. Perhaps you meant http://n?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,770 - dw.py - download - Invalid URL 'a': No schema supplied. Perhaps you meant http://a?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,772 - dw.py - download - Invalid URL 'z': No schema supplied. Perhaps you meant http://z?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,774 - dw.py - download - Invalid URL 'w': No schema supplied. Perhaps you meant http://w?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,775 - dw.py - download - Invalid URL 'a': No schema supplied. Perhaps you meant http://a?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,777 - dw.py - download - Invalid URL '.': No schema supplied. Perhaps you meant http://.?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,778 - dw.py - download - Invalid URL 'p': No schema supplied. Perhaps you meant http://p?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,780 - dw.py - download - Invalid URL 'l': No schema supplied. Perhaps you meant http://l?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,781 - dw.py - download - Invalid URL '/': No schema supplied. Perhaps you meant http:///?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,783 - dw.py - download - Invalid URL 'u': No schema supplied. Perhaps you meant http://u?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,784 - dw.py - download - Invalid URL 't': No schema supplied. Perhaps you meant http://t?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,785 - dw.py - download - Invalid URL 'A': No schema supplied. Perhaps you meant http://A?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,787 - dw.py - download - Invalid URL 'F': No schema supplied. Perhaps you meant http://F?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,788 - dw.py - download - Invalid URL 'B': No schema supplied. Perhaps you meant http://B?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,790 - dw.py - download - Invalid URL 'E': No schema supplied. Perhaps you meant http://E?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,791 - dw.py - download - Invalid URL 'E': No schema supplied. Perhaps you meant http://E?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,793 - dw.py - download - Invalid URL '5': No schema supplied. Perhaps you meant http://5?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,795 - dw.py - download - Invalid URL 'F': No schema supplied. Perhaps you meant http://F?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,796 - dw.py - download - Invalid URL '.': No schema supplied. Perhaps you meant http://.?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,798 - dw.py - download - Invalid URL 'e': No schema supplied. Perhaps you meant http://e?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,800 - dw.py - download - Invalid URL 'x': No schema supplied. Perhaps you meant http://x?
+ERROR - THREAD-140735315509248 - 2018-07-04 20:55:46,802 - dw.py - download - Invalid URL 'e': No schema supplied. Perhaps you meant http://e?
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,569 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,570 - dw.py - check_args - Specify either -i or -s. Forcing -s to be used
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,571 - url.py - parse_url - Parsing URL: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe to: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,578 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,578 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,594 - pluginmgr.py - __init__ - Found [2] plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,594 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,594 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,594 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,594 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,595 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,595 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,595 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,595 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,596 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,596 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,596 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,596 - pluginmgr.py - __init__ - Loaded [2] plugins
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,596 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,597 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,597 - url.py - parse_url - Parsing URL: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe to: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe
+INFO - THREAD-140735315509248 - 2018-07-04 20:56:16,598 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,598 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:16,598 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:19,965 - dw.py - download - Headers: ItemsView({'User-Agent': 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'})
+INFO - THREAD-140735315509248 - 2018-07-04 20:56:20,089 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://lewandowskhj.nazwa.pl/utAFBEE5F.exe
+INFO - THREAD-140735315509248 - 2018-07-04 20:56:28,788 - dw.py - download - 7fde9508d1bb3efb2483a9d5b34e0ce335f67e7785d7095d151fb891842f7b7e,application/x-dosexec,downloads/utAFBEE5Fexe.exe,http://lewandowskhj.nazwa.pl/utAFBEE5F.exe
+INFO - THREAD-140735315509248 - 2018-07-04 20:56:39,705 - uniq.py - get_unique_files - Deduplication: 1 -> 1
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:39,705 - dw.py - _zip - Add 'downloads/utAFBEE5Fexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:39,712 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['utAFBEE5Fexe.exe']
+INFO - THREAD-140735315509248 - 2018-07-04 20:56:41,540 - av_symantec.py - submit_file - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735315509248 - 2018-07-04 20:56:47,528 - av_symantec.py - submit_file - Vendor: Symantec: Submission Success -> File: archive/samples-1.zip, 42575859
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:47,528 - av_symantec.py - submit_file - Thread Sleep for 2 seconds
+DEBUG - THREAD-140735315509248 - 2018-07-04 20:56:49,530 - dw.py - main - Skipping pastebin submission
