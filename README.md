@@ -21,8 +21,8 @@ Some of available functionalities:
 * Bulk file downloads
 * Files de-duplication (by file hash)
 * File compression (.zip, custom files count per archive)
-* Antivirus vendor submission (.py.vd file required)
-* Proxy vendor submission and querying ((.py.vd file required))
+* Antivirus submission (plugins/%vendor%.py.vd file required)
+* Proxy submission and querying (plugins/%vendor%.py.vd file required)
 * Automatic Pastebin reports
  
 **Use cases:**
