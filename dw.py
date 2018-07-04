@@ -1,15 +1,19 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.4.7'
+__version__ = '0.4.8'
 
 """
 TO DO:
+- Print meaningful output to stdout ... 
+- Add some regex checks to load hashes from file...
+- Add checks for URL syntax
+- Add an option to specify a URL trough cmd like -u or make it detected by -s
 - Improve get_file_info so it can query url info when proxy category not in the cache.
 - Update get_hrefs to use self.cache instead of links
 - Make sure that .docx files (based on mimetype detection) are not considered as zip by compress file function...
 - Double check url ends with and TLDs ( temporary fix done for now... but might be prone to erros)
 - Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/
-- Add exclusion to url
+- Add exclusion to url ... handle exclusions db for all hashes and urls...
 - Add bit.ly resolution to url class maybe ...
 - archive folder check 
 - Print file info, when only loding files (like hash etc.)
@@ -272,7 +276,10 @@ class downloader (object):
         self.verbose_level = args.verbose_level
         self.download_files = args.download_files
         self.submit_to_av_vendors = args.submit_to_av_vendors
+
         self.input = args.input
+        self.sample_file_or_folder = args.sample_file_or_folder
+
         self.archive_folder = args.archive_folder
         self.input_type = None  # file | folder
         self.get_links = args.get_links
@@ -424,12 +431,42 @@ class downloader (object):
         else:
             logger.error("Input file: %s -> Not found!" % input_file)
 
+    def load_url(self, urlstr):
+
+        urls = []
+        if urlstr == '\n':
+            return urls
+
+        if urlstr.upper() == '[END]' or urlstr.upper() == '[END]\n':
+            return urls
+
+        urlstr = urlstr.strip()
+        if not urlstr.startswith("#"):
+            # Handle the case with MIME type included in the URL
+            if MIME_MARKER in urlstr:
+                url, _, mime = urlstr.partition(MIME_MARKER)
+                url = url.strip()
+                if url:
+                    _url = _url_mod.url(url.strip())
+                    urls.append(_url)
+            else:
+                _url = _url_mod.url(urlstr)
+                urls.append(_url)
+
+        return urls
+
     def load_urls_from_input_file(self, input_file):
 
         urls = []
         if os.path.isfile(input_file):
             with open(input_file, "r", encoding="utf8") as file:
-                lines = file.readlines()
+
+                try:
+                    lines = file.readlines()
+                except Exception as msg:
+                    logger.error("Unsupported input file format: %s" % input_file)
+                    return []
+
                 for line in lines:
 
                     if line == '\n':
@@ -455,7 +492,16 @@ class downloader (object):
         else:
             logger.error("Input file: %s -> Not found!" % input_file)
 
-    def load_files_from_input_folder(self, input_folder):
+    def load_file(self, file_path):
+
+        files = []
+        if os.path.isfile(file_path):
+            if not ".DS_Store" in file_path:
+                files.append(file_path)
+
+        return files
+
+    def load_files_from_folder(self, input_folder):
 
         files = []
         folder_listing = os.listdir(input_folder)
@@ -946,16 +992,37 @@ class downloader (object):
 
     def check_args(self):
 
-        if not os.path.isfile(self.input):
-            logger.warning("Input file: %s not found!" % self.input)
+        if self.sample_file_or_folder and self.input:
+            logger.debug("Specify either -i or -s. Forcing -s to be used")
+            self.input = ''
+
+        """ Option -s specified """
+        if self.sample_file_or_folder:
+            if os.path.isdir(self.sample_file_or_folder):
+                self.input_type = "folder"
+            elif os.path.isfile(self.sample_file_or_folder):
+                self.input_type = "file"
+            elif self.load_url(self.sample_file_or_folder):
+                self.input_type = "url"
+            else:
+                logger.error("Unsupported -s input type: %s" % self.input)
+                exit(-1)
+
+        """ Option -i specified """
+        if self.input:
             if os.path.isdir(self.input):
                 self.input_type = "folder"
-                logger.info("Input folder set to: %s" % self.input)
+                logger.error("Unsupported -i input type: %s [folder]" % self.input)
+                exit(-1)
+            elif os.path.isfile(self.input):
+                self.input_type = "file"
             else:
-                logger.error("Input file or folder: %s not found! Use -i <param> to specify the input data" % self.input)
+                logger.error("Unsupported -i input type: %s" % self.input)
                 exit(-1)
         else:
-            self.input_type = "file"
+            if not self.sample_file_or_folder:
+                logger.error("You must specify either -i or -s parameters")
+                exit(-1)
 
         if not os.path.isdir(self.download_folder):
             logger.warning("Download folder: %s not found!" % self.download_folder)
@@ -1054,8 +1121,12 @@ def main(argv):
     pastebin_args = argsparser.add_argument_group('pastebin arguments', "\n")
 
     """ Script arguments """
-    script_args.add_argument("-i", "--input", type=str, action='store', dest='input', required=False,
-                             default="urls.txt", help="Load and deobfuscate URLs from input file, or load files from given folder for further processing")
+    script_args.add_argument("-i", "--input-file", type=str, action='store', dest='input', required=False,
+                             default="urls.txt", help="Load an input file containing URLs or Hashes for further processing")
+
+    script_args.add_argument("-s", "--sample", type=str, action='store', dest='sample_file_or_folder', required=False,
+                             default="",
+                             help="Load given URL, or specific file or folder for further processing")
 
     script_args.add_argument("-d", "--download-folder", action='store', dest='download_folder', required=False,
                              default="downloads/", help="Specify custom download folder location (Default: downloads/")
@@ -1186,21 +1257,19 @@ def main(argv):
 
     """ Init PROXY vendors """
     proxy_vendors = []
-    if dw.submit_to_proxy_vendors or dw.url_info:
-        logger.debug("Initialize Proxy vendors")
-        if dw.submit_to_all_proxy_vendors:
-            proxy_vendors = pm.get_proxy_vendors()
-        else:
-            proxy_vendors = pm.get_proxy_vendors(dw.proxy_vendor_names)
+    logger.debug("Initialize Proxy vendors")
+    if dw.submit_to_all_proxy_vendors:
+        proxy_vendors = pm.get_proxy_vendors()
+    else:
+        proxy_vendors = pm.get_proxy_vendors(dw.proxy_vendor_names)
 
     """ Init AV vendors """
     av_vendors = []
-    if dw.submit_to_av_vendors:
-        logger.debug("Initialize AV vendors")
-        if dw.submit_to_all_av_vendors:
-            av_vendors = pm.get_av_vendors()
-        else:
-            av_vendors = pm.get_av_vendors(dw.av_vendor_names)
+    logger.debug("Initialize AV vendors")
+    if dw.submit_to_all_av_vendors:
+        av_vendors = pm.get_av_vendors()
+    else:
+        av_vendors = pm.get_av_vendors(dw.av_vendor_names)
 
     _uniq = uniq()
     urls = []
@@ -1215,8 +1284,20 @@ def main(argv):
     #db = database("database.pdl")
     #db_handler = handler(db)
 
-    """ Load URLs from input file, or directly load files from a folder """
-    if dw.input:
+    """ Load URLs from input file, or directly load file(s) from a file or folder """
+
+    """ case: -s """
+    if dw.sample_file_or_folder:
+        if dw.input_type == "file":
+            downloaded_files = dw.load_file(dw.sample_file_or_folder)
+        elif dw.input_type == "folder":
+            downloaded_files = dw.load_files_from_folder(dw.sample_file_or_folder)
+            logger.debug("Loaded [%d] files from: %s" % (len(downloaded_files), dw.sample_file_or_folder))
+        elif dw.input_type == "url":
+            urls = dw.load_url(dw.sample_file_or_folder)
+
+        """ case: -i """
+    elif dw.input:
         if dw.input_type == "file":
             if dw.submit_hashes:
                 hashes = dw.load_hashes_from_input_file(dw.input)
@@ -1224,12 +1305,6 @@ def main(argv):
             else:
                 urls = dw.load_urls_from_input_file(dw.input)
                 logger.debug("Loaded [%d] URLs from: %s" % (len(urls), dw.input))
-        elif dw.input_type == "folder":
-            downloaded_files = dw.load_files_from_input_folder(dw.input)
-            logger.debug("Loaded [%d] files from: %s" % (len(downloaded_files), dw.input))
-        else:
-            logger.error("Unsupported input type" % dw.input)
-            exit(-1)
 
     # TEST
     # db_handler.insert(urls[0])
@@ -1342,6 +1417,10 @@ def main(argv):
         if hrefs:
             """ Download pulled hrefs """
             downloaded_files = dw.download(hrefs, pastebin_report)
+
+        elif dw.sample_file_or_folder:
+            logger.debug("Download not required. Files already located on the disk")
+            pass
         else:
             """ Download given URLs """
             downloaded_files = dw.download([u.url for u in urls], pastebin_report)

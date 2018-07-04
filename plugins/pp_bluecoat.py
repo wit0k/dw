@@ -215,8 +215,6 @@ class pp_bluecoat(plugin):
         if url:
             logger.debug("Lookup the URL: %s" % url)
 
-
-
             """ Return cached category, if it exists  """
             logger.debug("Lookup URL tracking cache")
 
@@ -240,11 +238,10 @@ class pp_bluecoat(plugin):
 
             try:
                 r = self.con.get('https://sitereview.bluecoat.com/resource/captcha-request', headers=headers)
+                response_dict = simplejson.loads(r.text)
+                captcha_required = response_dict.get("required", None)
             except Exception as msg:
                 logger.error("Unable to send captcha request: %s" % 'https://sitereview.bluecoat.com/resource/captcha-request')
-
-            response_dict = simplejson.loads(r.text)
-            captcha_required = response_dict.get("required", None)
 
             """ Resolve captcha (Still the old method, but it works)"""
             if captcha_required:
@@ -294,10 +291,16 @@ class pp_bluecoat(plugin):
                                   json=check_status_payload)
 
                 if r.status_code != 200:
-                    logger.error("HTTP POST Failed -> https://sitereview.bluecoat.com/resource/lookup")
-                    logger.error("Headers: %s" % headers)
-                    logger.error("Data: %s" % check_status_payload)
-                    return None
+
+                    if 'URL contains an invalid top-level domain (TLD)' in r.text:
+                        logger.debug("Query Failed -> Vendor: %s | URL: %s | Result: %s" % (
+                            self.vendor_name, url, "Unsupported: URL contains an invalid top-level domain (TLD)"))
+                        return ["TLD not supported"]
+                    else:
+                        logger.error("HTTP POST Failed -> https://sitereview.bluecoat.com/resource/lookup")
+                        logger.error("Headers: %s" % headers)
+                        logger.error("Data: %s" % check_status_payload)
+                        return None
 
                 response_dict = simplejson.loads(r.text)
                 tracking_id = response_dict.get("curTrackingId", {})

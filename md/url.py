@@ -32,8 +32,6 @@ class url(object):
         self.ip = None
         self.domain = None
         self.mime_type = None
-        self.av_category = None
-        self.proxy_category = {}
 
         if not url:
             logger.error("")
@@ -44,29 +42,10 @@ class url(object):
                 self._resolve_url()
 
     def set_proxy_category(self, vendor_category):
-
-        if isinstance(vendor_category, dict):
-            for proxy_vendor, url_proxy_category in vendor_category.items():
-                self.proxy_category[proxy_vendor] = url_proxy_category
-        else:
-            logger.error("Proxy category must be in format:  dict['proxy_vendor'']='url_proxy_category'")
-            return None
+        pass
 
     def get_proxy_catgeory(self, category_only=False):
-
-        if self.proxy_category:
-            if category_only:
-                categories = []
-
-                for url_proxy_category in self.proxy_category.values():
-                    categories.append(url_proxy_category)
-
-                if categories:
-                    return ",".join(categories)
-                else:
-                    return ""
-            else:
-                return self.proxy_category
+        pass
 
     def _split_url(self, schema='http'):
 

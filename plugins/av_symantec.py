@@ -110,32 +110,36 @@ class av_symantec(object):
                     form_data["comments"] = hash
 
                 """ Submit the request """
-                if self.requests_debug:
-                    response = requests.post(url, files=form_data, proxies=self.debug_proxies, headers=headers,
-                                             verify=False)
-                else:
-                    response = requests.post(url, files=form_data, headers=headers, verify=False)
-
-                if not response.status_code == 200:
-                    logger.error("[%s] - FAILED to submit: %s" % (response.status_code, url))
-                else:
-                    if submission_success_message in response.text:
-                        tracking_id = self.get_tracking_id(response.text)
-
-                        logger.info(
-                            "Vendor: %s: Submission Success -> Hash: %s, %s" % (self.vendor_name, hash, tracking_id))
-                        print("Vendor: %s: Submission Success -> Hash: %s, %s" % (self.vendor_name, hash, tracking_id))
-
-                        """ Wait a random time """
-                        sleep_time = random.randint(1, 3)
-                        logger.debug("Thread Sleep for %d seconds" % sleep_time)
-                        time.sleep(sleep_time)
+                try:
+                    if self.requests_debug:
+                        response = requests.post(url, files=form_data, proxies=self.debug_proxies, headers=headers,
+                                                 verify=False)
                     else:
-                        logger.info(
-                            "Vendor: %s: Submission Failure: Hash: %s\n Message: \n %s" % (
-                                self.vendor_name, hash, response.text))
-                        print("Vendor: %s: Submission Failure: Hash: %s\n Message: \n %s" % (
+                        response = requests.post(url, files=form_data, headers=headers, verify=False)
+
+                    if not response.status_code == 200:
+                        logger.error("[%s] - FAILED to submit: %s" % (response.status_code, url))
+                    else:
+                        if submission_success_message in response.text:
+                            tracking_id = self.get_tracking_id(response.text)
+
+                            logger.info(
+                                "Vendor: %s: Submission Success -> Hash: %s, %s" % (
+                                self.vendor_name, hash, tracking_id))
+                            print("Vendor: %s: Submission Success -> Hash: %s, %s" % (
+                            self.vendor_name, hash, tracking_id))
+
+                            """ Wait a random time """
+                            sleep_time = random.randint(1, 3)
+                            logger.debug("Thread Sleep for %d seconds" % sleep_time)
+                            time.sleep(sleep_time)
+                        else:
+                            logger.error("Vendor: %s: Submission Failure | Hash: %s | Message: %s" % (
                             self.vendor_name, hash, response.text))
+
+
+                except requests.exceptions.ConnectionError as msg:
+                    logger.error("Vendor: %s: Submission Failure | Hash: %s | Message: %s" % (self.vendor_name, hash, "requests.exceptions.ConnectionError"))
 
         else:
             logger.warning("Nothing to submit!")

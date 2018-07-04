@@ -32,13 +32,13 @@ Some of available functionalities:
 <pre> dw.py -i urls.txt -z -gl --download </pre>
 
 * Load and deobfuscate URLs from input file (url.txt) [-i < filer >]
-* Retrieve all available links/hrefs from loaded URLs [-gl]
+* Retrieve all available < a > links/hrefs from loaded URLs [-gl]
 * Download all detected links/hrefs [--download]
-* Compress downloaded files and save in archive/ folder (Default 9 files by zip archive) [-z]
+* Compress downloaded files and save them in archive/ folder (Default 9 files by zip archive) [-z]
 
 <pre> dw.py -gl --submit -i urls.txt </pre>
 
-* Additionally submits compressed archives to configured vendors [--submit enables -z automatically]
+* Additionally submits compressed archives to all loaded AV vendors [--submit enables -z automatically]
 
 <pre> dw.py -dedup -z -i downloads/ </pre>
 
@@ -50,16 +50,16 @@ Some of available functionalities:
 
 * Process files from downloads/ [zip them when necessary]
 * Processed/compressed files are saved into archive/ folder
-* Submits files from archive/ folder to configured vendors [--submit enables -z automatically]
+* Submits files from archive/ folder to all loaded vendors [--submit enables -z automatically]
 
-<pre> dw.py -i urls.txt -r </pre> 
+<pre> dw.py --submit -s downloads/malware.exe </pre>
+* Submits a local file to all loaded AV vendors
 
-<span style="color:#FF0000"> Use with caution!!! </span>
-
-* Retrieve all available links/hrefs from loaded URLs (Recursively) 
-* Automatically enables -gl mode 
-
-
+<pre> dw.py -v DEBUG --dedup --url-info -s http://soportek[.]cl/DNWbs6/ --submit </pre> 
+* Log debug data into dw.log
+* Retrieve proxy category of given URL from all loaded proxy vendors and prints it
+* Download and submits the content served by the URL to all loaded AV vendors
+ 
 **Command Line:**
 
 <pre>
@@ -68,9 +68,12 @@ optional arguments:
 
 Script arguments:
 
-  -i INPUT, --input INPUT
-                        Load and deobfuscate URLs from input file, or load
-                        files from given folder for further processing
+  -i INPUT, --input-file INPUT
+                        Load an input file containing URLs or Hashes for
+                        further processing
+  -s SAMPLE_FILE_OR_FOLDER, --sample SAMPLE_FILE_OR_FOLDER
+                        Load given URL, or specific file or folder for further
+                        processing
   -d DOWNLOAD_FOLDER, --download-folder DOWNLOAD_FOLDER
                         Specify custom download folder location (Default:
                         downloads/
@@ -123,10 +126,10 @@ submission arguments:
                         recommended)
   -sc SUBMISSION_COMMENTS, --submission-comments SUBMISSION_COMMENTS
                         Insert submission comments (Default: <archive_name>)
-  --proxy-vendors PROXY_VENDORS
+  --proxy-vendors PROXY_VENDOR_NAMES
                         Comma separated list of PROXY vendors used for URL
                         category lookup and submission
-  --av-vendors AV_VENDORS
+  --av-vendors AV_VENDOR_NAMES
                         Comma separated list of AV vendors used for file/hash
                         submission (Default: all)
   --email SUBMITTER_EMAIL
@@ -343,5 +346,11 @@ Ver. 0.4.7:
 * --url-info is using the proxy plugin
 * Removed submitter.py, replaced by plugins and plugin manager
 * Removed submit_url_category, get_url_info, _update_headers functions from dw.py (handled by plugins now)
- 
 
+Ver. 0.4.8: 
+* Update to INSTALL.md
+* Added error handling in load_urls_from_input_file()
+* Cosmetic code changes to the logic of -i and -s options
+* New option -s, which allows to specify a local file or folder or am URL for processing 
+* -i would accept input file containing URLs or Hashes
+* Documentation update
