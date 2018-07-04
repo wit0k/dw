@@ -19,13 +19,11 @@ Some of available functionalities:
 * Input URL de-duplication 
 * Site crawling for href elements (Two different modes)
 * Bulk file downloads
-* Downloaded files de-duplication (by file hash)
-* Folder content de-duplication 
+* Files de-duplication (by file hash)
 * File compression (.zip, custom files count per archive)
-* Antivirus vendor submission (Requires specific config/%vendonr_name%.vd file)
-* Input URL infromation lookup like proxy category etc. (VT information soon)
-* URL proxy re-categorization (Will be shortly moved to a config/%vendonr_name%.vd file)
-* Upload of an execution report (stdout) to pastebin
+* Antivirus vendor submission (.py.vd file required)
+* Proxy vendor submission and querying ((.py.vd file required))
+* Automatic Pastebin reports
  
 **Use cases:**
 
