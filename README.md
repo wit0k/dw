@@ -355,3 +355,6 @@ Ver. 0.4.8:
 
 Ver. 0.4.9: 
 * Cosmetic fix to logic of -s option in case of URL treatment
+
+Ver. 0.5.0: 
+* Code fix to cache treatment for URL_CACHE. (--url-info shall be faster now) 

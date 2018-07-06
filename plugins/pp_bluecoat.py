@@ -201,9 +201,13 @@ class pp_bluecoat(plugin):
         logger.debug("Get proxy category of: %s" % url)
 
         """ Pre-create an entry in Cache if it doesn't exist yet """
-        if not self.cache.proxy.exist(url):
+        if not self.cache.proxy.exist(url) and not self.cache.proxy.exist(url_host):
             self.cache.proxy.add(urlobj)
             self.cache.proxy.add(urlobj, host_only=True)
+
+            """ Case when new URL is not in cache yet, but its url_host is """
+        elif not self.cache.proxy.exist(url) and self.cache.proxy.exist(url_host):
+            self.cache.proxy.add(urlobj)
 
         tracking_id = self.cache.proxy.get_tracking_id(url)
 
@@ -225,10 +229,13 @@ class pp_bluecoat(plugin):
 
             """ Return cached category for urlhost (Less expensive, since category would likely be the same due to urlhost etc.) """
             if not force:
-                cached_category = self.cache.proxy.get_category(url_host)
+                cached_category = self.cache.proxy.get_category(url_host, self.vendor_name)
                 if cached_category:
                     logger.debug(
                         "CACHE -> Vendor: %s | Category: %s | URLHost: %s" % (self.vendor_name, cached_category, url_host))
+
+                    self.cache.proxy.set_category(url, self.vendor_name, cached_category)
+
                     return cached_category
 
             """ Check if captcha is required """
@@ -253,7 +260,7 @@ class pp_bluecoat(plugin):
                 logger.debug("Captcha required: True -> Pull %s" % captcha_url)
 
                 try:
-                    r = self.con.get(captcha_url, headers=self.headers, stream=True)
+                    r = self.con.get(captcha_url, headers=headers, stream=True)
                 except Exception as msg:
                     logger.error("Failed to pull captcha image. Exit function")
                     return None
