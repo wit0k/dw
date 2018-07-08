@@ -102,6 +102,8 @@ class url(object):
         output_url = output_url.replace("[https://]", "https://")
         output_url = output_url.replace(" (HTTP)", "")
         output_url = output_url.replace(" ", "")
+        output_url = output_url.replace("htxp", "http")
+        output_url = output_url.replace("hxtp", "http")
         output_url = output_url.replace("hxxp", "http")
         output_url = output_url.replace("h11p", "http")
         output_url = output_url.replace("xxp://", "http")

@@ -358,3 +358,6 @@ Ver. 0.4.9:
 
 Ver. 0.5.0: 
 * Code fix to cache treatment for URL_CACHE. (--url-info shall be faster now) 
+
+Ver. 0.5.1: 
+* Code fix: -rl, -gl should have better support for final url building  

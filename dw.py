@@ -1,9 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.5.0'
+__version__ = '0.5.1'
 
 """
 TO DO:
+- Maybe add a cache of skipped/visited URLs (like these returning 404, which do not get in links) ... error=true
 - URLinfo should lookup the cache for more details, instead of querying all the time (it would be much faster)
 - Print meaningful output to stdout ... 
 - Add some regex checks to load hashes from file...
@@ -262,7 +263,7 @@ default_mime_types = [
     "application/x-dosexec"
 ]
 
-file_extensions = ["386","acm","asp","bas","bat","cab","cgi","chm","cla","class","cmd","cnv","com","cpl","crt","csh",
+file_extensions = [".flv", ".mp4", ".epub",".png", ".webm", ".flac","386","acm","asp","bas","bat","cab","cgi","chm","cla","class","cmd","cnv","com","cpl","crt","csh",
                    "ctl","dll","drv","exe","gms","hlp","hta","inf","ini","ins","isp","job","js","jse","lnk","mpd","msik",
                    "msp","ocx","opo","php","pif","pl","prc","rat","reg","scf","sct","scr","sh","shs","sys","tlb","tsp","vb",
                    "vbe","vbs","vxd","wbs","wbt","wiz","wsc","wsf","wsh",".zip",".7z",".rar",".exe",".dll",".msi",".ps1",".jar",
@@ -514,7 +515,7 @@ class downloader (object):
 
         return files
 
-    def update_list(self, url, links):
+    def update_list(self, url, links, error=False):
 
         if isinstance(url, tuple):
             mime = url[1]
@@ -527,7 +528,7 @@ class downloader (object):
 
         if url not in links.keys():
 
-            links[url] = {"mime": mime, "url_mime": url_with_mime}
+            links[url] = {"mime": mime, "url_mime": url_with_mime, "error": error}
 
             #links.append(url_with_mime)
 
@@ -559,6 +560,10 @@ class downloader (object):
 
         con.connect(remote_server=url_obj.hostname, path=url_obj.path[1:])
         sys.exit(-1)
+
+    def rreplace(self, text, old, new):
+        li = text.rsplit(old, 1)  # Split only once
+        return new.join(li)
 
     def get_hrefs(self, url, con=None, links={}, depth=0):
 
@@ -605,8 +610,8 @@ class downloader (object):
                 logger.debug("HTTP HEAD: %s" % url)
                 response = con.head(url)
             except Exception as msg:
-                logger.info("HTTP HEAD -> URL Fetch -> FAILED -> URL: %s [HTTP %s] -> Error: %s" % (
-                url, "None", str(msg)))
+                logger.info("HTTP HEAD -> URL Fetch -> FAILED -> URL: %s [HTTP %s] -> Error: %s" % (url, "None", str(msg)))
+                self.update_list(url, links, error=True)
                 return links
 
             if response is not None:
@@ -638,17 +643,43 @@ class downloader (object):
                             "HTTP HEAD -> URL Fetch -> SUCCESS -> URL: %s [HTTP %s]" % (url, response.status_code))
                     except Exception as msg:
                         logger.info("HTTP HEAD -> URL Fetch -> FAILED -> URL: %s [HTTP %s] -> Error: %s" % (url, response.status_code, str(msg)))
+                        self.update_list(url, links, error=True)
                         return links
                 else:
                     logger.info("HTTP HEAD -> URL Fetch -> UNSUPPORTED -> URL: %s [HTTP %s]" % (url, response.status_code))
+                    self.update_list(url, links, error=True)
                     return links
             else:
                 logger.info("HTTP HEAD -> URL Fetch -> NONE -> URL: %s [HTTP %s]" % (url, "None"))
+                self.update_list(url, links, error=True)
                 return links
 
             """ Update url_object """
             url_host = url_obj.hostname
             url_base = url_obj.scheme + "://" + url_obj.netloc
+
+            #test
+            url_file = ""
+
+            if url_obj.path:
+                _, __, url_path_only = url_obj.path.partition("/")
+                if not url_path_only:
+                    url_path_only="/"
+                else:
+                    # Shall still handle the situation better if urlfile is empty
+                    url_path_only, slash, url_file = url_path_only.rpartition("/")
+                    url_path_only = slash + url_path_only + slash
+
+
+            #url_base = url_base + url_obj.path
+            url_base = url_base + url_path_only
+
+            # Get URL path (without the web page)
+
+            if '#' in url:
+                _, __, url_element_id = url.rpartition(r"#")
+            else:
+                url_element_id = None
 
             """ If the resource is of given MIME type, mark it as href and do not resolve the links  """
             response_headers = response.headers
@@ -678,6 +709,7 @@ class downloader (object):
                 response = con.get(url)
             except Exception as msg:
                 logger.error("con.get(%s) -> Error: %s" % (url, msg))
+                self.update_list(url, links, error=True)
                 return links
 
             """ Parse the HTTP response """
@@ -697,8 +729,8 @@ class downloader (object):
                     _href = ""
                     _href = link.get('href')
 
-                    if _href == "?":
-                        pass
+                    if _href == "?" or _href=="#":
+                        continue
 
                     if not _href:
                         continue
@@ -726,8 +758,7 @@ class downloader (object):
                     if re.match(r'/\?sort=[a-zA-Z]{1,2}', _href):
                         continue
 
-                    if _href in ["?ND", "?MA", "?SA", "?DA", "?sort=na", "?sort=nd", "?sort=da", "?sort=dd", "?sort=ea",
-                                 "?sort=ed", "#", "./"]:
+                    if _href in ["?ND", "?MA", "?SA", "?DA", "?sort=na", "?sort=nd", "?sort=da", "?sort=dd", "?sort=ea", "?sort=ed", "#", "./"]:
                         continue
 
                     """ String exclusion list"""
@@ -735,15 +766,45 @@ class downloader (object):
                         logger.debug("Exlude HREF: %s -> %s" % (_href, link))
                         continue
 
+                    """ Extract href element id """
+                    if '#' in _href:
+                        _, __, _href_element_id = _href.rpartition(r"#")
+                    else:
+                        _href_element_id = None
+
                     """ Build new url """
-                    if _href.startswith("http://") or _href.startswith("https://"):
+                    if _href.startswith("http://") or _href.startswith("https://") or _href.startswith("www."):
                         _url = _href
                     else:
 
                         url_end = url[-1:]
                         href_start = _href[:1]
 
-                        if url_redirected and href_start == "/":
+                        # I am not fully sure if this logic is right ... (One day, a review is required)
+
+                        """ Adjust the url to href's element id """
+                        if url_element_id and _href_element_id:
+                            if url_element_id != _href_element_id:
+                                _url = self.rreplace(url, url_element_id, _href_element_id)
+                            else:
+                                # Skip when the href element id is the same as the url's element id
+                                continue
+
+                        elif url_element_id and not _href_element_id:
+                            # Case blog.htm...
+                            _url = url_base + _href
+
+                        elif not url_element_id and _href_element_id:
+                            #_url = url + _href
+                            if url_file:
+                                if not _href.startswith("#"):
+                                    _url = url_base + _href
+                                else:
+                                    _url = url + _href
+                            else:
+                                _url = url_base + _href
+
+                        elif url_redirected and href_start == "/":
                             _url = url_base + _href
 
                         elif url_redirected and href_start != "/":
@@ -755,12 +816,12 @@ class downloader (object):
 
                         elif url_end != "/" and href_start != "/":
                             """  The url does not end with / and the href does not start with / """
-                            _url = url + "/" + _href
-
+                            _url = url_base + _href
                         else:
                             _url = url + _href
 
-                    """ Case: -r """
+
+                    """ Case: -r or -rl """
                     if self.recursion:
                         """ Case: -rl Skip the href if its host is not the same as the host of the base URL  """
                         if self.crawl_local_host_only:
@@ -787,6 +848,7 @@ class downloader (object):
 
         except requests.exceptions.InvalidSchema:
             logger.error("Invalid URL format: %s" % url)
+            self.update_list(url, links, error=True)
             return links
 
         return links
@@ -1381,6 +1443,8 @@ def main(argv):
             if url.url not in hrefs:
                 links = {}
                 _hrefs = dw.get_hrefs(url.url, links=links)
+                links = [u for u, v in _hrefs.items() if not v.get("error", None)]
+
                 logger.debug("Found [%d] hrefs on: %s" % (len(_hrefs), url.url))
                 hrefs.extend(links.copy())
 
