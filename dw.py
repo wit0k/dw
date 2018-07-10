@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.5.1'
+__version__ = '0.5.2'
 
 """
 TO DO:
@@ -655,11 +655,13 @@ class downloader (object):
                 return links
 
             """ Update url_object """
-            url_host = url_obj.hostname
+            url_host = url_obj.hostname.lower()
             url_base = url_obj.scheme + "://" + url_obj.netloc
+            url_base = url_base.lower()
 
             #test
             url_file = ""
+            url_path_only = ""
 
             if url_obj.path:
                 _, __, url_path_only = url_obj.path.partition("/")
@@ -669,6 +671,8 @@ class downloader (object):
                     # Shall still handle the situation better if urlfile is empty
                     url_path_only, slash, url_file = url_path_only.rpartition("/")
                     url_path_only = slash + url_path_only + slash
+            else:
+                url_path_only = "/"
 
 
             #url_base = url_base + url_obj.path
