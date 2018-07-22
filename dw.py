@@ -4,6 +4,7 @@ __version__ = '0.5.2'
 
 """
 TO DO:
+- add some logging vt-download-file"
 - '";' replce with nothing... filename in the archive ?
 - Check if submitted archibe is pwd protected...
 - Maybe add a cache of skipped/visited URLs (like these returning 404, which do not get in links) ... error=true
@@ -1143,10 +1144,6 @@ class downloader (object):
             if self.input_type != "folder":
                 self.download_files = True
 
-        """ VT """
-        if self.vt_download_file:
-            self.submit_hashes = True
-
         """ pastebin params """
         if self.stdout_to_pastebin:
             if not self.pastebin_api_key:
@@ -1382,7 +1379,7 @@ def main(argv):
         """ case: -i """
     elif dw.input:
         if dw.input_type == "file":
-            if dw.submit_hashes:
+            if dw.submit_hashes or dw.vt_download_file:
                 hashes = dw.load_hashes_from_input_file(dw.input)
                 logger.debug("Loaded [%d] Hashes from: %s" % (len(hashes), dw.input))
             else:
