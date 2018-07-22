@@ -4,6 +4,8 @@ __version__ = '0.5.2'
 
 """
 TO DO:
+- '";' replce with nothing... filename in the archive ?
+- Check if submitted archibe is pwd protected...
 - Maybe add a cache of skipped/visited URLs (like these returning 404, which do not get in links) ... error=true
 - URLinfo should lookup the cache for more details, instead of querying all the time (it would be much faster)
 - Print meaningful output to stdout ... 
@@ -304,6 +306,9 @@ class downloader (object):
         self.user_agent = args.user_agent
         self.do_not_print_mime_type = args.do_not_print_mime_type
         self.submit_hashes = args.submit_hashes
+
+        """ VirusTotal """
+        self.vt_download_file = args.vt_download_file
 
         """ pastebin """
         self.stdout_to_pastebin = args.stdout_to_pastebin
@@ -1138,6 +1143,10 @@ class downloader (object):
             if self.input_type != "folder":
                 self.download_files = True
 
+        """ VT """
+        if self.vt_download_file:
+            self.submit_hashes = True
+
         """ pastebin params """
         if self.stdout_to_pastebin:
             if not self.pastebin_api_key:
@@ -1184,7 +1193,7 @@ def main(argv):
     script_args = argsparser.add_argument_group('Script arguments', "\n")
     crawling_args = argsparser.add_argument_group('Crawling arguments', "\n")
     networking_args = argsparser.add_argument_group('Networking arguments', "\n")
-    submission_args = argsparser.add_argument_group('submission arguments', "\n")
+    submission_args = argsparser.add_argument_group('Submission arguments', "\n")
     pastebin_args = argsparser.add_argument_group('pastebin arguments', "\n")
 
     """ Script arguments """
@@ -1247,6 +1256,12 @@ def main(argv):
 
     submission_args.add_argument("--submit-url", action='store_true', dest='submit_to_proxy_vendors', required=False,
                              default=False, help="Submit loaded URLs to PROXY vendors...")
+
+
+
+    submission_args.add_argument("--vt-download-file", action='store_true', dest='vt_download_file', required=False,
+                                 default=False, help="Download file from VirusTotal")
+
 
     submission_args.add_argument("-ui", "--url-info", action='store_true', dest='url_info', required=False,
                              default=False,
@@ -1338,6 +1353,8 @@ def main(argv):
     else:
         av_vendors = pm.get_av_vendors(dw.av_vendor_names)
 
+    vt_vendors = pm.get_plugin_objects_by_type("VT")
+
     _uniq = uniq()
     urls = []
     hashes = []
@@ -1362,7 +1379,6 @@ def main(argv):
             logger.debug("Loaded [%d] files from: %s" % (len(downloaded_files), dw.sample_file_or_folder))
         elif dw.input_type == "url":
             urls = dw.load_url(dw.sample_file_or_folder)
-
         """ case: -i """
     elif dw.input:
         if dw.input_type == "file":
@@ -1411,6 +1427,13 @@ def main(argv):
                     destination_file = os.path.join(dirname, dw.output_directory)
                     logger.debug("Save: %s to %s/ folder" % (file, destination_file))
                     shutil.copy2(file, destination_file)
+
+    """ VirusTotal """
+
+    if dw.vt_download_file:
+        for _hash in hashes:
+            for vt_vendor in vt_vendors:
+                vt_vendor.call("download_file", (_hash, ))
 
     """ Get URL info for all loaded URLs """
     if dw.url_info:

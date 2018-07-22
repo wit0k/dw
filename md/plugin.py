@@ -26,6 +26,8 @@ class plugin(object):
             self.submission_comments = ""
             self.requests_debug = False
             self.con = requests.session()
+            if self.requests_debug:
+                self.con.proxies.update(self.debug_proxies)
 
     def load_config(self):
 
