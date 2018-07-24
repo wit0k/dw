@@ -368,3 +368,8 @@ Ver. 0.5.2:
 Ver. 0.5.3:
 * The plugin class, automatically adjust self.con according to --debug-requests value
 * New param (Beta): --vt-download-file, once activated force the submission into hash mode and would download files from VirusTotal by file hashes 
+
+
+Ver. 0.5.4:
+* Added hasher class to facilitate error checking for vt 
+* Error checking in download api

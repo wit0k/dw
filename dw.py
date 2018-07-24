@@ -1,10 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.5.2'
+__version__ = '0.5.4'
 
 """
 TO DO:
-- add some logging vt-download-file"
+- Use random.choice for picking user agents [list] 
 - '";' replce with nothing... filename in the archive ?
 - Check if submitted archibe is pwd protected...
 - Maybe add a cache of skipped/visited URLs (like these returning 404, which do not get in links) ... error=true
