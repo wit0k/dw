@@ -1,3 +1,8 @@
+"""
+TO DO:
+- Finish get_hashes()
+
+"""
 import hashlib
 import zlib
 import os
