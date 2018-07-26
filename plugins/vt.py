@@ -1,6 +1,6 @@
 """
 TO DO:
-...
+- Update cache sections
 """
 
 import logging
@@ -16,7 +16,6 @@ class vt(plugin):
     config_file = 'plugins/vt.py.vd'
     plugin_type = 'VT'
     vendor_name = 'Google'
-    required_params = ['debug_proxies', 'submission_comments', 'requests_debug']
     config_data = {}
 
     def _is_supported_hash(self, file_hash):
@@ -26,13 +25,55 @@ class vt(plugin):
         else:
             return False
 
-    def get_report_file(self, file_hash):
-        pass
+    def file_report(self, file_hash, return_excerpt=False):
 
-    def download_file(self, file_hash, out_file=None):
+        logger.debug('VT Report: %s' % file_hash)
+
+        vt_response = None
+        excerpt = None
+
+        if self._is_supported_hash(file_hash):
+            api_key = self.config_data.get("api_key", None)
+
+            if api_key:
+                params = {'apikey': api_key, 'resource': file_hash, 'allinfo': 1}
+
+                headers = self.config_data.get('headers', None)
+                response = self.con.get('https://www.virustotal.com/vtapi/v2/file/report',
+                                        params=params, headers=headers)
+                vt_response = response.json()
+
+                positives = str(vt_response.get('positives', None))
+                total = str(vt_response.get('total', None))
+
+                score = ''
+                if positives and total:
+                    score = positives + "/" + total
+
+                av_selected_vendor_names = ['Symantec']
+                av_selected_vendor_results = []
+
+                scans = vt_response.get('scans', None)
+                if scans:
+                    for av_vendor_name in av_selected_vendor_names:
+                        if scans.get(av_vendor_name, None):
+                            av_selected_vendor_results.append(av_vendor_name + ': ' + scans.get(av_vendor_name, None).get('result'))
+
+                result_line = ', '.join(av_selected_vendor_results)
+                excerpt = score + ', ' + result_line
+
+            logger.debug('Excerpt: %s' % excerpt)
+
+            if return_excerpt:
+                return excerpt
+            else:
+                return vt_response
+
+        return None
+
+    def file_download(self, file_hash, out_file=None):
 
         downloaded_file = None
-        downloaded_file_hash = None
 
         logger.debug('VT Download: %s' % file_hash)
 
@@ -70,9 +111,9 @@ class vt(plugin):
                                 with open(out_file, 'wb') as file:
                                     file.write(downloaded_file)
                                     logger.debug('VT Buffer save success: %s, %s' % (out_file, file_hash))
-
                             else:
-                                test = ""
+                                logger.error('Unexpected Error: Downloaded file buffer is empty...')
+                                return None
                         else:
                             logger.error('Unexpected result from VT API - HTTP %s' % response.status_code)
                             return None
@@ -94,15 +135,7 @@ class vt(plugin):
 
         return downloaded_file
 
-
-    def submit_url(self, urlobj, submission_comments=None, submitter_email=None):
-        pass
-
-    def query_url(self, urlobj, params={}):
-        pass
-
     """ Exposed plugin functions via plugin.call """
-    plugin_functions = {"submit_url": submit_url,
-                        "query_url": query_url,
-                        "download_file": download_file
+    plugin_functions = {"file_download": file_download,
+                        "file_report": file_report
                         }

@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.5.4'
+__version__ = '0.5.5'
 
 """
 TO DO:
@@ -309,7 +309,8 @@ class downloader (object):
         self.submit_hashes = args.submit_hashes
 
         """ VirusTotal """
-        self.vt_download_file = args.vt_download_file
+        self.vt_file_download = args.vt_file_download
+        self.vt_file_report = args.vt_file_report
 
         """ pastebin """
         self.stdout_to_pastebin = args.stdout_to_pastebin
@@ -1256,8 +1257,11 @@ def main(argv):
 
 
 
-    submission_args.add_argument("--vt-download-file", action='store_true', dest='vt_download_file', required=False,
+    submission_args.add_argument("--vt-file-download", action='store_true', dest='vt_file_download', required=False,
                                  default=False, help="Download file from VirusTotal")
+
+    submission_args.add_argument("--vt-file-report", action='store_true', dest='vt_file_report', required=False,
+                                 default=False, help="Get report about the file from VirusTotal")
 
 
     submission_args.add_argument("-ui", "--url-info", action='store_true', dest='url_info', required=False,
@@ -1379,7 +1383,7 @@ def main(argv):
         """ case: -i """
     elif dw.input:
         if dw.input_type == "file":
-            if dw.submit_hashes or dw.vt_download_file:
+            if dw.submit_hashes or dw.vt_file_download or dw.vt_file_report:
                 hashes = dw.load_hashes_from_input_file(dw.input)
                 logger.debug("Loaded [%d] Hashes from: %s" % (len(hashes), dw.input))
             else:
@@ -1426,11 +1430,15 @@ def main(argv):
                     shutil.copy2(file, destination_file)
 
     """ VirusTotal """
-
-    if dw.vt_download_file:
+    if dw.vt_file_report:
         for _hash in hashes:
             for vt_vendor in vt_vendors:
-                vt_vendor.call("download_file", (_hash, ))
+                vt_vendor.call("file_report", (_hash, ))
+
+    if dw.vt_file_download:
+        for _hash in hashes:
+            for vt_vendor in vt_vendors:
+                vt_vendor.call("file_download", (_hash, ))
 
     """ Get URL info for all loaded URLs """
     if dw.url_info:

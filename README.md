@@ -373,3 +373,8 @@ Ver. 0.5.3:
 Ver. 0.5.4:
 * Added hasher class to facilitate error checking for vt 
 * Error checking in download api
+
+Ver. 0.5.5:
+* New option: --vt-file-report -> For now used to obtain either full report or report excerpt (Currently not printing anything)
+* --vt-download-file: Name changed to --vt-file-download (All other vt options would be --vt-%file/url/...%-%action% format)
+* Cosmetic code changes
