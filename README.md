@@ -28,11 +28,12 @@ Some of available functionalities:
 **Example:**
 
 <pre> dw.py -i hashes.txt --vt-file-download --vt-file-report
+  
   VirusTotal -> File Report:
   947447601a5a505420ea707ac75d7b36, 46/68, Symantec: W32.SillyFDC, Microsoft: Worm:AutoIt/Autorun.AC
   
   VirusTotal -> File Download:
- 947447601a5a505420ea707ac75d7b36, downloads/947447601a5a505420ea707ac75d7b36
+  947447601a5a505420ea707ac75d7b36, downloads/947447601a5a505420ea707ac75d7b36
 </pre>
 
 <pre> dw.py -i urls.txt -gl --submit </pre>
