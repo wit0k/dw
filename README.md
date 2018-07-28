@@ -25,18 +25,22 @@ Some of available functionalities:
 * Proxy submission and querying (plugins/%vendor%.py.vd file required)
 * Automatic Pastebin reports
  
-**Use cases:**
+**Example:**
 
-<pre> dw.py -i urls.txt -z -gl --download </pre>
+<pre> dw.py -i hashes.txt --vt-file-download --vt-file-report
+  VirusTotal -> File Report:
+  947447601a5a505420ea707ac75d7b36, 46/68, Symantec: W32.SillyFDC, Microsoft: Worm:AutoIt/Autorun.AC
+  
+  VirusTotal -> File Download:
+ 947447601a5a505420ea707ac75d7b36, downloads/947447601a5a505420ea707ac75d7b36
+</pre>
 
-* Load and deobfuscate URLs from input file (url.txt) [-i < filer >]
-* Retrieve all available < a > links/hrefs from loaded URLs [-gl]
-* Download all detected links/hrefs [--download]
-* Compress downloaded files and save them in archive/ folder (Default 9 files by zip archive) [-z]
+<pre> dw.py -i urls.txt -gl --submit </pre>
 
-<pre> dw.py -gl --submit -i urls.txt </pre>
-
-* Additionally submits compressed archives to all loaded AV vendors [--submit enables -z automatically]
+* Load and deobfuscate URLs from urls.txt
+* Enumerate all < a > HREFs for each loaded URL
+* Download all files pointed in HREFs destination
+* Submit all downloaded files to loaded AV vendors
 
 <pre> dw.py -dedup -z -i downloads/ </pre>
 
@@ -112,11 +116,13 @@ Networking arguments:
   --debug-requests      Sends GET/POST requests via local proxy server
                         127.0.0.1:8080
 
-submission arguments:
+Submission arguments:
 
   --submit              Submit files to AV vendors (Enables -z by default)
   --submit-hash         Submit hashes to AV vendors
   --submit-url          Submit loaded URLs to PROXY vendors...
+  --vt-file-download    Download file from VirusTotal
+  --vt-file-report      Get report about the file from VirusTotal
   -ui, --url-info       Retrieve URL information from supported vendors for
                         all loaded input URLs.
   -uif, --url-info-force

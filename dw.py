@@ -1188,7 +1188,7 @@ class downloader (object):
 
 def main(argv):
 
-    argsparser = argparse.ArgumentParser(usage=argparse.SUPPRESS, description='Hyperion parser')
+    argsparser = argparse.ArgumentParser(usage=argparse.SUPPRESS, description='dw toolkit')
 
     """ Argument groups """
     script_args = argsparser.add_argument_group('Script arguments', "\n")
