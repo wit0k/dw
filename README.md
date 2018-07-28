@@ -378,3 +378,8 @@ Ver. 0.5.5:
 * New option: --vt-file-report -> For now used to obtain either full report or report excerpt (Currently not printing anything)
 * --vt-download-file: Name changed to --vt-file-download (All other vt options would be --vt-%file/url/...%-%action% format)
 * Cosmetic code changes
+
+Ver. 0.5.6:
+* cache adopted to VT plugin 
+* Slight changes in pp_bluecoat plugin to support new functions in cache
+* Added some logging to --vt-file-report, --vt-file-download

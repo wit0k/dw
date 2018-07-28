@@ -1,7 +1,7 @@
 """
 TO DO:
 - Find a nice way to transfer debug_proxies variable and submission comments from dw
-
+- Add Tracking ID to cache
 USE:
 
 - plugin_manager.plugins['av_symantec'].call("submit_hash", ["5e913948be877c16b392390f8d21bbfd47b912720ac17664b6e1ea19ab9bff20"])

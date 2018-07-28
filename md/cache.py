@@ -15,26 +15,95 @@ URL_CACHE = {
                 'category': {'<vendor_name>': ('category1', 'category2')},
                 'new_category': {'<vendor_name>': ('category1', 'category2')},
                 'tracking_id': {'<vendor_name>': ('category1', 'category2')}
-            },
-            'vt': {
-                'result': {'<vendor_name>': ('category1', 'category2')}
             }
     }
 }
 
 
 FILE_CACHE = {
-    'sha256': {}
+    '<sha256>': {
+        'fileobj': None,
+        'vt': {
+            'report': None,
+            'excerpt': None
+         }
+    }
 }
 
-def get_urlobj(surl):
+def _set_url_property_value(surl, item_name, property_name, vendor_name, value):
 
-    if surl:
-        return URL_CACHE.get(surl, None).get("urlobj", None)
-    else:
-        return None
+    if value:
+        if surl in URL_CACHE.keys():
+            entry = URL_CACHE[surl][item_name].get(property_name, {})
 
-class proxy(object):
+            if len(entry) > 0:
+                if vendor_name in entry.keys():
+                    # Update existing value
+                    entry[vendor_name] = value
+                else:
+                    # Add new value
+                    entry[vendor_name] = value
+            else:
+                # Add new value
+                entry[vendor_name] = value
+
+
+class file(object):
+
+    def add(self, file_hash):
+
+        if file_hash:
+            key = file_hash
+
+            logger.debug("CACHE - FILE - Create new entry: %s" % key)
+            time_created = time.strftime("%Y-%m-%d %H:%M:%S")
+
+            FILE_CACHE[key] = {
+                'fileobj': None,
+                'vt': {
+                    'report': None,
+                    'excerpt': None
+                }
+            }
+
+    def add2(self, fileobj):
+
+        if fileobj:
+            key = fileobj.sha256
+
+            logger.debug("CACHE - FILE - Create new entry: %s" % key)
+            time_created = time.strftime("%Y-%m-%d %H:%M:%S")
+
+            FILE_CACHE[key] = {
+                'fileobj': fileobj,
+                'vt': {
+                    'report': None,
+                    'excerpt': None
+                }
+            }
+
+    def exist(self, file_hash):
+
+        if file_hash in FILE_CACHE.keys():
+            return True
+        else:
+            return False
+
+    def get(self, file_hash):
+
+        cache_entry = FILE_CACHE.get(file_hash, None)
+        if cache_entry:
+            return cache_entry
+
+    def get_urlobj(self, file_hash):
+
+        if file_hash:
+            return URL_CACHE.get(file_hash, None).get("fileobj", None)
+        else:
+            return None
+
+
+class url(object):
 
     def add(self, urlobj, host_only=False):
 
@@ -44,7 +113,7 @@ class proxy(object):
             else:
                 key = urlobj.url
 
-            logger.debug("CACHE - PROXY - Create new entry: %s" % key)
+            logger.debug("CACHE - URL - Create new entry: %s" % key)
             time_created = time.strftime("%Y-%m-%d %H:%M:%S")
 
             URL_CACHE[key] = {
@@ -72,22 +141,15 @@ class proxy(object):
         if cache_entry:
             return cache_entry
 
-    def _set_property_value(self, surl, item_name, property_name, vendor_name, value):
+    def get_urlobj(self, surl):
 
-        if value:
-            if surl in URL_CACHE.keys():
-                entry = URL_CACHE[surl][item_name].get(property_name, {})
+        if surl:
+            return URL_CACHE.get(surl, None).get("urlobj", None)
+        else:
+            return None
 
-                if len(entry) > 0:
-                    if vendor_name in entry.keys():
-                        # Update existing value
-                        entry[vendor_name] = value
-                    else:
-                        # Add new value
-                        entry[vendor_name] = value
-                else:
-                    # Add new value
-                    entry[vendor_name] = value
+
+class proxy(object):
 
     def get_category(self, surl, vendor_name=None):
 
@@ -113,20 +175,41 @@ class proxy(object):
     def set_category(self, surl, vendor_name, category_name):
 
         logger.debug("CACHE - PROXY - Set category: %s, %s" % (category_name, surl))
-        self._set_property_value(surl, "proxy", "category", vendor_name, category_name)
+        _set_url_property_value(surl, "proxy", "category", vendor_name, category_name)
 
     def set_new_category(self, surl, vendor_name, category_name):
 
         logger.debug("CACHE - PROXY - Set category: %s, %s" % (category_name, surl))
-        self._set_property_value(surl, "proxy", "new_category", vendor_name, category_name)
+        _set_url_property_value(surl, "proxy", "new_category", vendor_name, category_name)
 
     def set_tracking_id(self, surl, vendor_name, tracking_id):
 
         logger.debug("CACHE - PROXY - Set Tracking ID: %s, %s" % (tracking_id, surl))
-        self._set_property_value(surl, "proxy", "tracking_id", vendor_name, tracking_id)
+        _set_url_property_value(surl, "proxy", "tracking_id", vendor_name, tracking_id)
+
+
+class virustotal(object):
+
+    def add_report(self, file_hash, vt_response):
+
+        if not file.exist(file_hash):
+            file.add(file_hash)
+
+        FILE_CACHE[file_hash]['vt']['report'] = vt_response
+
+
+    def add_excerpt(self, file_hash, vt_excerpt):
+
+        if not file.exist(file_hash):
+            file.add(file_hash)
+
+        FILE_CACHE[file_hash]['vt']['excerpt'] = vt_excerpt
 
 
 proxy = proxy()
+vt = virustotal()
+url = url()
+file = file()
 
 
 

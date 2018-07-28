@@ -1,14 +1,15 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.5.5'
+__version__ = '0.5.6'
 
 """
 TO DO:
+- Standardize the parms format (so they are easier to remember)
 - Use random.choice for picking user agents [list] 
 - '";' replce with nothing... filename in the archive ?
 - Check if submitted archibe is pwd protected...
 - Maybe add a cache of skipped/visited URLs (like these returning 404, which do not get in links) ... error=true
-- URLinfo should lookup the cache for more details, instead of querying all the time (it would be much faster)
+- URLinfo should lookup the cache for more details, instead of querying all the time (it would be much faster) ... i think it' in place, but i need to check
 - Print meaningful output to stdout ... 
 - Add some regex checks to load hashes from file...
 - Add checks for URL syntax
@@ -45,6 +46,8 @@ import time
 import md.smb as cifs
 import md.pastebin as _paste_bin
 import md.url as _url_mod
+
+import md.file as _file_mod
 
 import md.cache as cache
 import md.config as config
@@ -1431,14 +1434,18 @@ def main(argv):
 
     """ VirusTotal """
     if dw.vt_file_report:
+        print("VirusTotal -> File Report:")
         for _hash in hashes:
             for vt_vendor in vt_vendors:
                 vt_vendor.call("file_report", (_hash, ))
 
     if dw.vt_file_download:
+        print("VirusTotal -> File Download:")
         for _hash in hashes:
             for vt_vendor in vt_vendors:
                 vt_vendor.call("file_download", (_hash, ))
+
+
 
     """ Get URL info for all loaded URLs """
     if dw.url_info:

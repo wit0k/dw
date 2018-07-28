@@ -50,23 +50,33 @@ class vt(plugin):
                 if positives and total:
                     score = positives + "/" + total
 
-                av_selected_vendor_names = ['Symantec']
+                av_selected_vendor_names = ['Symantec', 'Microsoft']
                 av_selected_vendor_results = []
 
                 scans = vt_response.get('scans', None)
                 if scans:
                     for av_vendor_name in av_selected_vendor_names:
                         if scans.get(av_vendor_name, None):
-                            av_selected_vendor_results.append(av_vendor_name + ': ' + scans.get(av_vendor_name, None).get('result'))
+                            _vendor_result = scans.get(av_vendor_name, None)
+                            if _vendor_result:
+                                _vendor_result = _vendor_result.get('result')
+                            else:
+                                _vendor_result = 'Not returned'
+
+                            av_selected_vendor_results.append(av_vendor_name + ': ' + _vendor_result)
 
                 result_line = ', '.join(av_selected_vendor_results)
                 excerpt = score + ', ' + result_line
 
             logger.debug('Excerpt: %s' % excerpt)
-
+            print('%s, %s' % (file_hash, excerpt))
             if return_excerpt:
+                self.cache.vt.add_excerpt(file_hash, excerpt)
+                self.cache.vt.add_report(file_hash, vt_response)
                 return excerpt
             else:
+                self.cache.vt.add_excerpt(file_hash, excerpt)
+                self.cache.vt.add_report(file_hash, vt_response)
                 return vt_response
 
         return None
@@ -111,6 +121,9 @@ class vt(plugin):
                                 with open(out_file, 'wb') as file:
                                     file.write(downloaded_file)
                                     logger.debug('VT Buffer save success: %s, %s' % (out_file, file_hash))
+
+                                print('%s, %s' % (file_hash, out_file))
+
                             else:
                                 logger.error('Unexpected Error: Downloaded file buffer is empty...')
                                 return None

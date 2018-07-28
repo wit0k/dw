@@ -201,13 +201,13 @@ class pp_bluecoat(plugin):
         logger.debug("Get proxy category of: %s" % url)
 
         """ Pre-create an entry in Cache if it doesn't exist yet """
-        if not self.cache.proxy.exist(url) and not self.cache.proxy.exist(url_host):
-            self.cache.proxy.add(urlobj)
-            self.cache.proxy.add(urlobj, host_only=True)
+        if not self.cache.url.exist(url) and not self.cache.url.exist(url_host):
+            self.cache.url.add(urlobj)
+            self.cache.url.add(urlobj, host_only=True)
 
             """ Case when new URL is not in cache yet, but its url_host is """
-        elif not self.cache.proxy.exist(url) and self.cache.proxy.exist(url_host):
-            self.cache.proxy.add(urlobj)
+        elif not self.cache.url.exist(url) and self.cache.url.exist(url_host):
+            self.cache.url.add(urlobj)
 
         tracking_id = self.cache.proxy.get_tracking_id(url)
 
@@ -329,7 +329,7 @@ class pp_bluecoat(plugin):
                 logger.debug("Unexpected error while URL lookup. Error: %s" % str(msg))
                 return None
 
-            return self.cache.proxy.get(url)
+            return self.cache.url.get(url)
 
 
     """ Exposed plugin functions via plugin.call """
