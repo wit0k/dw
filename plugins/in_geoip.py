@@ -24,7 +24,7 @@ class in_geoip(plugin):
         else:
             return False
 
-    def get_geolocation(self, input_data):
+    def get_geolocation(self, input_data, url=None):
 
         ipinfo_response = None
         logger.debug('GeoIP Report: %s' % input_data)
@@ -33,23 +33,24 @@ class in_geoip(plugin):
             logger.error('Unsupported input format: "%s"' % input_data)
             return None
 
-        url = ('https://ipinfo.io/' + input_data + '/json')
+        payload_url = ('https://ipinfo.io/' + input_data + '/json')
         payload = {'token': self.config_data.get('api_key', None)}
-        response = self.con.get(url, params=payload)
+        response = self.con.get(payload_url, params=payload)
 
         if response.status_code == 200:
             ipinfo_response = response.json()
 
             if ipinfo_response:
                 row = []
-                order = ['country', 'city', 'region', 'org', 'hostname', 'loc']
+                order = ['ip', 'country', 'city', 'region', 'org', 'hostname', 'loc']
 
                 for key in order:
                     row.append(key + ": " + ipinfo_response.get(key, ''))
 
-                print(", ".join(row))
+                logger.debug(", ".join(row) + ", " + url)
+                print(", ".join(row) + ", " + url)
         else:
-            logger.error('HTTP %s - Unable to access GeoLoaction API -> %s' % (response.status_code, url))
+            logger.error('HTTP %s - Unable to access GeoLoaction API -> %s' % (response.status_code, payload_url))
 
         return ipinfo_response
 

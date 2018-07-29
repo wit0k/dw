@@ -1458,7 +1458,7 @@ def main(argv):
         print("Input URL(s) GeoLocation:")
         for url in urls:
             for in_vendor in in_vendors:
-                in_vendor.call("get_geolocation", (url.ip, ))
+                in_vendor.call("get_geolocation", (url.ip, url.url))
 
     """ Get URL info for all loaded URLs """
     if dw.url_info:
