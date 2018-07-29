@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.5.6'
+__version__ = '0.5.7'
 
 """
 TO DO:

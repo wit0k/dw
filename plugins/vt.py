@@ -4,7 +4,10 @@ TO DO:
 """
 
 import logging
+from os.path import isfile
+
 from md.plugin import plugin
+
 
 logger = logging.getLogger('dw')
 
@@ -31,6 +34,18 @@ class vt(plugin):
 
         vt_response = None
         excerpt = None
+
+        vt_response = self.cache.vt.get_report(file_hash)
+        excerpt = self.cache.vt.get_excerpt(file_hash)
+
+        if vt_response:
+            logger.debug('CACHE -> Excerpt: %s' % excerpt)
+            print('%s, %s' % (file_hash, excerpt))
+
+            if return_excerpt:
+                return excerpt
+            else:
+                return vt_response
 
         if self._is_supported_hash(file_hash):
             api_key = self.config_data.get("api_key", None)
@@ -84,8 +99,17 @@ class vt(plugin):
     def file_download(self, file_hash, out_file=None):
 
         downloaded_file = None
+        out_file = None
 
         logger.debug('VT Download: %s' % file_hash)
+
+        out_file = self.cache.vt.get_file_path(file_hash)
+
+        if out_file:
+            if isfile(out_file):
+                logger.debug('CACHE -> file_path: %s' % out_file)
+                print('%s, %s' % (file_hash, out_file))
+                return out_file
 
         if self._is_supported_hash(file_hash):
 
@@ -122,7 +146,10 @@ class vt(plugin):
                                     file.write(downloaded_file)
                                     logger.debug('VT Buffer save success: %s, %s' % (out_file, file_hash))
 
+                                self.cache.file.add(file_hash)
+                                self.cache.vt.set_file_path(file_hash, out_file)
                                 print('%s, %s' % (file_hash, out_file))
+                                return out_file
 
                             else:
                                 logger.error('Unexpected Error: Downloaded file buffer is empty...')

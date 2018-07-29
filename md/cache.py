@@ -22,7 +22,12 @@ URL_CACHE = {
 
 FILE_CACHE = {
     '<sha256>': {
+        'time_created': None,
         'fileobj': None,
+        'file_path': None,
+        'av': {
+            'tracking_id': None
+        },
         'vt': {
             'report': None,
             'excerpt': None
@@ -50,37 +55,27 @@ def _set_url_property_value(surl, item_name, property_name, vendor_name, value):
 
 class file(object):
 
-    def add(self, file_hash):
+    def add(self, file_hash, fileobj=None):
 
         if file_hash:
-            key = file_hash
+            if not self.exist(file_hash):
+                key = file_hash
 
-            logger.debug("CACHE - FILE - Create new entry: %s" % key)
-            time_created = time.strftime("%Y-%m-%d %H:%M:%S")
+                logger.debug("CACHE - FILE - Create new entry: %s" % key)
+                time_created = time.strftime("%Y-%m-%d %H:%M:%S")
 
-            FILE_CACHE[key] = {
-                'fileobj': None,
-                'vt': {
-                    'report': None,
-                    'excerpt': None
+                FILE_CACHE[key] = {
+                    'time_created': time_created,
+                    'fileobj': fileobj,
+                    'file_path': None,
+                    'av': {
+                        'tracking_id': None
+                    },
+                    'vt': {
+                        'report': None,
+                        'excerpt': None
+                    }
                 }
-            }
-
-    def add2(self, fileobj):
-
-        if fileobj:
-            key = fileobj.sha256
-
-            logger.debug("CACHE - FILE - Create new entry: %s" % key)
-            time_created = time.strftime("%Y-%m-%d %H:%M:%S")
-
-            FILE_CACHE[key] = {
-                'fileobj': fileobj,
-                'vt': {
-                    'report': None,
-                    'excerpt': None
-                }
-            }
 
     def exist(self, file_hash):
 
@@ -95,7 +90,7 @@ class file(object):
         if cache_entry:
             return cache_entry
 
-    def get_urlobj(self, file_hash):
+    def get_fileobj(self, file_hash):
 
         if file_hash:
             return URL_CACHE.get(file_hash, None).get("fileobj", None)
@@ -190,13 +185,41 @@ class proxy(object):
 
 class virustotal(object):
 
+    def set_file_path(self, file_hash, file_path):
+
+        if FILE_CACHE.get(file_hash, None):
+            FILE_CACHE[file_hash]['file_path'] = file_path
+        else:
+            file.add(file_hash)
+            FILE_CACHE[file_hash]['file_path'] = file_path
+
+    def get_file_path(self, file_hash):
+
+        try:
+            return FILE_CACHE[file_hash]['file_path']
+        except KeyError:
+            return None
+
+    def get_report(self, file_hash):
+
+        try:
+            return FILE_CACHE[file_hash]['vt']['report']
+        except KeyError:
+            return None
+
+    def get_excerpt(self, file_hash):
+
+        try:
+            return FILE_CACHE[file_hash]['vt']['excerpt']
+        except KeyError:
+            return None
+
     def add_report(self, file_hash, vt_response):
 
         if not file.exist(file_hash):
             file.add(file_hash)
 
         FILE_CACHE[file_hash]['vt']['report'] = vt_response
-
 
     def add_excerpt(self, file_hash, vt_excerpt):
 

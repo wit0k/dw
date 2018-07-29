@@ -390,3 +390,6 @@ Ver. 0.5.6:
 * cache adopted to VT plugin 
 * Slight changes in pp_bluecoat plugin to support new functions in cache
 * Added some logging to --vt-file-report, --vt-file-download
+
+Ver. 0.5.7:
+* --vt-file-report and --vt-file-download would first lookup the FILE_CACHE before calling the VT API
