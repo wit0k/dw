@@ -8,6 +8,9 @@ logger = logging.getLogger('dw')
 
 class file(object):
 
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+    
     def __init__(self, file_hash):
 
         self.md5 = None

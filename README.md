@@ -393,3 +393,6 @@ Ver. 0.5.6:
 
 Ver. 0.5.7:
 * --vt-file-report and --vt-file-download would first lookup the FILE_CACHE before calling the VT API
+
+Ver. 0.5.8:
+* --in-geoip: Get the geoip location data for loaded URLs 

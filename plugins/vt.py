@@ -56,6 +56,7 @@ class vt(plugin):
                 headers = self.config_data.get('headers', None)
                 response = self.con.get('https://www.virustotal.com/vtapi/v2/file/report',
                                         params=params, headers=headers)
+
                 vt_response = response.json()
 
                 positives = str(vt_response.get('positives', None))

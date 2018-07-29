@@ -1,9 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.5.7'
+__version__ = '0.5.8'
 
 """
 TO DO:
+- Add GeoLocation section to cache.
 - Standardize the parms format (so they are easier to remember)
 - Use random.choice for picking user agents [list] 
 - '";' replce with nothing... filename in the archive ?
@@ -310,6 +311,9 @@ class downloader (object):
         self.user_agent = args.user_agent
         self.do_not_print_mime_type = args.do_not_print_mime_type
         self.submit_hashes = args.submit_hashes
+
+        """ Intel - GeoIP """
+        self.in_geoip = args.in_geoip
 
         """ VirusTotal """
         self.vt_file_download = args.vt_file_download
@@ -1266,6 +1270,9 @@ def main(argv):
     submission_args.add_argument("--vt-file-report", action='store_true', dest='vt_file_report', required=False,
                                  default=False, help="Get report about the file from VirusTotal")
 
+    submission_args.add_argument("--in-geoip", action='store_true', dest='in_geoip', required=False,
+                                 default=False, help="Determine GeoIP Location of loaded URLs etc...")
+
 
     submission_args.add_argument("-ui", "--url-info", action='store_true', dest='url_info', required=False,
                              default=False,
@@ -1358,6 +1365,7 @@ def main(argv):
         av_vendors = pm.get_av_vendors(dw.av_vendor_names)
 
     vt_vendors = pm.get_plugin_objects_by_type("VT")
+    in_vendors = pm.get_plugin_objects_by_type("INTEL")
 
     _uniq = uniq()
     urls = []
@@ -1445,7 +1453,12 @@ def main(argv):
             for vt_vendor in vt_vendors:
                 vt_vendor.call("file_download", (_hash, ))
 
-
+    """ Get GeoIP Location """
+    if dw.in_geoip:
+        print("Input URL(s) GeoLocation:")
+        for url in urls:
+            for in_vendor in in_vendors:
+                in_vendor.call("get_geolocation", (url.ip, ))
 
     """ Get URL info for all loaded URLs """
     if dw.url_info:

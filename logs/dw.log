@@ -1,0 +1,421 @@
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,125 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,126 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,126 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,146 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,146 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,146 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,146 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,147 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,147 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,148 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,148 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,148 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,149 - plugin.py - load_config - This plugin does not require config file
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,149 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,149 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,149 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,149 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,150 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,150 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,150 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,150 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,150 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,150 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,150 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,150 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,151 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:45:56,151 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,328 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,329 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,329 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,349 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,350 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,350 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,350 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,350 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,350 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,350 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,351 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,351 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,352 - plugin.py - load_config - This plugin does not require config file
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,352 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,352 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,352 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,352 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,353 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,353 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,353 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,353 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,353 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,354 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,354 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,354 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,354 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:49:59,354 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:50:03,601 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:50:03,625 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 21:50:03,626 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:50:07,290 - in_geoip.py - get_geolocation - GeoIP Report: <md.url.url object at 0x1084b5940>
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,940 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,941 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,941 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,965 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,965 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,965 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,965 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,965 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,966 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,966 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,966 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,966 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,967 - plugin.py - load_config - This plugin does not require config file
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,967 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,967 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,967 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,967 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,968 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,968 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,968 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,968 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,968 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,969 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,969 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,969 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,969 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,969 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,972 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:06,979 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 21:51:06,979 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:10,364 - in_geoip.py - get_geolocation - GeoIP Report: http://regenerus.com
+ERROR - THREAD-140735127584768 - 2018-07-29 21:51:10,365 - in_geoip.py - get_geolocation - Unsupported input format: "http://regenerus.com"
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,865 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,867 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,867 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,887 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,887 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,887 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,887 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,887 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,888 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,888 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,888 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,888 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,889 - plugin.py - load_config - This plugin does not require config file
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,889 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,889 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,889 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,889 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,890 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,890 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,890 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,890 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,890 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,891 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,891 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,891 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,891 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,891 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,894 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:37,901 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 21:51:37,901 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:51:41,064 - in_geoip.py - get_geolocation - GeoIP Report: http://regenerus.com
+ERROR - THREAD-140735127584768 - 2018-07-29 21:51:41,065 - in_geoip.py - get_geolocation - Unsupported input format: "http://regenerus.com"
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,220 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,221 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,221 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,244 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,244 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,244 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,244 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,244 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,245 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,245 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,245 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,245 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,246 - plugin.py - load_config - This plugin does not require config file
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,246 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,246 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,246 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,247 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,247 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,247 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,247 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,247 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,248 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,248 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,248 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,248 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,248 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,248 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,251 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:37,257 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 21:52:37,257 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:52:39,243 - in_geoip.py - get_geolocation - GeoIP Report: regenerus.com
+ERROR - THREAD-140735127584768 - 2018-07-29 21:52:39,244 - in_geoip.py - get_geolocation - Unsupported input format: "regenerus.com"
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,031 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,032 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,032 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,057 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,057 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,057 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,057 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,057 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,057 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,057 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,058 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,058 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,058 - plugin.py - load_config - This plugin does not require config file
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,059 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,059 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,059 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,059 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,059 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,059 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,059 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,059 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,060 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,060 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,060 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,060 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,060 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,060 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,063 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:25,070 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 21:54:25,070 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 21:54:28,724 - in_geoip.py - get_geolocation - GeoIP Report: 94.124.9.53
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,692 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,694 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,695 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,720 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,720 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,720 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,720 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,721 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,721 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,721 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,721 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,721 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,722 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,722 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,722 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,722 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,722 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,723 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,723 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,723 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,723 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,723 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,723 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,723 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,723 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,724 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,724 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,724 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,727 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:52,734 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 22:00:52,734 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:00:54,602 - in_geoip.py - get_geolocation - GeoIP Report: 94.124.9.53
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,900 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,901 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,902 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,922 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,922 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,923 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,923 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,923 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,923 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,923 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,923 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,923 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,924 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,924 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,924 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,925 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,925 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,925 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,925 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,925 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,925 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,925 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,925 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,926 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,926 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,926 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,926 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,926 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,928 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:02:59,936 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 22:02:59,936 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:03:02,868 - in_geoip.py - get_geolocation - GeoIP Report: 94.124.9.53
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,150 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,150 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,150 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,160 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,160 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,160 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,160 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,160 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,160 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,160 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,160 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,160 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,161 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,162 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,162 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,162 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,162 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,162 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,162 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,166 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 22:08:24,166 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:24,166 - in_geoip.py - get_geolocation - GeoIP Report: 94.124.9.53
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:25,202 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:25,202 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:25,202 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:25,202 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:25,202 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:08:25,202 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,537 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,537 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,537 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,547 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,547 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,547 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,547 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,547 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,547 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,547 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,547 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,547 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,548 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,549 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,549 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,549 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,549 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,549 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,553 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 22:09:09,553 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,553 - in_geoip.py - get_geolocation - GeoIP Report: 94.124.9.53
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,861 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,861 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,861 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,861 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,861 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:09:09,861 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,072 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,072 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,072 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,081 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,082 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,083 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,086 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 22:10:29,087 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,087 - in_geoip.py - get_geolocation - GeoIP Report: 94.124.9.53
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,766 - pp_bluecoat.py - query_url - Get proxy category of: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,766 - cache.py - add - CACHE - URL - Create new entry: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,766 - cache.py - add - CACHE - URL - Create new entry: regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,766 - pp_bluecoat.py - query_url - Lookup the URL: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,767 - pp_bluecoat.py - query_url - Lookup URL tracking cache
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:29,767 - pp_bluecoat.py - query_url - Captcha requirement check 
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:30,801 - pp_bluecoat.py - query_url - Thread Sleep for 1 seconds
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:31,805 - pp_bluecoat.py - query_url - Lookup proxy category: https://sitereview.bluecoat.com/lookup
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:32,181 - cache.py - set_tracking_id - CACHE - PROXY - Set Tracking ID: 345974, http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:32,181 - cache.py - set_category - CACHE - PROXY - Set category: ['Technology/Internet'], http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:32,182 - cache.py - set_category - CACHE - PROXY - Set category: ['Technology/Internet'], regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:32,182 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:32,182 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:32,182 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:32,182 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:10:32,182 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,906 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,906 - dw.py - main - Initialize Plugin Manager
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,906 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,915 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,916 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,917 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,918 - url.py - parse_url - Parsing URL: regenerus.com to: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,922 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735127584768 - 2018-07-29 22:16:22,922 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:22,922 - in_geoip.py - get_geolocation - GeoIP Report: 94.124.9.53
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:23,594 - pp_bluecoat.py - query_url - Get proxy category of: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:23,594 - cache.py - add - CACHE - URL - Create new entry: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:23,594 - cache.py - add - CACHE - URL - Create new entry: regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:23,594 - pp_bluecoat.py - query_url - Lookup the URL: http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:23,594 - pp_bluecoat.py - query_url - Lookup URL tracking cache
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:23,594 - pp_bluecoat.py - query_url - Captcha requirement check 
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:24,067 - pp_bluecoat.py - query_url - Thread Sleep for 3 seconds
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:27,067 - pp_bluecoat.py - query_url - Lookup proxy category: https://sitereview.bluecoat.com/lookup
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:27,358 - cache.py - set_tracking_id - CACHE - PROXY - Set Tracking ID: 346464, http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:27,358 - cache.py - set_category - CACHE - PROXY - Set category: ['Technology/Internet'], http://regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:27,358 - cache.py - set_category - CACHE - PROXY - Set category: ['Technology/Internet'], regenerus.com
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:27,358 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:27,358 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:27,358 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:27,358 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735127584768 - 2018-07-29 22:16:27,358 - dw.py - main - Skipping pastebin submission

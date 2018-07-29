@@ -6,6 +6,7 @@ import requests
 import md.config as config
 import md.cache as cache
 import md.hasher as hasher
+import md.regex as regex
 
 logger = logging.getLogger('dw')
 
@@ -24,6 +25,7 @@ class plugin(object):
             self.config = config
             self.cache = cache
             self.hasher = hasher
+            self.regex = regex
             self.config_data = None
             self.debug_proxies = config.debug_proxies
             self.submission_comments = ""
