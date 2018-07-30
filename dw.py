@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.5.8'
+__version__ = '0.5.9'
 
 """
 TO DO:
@@ -343,6 +343,9 @@ class downloader (object):
 
         """ Check script arguments """
         self.check_args()
+
+        logger.debug("Initialize Plugin Manager")
+        self.pm = plugin_manager()
 
     def to_list(self, param, separator=","):
         param_list = []
@@ -901,6 +904,8 @@ class downloader (object):
         """ Append file path """
         file_info.append(filepath)
 
+        file_hash = hash_obj.hexdigest()
+
         if url:
             url_obj = urlparse(url, 'http')
             url_host = url_obj.hostname
@@ -915,6 +920,16 @@ class downloader (object):
                 file_info.append(proxy_category)
 
             file_info.append(url)
+
+            """ Get VirusTotal data for a hash """
+            # I shall fix it the dw code ... shape in in a better way (now time for now)
+
+            for vt_vendor in self.pm.get_plugin_objects_by_type("VT"):
+                vt_file_excerpt = vt_vendor.call("file_report", (file_hash, True))
+
+                if vt_file_excerpt:
+                    file_info.append(vt_file_excerpt)
+
 
         return ",".join(file_info)
 
@@ -1345,27 +1360,25 @@ def main(argv):
     """ Initialize main objects """
     logger.debug("Initialize dw (Downloader)")
     dw = downloader(args)
-    logger.debug("Initialize Plugin Manager")
-    pm = plugin_manager()
 
     """ Init PROXY vendors """
     proxy_vendors = []
     logger.debug("Initialize Proxy vendors")
     if dw.submit_to_all_proxy_vendors:
-        proxy_vendors = pm.get_proxy_vendors()
+        proxy_vendors = dw.pm.get_proxy_vendors()
     else:
-        proxy_vendors = pm.get_proxy_vendors(dw.proxy_vendor_names)
+        proxy_vendors = dw.pm.get_proxy_vendors(dw.proxy_vendor_names)
 
     """ Init AV vendors """
     av_vendors = []
     logger.debug("Initialize AV vendors")
     if dw.submit_to_all_av_vendors:
-        av_vendors = pm.get_av_vendors()
+        av_vendors = dw.pm.get_av_vendors()
     else:
-        av_vendors = pm.get_av_vendors(dw.av_vendor_names)
+        av_vendors = dw.pm.get_av_vendors(dw.av_vendor_names)
 
-    vt_vendors = pm.get_plugin_objects_by_type("VT")
-    in_vendors = pm.get_plugin_objects_by_type("INTEL")
+    vt_vendors = dw.pm.get_plugin_objects_by_type("VT")
+    in_vendors = dw.pm.get_plugin_objects_by_type("INTEL")
 
     _uniq = uniq()
     urls = []

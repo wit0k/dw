@@ -396,3 +396,6 @@ Ver. 0.5.7:
 
 Ver. 0.5.8:
 * --in-geoip: Get the geoip location data for loaded URLs 
+
+Ver. 0.5.9:
+* --url-info: Would query for VT excerpt for each downloaded file

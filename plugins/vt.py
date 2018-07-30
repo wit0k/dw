@@ -59,12 +59,16 @@ class vt(plugin):
 
                 vt_response = response.json()
 
+                """ Case where file is not submitted yet """
+                if vt_response.get('response_code', None) == 0:
+                    return ' Not Found on VT'
+
                 positives = str(vt_response.get('positives', None))
                 total = str(vt_response.get('total', None))
 
                 score = ''
                 if positives and total:
-                    score = positives + "/" + total
+                    score = " VT Score: " + positives + "/" + total
 
                 av_selected_vendor_names = ['Symantec', 'Microsoft']
                 av_selected_vendor_results = []
@@ -75,7 +79,7 @@ class vt(plugin):
                         if scans.get(av_vendor_name, None):
                             _vendor_result = scans.get(av_vendor_name, None)
                             if _vendor_result:
-                                _vendor_result = _vendor_result.get('result')
+                                _vendor_result = str(_vendor_result.get('result'))
                             else:
                                 _vendor_result = 'Not returned'
 
