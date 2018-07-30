@@ -1,9 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.5.9'
+__version__ = '0.6.0'
 
 """
 TO DO:
+- Make --submit working with --vt-file-download (where it does not make much sense, it should be in place)
 - Add GeoLocation section to cache.
 - Standardize the parms format (so they are easier to remember)
 - Use random.choice for picking user agents [list] 
@@ -443,7 +444,13 @@ class downloader (object):
                         break
 
                     line = line.strip()
-                    if not line.startswith("#"):
+
+                    if line.startswith(r"https://www.virustotal.com/#/file/"):
+                        _hash = None
+                        _hash, _, __ = line[34:].partition("/")
+                        hashes.append(_hash)
+
+                    elif not line.startswith("#"):
                         hashes.append(line)
 
                 return hashes
@@ -1442,6 +1449,22 @@ def main(argv):
         pastebin_report.append("Input hashes:")
         pastebin_report.append(hashes)
 
+    """ VirusTotal """
+
+    if dw.vt_file_download:
+        print("VirusTotal -> File Download:")
+        for _hash in hashes:
+            for vt_vendor in vt_vendors:
+                _file = vt_vendor.call("file_download", (_hash, ))
+                if os.path.isfile(_file):
+                    downloaded_files.append(_file)
+
+    if dw.vt_file_report:
+        print("VirusTotal -> File Report:")
+        for _hash in hashes:
+            for vt_vendor in vt_vendors:
+                vt_vendor.call("file_report", (_hash, ))
+
     """ Save deduplicated loaded files to another directory """
     if dw.output_directory:
         if dw.unique_files:
@@ -1452,19 +1475,6 @@ def main(argv):
                     destination_file = os.path.join(dirname, dw.output_directory)
                     logger.debug("Save: %s to %s/ folder" % (file, destination_file))
                     shutil.copy2(file, destination_file)
-
-    """ VirusTotal """
-    if dw.vt_file_report:
-        print("VirusTotal -> File Report:")
-        for _hash in hashes:
-            for vt_vendor in vt_vendors:
-                vt_vendor.call("file_report", (_hash, ))
-
-    if dw.vt_file_download:
-        print("VirusTotal -> File Download:")
-        for _hash in hashes:
-            for vt_vendor in vt_vendors:
-                vt_vendor.call("file_download", (_hash, ))
 
     """ Get GeoIP Location """
     if dw.in_geoip:

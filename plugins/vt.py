@@ -80,10 +80,10 @@ class vt(plugin):
                             _vendor_result = scans.get(av_vendor_name, None)
                             if _vendor_result:
                                 _vendor_result = str(_vendor_result.get('result'))
-                            else:
-                                _vendor_result = 'Not returned'
 
                             av_selected_vendor_results.append(av_vendor_name + ': ' + _vendor_result)
+                        else:
+                            av_selected_vendor_results.append(av_vendor_name + ': Not returned')
 
                 result_line = ', '.join(av_selected_vendor_results)
                 excerpt = score + ', ' + result_line
@@ -99,7 +99,9 @@ class vt(plugin):
                 self.cache.vt.add_report(file_hash, vt_response)
                 return vt_response
 
-        return None
+        else:
+            logger.error('Unsupported file_hash: %s' % file_hash)
+            return None
 
     def file_download(self, file_hash, out_file=None):
 

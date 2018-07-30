@@ -15,6 +15,8 @@ SupportedHashes = ['md5', 'sha1', 'sha256', 'sha512', 'crc32']
 
 def get_hash_type(hash_string):
 
+    hash_string = hash_string.lower()
+
     if re.match(r'^[a-f0-9]{32}$', hash_string):
         return 'md5'
     elif re.match(r'^[a-f0-9]{64}$', hash_string):

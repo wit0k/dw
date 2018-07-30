@@ -134,8 +134,13 @@ class av_symantec(object):
                             logger.debug("Thread Sleep for %d seconds" % sleep_time)
                             time.sleep(sleep_time)
                         else:
-                            logger.error("Vendor: %s: Submission Failure | Hash: %s | Message: %s" % (
-                            self.vendor_name, hash, response.text))
+
+                            if 'This file is not publicly available by hash' in response.text:
+                                logger.error("Vendor: %s: Submission Failure | Hash: %s | Message: %s" % (
+                                    self.vendor_name, hash, 'This file is not publicly available by hash'))
+                            else:
+                                logger.error("Vendor: %s: Submission Failure | Hash: %s | Message: %s" % (self.vendor_name,
+                                                                                                          hash, response.text))
 
 
                 except requests.exceptions.ConnectionError as msg:

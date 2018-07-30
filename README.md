@@ -399,3 +399,7 @@ Ver. 0.5.8:
 
 Ver. 0.5.9:
 * --url-info: Would query for VT excerpt for each downloaded file
+
+Ver. 0.6.0:
+* Code fix in hasher (affecting other modules)
+* Code fix in av_symantec.py (Handle the situation nicely when submitted hash is not available publicly)
