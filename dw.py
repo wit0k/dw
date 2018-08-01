@@ -1,9 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.6.0'
+__version__ = '0.6.1'
 
 """
 TO DO:
+- Add option to skip file submissions which are already detected by AV vendor ... (based on VT score for now)
 - Make --submit working with --vt-file-download (where it does not make much sense, it should be in place)
 - Add GeoLocation section to cache.
 - Standardize the parms format (so they are easier to remember)
@@ -904,6 +905,16 @@ class downloader (object):
 
             file_info.append(hash_obj.hexdigest())
 
+        file_hash = hash_obj.hexdigest()
+        """ Get VirusTotal data for a hash """
+        # I shall fix it the dw code ... shape in in a better way (now time for now)
+
+        for vt_vendor in self.pm.get_plugin_objects_by_type("VT"):
+            vt_file_excerpt = vt_vendor.call("file_report", (file_hash, True))
+
+            if vt_file_excerpt:
+                file_info.append(vt_file_excerpt)
+
         """ Get file MIME type """
         obj_magic = magic.Magic(magic_file=MAGIC_FILE_PATH, mime=True, uncompress=True)
         file_info.append(obj_magic.from_file(filepath))
@@ -927,15 +938,6 @@ class downloader (object):
                 file_info.append(proxy_category)
 
             file_info.append(url)
-
-            """ Get VirusTotal data for a hash """
-            # I shall fix it the dw code ... shape in in a better way (now time for now)
-
-            for vt_vendor in self.pm.get_plugin_objects_by_type("VT"):
-                vt_file_excerpt = vt_vendor.call("file_report", (file_hash, True))
-
-                if vt_file_excerpt:
-                    file_info.append(vt_file_excerpt)
 
 
         return ",".join(file_info)
@@ -1075,7 +1077,7 @@ class downloader (object):
                                 downloaded_files.append(out_file)
                                 file.close()
                             except:
-                                logger.warning("Unable to save response.text -> ur:" % url)
+                                logger.warning("Unable to save response.text -> url:" % url)
                                 continue
                     else:
                         # Fix to requests bug
@@ -1463,7 +1465,7 @@ def main(argv):
         print("VirusTotal -> File Report:")
         for _hash in hashes:
             for vt_vendor in vt_vendors:
-                vt_vendor.call("file_report", (_hash, ))
+                print(vt_vendor.call("file_report", (_hash, True)))
 
     """ Save deduplicated loaded files to another directory """
     if dw.output_directory:

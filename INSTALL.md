@@ -28,5 +28,6 @@ Install dependencies:
 * pip install simplejson
 * pip install pytesseract
 * pip install pysmb
+* pip install dnspython
 
 I will create requirements.txt and setup script when time allows

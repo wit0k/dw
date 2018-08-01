@@ -68,7 +68,7 @@ class vt(plugin):
 
                 score = ''
                 if positives and total:
-                    score = " VT Score: " + positives + "/" + total
+                    score = "VT Score: " + positives + "/" + total
 
                 av_selected_vendor_names = ['Symantec', 'Microsoft']
                 av_selected_vendor_results = []
@@ -89,7 +89,7 @@ class vt(plugin):
                 excerpt = score + ', ' + result_line
 
             logger.debug('Excerpt: %s' % excerpt)
-            print('%s, %s' % (file_hash, excerpt))
+            #print('%s, %s' % (file_hash, excerpt))
             if return_excerpt:
                 self.cache.vt.add_excerpt(file_hash, excerpt)
                 self.cache.vt.add_report(file_hash, vt_response)
@@ -133,6 +133,7 @@ class vt(plugin):
                     if response:
                         if response.status_code == 404:
                             logger.debug('VT Download: HTTP 404 -> Hash: %s' % file_hash)
+                            return None
                         elif response.status_code == 200:
                             downloaded_file = response.content
 

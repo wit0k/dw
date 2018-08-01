@@ -3,6 +3,7 @@ import re
 import socket
 
 from urllib.parse import urlparse, urlunparse
+from dns import reversename, resolver
 
 logger = logging.getLogger('dw')
 
@@ -73,6 +74,10 @@ class url(object):
                 try:
                     socket.inet_aton(self.ip)
                     self.domain = socket.getfqdn(self.ip)
+
+                    rev_name = reversename.from_address(self.ip)
+                    self.dns_ptr = str(resolver.query(rev_name, "PTR")[0])
+
                 except Exception as msg:
                     return None
 
@@ -98,6 +103,7 @@ class url(object):
 
         output_url = url.strip()
 
+        output_url = re.sub(r'^\/+', '', output_url)
         output_url = output_url.replace("[http://]", "http://")
         output_url = output_url.replace("[https://]", "https://")
         output_url = output_url.replace(" (HTTP)", "")

@@ -39,6 +39,9 @@ def get_hash(input_data, hash_type):
                 buffer_type = 'file'
                 with open(input_data, "rb") as file:
                     buffer = file.read()
+            else:
+                buffer_type = 'buffer'
+                buffer = input_data
 
         except Exception as msg:
 
