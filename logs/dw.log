@@ -1,0 +1,1218 @@
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,583 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,583 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,584 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,611 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,611 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,611 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,611 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,611 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,612 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,612 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,612 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,612 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,613 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,613 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,613 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,614 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,614 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,614 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,614 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,614 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,614 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,614 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,614 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,615 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,615 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,615 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,615 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,615 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:48,616 - url.py - parse_url - Parsing URL: hxxps://absbldq.com/ to: https://absbldq.com/
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:49,014 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735146541056 - 2018-08-11 10:05:49,014 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:49,015 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:49,015 - dw.py - main - Get links from each URL
+INFO - THREAD-140735146541056 - 2018-08-11 10:05:49,015 - dw.py - get_hrefs - Getting hrefs from: https://absbldq.com/
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:49,015 - dw.py - get_hrefs - HTTP HEAD: https://absbldq.com/
+INFO - THREAD-140735146541056 - 2018-08-11 10:05:49,790 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> REDIRECT -> URL: https://absbldq.com/ [HTTP 302]
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:49,790 - dw.py - get_hrefs - HTTP HEAD: https://absbldq.com/cgi-sys/suspendedpage.cgi
+INFO - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: https://absbldq.com/cgi-sys/suspendedpage.cgi [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - get_hrefs - Content-Type: text/html -> Continue HREF lookup
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - update_list - DEV: URL: 'https://absbldq.com/cgi-sys/suspendedpage.cgi' already in links list!
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - main - Found [1] hrefs on: https://absbldq.com/
+INFO - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - main - ['https://absbldq.com/cgi-sys/suspendedpage.cgi ,(MIME: text/html)']
+INFO - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:05:50,163 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,790 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,790 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,790 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,799 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,799 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,799 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,799 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,799 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,799 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,799 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,799 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,799 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,800 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,800 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,800 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,800 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,800 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,800 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,800 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,800 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,801 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,801 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,801 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,801 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,801 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,801 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,801 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,801 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,801 - url.py - parse_url - Parsing URL: hxxps://absbldq.com/ to: https://absbldq.com/
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,806 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735146541056 - 2018-08-11 10:06:20,806 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,806 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,806 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:20,806 - dw.py - download - Headers: ItemsView({'User-Agent': 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'})
+INFO - THREAD-140735146541056 - 2018-08-11 10:06:21,457 - dw.py - download - Final URL: https://absbldq.com/cgi-sys/suspendedpage.cgi -> https://absbldq.com/cgi-sys/suspendedpage.cgi
+INFO - THREAD-140735146541056 - 2018-08-11 10:06:21,458 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: https://absbldq.com/cgi-sys/suspendedpage.cgi
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:21,467 - vt.py - file_report - VT Report: fdf900267092bc67bd7786b86c462e69f9ed52bed838809b6ba28b298be879f6
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:22,564 - vt.py - file_report - Excerpt: VT Score: 1/59, Symantec: None, Microsoft: None
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:22,565 - cache.py - add - CACHE - FILE - Create new entry: fdf900267092bc67bd7786b86c462e69f9ed52bed838809b6ba28b298be879f6
+INFO - THREAD-140735146541056 - 2018-08-11 10:06:22,581 - dw.py - download - fdf900267092bc67bd7786b86c462e69f9ed52bed838809b6ba28b298be879f6,VT Score: 1/59, Symantec: None, Microsoft: None,text/html,downloads/suspendedpagecgi.cgi,https://absbldq.com/cgi-sys/suspendedpage.cgi
+INFO - THREAD-140735146541056 - 2018-08-11 10:06:22,581 - uniq.py - get_unique_files - Deduplication: 1 -> 1
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:22,581 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:22,581 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735146541056 - 2018-08-11 10:06:22,581 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,060 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,060 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,060 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,084 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,085 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,085 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,085 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,085 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,085 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,085 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,086 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,086 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,086 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,086 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,086 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,086 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,086 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,087 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,087 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,087 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,087 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,087 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,087 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,088 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,088 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,088 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,088 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,088 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,088 - url.py - parse_url - Parsing URL: hxxp://seapodbank.tk/ to: http://seapodbank.tk/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,517 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:24,517 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,518 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,518 - dw.py - main - Get links from each URL
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:24,518 - dw.py - get_hrefs - Getting hrefs from: http://seapodbank.tk/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:24,518 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:25,504 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/ [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:25,504 - dw.py - get_hrefs - HTTP GET: http://seapodbank.tk/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:25,714 - dw.py - main - Found [8] hrefs on: http://seapodbank.tk/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:25,714 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:25,714 - dw.py - main - ['http://seapodbank.tk/ ,(MIME: None)', 'http://seapodbank.tk/bond/ ,(MIME: None)', 'http://seapodbank.tk/cgi-bin/ ,(MIME: None)', 'http://seapodbank.tk/digits/ ,(MIME: None)', 'http://seapodbank.tk/peti/ ,(MIME: None)', 'http://seapodbank.tk/special/ ,(MIME: None)', 'http://seapodbank.tk/teny/ ,(MIME: None)', 'http://seapodbank.tk/welcome/ ,(MIME: None)']
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:25,714 - uniq.py - get_unique_entries - Deduplication: 8 -> 8
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:25,714 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:25,714 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:25,714 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:25,714 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,147 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,147 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,147 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,156 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,156 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,156 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,156 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,156 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,156 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,156 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,157 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,157 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,157 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,157 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,157 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,157 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,157 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,157 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,157 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,158 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,158 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,158 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,158 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,158 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,158 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,158 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,158 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,158 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,159 - url.py - parse_url - Parsing URL: hxxp://seapodbank.tk/ to: http://seapodbank.tk/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,163 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:37,163 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,163 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,163 - dw.py - main - Get links from each URL
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:37,163 - dw.py - get_hrefs - Getting hrefs from: http://seapodbank.tk/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,163 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:37,570 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/ [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,570 - dw.py - get_hrefs - HTTP GET: http://seapodbank.tk/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,772 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/bond/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:37,963 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/bond/ [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:37,963 - dw.py - get_hrefs - HTTP GET: http://seapodbank.tk/bond/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:38,160 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/bond/PO.doc
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:38,348 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/bond/PO.doc [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:38,349 - dw.py - get_hrefs - Skip href lookup for: http://seapodbank.tk/bond/PO.doc - The resource is: application/msword
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:38,349 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/bond/PO.exe
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:38,542 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/bond/PO.exe [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:38,542 - dw.py - get_hrefs - Skip href lookup for: http://seapodbank.tk/bond/PO.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:38,542 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/cgi-bin/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:38,733 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> UNSUPPORTED -> URL: http://seapodbank.tk/cgi-bin/ [HTTP 403]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:38,733 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/digits/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:38,923 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/digits/ [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:38,923 - dw.py - get_hrefs - HTTP GET: http://seapodbank.tk/digits/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:39,117 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/digits/mineboy.exe
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:39,308 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/digits/mineboy.exe [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:39,308 - dw.py - get_hrefs - Skip href lookup for: http://seapodbank.tk/digits/mineboy.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:39,308 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/peti/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:39,498 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/peti/ [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:39,498 - dw.py - get_hrefs - HTTP GET: http://seapodbank.tk/peti/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:39,692 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/peti/card.hta
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:39,880 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/peti/card.hta [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:39,881 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/special/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:40,071 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/special/ [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:40,071 - dw.py - get_hrefs - HTTP GET: http://seapodbank.tk/special/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:40,266 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/special/tennnny.doc
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:40,455 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/special/tennnny.doc [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:40,455 - dw.py - get_hrefs - Skip href lookup for: http://seapodbank.tk/special/tennnny.doc - The resource is: application/msword
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:40,455 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/teny/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:40,648 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/teny/ [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:40,648 - dw.py - get_hrefs - HTTP GET: http://seapodbank.tk/teny/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:40,841 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/teny/order.exe
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:41,029 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/teny/order.exe [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,029 - dw.py - get_hrefs - Skip href lookup for: http://seapodbank.tk/teny/order.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,030 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/teny/tennny.hta
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:41,219 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/teny/tennny.hta [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,219 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/welcome/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:41,409 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/welcome/ [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,410 - dw.py - get_hrefs - HTTP GET: http://seapodbank.tk/welcome/
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,603 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/welcome/jesislord.doc
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:41,792 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/welcome/jesislord.doc [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,792 - dw.py - get_hrefs - Skip href lookup for: http://seapodbank.tk/welcome/jesislord.doc - The resource is: application/msword
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,793 - dw.py - get_hrefs - HTTP HEAD: http://seapodbank.tk/welcome/jesusislord.exe
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:41,982 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://seapodbank.tk/welcome/jesusislord.exe [HTTP 200]
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,982 - dw.py - get_hrefs - Skip href lookup for: http://seapodbank.tk/welcome/jesusislord.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,982 - dw.py - main - Found [17] hrefs on: http://seapodbank.tk/
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:41,983 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:41,983 - dw.py - main - ['http://seapodbank.tk/ ,(MIME: None)', 'http://seapodbank.tk/bond/ ,(MIME: None)', 'http://seapodbank.tk/bond/PO.doc ,(MIME: application/msword)', 'http://seapodbank.tk/bond/PO.exe ,(MIME: application/x-msdownload)', 'http://seapodbank.tk/cgi-bin/ ,(MIME: None)', 'http://seapodbank.tk/digits/ ,(MIME: None)', 'http://seapodbank.tk/digits/mineboy.exe ,(MIME: application/x-msdownload)', 'http://seapodbank.tk/peti/ ,(MIME: None)', 'http://seapodbank.tk/peti/card.hta ,(MIME: None)', 'http://seapodbank.tk/special/ ,(MIME: None)', 'http://seapodbank.tk/special/tennnny.doc ,(MIME: application/msword)', 'http://seapodbank.tk/teny/ ,(MIME: None)', 'http://seapodbank.tk/teny/order.exe ,(MIME: application/x-msdownload)', 'http://seapodbank.tk/teny/tennny.hta ,(MIME: None)', 'http://seapodbank.tk/welcome/ ,(MIME: None)', 'http://seapodbank.tk/welcome/jesislord.doc ,(MIME: application/msword)', 'http://seapodbank.tk/welcome/jesusislord.exe ,(MIME: application/x-msdownload)']
+INFO - THREAD-140735146541056 - 2018-08-11 20:19:41,983 - uniq.py - get_unique_entries - Deduplication: 16 -> 16
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,983 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,983 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,983 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:19:41,983 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,637 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,637 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,637 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,647 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,648 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,648 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,648 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,648 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,648 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,648 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,648 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,648 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,648 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,649 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,650 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,650 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,650 - url.py - parse_url - Parsing URL: http://seapodbank.tk/bond/PO.doc to: http://seapodbank.tk/bond/PO.doc
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,654 - url.py - parse_url - Parsing URL: http://seapodbank.tk/bond/PO.exe to: http://seapodbank.tk/bond/PO.exe
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,655 - url.py - parse_url - Parsing URL: http://seapodbank.tk/digits/mineboy.exe to: http://seapodbank.tk/digits/mineboy.exe
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,655 - url.py - parse_url - Parsing URL: http://seapodbank.tk/peti/card.hta to: http://seapodbank.tk/peti/card.hta
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,656 - url.py - parse_url - Parsing URL: http://seapodbank.tk/special/tennnny.doc to: http://seapodbank.tk/special/tennnny.doc
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,656 - url.py - parse_url - Parsing URL: http://seapodbank.tk/teny/order.exe to: http://seapodbank.tk/teny/order.exe
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,656 - url.py - parse_url - Parsing URL: http://seapodbank.tk/teny/tennny.hta to: http://seapodbank.tk/teny/tennny.hta
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,657 - url.py - parse_url - Parsing URL: http://seapodbank.tk/welcome/jesislord.doc to: http://seapodbank.tk/welcome/jesislord.doc
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,657 - url.py - parse_url - Parsing URL: http://seapodbank.tk/welcome/jesusislord.exe to: http://seapodbank.tk/welcome/jesusislord.exe
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,657 - dw.py - main - Loaded [9] URLs from: urls.txt
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:43,657 - uniq.py - get_unique_entries - Deduplication: 9 -> 9
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,657 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,657 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:43,658 - dw.py - download - Headers: ItemsView({'User-Agent': 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'})
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:44,041 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://seapodbank.tk/bond/PO.doc
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:44,045 - vt.py - file_report - VT Report: 8e772e02a876683ad1347a6ca4279da50eb5dc3c783eee443a167e29ad39c5fa
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:45,040 - vt.py - file_report - Excerpt: VT Score: 29/58, Symantec: Exp.CVE-2017-11882!g2, Microsoft: Exploit:O97M/CVE-2017-11882.C
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:45,041 - cache.py - add - CACHE - FILE - Create new entry: 8e772e02a876683ad1347a6ca4279da50eb5dc3c783eee443a167e29ad39c5fa
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:45,052 - dw.py - download - 8e772e02a876683ad1347a6ca4279da50eb5dc3c783eee443a167e29ad39c5fa,VT Score: 29/58, Symantec: Exp.CVE-2017-11882!g2, Microsoft: Exploit:O97M/CVE-2017-11882.C,text/rtf,downloads/POdoc.doc,http://seapodbank.tk/bond/PO.doc
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:45,242 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://seapodbank.tk/bond/PO.exe
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:46,369 - vt.py - file_report - VT Report: 4c231794f5dcf02c59bc118f2f5ec9cb52a05bbb01ca990d0cf3e0ea6b78d0d4
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:46,579 - vt.py - file_report - Excerpt: VT Score: 31/68, Symantec: ML.Attribute.HighConfidence, Microsoft: PWS:Win32/Primarypass.A
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:46,579 - cache.py - add - CACHE - FILE - Create new entry: 4c231794f5dcf02c59bc118f2f5ec9cb52a05bbb01ca990d0cf3e0ea6b78d0d4
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:46,593 - dw.py - download - 4c231794f5dcf02c59bc118f2f5ec9cb52a05bbb01ca990d0cf3e0ea6b78d0d4,VT Score: 31/68, Symantec: ML.Attribute.HighConfidence, Microsoft: PWS:Win32/Primarypass.A,application/x-dosexec,downloads/POexe.exe,http://seapodbank.tk/bond/PO.exe
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:46,784 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://seapodbank.tk/digits/mineboy.exe
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:47,215 - vt.py - file_report - VT Report: bac748edb7ea9da618da0f175dad11bd9c3ef8e3fba0558ffe8b8f8e3d737081
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:47,566 - vt.py - file_report - Excerpt: VT Score: 22/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:47,566 - cache.py - add - CACHE - FILE - Create new entry: bac748edb7ea9da618da0f175dad11bd9c3ef8e3fba0558ffe8b8f8e3d737081
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:47,570 - dw.py - download - bac748edb7ea9da618da0f175dad11bd9c3ef8e3fba0558ffe8b8f8e3d737081,VT Score: 22/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/mineboyexe.exe,http://seapodbank.tk/digits/mineboy.exe
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:47,759 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://seapodbank.tk/peti/card.hta
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:47,762 - vt.py - file_report - VT Report: e53ac952d0c2e1f73d6d94094b8d1064d23515f23868e2bc8b6ef30668744921
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:48,089 - dw.py - download - e53ac952d0c2e1f73d6d94094b8d1064d23515f23868e2bc8b6ef30668744921, Not Found on VT,text/html,downloads/cardhta.hta,http://seapodbank.tk/peti/card.hta
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:48,279 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://seapodbank.tk/special/tennnny.doc
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:48,284 - vt.py - file_report - VT Report: d82c787a8d6ad1b3cac89b0a166b4b5d030f42d428c033a905779f4016dfa657
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:48,693 - dw.py - download - d82c787a8d6ad1b3cac89b0a166b4b5d030f42d428c033a905779f4016dfa657, Not Found on VT,text/rtf,downloads/tennnnydoc.doc,http://seapodbank.tk/special/tennnny.doc
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:48,883 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://seapodbank.tk/teny/order.exe
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:49,723 - vt.py - file_report - VT Report: b0961e8b332a8d9f5f461d442435cd391b3806fd6c3668e185d5f2267273c7b3
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:49,949 - dw.py - download - b0961e8b332a8d9f5f461d442435cd391b3806fd6c3668e185d5f2267273c7b3, Not Found on VT,application/x-dosexec,downloads/orderexe.exe,http://seapodbank.tk/teny/order.exe
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:50,137 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://seapodbank.tk/teny/tennny.hta
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:50,140 - vt.py - file_report - VT Report: 86bf892cdc88852c325f1c92da4946735b6246d0898ed59acf15fc03a726836b
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:50,366 - dw.py - download - 86bf892cdc88852c325f1c92da4946735b6246d0898ed59acf15fc03a726836b, Not Found on VT,text/html,downloads/tennnyhta.hta,http://seapodbank.tk/teny/tennny.hta
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:50,553 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://seapodbank.tk/welcome/jesislord.doc
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:50,558 - vt.py - file_report - VT Report: c5a7e91958935ffa58200af1ae8da9ee585f70ea89d2f41ea45b208b41e3072b
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:51,151 - dw.py - download - c5a7e91958935ffa58200af1ae8da9ee585f70ea89d2f41ea45b208b41e3072b, Not Found on VT,text/rtf,downloads/jesislorddoc.doc,http://seapodbank.tk/welcome/jesislord.doc
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:51,340 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://seapodbank.tk/welcome/jesusislord.exe
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:51,943 - vt.py - file_report - VT Report: 4faf9bdd5e25aeb34e35c420c7854e889d963a4e303e54a86b80073134ba5dc1
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,276 - vt.py - file_report - Excerpt: VT Score: 6/64, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,276 - cache.py - add - CACHE - FILE - Create new entry: 4faf9bdd5e25aeb34e35c420c7854e889d963a4e303e54a86b80073134ba5dc1
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:52,282 - dw.py - download - 4faf9bdd5e25aeb34e35c420c7854e889d963a4e303e54a86b80073134ba5dc1,VT Score: 6/64, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/jesusislordexe.exe,http://seapodbank.tk/welcome/jesusislord.exe
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:52,290 - uniq.py - get_unique_files - Deduplication: 9 -> 9
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,290 - dw.py - _zip - Add 'downloads/POdoc.doc' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,291 - dw.py - _zip - Add 'downloads/POexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,292 - dw.py - _zip - Add 'downloads/mineboyexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,293 - dw.py - _zip - Add 'downloads/cardhta.hta' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,293 - dw.py - _zip - Add 'downloads/tennnnydoc.doc' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,293 - dw.py - _zip - Add 'downloads/orderexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,294 - dw.py - _zip - Add 'downloads/tennnyhta.hta' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,295 - dw.py - _zip - Add 'downloads/jesislorddoc.doc' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,295 - dw.py - _zip - Add 'downloads/jesusislordexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:52,300 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['POdoc.doc', 'POexe.exe', 'mineboyexe.exe', 'cardhta.hta', 'tennnnydoc.doc', 'orderexe.exe', 'tennnyhta.hta', 'jesislorddoc.doc', 'jesusislordexe.exe']
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:52,301 - av_symantec.py - submit_file - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735146541056 - 2018-08-11 20:20:58,728 - av_symantec.py - submit_file - Vendor: Symantec: Submission Success -> File: archive/samples-1.zip, 42644740
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:20:58,728 - av_symantec.py - submit_file - Thread Sleep for 2 seconds
+DEBUG - THREAD-140735146541056 - 2018-08-11 20:21:00,733 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,269 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,269 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,269 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,290 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,290 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,290 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,290 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,290 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,291 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,291 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,291 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,291 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,291 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,291 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,292 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,292 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,292 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,292 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,292 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,292 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,292 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,292 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,292 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,293 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,293 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,293 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,293 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,293 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,293 - dw.py - main - Loaded [1] Hashes from: urls.txt
+INFO - THREAD-140735146541056 - 2018-08-12 10:05:27,293 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:27,293 - dw.py - main - Skipping URL info gathering
+INFO - THREAD-140735146541056 - 2018-08-12 10:05:27,293 - av_symantec.py - submit_hash - Submitting: 83e674ae06b546aebf09b1b936a044ecfe591aadc77a8c3e3e68c7e618dc130e to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735146541056 - 2018-08-12 10:05:30,244 - av_symantec.py - submit_hash - Vendor: Symantec: Submission Success -> Hash: 83e674ae06b546aebf09b1b936a044ecfe591aadc77a8c3e3e68c7e618dc130e, 42645332
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:30,244 - av_symantec.py - submit_hash - Thread Sleep for 3 seconds
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:33,247 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:33,247 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:33,247 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:33,247 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735146541056 - 2018-08-12 10:05:33,247 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,664 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,665 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,665 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,683 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,684 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,684 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,684 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,684 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,684 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,684 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,684 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,684 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,685 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,686 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,686 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,686 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,686 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,686 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,686 - url.py - parse_url - Parsing URL: http://9confederatex[.]ml to: http://9confederatex.ml
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,748 - url.py - parse_url - Parsing URL: hxxp://78.142.19.172/~winvps/1_com/ to: http://78.142.19.172/~winvps/1_com/
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:33,834 - url.py - parse_url - Parsing URL: http://acadaman.com/wp-includes/plugin/moa.exe to: http://acadaman.com/wp-includes/plugin/moa.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:34,011 - url.py - parse_url - Parsing URL: http://acadaman.com/wp-includes/swfpload/edon.exe to: http://acadaman.com/wp-includes/swfpload/edon.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:34,012 - url.py - parse_url - Parsing URL: htxp://garduherbal.com to: http://garduherbal.com
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:34,209 - url.py - parse_url - Parsing URL: hxxp://appgosecurity[.]com/update/ to: http://appgosecurity.com/update/
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:34,536 - dw.py - main - Loaded [6] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:34,536 - uniq.py - get_unique_entries - Deduplication: 6 -> 6
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:34,536 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:34,536 - dw.py - main - Get links from each URL
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:34,537 - dw.py - get_hrefs - Getting hrefs from: http://9confederatex.ml
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:34,537 - dw.py - get_hrefs - HTTP HEAD: http://9confederatex.ml
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:35,284 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://9confederatex.ml [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:35,284 - dw.py - get_hrefs - HTTP GET: http://9confederatex.ml
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:35,437 - dw.py - main - Found [7] hrefs on: http://9confederatex.ml
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:35,437 - dw.py - get_hrefs - Getting hrefs from: http://78.142.19.172/~winvps/1_com/
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:35,438 - dw.py - get_hrefs - HTTP HEAD: http://78.142.19.172/~winvps/1_com/
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:35,589 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> UNSUPPORTED -> URL: http://78.142.19.172/~winvps/1_com/ [HTTP 404]
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:35,590 - dw.py - main - Found [1] hrefs on: http://78.142.19.172/~winvps/1_com/
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:35,590 - dw.py - get_hrefs - Getting hrefs from: http://acadaman.com/wp-includes/plugin/moa.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:35,590 - dw.py - get_hrefs - HTTP HEAD: http://acadaman.com/wp-includes/plugin/moa.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:39,576 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://acadaman.com/wp-includes/plugin/moa.exe [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:39,577 - dw.py - get_hrefs - Skip href lookup for: http://acadaman.com/wp-includes/plugin/moa.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:39,577 - dw.py - main - Found [1] hrefs on: http://acadaman.com/wp-includes/plugin/moa.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:39,577 - dw.py - get_hrefs - Getting hrefs from: http://acadaman.com/wp-includes/swfpload/edon.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:39,577 - dw.py - get_hrefs - HTTP HEAD: http://acadaman.com/wp-includes/swfpload/edon.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:39,905 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> UNSUPPORTED -> URL: http://acadaman.com/wp-includes/swfpload/edon.exe [HTTP 404]
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:39,906 - dw.py - main - Found [1] hrefs on: http://acadaman.com/wp-includes/swfpload/edon.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:39,906 - dw.py - get_hrefs - Getting hrefs from: http://garduherbal.com
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:39,906 - dw.py - get_hrefs - HTTP HEAD: http://garduherbal.com
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:44,680 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://garduherbal.com [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:44,680 - dw.py - get_hrefs - HTTP GET: http://garduherbal.com
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:45,014 - dw.py - main - Found [19] hrefs on: http://garduherbal.com
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:45,014 - dw.py - get_hrefs - Getting hrefs from: http://appgosecurity.com/update/
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:45,014 - dw.py - get_hrefs - HTTP HEAD: http://appgosecurity.com/update/
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:49,899 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://appgosecurity.com/update/ [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:49,899 - dw.py - get_hrefs - HTTP GET: http://appgosecurity.com/update/
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:50,225 - dw.py - main - Found [4] hrefs on: http://appgosecurity.com/update/
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:50,225 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:50,225 - dw.py - main - ['http://9confederatex.ml ,(MIME: None)', 'http://9confederatex.ml/onetouch.exe ,(MIME: None)', 'http://9confederatex.ml/order.doc ,(MIME: None)', 'http://9confederatex.ml/po11.exe ,(MIME: None)', 'http://9confederatex.ml/suppliers.doc ,(MIME: None)', 'http://9confederatex.ml/swift.exe ,(MIME: None)', 'http://9confederatex.ml/twotouch.exe ,(MIME: None)', 'http://78.142.19.172/~winvps/1_com/ ,(MIME: None)', 'http://acadaman.com/wp-includes/plugin/moa.exe ,(MIME: application/x-msdownload)', 'http://acadaman.com/wp-includes/swfpload/edon.exe ,(MIME: None)', 'http://garduherbal.com ,(MIME: None)', 'http://garduherbal.com/1.exe ,(MIME: None)', 'http://garduherbal.com/2.exe ,(MIME: None)', 'http://garduherbal.com/5552222.exe ,(MIME: None)', 'http://garduherbal.com/98765123.exe ,(MIME: None)', 'http://garduherbal.com/200000000.doc ,(MIME: None)', 'http://garduherbal.com/200000000.wbk ,(MIME: None)', 'http://garduherbal.com/212121212112.exe ,(MIME: None)', 'http://garduherbal.com/Boss11111222222.exe ,(MIME: None)', 'http://garduherbal.com/GREEN.exe ,(MIME: None)', 'http://garduherbal.com/RE938373311.exe ,(MIME: None)', 'http://garduherbal.com/RFQ.exe ,(MIME: None)', 'http://garduherbal.com/RU55534544444434.exe ,(MIME: None)', 'http://garduherbal.com/SYM10001.exe ,(MIME: None)', 'http://garduherbal.com/TRIP2323232.exe ,(MIME: None)', 'http://garduherbal.com/WHITE.wiz ,(MIME: None)', 'http://garduherbal.com/license.txt ,(MIME: None)', 'http://garduherbal.com/readme.html ,(MIME: None)', 'http://garduherbal.com/robots.txt ,(MIME: None)', 'http://appgosecurity.com/update/ ,(MIME: None)', 'http://appgosecurity.com/update/Contract.exe ,(MIME: None)', 'http://appgosecurity.com/update/Terms&Condition.exe ,(MIME: None)', 'http://appgosecurity.com/update/Update.apk ,(MIME: None)']
+INFO - THREAD-140735128092672 - 2018-08-14 13:05:50,225 - uniq.py - get_unique_entries - Deduplication: 31 -> 31
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:50,225 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:50,225 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:50,225 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:05:50,225 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,279 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,280 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,280 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,292 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,292 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,292 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,292 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,292 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,293 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,293 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,293 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,293 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,293 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,293 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,294 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,295 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,295 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,295 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,295 - url.py - parse_url - Parsing URL: http://9confederatex.ml/onetouch.exe to: http://9confederatex.ml/onetouch.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,300 - url.py - parse_url - Parsing URL: http://9confederatex.ml/order.doc to: http://9confederatex.ml/order.doc
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,300 - url.py - parse_url - Parsing URL: http://9confederatex.ml/po11.exe to: http://9confederatex.ml/po11.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,301 - url.py - parse_url - Parsing URL: http://9confederatex.ml/suppliers.doc to: http://9confederatex.ml/suppliers.doc
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,301 - url.py - parse_url - Parsing URL: http://9confederatex.ml/swift.exe to: http://9confederatex.ml/swift.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,302 - url.py - parse_url - Parsing URL: http://9confederatex.ml/twotouch.exe to: http://9confederatex.ml/twotouch.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,302 - url.py - parse_url - Parsing URL: http://acadaman.com/wp-includes/plugin/moa.exe to: http://acadaman.com/wp-includes/plugin/moa.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,302 - url.py - parse_url - Parsing URL: http://acadaman.com/wp-includes/swfpload/edon.exe to: http://acadaman.com/wp-includes/swfpload/edon.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,303 - url.py - parse_url - Parsing URL: http://garduherbal.com/1.exe to: http://garduherbal.com/1.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,303 - url.py - parse_url - Parsing URL: http://garduherbal.com/2.exe to: http://garduherbal.com/2.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,304 - url.py - parse_url - Parsing URL: http://garduherbal.com/5552222.exe to: http://garduherbal.com/5552222.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,304 - url.py - parse_url - Parsing URL: http://garduherbal.com/98765123.exe to: http://garduherbal.com/98765123.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,305 - url.py - parse_url - Parsing URL: http://garduherbal.com/200000000.doc to: http://garduherbal.com/200000000.doc
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,305 - url.py - parse_url - Parsing URL: http://garduherbal.com/200000000.wbk to: http://garduherbal.com/200000000.wbk
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,305 - url.py - parse_url - Parsing URL: http://garduherbal.com/212121212112.exe to: http://garduherbal.com/212121212112.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,306 - url.py - parse_url - Parsing URL: http://garduherbal.com/Boss11111222222.exe to: http://garduherbal.com/Boss11111222222.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,306 - url.py - parse_url - Parsing URL: http://garduherbal.com/GREEN.exe to: http://garduherbal.com/GREEN.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,306 - url.py - parse_url - Parsing URL: http://garduherbal.com/RE938373311.exe to: http://garduherbal.com/RE938373311.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,307 - url.py - parse_url - Parsing URL: http://garduherbal.com/RFQ.exe to: http://garduherbal.com/RFQ.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,307 - url.py - parse_url - Parsing URL: http://garduherbal.com/RU55534544444434.exe to: http://garduherbal.com/RU55534544444434.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,307 - url.py - parse_url - Parsing URL: http://garduherbal.com/SYM10001.exe to: http://garduherbal.com/SYM10001.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,308 - url.py - parse_url - Parsing URL: http://garduherbal.com/TRIP2323232.exe to: http://garduherbal.com/TRIP2323232.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,308 - url.py - parse_url - Parsing URL: http://garduherbal.com/WHITE.wiz to: http://garduherbal.com/WHITE.wiz
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,308 - url.py - parse_url - Parsing URL: http://appgosecurity.com/update/Contract.exe to: http://appgosecurity.com/update/Contract.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,309 - url.py - parse_url - Parsing URL: http://appgosecurity.com/update/Terms&Condition.exe to: http://appgosecurity.com/update/Terms&Condition.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,309 - url.py - parse_url - Parsing URL: http://appgosecurity.com/update/Update.apk to: http://appgosecurity.com/update/Update.apk
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,309 - dw.py - main - Loaded [26] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:47,309 - uniq.py - get_unique_entries - Deduplication: 26 -> 26
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,309 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,309 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:47,310 - dw.py - download - Headers: ItemsView({'User-Agent': 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'})
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:47,649 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://9confederatex.ml/onetouch.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:48,239 - vt.py - file_report - VT Report: 7d8717dd053cd95d95cb1d28ca3263c2964bc4e767d898f763e873143c70fd0f
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:52,991 - dw.py - download - 7d8717dd053cd95d95cb1d28ca3263c2964bc4e767d898f763e873143c70fd0f, Not Found on VT,application/x-dosexec,downloads/onetouchexe.exe,http://9confederatex.ml/onetouch.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:53,387 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://9confederatex.ml/order.doc
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:53,397 - vt.py - file_report - VT Report: 7c8c50a112ccaaa537357281ea2b2a40d13564ac1ac202d81ec32098cee601ff
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:53,640 - dw.py - download - 7c8c50a112ccaaa537357281ea2b2a40d13564ac1ac202d81ec32098cee601ff, Not Found on VT,text/rtf,downloads/orderdoc.doc,http://9confederatex.ml/order.doc
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:54,010 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://9confederatex.ml/po11.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:54,758 - vt.py - file_report - VT Report: 61bd20287113f4055204a28fbc3197ce040e9ef6caf8adb078cde229c0a65931
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:55,142 - dw.py - download - 61bd20287113f4055204a28fbc3197ce040e9ef6caf8adb078cde229c0a65931, Not Found on VT,application/x-dosexec,downloads/po11exe.exe,http://9confederatex.ml/po11.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:55,636 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://9confederatex.ml/suppliers.doc
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:55,639 - vt.py - file_report - VT Report: 16ed4df013b7dda0653ff477c02879fb30d84774f22a312fe553201d7cd49aac
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:55,913 - dw.py - download - 16ed4df013b7dda0653ff477c02879fb30d84774f22a312fe553201d7cd49aac, Not Found on VT,text/plain,downloads/suppliersdoc.doc,http://9confederatex.ml/suppliers.doc
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:56,081 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://9confederatex.ml/swift.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:56,505 - vt.py - file_report - VT Report: b9fcf465cb85060d88694f410f504683fa0f4563d3f484380717252845c60d0e
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:56,805 - dw.py - download - b9fcf465cb85060d88694f410f504683fa0f4563d3f484380717252845c60d0e, Not Found on VT,application/x-dosexec,downloads/swiftexe.exe,http://9confederatex.ml/swift.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:56,982 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://9confederatex.ml/twotouch.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:57,281 - vt.py - file_report - VT Report: 5b97a8d41701c8569f021c25d20dba4b49f0b3c7bad535c1228d8900ffad0aae
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:57,591 - dw.py - download - 5b97a8d41701c8569f021c25d20dba4b49f0b3c7bad535c1228d8900ffad0aae, Not Found on VT,application/x-dosexec,downloads/twotouchexe.exe,http://9confederatex.ml/twotouch.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:57,917 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://acadaman.com/wp-includes/plugin/moa.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:58,951 - vt.py - file_report - VT Report: ae0921727d925caff4ef46481574f81a28ee63b37b0967b6e72d6e290a34792d
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:59,534 - vt.py - file_report - Excerpt: VT Score: 22/67, Symantec: None, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:06:59,534 - cache.py - add - CACHE - FILE - Create new entry: ae0921727d925caff4ef46481574f81a28ee63b37b0967b6e72d6e290a34792d
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:59,538 - dw.py - download - ae0921727d925caff4ef46481574f81a28ee63b37b0967b6e72d6e290a34792d,VT Score: 22/67, Symantec: None, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/moaexe.exe,http://acadaman.com/wp-includes/plugin/moa.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:06:59,712 - dw.py - download - URL Download -> FAILED -> [HTTP GET 404] - URL: http://acadaman.com/wp-includes/swfpload/edon.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:00,245 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/1.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:05,660 - vt.py - file_report - VT Report: f3f8bd908d72015c4171c228444f7b8ddeccc4475726cad5183d73ea031d2bec
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:05,913 - vt.py - file_report - Excerpt: VT Score: 40/68, Symantec: ML.Attribute.HighConfidence, Microsoft: VirTool:Win32/Injector
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:05,913 - cache.py - add - CACHE - FILE - Create new entry: f3f8bd908d72015c4171c228444f7b8ddeccc4475726cad5183d73ea031d2bec
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:05,919 - dw.py - download - f3f8bd908d72015c4171c228444f7b8ddeccc4475726cad5183d73ea031d2bec,VT Score: 40/68, Symantec: ML.Attribute.HighConfidence, Microsoft: VirTool:Win32/Injector,application/x-dosexec,downloads/1exe.exe,http://garduherbal.com/1.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:06,183 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/2.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:11,887 - vt.py - file_report - VT Report: e91767a779860ae57b777a1e8b6c97022556c8b36c908bba99c5b68157abd46b
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:12,270 - vt.py - file_report - Excerpt: VT Score: 21/68, Symantec: None, Microsoft: VirTool:Win32/Injector
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:12,271 - cache.py - add - CACHE - FILE - Create new entry: e91767a779860ae57b777a1e8b6c97022556c8b36c908bba99c5b68157abd46b
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:12,275 - dw.py - download - e91767a779860ae57b777a1e8b6c97022556c8b36c908bba99c5b68157abd46b,VT Score: 21/68, Symantec: None, Microsoft: VirTool:Win32/Injector,application/x-dosexec,downloads/2exe.exe,http://garduherbal.com/2.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:12,703 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/5552222.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:17,542 - vt.py - file_report - VT Report: 9073c35ee889265b8395eef89166205e00193f392d0a991441bc33ec2ae72348
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:17,774 - vt.py - file_report - Excerpt: VT Score: 28/67, Symantec: ML.Attribute.HighConfidence, Microsoft: PWS:Win32/Primarypass.A
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:17,774 - cache.py - add - CACHE - FILE - Create new entry: 9073c35ee889265b8395eef89166205e00193f392d0a991441bc33ec2ae72348
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:17,777 - dw.py - download - 9073c35ee889265b8395eef89166205e00193f392d0a991441bc33ec2ae72348,VT Score: 28/67, Symantec: ML.Attribute.HighConfidence, Microsoft: PWS:Win32/Primarypass.A,application/x-dosexec,downloads/5552222exe.exe,http://garduherbal.com/5552222.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:18,001 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/98765123.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:20,126 - vt.py - file_report - VT Report: 5bd3ef6407032dbd836326e6a78c111e6229d9e3eac685b6e46bd075177293af
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:20,623 - vt.py - file_report - Excerpt: VT Score: 28/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:20,623 - cache.py - add - CACHE - FILE - Create new entry: 5bd3ef6407032dbd836326e6a78c111e6229d9e3eac685b6e46bd075177293af
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:20,627 - dw.py - download - 5bd3ef6407032dbd836326e6a78c111e6229d9e3eac685b6e46bd075177293af,VT Score: 28/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/98765123exe.exe,http://garduherbal.com/98765123.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:20,839 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/200000000.doc
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:20,842 - vt.py - file_report - VT Report: 8e18f9ff5579cec40832f7912a77e7eab21452aa5cc74b455943bfeece9527be
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:21,085 - vt.py - file_report - Excerpt: VT Score: 30/59, Symantec: Exp.CVE-2017-11882!g2, Microsoft: Exploit:O97M/CVE-2017-11882.C
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:21,085 - cache.py - add - CACHE - FILE - Create new entry: 8e18f9ff5579cec40832f7912a77e7eab21452aa5cc74b455943bfeece9527be
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:21,088 - dw.py - download - 8e18f9ff5579cec40832f7912a77e7eab21452aa5cc74b455943bfeece9527be,VT Score: 30/59, Symantec: Exp.CVE-2017-11882!g2, Microsoft: Exploit:O97M/CVE-2017-11882.C,text/rtf,downloads/200000000doc.doc,http://garduherbal.com/200000000.doc
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:21,301 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/200000000.wbk
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:21,308 - vt.py - file_report - VT Report: a3a516497279cacc11139dd6b5ba7296d7a85c5ff52a7ab55e6bf815b12ec6e8
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:21,579 - vt.py - file_report - Excerpt: VT Score: 29/59, Symantec: Exp.CVE-2017-11882!g2, Microsoft: Exploit:O97M/CVE-2017-11882.C
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:21,579 - cache.py - add - CACHE - FILE - Create new entry: a3a516497279cacc11139dd6b5ba7296d7a85c5ff52a7ab55e6bf815b12ec6e8
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:21,581 - dw.py - download - a3a516497279cacc11139dd6b5ba7296d7a85c5ff52a7ab55e6bf815b12ec6e8,VT Score: 29/59, Symantec: Exp.CVE-2017-11882!g2, Microsoft: Exploit:O97M/CVE-2017-11882.C,text/rtf,downloads/200000000wbk.wbk,http://garduherbal.com/200000000.wbk
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:21,792 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/212121212112.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:23,050 - vt.py - file_report - VT Report: e791444af39aef6b0a1400b83e57b4195904d7d458fa81498c1cea54e3c39d37
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:23,420 - vt.py - file_report - Excerpt: VT Score: 32/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:23,420 - cache.py - add - CACHE - FILE - Create new entry: e791444af39aef6b0a1400b83e57b4195904d7d458fa81498c1cea54e3c39d37
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:23,424 - dw.py - download - e791444af39aef6b0a1400b83e57b4195904d7d458fa81498c1cea54e3c39d37,VT Score: 32/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/212121212112exe.exe,http://garduherbal.com/212121212112.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:23,707 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/Boss11111222222.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:25,026 - vt.py - file_report - VT Report: ca1cb768a7e5390e324028c8f83dba004830f48ccf745cd82ea9457a935b44e3
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:25,525 - vt.py - file_report - Excerpt: VT Score: 27/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:25,525 - cache.py - add - CACHE - FILE - Create new entry: ca1cb768a7e5390e324028c8f83dba004830f48ccf745cd82ea9457a935b44e3
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:25,530 - dw.py - download - ca1cb768a7e5390e324028c8f83dba004830f48ccf745cd82ea9457a935b44e3,VT Score: 27/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/Boss11111222222exe.exe,http://garduherbal.com/Boss11111222222.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:25,740 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/GREEN.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:27,909 - vt.py - file_report - VT Report: 666243d5e3e443568e46085988f370196d7dc609891a4409c69a28ef57973ed2
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:28,130 - vt.py - file_report - Excerpt: VT Score: 37/66, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:28,131 - cache.py - add - CACHE - FILE - Create new entry: 666243d5e3e443568e46085988f370196d7dc609891a4409c69a28ef57973ed2
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:28,135 - dw.py - download - 666243d5e3e443568e46085988f370196d7dc609891a4409c69a28ef57973ed2,VT Score: 37/66, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C,application/x-dosexec,downloads/GREENexe.exe,http://garduherbal.com/GREEN.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:28,343 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/RE938373311.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:30,247 - vt.py - file_report - VT Report: 6324448b4fbc2277870f7788575aaab827fbf6b2fbe3d0eca4945211b9929206
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:30,483 - vt.py - file_report - Excerpt: VT Score: 36/67, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:30,483 - cache.py - add - CACHE - FILE - Create new entry: 6324448b4fbc2277870f7788575aaab827fbf6b2fbe3d0eca4945211b9929206
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:30,489 - dw.py - download - 6324448b4fbc2277870f7788575aaab827fbf6b2fbe3d0eca4945211b9929206,VT Score: 36/67, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/RE938373311exe.exe,http://garduherbal.com/RE938373311.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:30,758 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/RFQ.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:33,560 - vt.py - file_report - VT Report: 95625f137d07e1209c3a26a4310fbf1c0b751181a5a0340b4c08e84d2bfbf5d1
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:34,210 - vt.py - file_report - Excerpt: VT Score: 38/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:34,210 - cache.py - add - CACHE - FILE - Create new entry: 95625f137d07e1209c3a26a4310fbf1c0b751181a5a0340b4c08e84d2bfbf5d1
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:34,215 - dw.py - download - 95625f137d07e1209c3a26a4310fbf1c0b751181a5a0340b4c08e84d2bfbf5d1,VT Score: 38/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C,application/x-dosexec,downloads/RFQexe.exe,http://garduherbal.com/RFQ.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:34,447 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/RU55534544444434.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:36,155 - vt.py - file_report - VT Report: ecad7f4c69a91c110fb69b573a9a6e819b95d10ffbd7045652fe8996657cb196
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:36,414 - vt.py - file_report - Excerpt: VT Score: 36/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:36,414 - cache.py - add - CACHE - FILE - Create new entry: ecad7f4c69a91c110fb69b573a9a6e819b95d10ffbd7045652fe8996657cb196
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:36,419 - dw.py - download - ecad7f4c69a91c110fb69b573a9a6e819b95d10ffbd7045652fe8996657cb196,VT Score: 36/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C,application/x-dosexec,downloads/RU55534544444434exe.exe,http://garduherbal.com/RU55534544444434.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:36,698 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/SYM10001.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:40,757 - vt.py - file_report - VT Report: 74b3f09b811b1bf51682b1361e9b105df4715488734fdc503e985d8e9980c672
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:41,112 - vt.py - file_report - Excerpt: VT Score: 40/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:41,112 - cache.py - add - CACHE - FILE - Create new entry: 74b3f09b811b1bf51682b1361e9b105df4715488734fdc503e985d8e9980c672
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:41,117 - dw.py - download - 74b3f09b811b1bf51682b1361e9b105df4715488734fdc503e985d8e9980c672,VT Score: 40/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C,application/x-dosexec,downloads/SYM10001exe.exe,http://garduherbal.com/SYM10001.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:41,337 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/TRIP2323232.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:49,207 - vt.py - file_report - VT Report: efc9ad12a98ca2343299e2ac91fa302df3fe154c5337b38ab6ff106fc5c01a7e
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:49,574 - vt.py - file_report - Excerpt: VT Score: 37/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:49,574 - cache.py - add - CACHE - FILE - Create new entry: efc9ad12a98ca2343299e2ac91fa302df3fe154c5337b38ab6ff106fc5c01a7e
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:49,579 - dw.py - download - efc9ad12a98ca2343299e2ac91fa302df3fe154c5337b38ab6ff106fc5c01a7e,VT Score: 37/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Occamy.C,application/x-dosexec,downloads/TRIP2323232exe.exe,http://garduherbal.com/TRIP2323232.exe
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:49,808 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://garduherbal.com/WHITE.wiz
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:49,811 - vt.py - file_report - VT Report: 39629dcac8607f2793e06eede52c1d2378be542b01695faa34e01ce8a187ce62
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:50,218 - vt.py - file_report - Excerpt: VT Score: 30/59, Symantec: Exp.CVE-2017-11882!g2, Microsoft: Exploit:O97M/CVE-2017-11882.C
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:50,218 - cache.py - add - CACHE - FILE - Create new entry: 39629dcac8607f2793e06eede52c1d2378be542b01695faa34e01ce8a187ce62
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:50,220 - dw.py - download - 39629dcac8607f2793e06eede52c1d2378be542b01695faa34e01ce8a187ce62,VT Score: 30/59, Symantec: Exp.CVE-2017-11882!g2, Microsoft: Exploit:O97M/CVE-2017-11882.C,text/rtf,downloads/WHITEwiz.wiz,http://garduherbal.com/WHITE.wiz
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:50,645 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://appgosecurity.com/update/Contract.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:52,005 - vt.py - file_report - VT Report: e08519687f76d6671816a1ba45a92019cdaae242ffd8c8de541af23ce2263495
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:52,576 - vt.py - file_report - Excerpt: VT Score: 38/67, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:52,576 - cache.py - add - CACHE - FILE - Create new entry: e08519687f76d6671816a1ba45a92019cdaae242ffd8c8de541af23ce2263495
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:52,581 - dw.py - download - e08519687f76d6671816a1ba45a92019cdaae242ffd8c8de541af23ce2263495,VT Score: 38/67, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/Contractexe.exe,http://appgosecurity.com/update/Contract.exe
+ERROR - THREAD-140735128092672 - 2018-08-14 13:07:53,286 - dw.py - download - ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:53,902 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://appgosecurity.com/update/Update.apk
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,077 - vt.py - file_report - VT Report: fbff4d679b6d7ee2efaa0041776e5144b4465836586b3493a112489e5badc682
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:55,798 - dw.py - download - fbff4d679b6d7ee2efaa0041776e5144b4465836586b3493a112489e5badc682, Not Found on VT,gzip ERROR: Unknown compression format,downloads/Updateapk.apk,http://appgosecurity.com/update/Update.apk
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:55,832 - uniq.py - get_unique_files - Deduplication: 24 -> 24
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,833 - dw.py - _zip - Add 'downloads/onetouchexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,834 - dw.py - _zip - Add 'downloads/orderdoc.doc' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,835 - dw.py - _zip - Add 'downloads/po11exe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,837 - dw.py - _zip - Add 'downloads/suppliersdoc.doc' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,838 - dw.py - _zip - Add 'downloads/swiftexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,839 - dw.py - _zip - Add 'downloads/twotouchexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,841 - dw.py - _zip - Add 'downloads/moaexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,842 - dw.py - _zip - Add 'downloads/1exe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,844 - dw.py - _zip - Add 'downloads/2exe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,846 - dw.py - _zip - Add 'downloads/5552222exe.exe' to: 'archive/samples-2.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,846 - dw.py - _zip - Add 'downloads/98765123exe.exe' to: 'archive/samples-2.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,847 - dw.py - _zip - Add 'downloads/200000000doc.doc' to: 'archive/samples-2.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,848 - dw.py - _zip - Add 'downloads/200000000wbk.wbk' to: 'archive/samples-2.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,848 - dw.py - _zip - Add 'downloads/212121212112exe.exe' to: 'archive/samples-2.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,849 - dw.py - _zip - Add 'downloads/Boss11111222222exe.exe' to: 'archive/samples-2.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,850 - dw.py - _zip - Add 'downloads/GREENexe.exe' to: 'archive/samples-2.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,851 - dw.py - _zip - Add 'downloads/RE938373311exe.exe' to: 'archive/samples-2.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,851 - dw.py - _zip - Add 'downloads/RFQexe.exe' to: 'archive/samples-2.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,852 - dw.py - _zip - Add 'downloads/RU55534544444434exe.exe' to: 'archive/samples-3.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,853 - dw.py - _zip - Add 'downloads/SYM10001exe.exe' to: 'archive/samples-3.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,854 - dw.py - _zip - Add 'downloads/TRIP2323232exe.exe' to: 'archive/samples-3.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,855 - dw.py - _zip - Add 'downloads/WHITEwiz.wiz' to: 'archive/samples-3.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,855 - dw.py - _zip - Add 'downloads/Contractexe.exe' to: 'archive/samples-3.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,857 - dw.py - compress_files - Copy: downloads/Updateapk.apk to: archive/Updateapk.apk
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,862 - dw.py - main - Archive: archive/Updateapk.apk -> Members: ['AndroidManifest.xml', 'classes.dex', 'res/layout/activity_main.xml', 'res/mipmap-hdpi-v4/ic_launcher.png', 'res/mipmap-mdpi-v4/ic_launcher.png', 'res/mipmap-xhdpi-v4/ic_launcher.png', 'res/mipmap-xxhdpi-v4/ic_launcher.png', 'res/mipmap-xxxhdpi-v4/ic_launcher.png', 'resources.arsc', 'META-INF/MANIFEST.MF', 'META-INF/CERT.SF', 'META-INF/CERT.RSA']
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,862 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['onetouchexe.exe', 'orderdoc.doc', 'po11exe.exe', 'suppliersdoc.doc', 'swiftexe.exe', 'twotouchexe.exe', 'moaexe.exe', '1exe.exe', '2exe.exe']
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,864 - dw.py - main - Archive: archive/samples-2.zip -> Members: ['5552222exe.exe', '98765123exe.exe', '200000000doc.doc', '200000000wbk.wbk', '212121212112exe.exe', 'Boss11111222222exe.exe', 'GREENexe.exe', 'RE938373311exe.exe', 'RFQexe.exe']
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:07:55,866 - dw.py - main - Archive: archive/samples-3.zip -> Members: ['RU55534544444434exe.exe', 'SYM10001exe.exe', 'TRIP2323232exe.exe', 'WHITEwiz.wiz', 'Contractexe.exe']
+INFO - THREAD-140735128092672 - 2018-08-14 13:07:55,866 - av_symantec.py - submit_file - Submitting: archive/Updateapk.apk to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 13:08:06,089 - av_symantec.py - submit_file - Vendor: Symantec: Submission Success -> File: archive/Updateapk.apk, 42649794
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:08:06,089 - av_symantec.py - submit_file - Thread Sleep for 3 seconds
+INFO - THREAD-140735128092672 - 2018-08-14 13:08:09,092 - av_symantec.py - submit_file - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 13:08:33,018 - av_symantec.py - submit_file - Vendor: Symantec: Submission Success -> File: archive/samples-1.zip, 42649795
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:08:33,018 - av_symantec.py - submit_file - Thread Sleep for 3 seconds
+INFO - THREAD-140735128092672 - 2018-08-14 13:08:36,022 - av_symantec.py - submit_file - Submitting: archive/samples-2.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 13:08:41,315 - av_symantec.py - submit_file - Vendor: Symantec: Submission Success -> File: archive/samples-2.zip, 42649796
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:08:41,315 - av_symantec.py - submit_file - Thread Sleep for 2 seconds
+INFO - THREAD-140735128092672 - 2018-08-14 13:08:43,320 - av_symantec.py - submit_file - Submitting: archive/samples-3.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 13:08:48,382 - av_symantec.py - submit_file - Vendor: Symantec: Submission Success -> File: archive/samples-3.zip, 42649797
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:08:48,382 - av_symantec.py - submit_file - Thread Sleep for 2 seconds
+DEBUG - THREAD-140735128092672 - 2018-08-14 13:08:50,388 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,782 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,782 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,782 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,806 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,807 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,807 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,807 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,807 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,808 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,808 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,808 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,808 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,808 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,809 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,809 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,809 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,810 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,810 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,810 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,810 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,811 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,811 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,811 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,811 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,811 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,811 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,811 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,811 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:06,812 - url.py - parse_url - Parsing URL: hxxp://ptpjm.co.id/updd/ to: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:08,448 - url.py - parse_url - Parsing URL: sabrulfution[.]com/328974674gen/update/ to: http://sabrulfution.com/328974674gen/update/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:08,680 - url.py - parse_url - Parsing URL: swisher[.com.]mx/498747yt/49785/ to: http://swisher.com.mx/498747yt/49785/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:09,241 - url.py - parse_url - Parsing URL: unialvaedison[.edu.]mx/3287464gen/34636/ to: http://unialvaedison.edu.mx/3287464gen/34636/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:09,594 - url.py - parse_url - Parsing URL: htxp://digitalgit.in/ to: http://digitalgit.in/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:09,748 - url.py - parse_url - Parsing URL: http://nworldorg.com/genb/ppx.exe to: http://nworldorg.com/genb/ppx.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:10,060 - dw.py - main - Loaded [6] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:10,061 - uniq.py - get_unique_entries - Deduplication: 6 -> 6
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:10,061 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:10,061 - dw.py - main - Get links from each URL
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:10,061 - dw.py - get_hrefs - Getting hrefs from: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:10,061 - dw.py - get_hrefs - HTTP HEAD: http://ptpjm.co.id/updd/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:11,702 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://ptpjm.co.id/updd/ [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:11,702 - dw.py - get_hrefs - Content-Type: text/html -> Continue HREF lookup
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:11,703 - dw.py - update_list - DEV: URL: 'http://ptpjm.co.id/updd/' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:11,703 - dw.py - get_hrefs - HTTP GET: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:12,113 - dw.py - main - Found [7] hrefs on: http://ptpjm.co.id/updd/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:12,113 - dw.py - get_hrefs - Getting hrefs from: http://sabrulfution.com/328974674gen/update/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:12,113 - dw.py - get_hrefs - HTTP HEAD: http://sabrulfution.com/328974674gen/update/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:14,982 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> REDIRECT -> URL: http://sabrulfution.com/328974674gen/update/ [HTTP 302]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:14,982 - dw.py - get_hrefs - HTTP HEAD: yetfmgtke6968lb3jl8ab1ex.php?wa=wsignin1.0&rpsnv=13&ct=1884900204&rver=3760c870f74b88772cf0f9e478bba256&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3760C870F74B88772CF0F9E478BBA256&mkt=en-us&cbcxt=mai&email=
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:14,983 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> FAILED -> URL: yetfmgtke6968lb3jl8ab1ex.php?wa=wsignin1.0&rpsnv=13&ct=1884900204&rver=3760c870f74b88772cf0f9e478bba256&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3760C870F74B88772CF0F9E478BBA256&mkt=en-us&cbcxt=mai&email= [HTTP 302] -> Error: Invalid URL 'yetfmgtke6968lb3jl8ab1ex.php?wa=wsignin1.0&rpsnv=13&ct=1884900204&rver=3760c870f74b88772cf0f9e478bba256&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3760C870F74B88772CF0F9E478BBA256&mkt=en-us&cbcxt=mai&email=': No schema supplied. Perhaps you meant http://yetfmgtke6968lb3jl8ab1ex.php?wa=wsignin1.0&rpsnv=13&ct=1884900204&rver=3760c870f74b88772cf0f9e478bba256&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3760C870F74B88772CF0F9E478BBA256&mkt=en-us&cbcxt=mai&email=?
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:14,983 - dw.py - main - Found [1] hrefs on: http://sabrulfution.com/328974674gen/update/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:14,983 - dw.py - get_hrefs - Getting hrefs from: http://swisher.com.mx/498747yt/49785/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:14,983 - dw.py - get_hrefs - HTTP HEAD: http://swisher.com.mx/498747yt/49785/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:16,849 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> REDIRECT -> URL: http://swisher.com.mx/498747yt/49785/ [HTTP 302]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:16,849 - dw.py - get_hrefs - HTTP HEAD: i79tbjuiz9a4418gpypephrc.php?wa=wsignin1.0&rpsnv=13&ct=488898503&rver=8ab1bee11b1ff1677b26d54dc57c45f7&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=8AB1BEE11B1FF1677B26D54DC57C45F7&mkt=en-us&cbcxt=mai&email=
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:16,849 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> FAILED -> URL: i79tbjuiz9a4418gpypephrc.php?wa=wsignin1.0&rpsnv=13&ct=488898503&rver=8ab1bee11b1ff1677b26d54dc57c45f7&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=8AB1BEE11B1FF1677B26D54DC57C45F7&mkt=en-us&cbcxt=mai&email= [HTTP 302] -> Error: Invalid URL 'i79tbjuiz9a4418gpypephrc.php?wa=wsignin1.0&rpsnv=13&ct=488898503&rver=8ab1bee11b1ff1677b26d54dc57c45f7&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=8AB1BEE11B1FF1677B26D54DC57C45F7&mkt=en-us&cbcxt=mai&email=': No schema supplied. Perhaps you meant http://i79tbjuiz9a4418gpypephrc.php?wa=wsignin1.0&rpsnv=13&ct=488898503&rver=8ab1bee11b1ff1677b26d54dc57c45f7&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=8AB1BEE11B1FF1677B26D54DC57C45F7&mkt=en-us&cbcxt=mai&email=?
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:16,849 - dw.py - main - Found [1] hrefs on: http://swisher.com.mx/498747yt/49785/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:16,849 - dw.py - get_hrefs - Getting hrefs from: http://unialvaedison.edu.mx/3287464gen/34636/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:16,850 - dw.py - get_hrefs - HTTP HEAD: http://unialvaedison.edu.mx/3287464gen/34636/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:17,821 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> REDIRECT -> URL: http://unialvaedison.edu.mx/3287464gen/34636/ [HTTP 302]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:17,821 - dw.py - get_hrefs - HTTP HEAD: puzz8vacdqzc12q9bsvl99yx.php?wa=wsignin1.0&rpsnv=13&ct=99243097&rver=3ce8dcbb6713f84a26750c8b84b1b868&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3CE8DCBB6713F84A26750C8B84B1B868&mkt=en-us&cbcxt=mai&email=
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:17,821 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> FAILED -> URL: puzz8vacdqzc12q9bsvl99yx.php?wa=wsignin1.0&rpsnv=13&ct=99243097&rver=3ce8dcbb6713f84a26750c8b84b1b868&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3CE8DCBB6713F84A26750C8B84B1B868&mkt=en-us&cbcxt=mai&email= [HTTP 302] -> Error: Invalid URL 'puzz8vacdqzc12q9bsvl99yx.php?wa=wsignin1.0&rpsnv=13&ct=99243097&rver=3ce8dcbb6713f84a26750c8b84b1b868&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3CE8DCBB6713F84A26750C8B84B1B868&mkt=en-us&cbcxt=mai&email=': No schema supplied. Perhaps you meant http://puzz8vacdqzc12q9bsvl99yx.php?wa=wsignin1.0&rpsnv=13&ct=99243097&rver=3ce8dcbb6713f84a26750c8b84b1b868&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3CE8DCBB6713F84A26750C8B84B1B868&mkt=en-us&cbcxt=mai&email=?
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:17,821 - dw.py - main - Found [1] hrefs on: http://unialvaedison.edu.mx/3287464gen/34636/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:17,822 - dw.py - get_hrefs - Getting hrefs from: http://digitalgit.in/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:17,822 - dw.py - get_hrefs - HTTP HEAD: http://digitalgit.in/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:19,568 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> FAILED -> URL: http://digitalgit.in/ [HTTP None] -> Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:19,569 - dw.py - main - Found [1] hrefs on: http://digitalgit.in/
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:19,569 - dw.py - get_hrefs - Getting hrefs from: http://nworldorg.com/genb/ppx.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:19,569 - dw.py - get_hrefs - HTTP HEAD: http://nworldorg.com/genb/ppx.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:20,451 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://nworldorg.com/genb/ppx.exe [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:20,451 - dw.py - get_hrefs - Skip href lookup for: http://nworldorg.com/genb/ppx.exe - The resource is: application/x-msdownload
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:20,451 - dw.py - main - Found [1] hrefs on: http://nworldorg.com/genb/ppx.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:20,451 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:20,451 - dw.py - main - ['http://ptpjm.co.id/updd/ ,(MIME: text/html)', 'http://ptpjm.co.id/updd/updd/ata.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/updd/gpg.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/updd/hux.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/updd/pkp.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/updd/sps.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/updd/zuz.exe ,(MIME: None)', 'yetfmgtke6968lb3jl8ab1ex.php?wa=wsignin1.0&rpsnv=13&ct=1884900204&rver=3760c870f74b88772cf0f9e478bba256&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3760C870F74B88772CF0F9E478BBA256&mkt=en-us&cbcxt=mai&email= ,(MIME: None)', 'i79tbjuiz9a4418gpypephrc.php?wa=wsignin1.0&rpsnv=13&ct=488898503&rver=8ab1bee11b1ff1677b26d54dc57c45f7&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=8AB1BEE11B1FF1677B26D54DC57C45F7&mkt=en-us&cbcxt=mai&email= ,(MIME: None)', 'puzz8vacdqzc12q9bsvl99yx.php?wa=wsignin1.0&rpsnv=13&ct=99243097&rver=3ce8dcbb6713f84a26750c8b84b1b868&wp=MBI_SSL_SHARED&wreply=inbox&lc=1024&id=3CE8DCBB6713F84A26750C8B84B1B868&mkt=en-us&cbcxt=mai&email= ,(MIME: None)', 'http://digitalgit.in/ ,(MIME: None)', 'http://nworldorg.com/genb/ppx.exe ,(MIME: application/x-msdownload)']
+INFO - THREAD-140735128092672 - 2018-08-14 21:22:20,452 - uniq.py - get_unique_entries - Deduplication: 8 -> 8
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:20,452 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:20,452 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:20,452 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:22:20,452 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,156 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,157 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,157 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,166 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,166 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,166 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,166 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,166 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,166 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,167 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,167 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,167 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,167 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,167 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,167 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,167 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,167 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,167 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,168 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,168 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,168 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,168 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,168 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,169 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,169 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,169 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,169 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,169 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,169 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/updd/ata.exe to: http://ptpjm.co.id/updd/updd/ata.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,174 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/updd/gpg.exe to: http://ptpjm.co.id/updd/updd/gpg.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,174 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/updd/hux.exe to: http://ptpjm.co.id/updd/updd/hux.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,175 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/updd/pkp.exe to: http://ptpjm.co.id/updd/updd/pkp.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,175 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/updd/sps.exe to: http://ptpjm.co.id/updd/updd/sps.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,175 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/updd/zuz.exe to: http://ptpjm.co.id/updd/updd/zuz.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,176 - url.py - parse_url - Parsing URL: http://nworldorg.com/genb/ppx.exe to: http://nworldorg.com/genb/ppx.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,176 - dw.py - main - Loaded [7] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:03,176 - uniq.py - get_unique_entries - Deduplication: 7 -> 7
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,177 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,177 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:03,177 - dw.py - download - Headers: ItemsView({'User-Agent': 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'})
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:04,129 - dw.py - download - URL Download -> FAILED -> [HTTP GET 404] - URL: http://ptpjm.co.id/updd/updd/ata.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:05,153 - dw.py - download - URL Download -> FAILED -> [HTTP GET 404] - URL: http://ptpjm.co.id/updd/updd/gpg.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:05,972 - dw.py - download - URL Download -> FAILED -> [HTTP GET 404] - URL: http://ptpjm.co.id/updd/updd/hux.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:06,793 - dw.py - download - URL Download -> FAILED -> [HTTP GET 404] - URL: http://ptpjm.co.id/updd/updd/pkp.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:07,610 - dw.py - download - URL Download -> FAILED -> [HTTP GET 404] - URL: http://ptpjm.co.id/updd/updd/sps.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:08,429 - dw.py - download - URL Download -> FAILED -> [HTTP GET 404] - URL: http://ptpjm.co.id/updd/updd/zuz.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:09,248 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://nworldorg.com/genb/ppx.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:11,550 - vt.py - file_report - VT Report: 0f2077212db905c2d864ef409cb9f20865d24dce6e1c9a86caf0fc4711e1e706
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:12,735 - vt.py - file_report - Excerpt: VT Score: 17/68, Symantec: None, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:12,735 - cache.py - add - CACHE - FILE - Create new entry: 0f2077212db905c2d864ef409cb9f20865d24dce6e1c9a86caf0fc4711e1e706
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:12,758 - dw.py - download - 0f2077212db905c2d864ef409cb9f20865d24dce6e1c9a86caf0fc4711e1e706,VT Score: 17/68, Symantec: None, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/ppxexe.exe,http://nworldorg.com/genb/ppx.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:12,763 - uniq.py - get_unique_files - Deduplication: 1 -> 1
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:12,763 - dw.py - _zip - Add 'downloads/ppxexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:12,767 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['ppxexe.exe']
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:12,767 - av_symantec.py - submit_file - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 21:23:23,380 - av_symantec.py - submit_file - Vendor: Symantec: Submission Success -> File: archive/samples-1.zip, 42651130
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:23,380 - av_symantec.py - submit_file - Thread Sleep for 1 seconds
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:23:24,381 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,363 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,364 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,364 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,372 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,372 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,372 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,372 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,373 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,373 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,373 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,373 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,373 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,373 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,373 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,373 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,373 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,374 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,375 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/ata.exe to: http://ptpjm.co.id/updd/ata.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,379 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/gpg.exe to: http://ptpjm.co.id/updd/gpg.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,380 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/hux.exe to: http://ptpjm.co.id/updd/hux.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,380 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/pkp.exe to: http://ptpjm.co.id/updd/pkp.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,381 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/sps.exe to: http://ptpjm.co.id/updd/sps.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,381 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/zuz.exe to: http://ptpjm.co.id/updd/zuz.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,382 - dw.py - main - Loaded [6] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:03,382 - uniq.py - get_unique_entries - Deduplication: 6 -> 6
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,382 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,382 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:03,382 - dw.py - download - Headers: ItemsView({'User-Agent': 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 5.2)', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'})
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:04,053 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://ptpjm.co.id/updd/ata.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:07,831 - vt.py - file_report - VT Report: bd88c69c56d4b51346fc265c4e14e0a66290709f183abd8cc1a4bc149e5be203
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:08,327 - vt.py - file_report - Excerpt: VT Score: 18/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:08,327 - cache.py - add - CACHE - FILE - Create new entry: bd88c69c56d4b51346fc265c4e14e0a66290709f183abd8cc1a4bc149e5be203
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:08,331 - dw.py - download - bd88c69c56d4b51346fc265c4e14e0a66290709f183abd8cc1a4bc149e5be203,VT Score: 18/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/ataexe.exe,http://ptpjm.co.id/updd/ata.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:08,845 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://ptpjm.co.id/updd/gpg.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:12,546 - vt.py - file_report - VT Report: 7f9a5aa2a284d144bb27b481845208947c90174835b1a903c69b5e4eca6c6081
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:13,370 - vt.py - file_report - Excerpt: VT Score: 20/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:13,370 - cache.py - add - CACHE - FILE - Create new entry: 7f9a5aa2a284d144bb27b481845208947c90174835b1a903c69b5e4eca6c6081
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:13,375 - dw.py - download - 7f9a5aa2a284d144bb27b481845208947c90174835b1a903c69b5e4eca6c6081,VT Score: 20/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/gpgexe.exe,http://ptpjm.co.id/updd/gpg.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:13,760 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://ptpjm.co.id/updd/hux.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:15,405 - vt.py - file_report - VT Report: f73e079d724be0d68130e99c94b3c90f5aaa95fb31369318ffdcecf86b7e3385
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:16,424 - vt.py - file_report - Excerpt: VT Score: 30/67, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Azden.B!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:16,424 - cache.py - add - CACHE - FILE - Create new entry: f73e079d724be0d68130e99c94b3c90f5aaa95fb31369318ffdcecf86b7e3385
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:16,429 - dw.py - download - f73e079d724be0d68130e99c94b3c90f5aaa95fb31369318ffdcecf86b7e3385,VT Score: 30/67, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Azden.B!cl,application/x-dosexec,downloads/huxexe.exe,http://ptpjm.co.id/updd/hux.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:16,832 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://ptpjm.co.id/updd/pkp.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:19,711 - vt.py - file_report - VT Report: 9c5575d837cc697b700c4a5d11c8de1b9d0e7dc37cbfa8b435c4917ef2c4ce4b
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:20,519 - vt.py - file_report - Excerpt: VT Score: 18/68, Symantec: ML.Attribute.HighConfidence, Microsoft: None
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:20,519 - cache.py - add - CACHE - FILE - Create new entry: 9c5575d837cc697b700c4a5d11c8de1b9d0e7dc37cbfa8b435c4917ef2c4ce4b
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:20,525 - dw.py - download - 9c5575d837cc697b700c4a5d11c8de1b9d0e7dc37cbfa8b435c4917ef2c4ce4b,VT Score: 18/68, Symantec: ML.Attribute.HighConfidence, Microsoft: None,application/x-dosexec,downloads/pkpexe.exe,http://ptpjm.co.id/updd/pkp.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:20,927 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://ptpjm.co.id/updd/sps.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:26,678 - vt.py - file_report - VT Report: b327681b5c4c906f5eea33ca29e3e525c258bcc503f22045b5667682866e46f1
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:27,896 - vt.py - file_report - Excerpt: VT Score: 19/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:27,896 - cache.py - add - CACHE - FILE - Create new entry: b327681b5c4c906f5eea33ca29e3e525c258bcc503f22045b5667682866e46f1
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:27,901 - dw.py - download - b327681b5c4c906f5eea33ca29e3e525c258bcc503f22045b5667682866e46f1,VT Score: 19/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/spsexe.exe,http://ptpjm.co.id/updd/sps.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:28,301 - dw.py - download - URL Download -> SUCCESS -> [HTTP GET 200] - URL: http://ptpjm.co.id/updd/zuz.exe
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:31,997 - vt.py - file_report - VT Report: 26a1f49be8b96d5c788e89c621f0a033020b6ff56755519b8b9a3fe999a4e67f
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:32,364 - vt.py - file_report - Excerpt: VT Score: 23/67, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:32,364 - cache.py - add - CACHE - FILE - Create new entry: 26a1f49be8b96d5c788e89c621f0a033020b6ff56755519b8b9a3fe999a4e67f
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:32,368 - dw.py - download - 26a1f49be8b96d5c788e89c621f0a033020b6ff56755519b8b9a3fe999a4e67f,VT Score: 23/67, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Fuerboos.C!cl,application/x-dosexec,downloads/zuzexe.exe,http://ptpjm.co.id/updd/zuz.exe
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:32,381 - uniq.py - get_unique_files - Deduplication: 6 -> 6
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:32,382 - dw.py - _zip - Add 'downloads/ataexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:32,383 - dw.py - _zip - Add 'downloads/gpgexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:32,385 - dw.py - _zip - Add 'downloads/huxexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:32,386 - dw.py - _zip - Add 'downloads/pkpexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:32,387 - dw.py - _zip - Add 'downloads/spsexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:32,389 - dw.py - _zip - Add 'downloads/zuzexe.exe' to: 'archive/samples-1.zip'
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:32,395 - dw.py - main - Archive: archive/samples-1.zip -> Members: ['ataexe.exe', 'gpgexe.exe', 'huxexe.exe', 'pkpexe.exe', 'spsexe.exe', 'zuzexe.exe']
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:32,395 - av_symantec.py - submit_file - Submitting: archive/samples-1.zip to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 21:24:59,944 - av_symantec.py - submit_file - Vendor: Symantec: Submission Success -> File: archive/samples-1.zip, 42651133
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:24:59,944 - av_symantec.py - submit_file - Thread Sleep for 2 seconds
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:01,947 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,343 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,343 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,343 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,351 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,351 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,351 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,352 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,352 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,352 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,352 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,352 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,352 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,352 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,352 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,352 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,353 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,354 - dw.py - main - Loaded [6] Hashes from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:25:59,354 - uniq.py - get_unique_entries - Deduplication: 6 -> 6
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:25:59,354 - dw.py - main - Skipping URL info gathering
+INFO - THREAD-140735128092672 - 2018-08-14 21:25:59,354 - av_symantec.py - submit_hash - Submitting: 0f2077212db905c2d864ef409cb9f20865d24dce6e1c9a86caf0fc4711e1e706 to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:02,511 - av_symantec.py - submit_hash - Vendor: Symantec: Submission Success -> Hash: 0f2077212db905c2d864ef409cb9f20865d24dce6e1c9a86caf0fc4711e1e706, 42651136
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:02,511 - av_symantec.py - submit_hash - Thread Sleep for 2 seconds
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:04,514 - av_symantec.py - submit_hash - Submitting: 6fe30d387a3cf80e4fb1d76ee11efd3a to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:07,444 - av_symantec.py - submit_hash - Vendor: Symantec: Submission Success -> Hash: 6fe30d387a3cf80e4fb1d76ee11efd3a, 42651137
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:07,444 - av_symantec.py - submit_hash - Thread Sleep for 1 seconds
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:08,448 - av_symantec.py - submit_hash - Submitting: 0fe54cc0e120174515c3dcc34386adfc to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:11,521 - av_symantec.py - submit_hash - Vendor: Symantec: Submission Success -> Hash: 0fe54cc0e120174515c3dcc34386adfc, 42651138
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:11,521 - av_symantec.py - submit_hash - Thread Sleep for 1 seconds
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:12,524 - av_symantec.py - submit_hash - Submitting: 512db96f6c8423d2a073be0c7e539467 to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:15,207 - av_symantec.py - submit_hash - Vendor: Symantec: Submission Success -> Hash: 512db96f6c8423d2a073be0c7e539467, 42651139
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:15,207 - av_symantec.py - submit_hash - Thread Sleep for 2 seconds
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:17,211 - av_symantec.py - submit_hash - Submitting: 61825527de1f0b48cb3e4dfa32fa5895 to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:20,122 - av_symantec.py - submit_hash - Vendor: Symantec: Submission Success -> Hash: 61825527de1f0b48cb3e4dfa32fa5895, 42651140
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:20,123 - av_symantec.py - submit_hash - Thread Sleep for 3 seconds
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:23,128 - av_symantec.py - submit_hash - Submitting: c685ed24583a73fda1663d27c82b4316 to: https://submit.symantec.com/websubmit/bcs.cgi
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:25,652 - av_symantec.py - submit_hash - Vendor: Symantec: Submission Success -> Hash: c685ed24583a73fda1663d27c82b4316, 42651141
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:25,652 - av_symantec.py - submit_hash - Thread Sleep for 3 seconds
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:28,656 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:28,656 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:28,656 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:28,656 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:28,656 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,476 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,476 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,476 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,485 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,485 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,485 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,485 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,485 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,485 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,485 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,485 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,485 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,486 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,486 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,486 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,486 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,486 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,486 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,486 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,487 - dw.py - main - Loaded [6] Hashes from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:26:42,488 - uniq.py - get_unique_entries - Deduplication: 6 -> 6
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:42,488 - vt.py - file_report - VT Report: 0f2077212db905c2d864ef409cb9f20865d24dce6e1c9a86caf0fc4711e1e706
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:43,678 - vt.py - file_report - Excerpt: VT Score: 17/68, Symantec: None, Microsoft: Trojan:Win32/Fuerboos.C!cl
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:43,678 - cache.py - add - CACHE - FILE - Create new entry: 0f2077212db905c2d864ef409cb9f20865d24dce6e1c9a86caf0fc4711e1e706
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:43,678 - vt.py - file_report - VT Report: 6fe30d387a3cf80e4fb1d76ee11efd3a
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:44,320 - vt.py - file_report - Excerpt: VT Score: 31/68, Symantec: ML.Attribute.HighConfidence, Microsoft: Trojan:Win32/Tiggre!plock
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:44,320 - cache.py - add - CACHE - FILE - Create new entry: 6fe30d387a3cf80e4fb1d76ee11efd3a
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:44,320 - vt.py - file_report - VT Report: 0fe54cc0e120174515c3dcc34386adfc
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:44,727 - vt.py - file_report - Excerpt: VT Score: 13/68, Symantec: None, Microsoft: None
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:44,728 - cache.py - add - CACHE - FILE - Create new entry: 0fe54cc0e120174515c3dcc34386adfc
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:44,728 - vt.py - file_report - VT Report: 512db96f6c8423d2a073be0c7e539467
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:45,313 - vt.py - file_report - Excerpt: VT Score: 13/68, Symantec: ML.Attribute.HighConfidence, Microsoft: None
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:45,314 - cache.py - add - CACHE - FILE - Create new entry: 512db96f6c8423d2a073be0c7e539467
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:45,314 - vt.py - file_report - VT Report: 61825527de1f0b48cb3e4dfa32fa5895
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:45,928 - vt.py - file_report - Excerpt: VT Score: 12/64, Symantec: None, Microsoft: Trojan:Win32/Bitrep.A
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:45,928 - cache.py - add - CACHE - FILE - Create new entry: 61825527de1f0b48cb3e4dfa32fa5895
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:45,928 - vt.py - file_report - VT Report: c685ed24583a73fda1663d27c82b4316
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:46,206 - vt.py - file_report - Excerpt: VT Score: 9/60, Symantec: None, Microsoft: None
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:46,206 - cache.py - add - CACHE - FILE - Create new entry: c685ed24583a73fda1663d27c82b4316
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:46,206 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:46,206 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:46,206 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:46,206 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:46,206 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:26:46,207 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,755 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,756 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,756 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,777 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,777 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,778 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,778 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,778 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,778 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,778 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,778 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,778 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,779 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,779 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,779 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,780 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,780 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,780 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,780 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,780 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,780 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,780 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,780 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,781 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,781 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,781 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,781 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,781 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,782 - dw.py - main - Loaded [1] Hashes from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:28:23,782 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:23,785 - vt.py - file_report - VT Report: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,478 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,479 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,479 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,497 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,497 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,497 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,497 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,497 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,498 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,498 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,498 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,498 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,499 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,499 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,499 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,499 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,499 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,499 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,499 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,500 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,500 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,500 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,500 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,500 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,500 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,500 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,500 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:43,500 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:52,051 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/ to: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:52,059 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:28:52,060 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:54,769 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:28:56,857 - dw.py - main - Get links from each URL
+INFO - THREAD-140735128092672 - 2018-08-14 21:29:08,642 - dw.py - get_hrefs - Getting hrefs from: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:29:26,678 - dw.py - get_hrefs - HTTP HEAD: http://ptpjm.co.id/updd/
+INFO - THREAD-140735128092672 - 2018-08-14 21:29:44,301 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://ptpjm.co.id/updd/ [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:30:34,958 - dw.py - get_hrefs - Content-Type: text/html -> Continue HREF lookup
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:30:38,509 - dw.py - update_list - DEV: URL: 'http://ptpjm.co.id/updd/' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:30:42,290 - dw.py - get_hrefs - HTTP GET: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,417 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,418 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,419 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,436 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,436 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,436 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,436 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,436 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,437 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,437 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,437 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,437 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,438 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,438 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,438 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,438 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,438 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,438 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,439 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,439 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,439 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,439 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,439 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,439 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,439 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,439 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,439 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,440 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,441 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/ to: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:09,448 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:34:09,448 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:15,605 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:20,992 - dw.py - main - Get links from each URL
+INFO - THREAD-140735128092672 - 2018-08-14 21:34:22,684 - dw.py - get_hrefs - Getting hrefs from: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:34:22,685 - dw.py - get_hrefs - HTTP HEAD: http://ptpjm.co.id/updd/
+INFO - THREAD-140735128092672 - 2018-08-14 21:34:23,555 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://ptpjm.co.id/updd/ [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,151 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,152 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,152 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,160 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,160 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,160 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,160 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,160 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,161 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,161 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,161 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,161 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,161 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,161 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,161 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,161 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,161 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,162 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,163 - url.py - parse_url - Parsing URL: http://ptpjm.co.id/updd/ to: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,167 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:38:22,167 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,167 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,167 - dw.py - main - Get links from each URL
+INFO - THREAD-140735128092672 - 2018-08-14 21:38:22,167 - dw.py - get_hrefs - Getting hrefs from: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:22,167 - dw.py - get_hrefs - HTTP HEAD: http://ptpjm.co.id/updd/
+INFO - THREAD-140735128092672 - 2018-08-14 21:38:23,065 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://ptpjm.co.id/updd/ [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:23,065 - dw.py - get_hrefs - Content-Type: text/html -> Continue HREF lookup
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:23,066 - dw.py - update_list - DEV: URL: 'http://ptpjm.co.id/updd/' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:23,066 - dw.py - get_hrefs - HTTP GET: http://ptpjm.co.id/updd/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:23,478 - dw.py - main - Found [7] hrefs on: http://ptpjm.co.id/updd/
+INFO - THREAD-140735128092672 - 2018-08-14 21:38:23,478 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735128092672 - 2018-08-14 21:38:23,478 - dw.py - main - ['http://ptpjm.co.id/updd/ ,(MIME: text/html)', 'http://ptpjm.co.id/updd/ata.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/gpg.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/hux.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/pkp.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/sps.exe ,(MIME: None)', 'http://ptpjm.co.id/updd/zuz.exe ,(MIME: None)']
+INFO - THREAD-140735128092672 - 2018-08-14 21:38:23,478 - uniq.py - get_unique_entries - Deduplication: 7 -> 7
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:23,479 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:23,479 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:23,479 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:38:23,479 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,916 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,917 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,917 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,925 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,925 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,926 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,926 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,926 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,926 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,926 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,926 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,926 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,926 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,926 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,927 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,928 - url.py - parse_url - Parsing URL: http://nworldorg.com/genb/ to: http://nworldorg.com/genb/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,932 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:27,932 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,932 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,932 - dw.py - main - Get links from each URL
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:27,932 - dw.py - get_hrefs - Getting hrefs from: http://nworldorg.com/genb/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:27,933 - dw.py - get_hrefs - HTTP HEAD: http://nworldorg.com/genb/
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:29,216 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://nworldorg.com/genb/ [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:29,216 - dw.py - get_hrefs - HTTP GET: http://nworldorg.com/genb/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:29,626 - dw.py - update_list - DEV: URL: 'http://nworldorg.com/genb/' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:29,626 - dw.py - main - Found [1] hrefs on: http://nworldorg.com/genb/
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:29,626 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:29,626 - dw.py - main - ['http://nworldorg.com/genb/ ,(MIME: None)']
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:29,627 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:29,627 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:29,627 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:29,627 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:29,627 - dw.py - main - Skipping pastebin submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,929 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,930 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,930 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,938 - pluginmgr.py - __init__ - Found [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,938 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,938 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,938 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,938 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,939 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - pluginmgr.py - __init__ - Loaded [4] plugins
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,940 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,941 - url.py - parse_url - Parsing URL: http://nworldorg.com/ to: http://nworldorg.com/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,945 - dw.py - main - Loaded [1] URLs from: urls.txt
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:42,945 - uniq.py - get_unique_entries - Deduplication: 1 -> 1
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,945 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,945 - dw.py - main - Get links from each URL
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:42,945 - dw.py - get_hrefs - Getting hrefs from: http://nworldorg.com/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:42,945 - dw.py - get_hrefs - HTTP HEAD: http://nworldorg.com/
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:43,758 - dw.py - get_hrefs - HTTP HEAD -> URL Fetch -> SUCCESS -> URL: http://nworldorg.com/ [HTTP 200]
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:43,758 - dw.py - get_hrefs - Content-Type: text/html -> Continue HREF lookup
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:43,758 - dw.py - update_list - DEV: URL: 'http://nworldorg.com/' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:43,758 - dw.py - get_hrefs - HTTP GET: http://nworldorg.com/
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - update_list - DEV: URL: 'http://nworldorg.com/#about' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - update_list - DEV: URL: 'http://nworldorg.com/#about' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - update_list - DEV: URL: 'http://nworldorg.com/#about' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - update_list - DEV: URL: 'http://nworldorg.com/#about' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - update_list - DEV: URL: 'http://nworldorg.com/#about' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - update_list - DEV: URL: 'http://nworldorg.com/#about' already in links list!
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - main - Found [6] hrefs on: http://nworldorg.com/
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - main - All retrieved HREFs:
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - main - ['http://nworldorg.com/ ,(MIME: text/html)', 'http://nworldorg.com/#top ,(MIME: None)', 'http://nworldorg.com/#about ,(MIME: None)', 'http://nworldorg.com/#services ,(MIME: None)', 'http://nworldorg.com/#portfolio ,(MIME: None)', 'http://nworldorg.com/#contact ,(MIME: None)']
+INFO - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - uniq.py - get_unique_entries - Deduplication: 6 -> 6
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,186 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735128092672 - 2018-08-14 21:39:44,187 - dw.py - main - Skipping pastebin submission

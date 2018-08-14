@@ -1,9 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.6.1'
+__version__ = '0.6.2'
 
 """
 TO DO:
+- https://github.com/InQuest/python-iocextract add to url class
 - Add option to skip file submissions which are already detected by AV vendor ... (based on VT score for now)
 - Make --submit working with --vt-file-download (where it does not make much sense, it should be in place)
 - Add GeoLocation section to cache.
@@ -683,6 +684,7 @@ class downloader (object):
             url_host = url_obj.hostname.lower()
             url_base = url_obj.scheme + "://" + url_obj.netloc
             url_base = url_base.lower()
+            url_base_uri = url_obj.scheme + "://" + url_host
 
             #test
             url_file = ""
@@ -841,7 +843,8 @@ class downloader (object):
 
                         elif url_end == "/" and href_start == "/":
                             """  The url ends with / and the href starts with / """
-                            _url = url + _href[1:]
+                            # _url = url + _href[1:]
+                            _url = url_base_uri + _href
 
                         elif url_end != "/" and href_start != "/":
                             """  The url does not end with / and the href does not start with / """
