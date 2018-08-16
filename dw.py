@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.6.2'
+__version__ = '0.6.3'
 
 """
 TO DO:
@@ -277,7 +277,7 @@ file_extensions = [".flv", ".mp4", ".epub",".png", ".webm", ".flac","386","acm",
                    "ctl","dll","drv","exe","gms","hlp","hta","inf","ini","ins","isp","job","js","jse","lnk","mpd","msik",
                    "msp","ocx","opo","php","pif","pl","prc","rat","reg","scf","sct","scr","sh","shs","sys","tlb","tsp","vb",
                    "vbe","vbs","vxd","wbs","wbt","wiz","wsc","wsf","wsh",".zip",".7z",".rar",".exe",".dll",".msi",".ps1",".jar",
-                   ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas", ".lib", ".apk"]
+                   ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas", ".lib", ".apk", ".ttf"]
 
 class downloader (object):
 
@@ -611,6 +611,13 @@ class downloader (object):
                 self.get_hrefs_smb(url_obj=url_obj, links=links.keys())
 
 
+            # Experimental
+            """ If the resource is know file extension """
+            if self._url_endswith(url_obj, file_extensions):
+                self.update_list(url, links)
+                return links
+
+
             """ Create new session """
             response = None
 
@@ -793,7 +800,7 @@ class downloader (object):
                         continue
 
                     """ String exclusion list"""
-                    if any(word in _href for word in ["#content", "#comment", "#respond"]):
+                    if any(word in _href for word in ["#content", "#comment", "#respond", r"includes/Smarty-", r"images/flags/"]):
                         logger.debug("Exlude HREF: %s -> %s" % (_href, link))
                         continue
 
