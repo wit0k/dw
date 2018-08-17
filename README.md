@@ -409,3 +409,6 @@ Ver. 0.6.1:
 
 Ver. 0.6.2:
 * Cosmetic code changes in get_hrefs (Still need to find some time to completely rebuild it + multiprocessing)
+
+Ver. 0.6.4:
+* Cosmetic code changes in get_hrefs (Still need to find some time to completely rebuild it + multiprocessing)

@@ -1,9 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-07-02"
-__version__ = '0.6.3'
+__version__ = '0.6.4'
 
 """
 TO DO:
+- Fix: http://www.iponkstoremasker.co.id/shop/masker/masker-ninja-02/shop/masker/masker-ninja-02/shop/masker/masker-ninja-02/shop/masker/masker-ninja-02/shop/masker/masker-ninja-02/shop/masker/
 - https://github.com/InQuest/python-iocextract add to url class
 - Add option to skip file submissions which are already detected by AV vendor ... (based on VT score for now)
 - Make --submit working with --vt-file-download (where it does not make much sense, it should be in place)
@@ -277,7 +278,7 @@ file_extensions = [".flv", ".mp4", ".epub",".png", ".webm", ".flac","386","acm",
                    "ctl","dll","drv","exe","gms","hlp","hta","inf","ini","ins","isp","job","js","jse","lnk","mpd","msik",
                    "msp","ocx","opo","php","pif","pl","prc","rat","reg","scf","sct","scr","sh","shs","sys","tlb","tsp","vb",
                    "vbe","vbs","vxd","wbs","wbt","wiz","wsc","wsf","wsh",".zip",".7z",".rar",".exe",".dll",".msi",".ps1",".jar",
-                   ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas", ".lib", ".apk", ".ttf"]
+                   ".vbs",".log",".frx",".frm",".cls",".vbp",".scc",".bas", ".lib", ".apk", ".ttf", ".jpg"]
 
 class downloader (object):
 
@@ -828,22 +829,22 @@ class downloader (object):
                                 # Skip when the href element id is the same as the url's element id
                                 continue
 
-                        elif url_element_id and not _href_element_id:
+                        #elif url_element_id and not _href_element_id:
                             # Case blog.htm...
-                            _url = url_base + _href
+                            #_url = url_base + _href
 
                         elif not url_element_id and _href_element_id:
                             #_url = url + _href
                             if url_file:
                                 if not _href.startswith("#"):
-                                    _url = url_base + _href
+                                    _url = url_base_uri + _href
                                 else:
                                     _url = url + _href
                             else:
                                 _url = url_base + _href
 
                         elif url_redirected and href_start == "/":
-                            _url = url_base + _href
+                            _url = url_base_uri + _href
 
                         elif url_redirected and href_start != "/":
                             _url = url + _href
@@ -856,6 +857,11 @@ class downloader (object):
                         elif url_end != "/" and href_start != "/":
                             """  The url does not end with / and the href does not start with / """
                             _url = url_base + _href
+
+                        elif url_end != "/" and href_start == "/":
+                            """  The url does not end with / and the href does not start with / """
+                            _url = url_base_uri + _href
+
                         else:
                             _url = url + _href
 
