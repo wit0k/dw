@@ -10,6 +10,7 @@ logger = logging.getLogger('dw')
 
 ipv4_v2 = r'\b(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\b'
 domain = r'(?=^.{1,254}$)(^(?:(?!\d+\.|-)[a-zA-Z0-9_\-]{1,63}(?<!-)\.?)+(?:[a-zA-Z]{2,})$)'
+domain2 = r'^([\-A-Za-z0-9\.])+$'
 
 class url(object):
 
@@ -74,6 +75,9 @@ class url(object):
                 _url = url_set.pop()
                 logger.debug("Parsing URL: %s to: %s" % (url, _url))
                 return _url
+            else:
+                return self._deobfuscate_m(url)
+
         else:
             return None
 
@@ -110,7 +114,7 @@ class url(object):
                 except Exception as msg:
                     return None
 
-            elif re.match(domain, self.host, re.IGNORECASE):
+            elif re.match(domain, self.host, re.IGNORECASE) or re.match(domain2, self.host, re.IGNORECASE):
                 self.domain = self.host
 
                 try:
@@ -134,6 +138,7 @@ class url(object):
         output_url = re.sub(r'^\/+', '', output_url)
         output_url = output_url.replace("[http://]", "http://")
         output_url = output_url.replace("[https://]", "https://")
+        output_url = output_url.replace("hps://", "https://")
         output_url = output_url.replace(" (HTTP)", "")
         output_url = output_url.replace(" ", "")
         output_url = output_url.replace("htxp", "http")
@@ -165,6 +170,10 @@ class url(object):
             """ Remove incorrect scheme, and leave it empty """
             output_url = re.sub(r"(^/+|^:/+|^:+)", "", output_url)
             output_url = "http://" + output_url
+            output_url = output_url.replace(r"///", r"//")
+
+
+        if output_url.startswith('http') or output_url.startswith('https') or output_url.startswith('file'):
             output_url = output_url.replace(r"///", r"//")
         else:
             output_url = "http://" + output_url

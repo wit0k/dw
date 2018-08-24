@@ -436,3 +436,8 @@ Ver. 0.6.6:
 * Several code logic changes ... so there might be errors
 * Fixed the get_hrefs ... it was ignoring the -rl option a bit... [sorry]
 * Performance improvement to self.crawl_local_host_only
+
+Ver. 0.6.7:
+* iocextract is not perfect, when it fails to parse URL, the code will run backup parsing algo
+* Updated to regex patterns for domains 
+ 
