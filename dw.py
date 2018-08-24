@@ -14,19 +14,14 @@ TO DO:
 - Maybe add a cache of skipped/visited URLs (like these returning 404, which do not get in links) ... error=true
 - URLinfo should lookup the cache for more details, instead of querying all the time (it would be much faster) ... i think it' in place, but i need to check
 - Print meaningful output to stdout ... 
-- Add some regex checks to load hashes from file...
-- Add checks for URL syntax
-- Add an option to specify a URL trough cmd like -u or make it detected by -s
 - Improve get_file_info so it can query url info when proxy category not in the cache.
 - Update get_hrefs to use self.cache instead of links
 - Make sure that .docx files (based on mimetype detection) are not considered as zip by compress file function...
 - Double check url ends with and TLDs ( temporary fix done for now... but might be prone to erros)
-- Prevemt situations like: http://www.mcvillars.com/-Actualites-/-Actualites-/-Actualites-/
 - Add exclusion to url ... handle exclusions db for all hashes and urls...https://gist.github.com/Neo23x0/fd9af35c5061578025d00838c215dfe4
 - Add bit.ly resolution to url class maybe ...
 - archive folder check 
 - Print file info, when only loding files (like hash etc.)
-- Add user agent randomization 
 
 Sys req:
 - brew install tesseract
