@@ -72,11 +72,10 @@ optional arguments:
 Script arguments:
 
   -i INPUT, --input-file INPUT
-                        Load an input file containing URLs or Hashes for
-                        further processing
+                        Load the hashes, URLs or existing files from the input
+                        file for further processing
   -s SAMPLE_FILE_OR_FOLDER, --sample SAMPLE_FILE_OR_FOLDER
-                        Load given URL, or specific file or folder for further
-                        processing
+                        Load given URL, file or folder for further processing
   -d DOWNLOAD_FOLDER, --download-folder DOWNLOAD_FOLDER
                         Specify custom download folder location (Default:
                         downloads/
@@ -122,8 +121,7 @@ Submission arguments:
   --submit              Submit files to AV vendors (Enables -z by default)
   --submit-hash         Submit hashes to AV vendors
   --submit-url          Submit loaded URLs to PROXY vendors...
-  --vt-file-download    Download file from VirusTotal
-  --vt-file-report      Get report about the file from VirusTotal
+  --in-geoip            Determine GeoIP Location of loaded URLs etc...
   -ui, --url-info       Retrieve URL information from supported vendors for
                         all loaded input URLs.
   -uif, --url-info-force
@@ -142,6 +140,20 @@ Submission arguments:
   --proxy-category NEW_PROXY_CATEGORY
                         Specify new proxy category (If not specified default
                         proxy category will be used)
+
+LabAPI arguments:
+
+  --labapi-file-download
+                        Instructs the LabAPI to search for the sample in
+                        available API services
+
+Virus Total arguments:
+
+  --vt-file-download    Download file from VirusTotal
+  --vt-file-report      Get report about the file from VirusTotal
+  --disable-vt-file-report
+                        Disables automatic VT File report lookup for file
+                        downloads
 
 pastebin arguments:
 
@@ -415,3 +427,12 @@ Ver. 0.6.4:
 
 Ver. 0.6.5:
 * Cosmetic code changes in get_hrefs (Still need to find some time to completely rebuild it + multiprocessing)
+
+Ver. 0.6.6:
+* New plugin: la_labapi.py: Facilitates the connections to my LabAPI service
+* --labapi-file-download: Instructs the LabAPI to search for the sample in available API services 
+* Added https://github.com/InQuest/python-iocextract to url class, instead of custom parsing
+* --disable-vt-file-report: Disables automatic VT File report lookup for file downloads (Huge number of files to download etc.  would overuse the API limit)
+* Several code logic changes ... so there might be errors
+* Fixed the get_hrefs ... it was ignoring the -rl option a bit... [sorry]
+* Performance improvement to self.crawl_local_host_only

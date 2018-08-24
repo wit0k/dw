@@ -3,6 +3,7 @@ import re
 import socket
 
 from urllib.parse import urlparse, urlunparse
+import iocextract
 from dns import reversename, resolver
 
 logger = logging.getLogger('dw')
@@ -19,8 +20,6 @@ class url(object):
 
         """ I shall add the file type as well and expose it as a sample class or so """
         self.url = None
-        self.url_final = None
-        #self.time_created = None
         self.file = None
         self.hash = None
         self.protocol = None
@@ -37,18 +36,48 @@ class url(object):
         if not url:
             logger.error("")
         else:
-            if self.parse_url(url):
+
+            self.url = self.deobfuscate(url)
+            if self.url:
+                # Determine the URL type
+                if re.match(r"^file:/{2}[^/]", self.url):
+                    self.protocol = "file"
+
+            if self.url:
                 self.initialized = True
-                self._split_url()
-                self._resolve_url()
+                self._url_split()
+                self._url_resolve()
+            else:
+                self.url = None
 
-    def set_proxy_category(self, vendor_category):
-        pass
+    def url(self, obfuscate=False):
 
-    def get_proxy_catgeory(self, category_only=False):
-        pass
+        if obfuscate == False:
+            return self.url
+        else:
+            return self.obfuscate(self.url)
 
-    def _split_url(self, schema='http'):
+    def obfuscate(self, str_item):
+
+        if str_item:
+            return str_item.replace('.', '[.]')
+
+
+
+    def deobfuscate(self, url):
+
+        if url:
+            # Parse the URL via iocextract
+            url_set = set(iocextract.extract_urls(url, refang=True))
+
+            if url_set:
+                _url = url_set.pop()
+                logger.debug("Parsing URL: %s to: %s" % (url, _url))
+                return _url
+        else:
+            return None
+
+    def _url_split(self, schema='http'):
 
         try:
             url_obj = urlparse(self.url, schema)
@@ -63,7 +92,7 @@ class url(object):
             logger.error("Unable to parse URL: %s -> Error: %s" % (self.url, msg))
             return None
 
-    def _resolve_url(self):
+    def _url_resolve(self):
 
         if self.initialized:
             """ Check the URL typ """
@@ -93,10 +122,9 @@ class url(object):
                 logger.error("Unsupported URL: %s" % self.url)
                 return None
 
-    def parse_url(self, url):
-
+    def _deobfuscate_m(self, url):
+        """ Last resort - URL deobfuscation, currently not used """
         output_url = ""
-        input_url = url
 
         if url == "\n":
             return None
@@ -132,28 +160,16 @@ class url(object):
         output_url = output_url.replace("/]", "/")
         output_url = output_url.replace(r"\]", '\\')
 
-        """ Assume that the URL is valid at this stage """
-        if re.match(r"^http:/{2}[^/]|^https:/{2}[^/]", output_url):
-            logger.debug("Parsing URL: %s to: %s" % (input_url, output_url))
-            self.url = output_url
-            return output_url
-
-        elif re.match(r"^file:/{2}[^/]", output_url):
-            self.protocol = "file"
-            self.url = output_url
-            return output_url
+        """ Remove incorrect schema like: :// or : or :/ etc. """
+        if re.match(r"(^/+|^:/+|^:+)", output_url):
+            """ Remove incorrect scheme, and leave it empty """
+            output_url = re.sub(r"(^/+|^:/+|^:+)", "", output_url)
+            output_url = "http://" + output_url
+            output_url = output_url.replace(r"///", r"//")
         else:
-            """ Remove incorrect schema like: :// or : or :/ etc. """
-            if re.match(r"(^/+|^:/+|^:+)", output_url):
-                """ Remove incorrect scheme, and leave it empty """
-                output_url = re.sub(r"(^/+|^:/+|^:+)", "", output_url)
-                output_url = "http://" + output_url
-                output_url = output_url.replace(r"///", r"//")
-            else:
-                output_url = "http://" + output_url
-                output_url = output_url.replace(r"///", r"//")
+            output_url = "http://" + output_url
+            output_url = output_url.replace(r"///", r"//")
 
-        logger.debug("Parsing URL: %s to: %s" % (input_url, output_url))
+        logger.debug("Parsing URL: %s to: %s" % (url, output_url))
 
-        self.url = output_url
         return output_url

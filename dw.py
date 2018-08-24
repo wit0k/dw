@@ -1,11 +1,9 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-08-17"
-__version__ = '0.6.5'
+__version__ = '0.6.6'
 
 """
 TO DO:
-- Fix: http://www.iponkstoremasker.co.id/shop/masker/masker-ninja-02/shop/masker/masker-ninja-02/shop/masker/masker-ninja-02/shop/masker/masker-ninja-02/shop/masker/masker-ninja-02/shop/masker/
-- https://github.com/InQuest/python-iocextract add to url class
 - Add option to skip file submissions which are already detected by AV vendor ... (based on VT score for now)
 - Make --submit working with --vt-file-download (where it does not make much sense, it should be in place)
 - Add GeoLocation section to cache.
@@ -44,6 +42,7 @@ import zipfile
 import shutil
 import json
 import hashlib
+import md.hasher as hasher
 import magic
 import platform as _os
 import requests
@@ -322,6 +321,7 @@ class downloader (object):
         """ VirusTotal """
         self.vt_file_download = args.vt_file_download
         self.vt_file_report = args.vt_file_report
+        self.disable_vt_file_report = args.disable_vt_file_report
 
         """ pastebin """
         self.stdout_to_pastebin = args.stdout_to_pastebin
@@ -344,6 +344,9 @@ class downloader (object):
             self.submit_to_all_proxy_vendors = False
             self.proxy_vendor_names = self.to_list(args.proxy_vendor_names)
             self.proxy_vendor_names = [x.lower() for x in self.proxy_vendor_names]
+
+        """ LabAPI """
+        self.labapi_file_download = args.labapi_file_download
 
         """ Check script arguments """
         self.check_args()
@@ -433,33 +436,71 @@ class downloader (object):
         for archive in self.open_zip_files.values():
             archive.close()
 
-    def load_hashes_from_input_file(self, input_file):
+    def is_input_data_excluded(self, input_data):
 
-        hashes = []
+        if input_data is None:
+            return True
+
+        if input_data == '\n':
+            return True
+
+        if input_data.upper() == '[END]' or input_data.upper() == '[END]\n':
+            return None
+
+        if input_data.startswith('#'):
+            return True
+
+        return False
+
+    def load_iocs_from_file(self, input_file, _urls, _hashes, _files):
+
+        SupportedHashes = ['md5', 'sha1', 'sha256']
+
         if os.path.isfile(input_file):
+
             with open(input_file, "r", encoding="utf8") as file:
                 lines = file.readlines()
-                for line in lines:
-                    if line == "\n":
-                        continue
 
-                    if line.upper() == '[END]' or line.upper() == '[END]\n':
+                for input_data in lines:
+
+                    if self.is_input_data_excluded(input_data) == True:
+                        continue
+                    elif self.is_input_data_excluded(input_data) is None:
                         break
 
-                    line = line.strip()
+                    input_data = input_data.strip()
+                    """ Load appropriate IOC list """
 
-                    if line.startswith(r"https://www.virustotal.com/#/file/"):
-                        _hash = None
-                        _hash, _, __ = line[34:].partition("/")
-                        hashes.append(_hash)
+                    if input_data.startswith(r"https://www.virustotal.com/#/file/"):
+                        _hash, _, __ = input_data[34:].partition("/")
+                        _hashes.append(_hash)
 
-                    elif not line.startswith("#"):
-                        hashes.append(line)
+                    #  IF the input_data is found on the disk, it's a file
+                    elif os.path.isfile(input_data):
+                        if _files is not None:
+                            _files.append(input_data)
 
-                return hashes
-        else:
-            logger.error("Input file: %s -> Not found!" % input_file)
+                    # IF the input_data matches one of supported hash patterns
+                    elif hasher.get_hash_type(input_data) in SupportedHashes:
+                        _hashes.append(input_data)
 
+                    else:
+                        #  The input data is possibly a URL
+
+                        # Handle the case with MIME type included in the URL
+                        if MIME_MARKER in input_data:
+                            url, _, mime = input_data.partition(MIME_MARKER)
+                            url = url.strip()
+                            if url:
+                                input_data = url
+
+                        _url = _url_mod.url(input_data.strip())
+                        if _url.url:
+                            _urls.append(_url)
+                        else:
+                            logger.error('Unable to load ioc: %s' % input_data)
+
+    """ 
     def load_url(self, urlstr):
 
         urls = []
@@ -483,43 +524,7 @@ class downloader (object):
                 urls.append(_url)
 
         return urls
-
-    def load_urls_from_input_file(self, input_file):
-
-        urls = []
-        if os.path.isfile(input_file):
-            with open(input_file, "r", encoding="utf8") as file:
-
-                try:
-                    lines = file.readlines()
-                except Exception as msg:
-                    logger.error("Unsupported input file format: %s" % input_file)
-                    return []
-
-                for line in lines:
-
-                    if line == '\n':
-                        continue
-
-                    if line.upper() == '[END]' or line.upper() == '[END]\n':
-                        break
-
-                    line = line.strip()
-                    if not line.startswith("#"):
-
-                        # Handle the case with MIME type included in the URL
-                        if MIME_MARKER in line:
-                            url, _, mime = line.partition(MIME_MARKER)
-                            url = url.strip()
-                            if url:
-                                line = url
-
-                        _url = _url_mod.url(line.strip())
-                        urls.append(_url)
-
-                return urls
-        else:
-            logger.error("Input file: %s -> Not found!" % input_file)
+    """
 
     def load_file(self, file_path):
 
@@ -592,7 +597,7 @@ class downloader (object):
         li = text.rsplit(old, 1)  # Split only once
         return new.join(li)
 
-    def get_hrefs(self, url, con=None, links={}, depth=0):
+    def get_hrefs(self, url, con=None, links={}, depth=0, init_url_host=None):
 
         try:
             if depth == 0:
@@ -607,16 +612,27 @@ class downloader (object):
             url_redirected = None
             url_obj = urlparse(url, "http")
 
+            # Used to keep the track of original host, used by -rl which keeps only the urls which share same host
+            if init_url_host is None:
+                init_url_host = url_obj.hostname.lower()
+
             # test
             if url_obj.scheme == "file":
                 self.get_hrefs_smb(url_obj=url_obj, links=links.keys())
 
 
-            # Experimental
             """ If the resource is know file extension """
             if self._url_endswith(url_obj, file_extensions):
-                self.update_list(url, links)
-                return links
+                """ Case: -rl Skip the href if its host is not the same as the host of the base URL  """
+                if self.crawl_local_host_only:
+                    if init_url_host in url:
+                        self.update_list(url, links)
+                        return links
+                    else:
+                        return links
+                else:
+                    self.update_list(url, links)
+                    return links
 
 
             """ Create new session """
@@ -873,18 +889,19 @@ class downloader (object):
                     if self.recursion:
                         """ Case: -rl Skip the href if its host is not the same as the host of the base URL  """
                         if self.crawl_local_host_only:
-                            if url_host not in _url:
+                            if init_url_host not in _url:
                                 logger.debug("Skip: %s -> The host: %s not found" % (_url, url_host))
                                 continue
 
                         if _url:
                             # _url not in links
                             if not self.in_links(_url, links):
-                                self.get_hrefs(_url, con, links, depth + 1)
+                                #(self, url, con=None, links={}, depth=0, init_url_host=None):
+                                self.get_hrefs(url=_url, con=con, links=links, depth=depth + 1, init_url_host=init_url_host)
                         else:
                             # _href not in links
                             if not self.in_links(_href, links):
-                                self.get_hrefs(_href, con, links, depth + 1)
+                                self.get_hrefs(url=_href, con=con, links=links, depth=depth + 1, init_url_host=init_url_host)
                     else:
                         if _url:
                             self.update_list(_url, links)
@@ -928,11 +945,12 @@ class downloader (object):
         """ Get VirusTotal data for a hash """
         # I shall fix it the dw code ... shape in in a better way (now time for now)
 
-        for vt_vendor in self.pm.get_plugin_objects_by_type("VT"):
-            vt_file_excerpt = vt_vendor.call("file_report", (file_hash, True))
+        if not self.disable_vt_file_report:
+            for vt_vendor in self.pm.get_plugin_objects_by_type("VT"):
+                vt_file_excerpt = vt_vendor.call("file_report", (file_hash, True))
 
-            if vt_file_excerpt:
-                file_info.append(vt_file_excerpt)
+                if vt_file_excerpt:
+                    file_info.append(vt_file_excerpt)
 
         """ Get file MIME type """
         obj_magic = magic.Magic(magic_file=MAGIC_FILE_PATH, mime=True, uncompress=True)
@@ -1115,10 +1133,7 @@ class downloader (object):
             logger.debug("Nothing to download")
 
     def check_args(self):
-
-        if self.sample_file_or_folder and self.input:
-            logger.debug("Specify either -i or -s. Forcing -s to be used")
-            self.input = ''
+        """ Check the command line args """
 
         """ Option -s specified """
         if self.sample_file_or_folder:
@@ -1126,26 +1141,19 @@ class downloader (object):
                 self.input_type = "folder"
             elif os.path.isfile(self.sample_file_or_folder):
                 self.input_type = "file"
-            elif self.load_url(self.sample_file_or_folder):
-                self.input_type = "url"
             else:
-                logger.error("Unsupported -s input type: %s" % self.input)
-                exit(-1)
+                self.input_type = "url"
 
         """ Option -i specified """
         if self.input:
             if os.path.isdir(self.input):
                 self.input_type = "folder"
-                logger.error("Unsupported -i input type: %s [folder]" % self.input)
+                logger.error("Unsupported -i input type: %s [folder]. Use -s instead." % self.input)
                 exit(-1)
             elif os.path.isfile(self.input):
                 self.input_type = "file"
             else:
                 logger.error("Unsupported -i input type: %s" % self.input)
-                exit(-1)
-        else:
-            if not self.sample_file_or_folder:
-                logger.error("You must specify either -i or -s parameters")
                 exit(-1)
 
         if not os.path.isdir(self.download_folder):
@@ -1179,12 +1187,6 @@ class downloader (object):
             self.recursion = True
             self.recursion_depth = 0
             self.get_links = True
-
-        """ Skip download in case user specified a folder """
-        if self.input_type == "folder":
-            self.download_files = False
-            self.get_links = False
-            self.url_info = False
 
         """ Enable compression if submit option is enabled """
         if self.submit_to_av_vendors:
@@ -1233,6 +1235,42 @@ class downloader (object):
             paste_url = api.paste(data, guest=is_guest, name=paste_name, format=paste_format, private=paste_type, expire=paste_expire)
             print("PasteBin URL: %s" % paste_url)
 
+    def call_labapi_file_download(self, file_hashes=[]):
+
+        time.sleep(random.randint(5, 15))
+
+        if file_hashes:
+            for file_hash in file_hashes:
+
+                url = f'http://127.0.0.1:8080/file/download/{file_hash}'
+
+                querystring = {
+                    "token": "..."}
+
+                headers = {
+                    'Cache-Control': "no-cache",
+                }
+
+                con = requests.session()
+                con.allow_redirects = True
+
+                response = con.get(url, headers=headers, params=querystring)
+
+                if response is not None:
+                    if response.status_code == 301:
+                        logger.debug('Hash: %s - Found on: %s' % (file_hash, url))
+
+                        downloaded_file = response.content
+
+                        with open(file_hash, 'wb') as file:
+                            file.write(downloaded_file)
+                        logger.error('%s - Found on LabAPI' % file_hash)
+                    else:
+                        logger.error('%s - Not found on VT, MalShare, Hybrid-Analysis' % file_hash)
+                else:
+                    logger.error('Unable to access the URL: %s' % url)
+
+
 def main(argv):
 
     argsparser = argparse.ArgumentParser(usage=argparse.SUPPRESS, description='dw toolkit')
@@ -1242,15 +1280,17 @@ def main(argv):
     crawling_args = argsparser.add_argument_group('Crawling arguments', "\n")
     networking_args = argsparser.add_argument_group('Networking arguments', "\n")
     submission_args = argsparser.add_argument_group('Submission arguments', "\n")
+    labapi_args = argsparser.add_argument_group('LabAPI arguments', "\n")
+    vtapi_args = argsparser.add_argument_group('Virus Total arguments', "\n")
     pastebin_args = argsparser.add_argument_group('pastebin arguments', "\n")
 
     """ Script arguments """
     script_args.add_argument("-i", "--input-file", type=str, action='store', dest='input', required=False,
-                             default="urls.txt", help="Load an input file containing URLs or Hashes for further processing")
+                             default="urls.txt", help="Load the hashes, URLs or existing files from the input file for further processing")
 
     script_args.add_argument("-s", "--sample", type=str, action='store', dest='sample_file_or_folder', required=False,
                              default="",
-                             help="Load given URL, or specific file or folder for further processing")
+                             help="Load given URL, file or folder for further processing")
 
     script_args.add_argument("-d", "--download-folder", action='store', dest='download_folder', required=False,
                              default="downloads/", help="Specify custom download folder location (Default: downloads/")
@@ -1295,6 +1335,23 @@ def main(argv):
     crawling_args.add_argument("-rd", "--recursion-depth", action='store', dest='recursion_depth', required=False,
                                default=20, help="Max recursion depth level for -r option (Default: 20)")
 
+
+    """  LabAPI -------------------------------------------------------------------------------------------------- """
+    labapi_args.add_argument("--labapi-file-download", action='store_true', dest='labapi_file_download', required=False,
+                                 default=False, help="Instructs the LabAPI to search for the sample in available API services")
+
+    """  VT API -------------------------------------------------------------------------------------------------- """
+
+    vtapi_args.add_argument("--vt-file-download", action='store_true', dest='vt_file_download', required=False,
+                                 default=False, help="Download file from VirusTotal")
+
+    vtapi_args.add_argument("--vt-file-report", action='store_true', dest='vt_file_report', required=False,
+                                 default=False, help="Get report about the file from VirusTotal")
+
+    vtapi_args.add_argument("--disable-vt-file-report", action='store_true', dest='disable_vt_file_report',
+                            required=False,
+                            default=False, help="Disables automatic VT File report lookup for file downloads")
+
     """  SUBMISSION  ----------------------------------------------------------------------------------------------- """
     submission_args.add_argument("--submit", action='store_true', dest='submit_to_av_vendors', required=False,
                              default=False, help="Submit files to AV vendors (Enables -z by default)")
@@ -1305,13 +1362,6 @@ def main(argv):
     submission_args.add_argument("--submit-url", action='store_true', dest='submit_to_proxy_vendors', required=False,
                              default=False, help="Submit loaded URLs to PROXY vendors...")
 
-
-
-    submission_args.add_argument("--vt-file-download", action='store_true', dest='vt_file_download', required=False,
-                                 default=False, help="Download file from VirusTotal")
-
-    submission_args.add_argument("--vt-file-report", action='store_true', dest='vt_file_report', required=False,
-                                 default=False, help="Get report about the file from VirusTotal")
 
     submission_args.add_argument("--in-geoip", action='store_true', dest='in_geoip', required=False,
                                  default=False, help="Determine GeoIP Location of loaded URLs etc...")
@@ -1407,10 +1457,13 @@ def main(argv):
 
     vt_vendors = dw.pm.get_plugin_objects_by_type("VT")
     in_vendors = dw.pm.get_plugin_objects_by_type("INTEL")
+    labapi_vendor = dw.pm.get_plugin_objects_by_type("LABAPI")
 
     _uniq = uniq()
     urls = []
+
     hashes = []
+    _files = []
     hrefs = []
     hrefs_mime = []
     downloaded_files = []
@@ -1427,20 +1480,21 @@ def main(argv):
     if dw.sample_file_or_folder:
         if dw.input_type == "file":
             downloaded_files = dw.load_file(dw.sample_file_or_folder)
+            #dw.load_iocs_from_file(input_file=dw.sample_file_or_folder, _urls=urls, _hashes=hashes, _files=downloaded_files)
         elif dw.input_type == "folder":
             downloaded_files = dw.load_files_from_folder(dw.sample_file_or_folder)
             logger.debug("Loaded [%d] files from: %s" % (len(downloaded_files), dw.sample_file_or_folder))
         elif dw.input_type == "url":
             urls = dw.load_url(dw.sample_file_or_folder)
-        """ case: -i """
-    elif dw.input:
-        if dw.input_type == "file":
-            if dw.submit_hashes or dw.vt_file_download or dw.vt_file_report:
-                hashes = dw.load_hashes_from_input_file(dw.input)
-                logger.debug("Loaded [%d] Hashes from: %s" % (len(hashes), dw.input))
-            else:
-                urls = dw.load_urls_from_input_file(dw.input)
-                logger.debug("Loaded [%d] URLs from: %s" % (len(urls), dw.input))
+
+    """ case: -i """
+    if dw.input:
+        # Load the hashes, URLs or existing files from the input file
+        dw.load_iocs_from_file(input_file=dw.input, _urls=urls, _hashes=hashes, _files=downloaded_files)
+
+        logger.debug("Loaded [%d] URLs from: %s" % (len(urls), dw.input))
+        logger.debug("Loaded [%d] Hashes from: %s" % (len(hashes), dw.input))
+        logger.debug("Loaded [%d] Files from: %s" % (len(downloaded_files), dw.input))
 
     # TEST
     # db_handler.insert(urls[0])
@@ -1452,26 +1506,36 @@ def main(argv):
             downloaded_files = _uniq.get_unique_files(downloaded_files)
             print("Distinct input files:")
             print(*downloaded_files, sep="\n")
-        elif urls:
+        if urls:
             urls = _uniq.get_unique_entries(urls)
             print("Distinct input URLs:")
             print(*[u.url for u in urls], sep="\n")
-        elif hashes:
+        if hashes:
             hashes = _uniq.get_unique_entries(hashes)
 
     """ Update pastebin report """
     if urls:
         pastebin_report.append("Input URLs:")
         pastebin_report.append([u.url for u in urls])
-    elif downloaded_files:
+
+    if downloaded_files:
         pastebin_report.append("Input files:")
         pastebin_report.append(downloaded_files)
-    else:
+
+    if hashes:
         pastebin_report.append("Input hashes:")
         pastebin_report.append(hashes)
 
-    """ VirusTotal """
+    """ LabAPI """
+    if dw.labapi_file_download:
+        print("LabAPI -> File Download:")
+        if labapi_vendor:
+            for lapi_vendor in labapi_vendor:
+                tfile = lapi_vendor.call("labapi_file_download", (hashes, dw.download_folder))
+                if tfile:
+                    downloaded_files.append(tfile)
 
+    """ VirusTotal """
     if dw.vt_file_download:
         print("VirusTotal -> File Download:")
         for _hash in hashes:
@@ -1577,17 +1641,17 @@ def main(argv):
 
         if hrefs:
             """ Download pulled hrefs """
-            downloaded_files = dw.download(hrefs, pastebin_report)
+            downloaded_files.extend(dw.download(hrefs, pastebin_report))
 
-        elif dw.sample_file_or_folder:
+        if dw.sample_file_or_folder:
             if dw.input_type == "url":
-                downloaded_files = dw.download([dw.sample_file_or_folder], pastebin_report)
+                downloaded_files.extend(dw.download([dw.sample_file_or_folder], pastebin_report))
             else:
                 logger.debug("Download not required. Files already located on the disk")
                 pass
         else:
             """ Download given URLs """
-            downloaded_files = dw.download([u.url for u in urls], pastebin_report)
+            downloaded_files.extend(dw.download([u.url for u in urls], pastebin_report))
 
         """ Deduplicate downloaded files """
         if dw.unique_files:

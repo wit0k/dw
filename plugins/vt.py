@@ -61,7 +61,7 @@ class vt(plugin):
 
                 """ Case where file is not submitted yet """
                 if vt_response.get('response_code', None) == 0:
-                    return ' Not Found on VT'
+                    return '%s, Not Found on VT' % file_hash
 
                 positives = str(vt_response.get('positives', None))
                 total = str(vt_response.get('total', None))
@@ -86,7 +86,7 @@ class vt(plugin):
                             av_selected_vendor_results.append(av_vendor_name + ': Not returned')
 
                 result_line = ', '.join(av_selected_vendor_results)
-                excerpt = score + ', ' + result_line
+                excerpt = file_hash + ', ' + score + ', ' + result_line
 
             logger.debug('Excerpt: %s' % excerpt)
             #print('%s, %s' % (file_hash, excerpt))

@@ -29,5 +29,6 @@ Install dependencies:
 * pip install pytesseract
 * pip install pysmb
 * pip install dnspython
+* pip install iocextract
 
 I will create requirements.txt and setup script when time allows
