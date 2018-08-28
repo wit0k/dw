@@ -1,9 +1,10 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-08-17"
-__version__ = '0.6.7'
+__version__ = '0.6.8'
 
 """
 TO DO:
+- https://beta.virusbay.io/api/sample/5b8561ab1bd6bc1dd1c4cd32/download/link
 - Add option to skip file submissions which are already detected by AV vendor ... (based on VT score for now)
 - Make --submit working with --vt-file-download (where it does not make much sense, it should be in place)
 - Add GeoLocation section to cache.
@@ -1142,13 +1143,7 @@ class downloader (object):
         """ Option -i specified """
         if self.input:
             if os.path.isdir(self.input):
-                self.input_type = "folder"
                 logger.error("Unsupported -i input type: %s [folder]. Use -s instead." % self.input)
-                exit(-1)
-            elif os.path.isfile(self.input):
-                self.input_type = "file"
-            else:
-                logger.error("Unsupported -i input type: %s" % self.input)
                 exit(-1)
 
         if not os.path.isdir(self.download_folder):

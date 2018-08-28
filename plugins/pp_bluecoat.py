@@ -12,7 +12,7 @@ USE:
 
 import logging
 import random
-import pytesseract  # pip install pytesseract
+
 import simplejson
 import calendar
 import time
@@ -20,6 +20,7 @@ import os
 
 from md.plugin import plugin
 from PIL import Image  # pip install pillow
+import pytesseract  # pip install pytesseract
 
 
 logger = logging.getLogger('dw')
