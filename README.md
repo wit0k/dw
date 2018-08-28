@@ -440,4 +440,7 @@ Ver. 0.6.6:
 Ver. 0.6.7:
 * iocextract is not perfect, when it fails to parse URL, the code will run backup parsing algo
 * Updated to regex patterns for domains 
+
+Ver. 0.6.7:
+* Fix -s: Was not loading files from a folder... the issue is fixed now
  
