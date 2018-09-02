@@ -4,6 +4,7 @@ __version__ = '0.6.8'
 
 """
 TO DO:
+- option to sort output by extension
 - https://beta.virusbay.io/api/sample/5b8561ab1bd6bc1dd1c4cd32/download/link
 - Add option to skip file submissions which are already detected by AV vendor ... (based on VT score for now)
 - Make --submit working with --vt-file-download (where it does not make much sense, it should be in place)
@@ -1641,7 +1642,8 @@ def main(argv):
                 pass
         else:
             """ Download given URLs """
-            downloaded_files.extend(dw.download([u.url for u in urls], pastebin_report))
+            if urls:
+                downloaded_files.extend(dw.download([u.url for u in urls], pastebin_report))
 
         """ Deduplicate downloaded files """
         if dw.unique_files:

@@ -35,7 +35,9 @@ class url(object):
         self.mime_type = None
 
         if not url:
-            logger.error("")
+            self.url = None
+        elif '.' not in url:
+            self.url = None
         else:
 
             self.url = self.deobfuscate(url)
