@@ -1,6 +1,6 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-08-17"
-__version__ = '0.6.8'
+__version__ = '0.6.9'
 
 """
 TO DO:
@@ -1226,42 +1226,6 @@ class downloader (object):
             paste_url = api.paste(data, guest=is_guest, name=paste_name, format=paste_format, private=paste_type, expire=paste_expire)
             print("PasteBin URL: %s" % paste_url)
 
-    def call_labapi_file_download(self, file_hashes=[]):
-
-        time.sleep(random.randint(5, 15))
-
-        if file_hashes:
-            for file_hash in file_hashes:
-
-                url = f'http://127.0.0.1:8080/file/download/{file_hash}'
-
-                querystring = {
-                    "token": "..."}
-
-                headers = {
-                    'Cache-Control': "no-cache",
-                }
-
-                con = requests.session()
-                con.allow_redirects = True
-
-                response = con.get(url, headers=headers, params=querystring)
-
-                if response is not None:
-                    if response.status_code == 301:
-                        logger.debug('Hash: %s - Found on: %s' % (file_hash, url))
-
-                        downloaded_file = response.content
-
-                        with open(file_hash, 'wb') as file:
-                            file.write(downloaded_file)
-                        logger.error('%s - Found on LabAPI' % file_hash)
-                    else:
-                        logger.error('%s - Not found on VT, MalShare, Hybrid-Analysis' % file_hash)
-                else:
-                    logger.error('Unable to access the URL: %s' % url)
-
-
 def main(argv):
 
     argsparser = argparse.ArgumentParser(usage=argparse.SUPPRESS, description='dw toolkit')
@@ -1502,7 +1466,10 @@ def main(argv):
             print("Distinct input URLs:")
             print(*[u.url for u in urls], sep="\n")
         if hashes:
+            print("Distinct input hashes:")
             hashes = _uniq.get_unique_entries(hashes)
+            print(*hashes, sep="\n")
+
 
     """ Update pastebin report """
     if urls:

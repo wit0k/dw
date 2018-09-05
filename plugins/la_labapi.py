@@ -34,6 +34,8 @@ class la_labapi(plugin):
         for hash in file_hashes:
             self._file_download(hash, download_folder)
 
+
+
     def _file_download(self, file_hash, download_folder):
 
         out_file = None
