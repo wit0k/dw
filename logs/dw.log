@@ -1,0 +1,42 @@
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,572 - dw.py - main - Initialize dw (Downloader)
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,572 - dw.py - __init__ - Initialize Plugin Manager
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,572 - pluginmgr.py - __init__ - Enumerating installed plugins
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,609 - pluginmgr.py - __init__ - Found [5] plugins
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,609 - pluginmgr.py - __init__ - Loading plugins
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,609 - pluginmgr.py - load - Loading plugin: av_symantec
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,609 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,609 - av_symantec.py - load_config - Attempt to load_config(plugins/av_symantec.py.vd)
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,610 - av_symantec.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,610 - pluginmgr.py - load - Plugin: av_symantec loaded successfully
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,610 - pluginmgr.py - load - Loading plugin: in_geoip
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,610 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,611 - plugin.py - load_config - Attempt to load_config(plugins/in_geoip.py.vd)
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,611 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,611 - pluginmgr.py - load - Plugin: in_geoip loaded successfully
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,611 - pluginmgr.py - load - Loading plugin: la_labapi
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,611 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,611 - plugin.py - load_config - Attempt to load_config(plugins/la_labapi.py.vd)
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - pluginmgr.py - load - Plugin: la_labapi loaded successfully
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - pluginmgr.py - load - Loading plugin: pp_bluecoat
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - plugin.py - load_config - Attempt to load_config(plugins/pp_bluecoat.py.vd)
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - pluginmgr.py - load - Plugin: pp_bluecoat loaded successfully
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - pluginmgr.py - load - Loading plugin: vt
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - pluginmgr.py - load - Initialize the plugin object
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,612 - plugin.py - load_config - Attempt to load_config(plugins/vt.py.vd)
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - plugin.py - load_config - Successfully loaded JSON data
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - pluginmgr.py - load - Plugin: vt loaded successfully
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - pluginmgr.py - __init__ - Loaded [5] plugins
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - dw.py - main - Initialize Proxy vendors
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - dw.py - main - Initialize AV vendors
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - dw.py - main - Loaded [0] URLs from: urls.txt
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - dw.py - main - Loaded [0] Hashes from: urls.txt
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - dw.py - main - Loaded [0] Files from: urls.txt
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - dw.py - main - Skipping URL info gathering
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - dw.py - main - Skipping href lookup
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - dw.py - main - Skipping files download
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,613 - dw.py - main - Skipping files compression
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,614 - dw.py - main - Skipping Vendor submission
+DEBUG - THREAD-140735204859904 - 2018-12-18 13:42:35,614 - dw.py - main - Skipping pastebin submission

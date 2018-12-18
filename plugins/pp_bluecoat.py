@@ -155,7 +155,7 @@ class pp_bluecoat(plugin):
         submission_message = response_dict.get("message", {})
 
 
-        print("%s, %s, %s" % (url, submission_message, current_category_array))
+        print("%s, %s, %s" % (current_category_array, url, submission_message.replace('\n', ' ')))
 
         if (str(r.status_code) == '200' and submission_message[0:38] == 'Your page submission has been received'):
             logger.debug("Submission OK -> Vendor: %s | URL: %s" % (self.vendor_name, url))
@@ -320,12 +320,13 @@ class pp_bluecoat(plugin):
                 for _category in current_category:
                     current_category_array.append(_category.get('name', ''))
 
-                current_category_str = ",".join(current_category_array)
+                current_category_str = ";".join(current_category_array)
 
                 """ Update URL cache """
                 self.cache.proxy.set_category(url, self.vendor_name, current_category_array)
                 self.cache.proxy.set_category(url_host, self.vendor_name, current_category_array)
 
+                print('@ ', current_category_str, ' | ', url)
             except Exception as msg:
                 logger.debug("Unexpected error while URL lookup. Error: %s" % str(msg))
                 return None

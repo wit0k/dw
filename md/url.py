@@ -166,6 +166,9 @@ class url(object):
         output_url = output_url.replace("\.", ".")
         output_url = output_url.replace("/]", "/")
         output_url = output_url.replace(r"\]", '\\')
+        output_url = output_url.replace(r'^.', '.')
+
+
 
         """ Remove incorrect schema like: :// or : or :/ etc. """
         if re.match(r"(^/+|^:/+|^:+)", output_url):

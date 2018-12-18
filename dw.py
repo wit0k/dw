@@ -1,9 +1,11 @@
 __author__  = "Witold Lawacz (wit0k)"
 __date__    = "2018-08-17"
-__version__ = '0.6.9'
+__version__ = '0.7.0'
 
 """
 TO DO:
+- If there is Max retries exceeded with url, for given host... skip remaining links ...
+- Due to iocextract the url deobfuscation is slow 
 - option to sort output by extension
 - https://beta.virusbay.io/api/sample/5b8561ab1bd6bc1dd1c4cd32/download/link
 - Add option to skip file submissions which are already detected by AV vendor ... (based on VT score for now)

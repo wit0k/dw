@@ -40,7 +40,7 @@ class la_labapi(plugin):
 
         out_file = None
         logger.debug('Download: %s' % file_hash)
-        random_time = random.randint(5, 15)
+        random_time = random.randint(5, 10)
         logger.debug('Waiting random time: %s' % random_time)
         sleep(random_time)
 
@@ -57,6 +57,7 @@ class la_labapi(plugin):
             return None
 
         url = f'http://{server_addr}:{server_port}/file/download/{file_hash}'
+        logger.debug('%s' % url)
 
         parameters = {
             "token": api_key}
@@ -66,17 +67,20 @@ class la_labapi(plugin):
         }
 
         self.con.allow_redirects = True
-        response = self.con.get(url, headers=headers, params=parameters)
+        response = self.con.get(url, headers=headers, params=parameters, allow_redirects=True)
 
         if response is not None:
-            if response.status_code == 301:
+
+            test = response.content
+
+            if response.status_code == 200:
                 logger.debug('Hash: %s - Found on LabAPI' % file_hash)
 
                 downloaded_file = response.content
 
-                out_file = download_folder + downloaded_file
-                with open(file_hash, 'wb') as file:
-                    file.write(out_file)
+                out_file = download_folder + file_hash
+                with open(out_file, 'wb') as file:
+                    file.write(downloaded_file )
                 logger.error('%s - Found on LabAPI' % file_hash)
             else:
                 logger.error('%s - Not found on LabAPI!' % file_hash)
